@@ -1,0 +1,39 @@
+# ============================================================
+# Stoneshard 中文资料库 — 忽略规则
+# 原则：只提交「代码 + 核心数据集 + 站点成品」，
+#       大体积、可由 tools/ 重新生成的中间产物一律不入库。
+# 注意：gitignore 不支持行尾注释，# 后的内容会被当成模式的一部分。
+# ============================================================
+
+# ---- 可由游戏重新导出的原始素材（体积大，勿入库）----
+# 从 data.win 导出的原始纹理图集，约 249MB
+data/pagecache/
+# 社区 wiki 抓取缓存，约 34MB
+data/ssw_pages/
+# StoneShard.exe 文本原始分段，约 19MB
+data/exe_text_segments.jsonl
+
+# ---- 生成物 ----
+# 由 tools/build_site.py 生成的完整站点，含全量 17247 图标，约 210MB
+# 发布版 site_deploy/ 已入库
+site/
+
+# ---- 从社区 wiki 抓取的第三方文件（非本项目代码）----
+ssw_base.js
+ssw_skills.html
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- Node ----
+node_modules/
+npm-debug.log*
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

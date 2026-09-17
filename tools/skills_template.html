@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Stoneshard 技能树</title>
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --line:#e2ddd2; --ink:#2c2a26; --sub:#8a857a; --acc:#7a4b2a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif; padding:24px; }
+  header { max-width:1200px; margin:0 auto 16px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .meta { color:var(--sub); font-size:13px; }
+  .layout { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:240px 1fr; gap:18px; align-items:start; }
+  aside { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px; position:sticky; top:64px; max-height:calc(100vh - 90px); overflow:auto; }
+  .grp { font-size:12px; color:var(--sub); padding:8px 10px 4px; letter-spacing:1px; }
+  .br { display:flex; align-items:center; gap:8px; padding:7px 10px; border-radius:8px; cursor:pointer; font-size:13.5px; }
+  .br:hover { background:#f1ece1; }
+  .br.on { background:var(--acc); color:#fff; }
+  .br img { width:24px; height:24px; object-fit:contain; image-rendering:pixelated; }
+  .br .n { margin-left:auto; font-size:11.5px; opacity:.7; }
+  main { min-width:0; }
+  #q { width:100%; padding:9px 14px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:var(--card); margin-bottom:14px; }
+  .bhead { display:flex; align-items:baseline; gap:10px; margin-bottom:10px; }
+  .bhead h2 { font-size:19px; }
+  .bhead .sub { color:var(--sub); font-size:13px; }
+  .books { margin-bottom:14px; }
+  .book { background:#f4efe4; border-radius:8px; padding:8px 12px; font-size:12.5px; margin-bottom:6px; }
+  .book b { color:var(--acc); }
+  .nodes { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:12px; }
+  .node { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .node .top { display:flex; gap:10px; align-items:flex-start; }
+  .node img { width:44px; height:44px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
+  .node .nm { font-weight:600; } .node .en { color:var(--sub); font-size:12px; font-weight:400; display:block; }
+  .reqs { margin-top:6px; font-size:12px; color:#55503f; }
+  .reqs b { color:#3d7a3d; }
+  .desc { margin-top:8px; font-size:12.5px; color:#55503f; }
+  /* 数值配色：与游戏一致 —— 加成绿、扣属性红 */
+  .desc .hl, .desc .c-green { color:#3d7a3d; font-weight:600; }
+  .desc .c-red   { color:#c0392b; font-weight:600; }
+  .desc .c-gold  { color:#9a6b1a; font-weight:600; }
+  .desc .c-blue  { color:#2f6ea8; font-weight:600; }
+  .desc .c-purple{ color:#6b4a9a; font-weight:600; }
+  .desc .c-dim   { color:#7d7a6e; font-weight:600; }
+  .desc .c-w     { color:inherit; font-weight:600; }
+  .tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:99px; background:#efe7d8; color:var(--acc); margin-right:4px; }
+  #count { color:var(--sub); font-size:12.5px; margin-bottom:10px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Stoneshard 技能树</h1>
+  <div class="meta">数据来源：社区 wiki 数据集（v0.9.4.24）· 坐标与解锁条件取自游戏技能树配置 · 图标：data.win 提取</div>
+</header>
+<div class="layout">
+  <aside id="branches"></aside>
+  <main>
+    <input id="q" placeholder="搜索技能：中文名 / 英文名 / 说明（如 出血、格挡、pyromancy）">
+    <div id="count"></div>
+    <div id="content"></div>
+  </main>
+</div>
+<script>
+const DATA = __DATA__;
+let cur = 0;
+const $ = id => document.getElementById(id);
+function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+/* 游戏文本颜色标记：~r~红(惩罚) ~lg~绿(加成) ~w~白(普通强调) ~y~黄(名词) … -> 对应颜色 */
+const TAG_CLS = { r:"c-red", lg:"c-green", g:"c-green", w:"c-w", W:"c-w",
+                  y:"c-gold", sy:"c-gold", ly:"c-gold", o:"c-gold", ur:"c-gold", Y:"c-gold",
+                  bl:"c-blue", lb:"c-blue", p:"c-purple", pr:"c-purple", cg:"c-purple",
+                  gr:"c-dim", s:"c-dim", u:"c-dim", Ig:"c-dim" };
+function fmt(s){
+  return esc(s).replace(/##/g, "<br>")
+    .replace(/~([A-Za-z_]{1,8})~(.*?)~\/~/g, (m, tag, body) => `<b class="${TAG_CLS[tag] || "c-w"}">${body}</b>`)
+    .replace(/~[A-Za-z_]{1,8}~/g, "");
+}
+function reqLine(n){
+  const p = [];
+  if (n.lv) p.push(`角色等级 <b>${n.lv}</b>`);
+  if (n.attr && n.attr.length && n.attrv) p.push(`${n.attr.join("/")} <b>${n.attrv}</b>`);
+  if (n.tier) p.push(`层级 <b>${n.tier}</b>`);
+  return p.join(" · ");
+}
+function renderBranches(){
+  const groups = [];
+  const seen = new Map();
+  DATA.forEach((b, i) => {
+    if (!seen.has(b.group)) { seen.set(b.group, []); groups.push(b.group); }
+    seen.get(b.group).push([i, b]);
+  });
+  let h = "";
+  for (const g of groups){
+    h += `<div class="grp">${esc(g)}</div>`;
+    for (const [i, b] of seen.get(g)){
+      h += `<div class="br${i===cur?" on":""}" data-i="${i}">
+        <img src="icons/${esc(b.icon)}" onerror="this.style.visibility='hidden'">
+        <span>${esc(b.name)}</span><span class="n">${b.nodes.length}</span></div>`;
+    }
+  }
+  $("branches").innerHTML = h;
+  $("branches").querySelectorAll(".br").forEach(el => el.onclick = () => {
+    cur = +el.dataset.i; $("q").value = ""; renderBranches(); render();
+  });
+}
+function nodeCard(n){
+  return `<div class="node">
+    <div class="top"><img loading="lazy" src="icons/${esc(n.ic)}" onerror="this.style.visibility='hidden'">
+      <div><div class="nm">${esc(n.zh) || esc(n.en)}<span class="en">${esc(n.en)}</span></div>
+      ${n.tier ? `<span class="tag">层级 ${n.tier}</span>` : ""}</div></div>
+    ${reqLine(n) ? `<div class="reqs">${reqLine(n)}</div>` : ""}
+    <div class="desc">${fmt(n.desc || "")}</div></div>`;
+}
+function render(){
+  const kw = $("q").value.trim().toLowerCase();
+  let h = "", n = 0;
+  if (kw){
+    for (const b of DATA){
+      const hits = b.nodes.filter(x => (x.zh + " " + x.en + " " + x.desc).toLowerCase().includes(kw));
+      if (!hits.length) continue;
+      h += `<div class="bhead"><h2>${esc(b.name)}</h2><span class="sub">${esc(b.group)} · 命中 ${hits.length}</span></div>`;
+      h += `<div class="nodes">` + hits.map(nodeCard).join("") + `</div><div style="height:18px"></div>`;
+      n += hits.length;
+    }
+    $("count").textContent = `搜索到 ${n} 个技能`;
+  } else {
+    const b = DATA[cur];
+    h += `<div class="bhead"><h2>${esc(b.name)}</h2><span class="sub">${esc(b.group)} · ${b.nodes.length} 个技能</span></div>`;
+    if (b.books && b.books.length){
+      h += `<div class="books">` + b.books.map(bk =>
+        `<div class="book"><b>${esc(bk.zh)}</b> <span style="color:#8a857a">${esc(bk.en)}</span> — ${esc(bk.desc).slice(0,120)}</div>`).join("") + `</div>`;
+    }
+    h += `<div class="nodes">` + b.nodes.map(nodeCard).join("") + `</div>`;
+    $("count").textContent = `共 ${DATA.length} 个技能系 · ${DATA.reduce((a, x) => a + x.nodes.length, 0)} 个技能`;
+  }
+  $("content").innerHTML = h;
+}
+$("q").oninput = render;
+renderBranches(); render();
+</script>
+</body>
+</html>

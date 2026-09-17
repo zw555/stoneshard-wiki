@@ -1,0 +1,1075 @@
+=== wiki 属性标签清单 (87) ===
+  护甲穿透             wiki=412   官方键=Armor_Piercing           极性={'+': 'pos', '-': None, '0': 'pos'} | lg+=13, lg0=1, w0=1
+  技能精力消耗           wiki=406   官方键=Skills_Energy_Cost       极性={'+': None, '-': 'pos', '0': None} | lg-=5
+  准度               wiki=271   官方键=Hit_Chance               极性={'+': 'pos', '-': 'neg', '0': None} | r-=16, lg+=14
+  出血抗性             wiki=219   官方键=Bleeding_Resistance      极性={'+': 'pos', '-': 'neg', '0': None} | lg+=4, r-=4
+  格挡几率             wiki=214   官方键=PRR                      极性={'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=4
+  物理抗性             wiki=213   官方键=Physical_Resistance      极性={'+': 'pos', '-': None, '0': None} | lg+=2
+  失手几率             wiki=195   官方键=FMB                      极性={'+': 'neg', '-': 'pos', '0': None} | lg-=20, r+=17
+  精力               wiki=194   官方键=MP                       极性={} | (原文无直接证据)
+  出血几率             wiki=185   官方键=Bleeding_Chance          极性={'+': 'pos', '-': None, '0': None} | lg+=19
+  肢体伤害             wiki=181   官方键=Bodypart_Damage          极性={'+': 'pos', '-': None, '0': None} | lg+=13
+  DMG:劈砍伤害         wiki=177   官方键=-                        极性={} | (原文无直接证据)
+  精力自动恢复           wiki=176   官方键=MP_Restoration           极性={'+': 'pos', '-': 'neg', '0': None} | lg+=10, r-=3
+  破衡几率             wiki=164   官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=4
+  DMG:钝击伤害         wiki=145   官方键=-                        极性={} | (原文无直接证据)
+  暴击几率             wiki=136   官方键=CRT                      极性={'+': 'pos', '-': 'neg', '0': None} | lg+=35, r-=4
+  闪躲几率             wiki=132   官方键=EVS                      极性={'+': 'pos', '-': 'neg', '0': None} | lg+=9, r-=7, lg-=1
+  反击几率             wiki=130   官方键=CTA                      极性={'+': 'pos', '-': 'neg', '0': None} | lg+=13, r-=5
+  格挡力量             wiki=106   官方键=Block_Power              极性={'+': 'pos', '-': None, '0': None} | lg+=1
+  暴击效果             wiki=103   官方键=CRTD                     极性={'+': 'pos', '-': None, '0': None} | lg+=7
+  暴击避免             wiki=102   官方键=-                        极性={'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=3
+  DMG:穿刺伤害         wiki=102   官方键=-                        极性={} | (原文无直接证据)
+  击晕几率             wiki=89    官方键=Daze_Chance              极性={'+': 'pos', '-': None, '0': None} | lg+=5
+  护甲破坏             wiki=87    官方键=Armor_Damage             极性={'+': 'pos', '-': None, '0': None} | lg+=5
+  法力               wiki=82    官方键=Magic_Power              极性={'+': 'pos', '-': 'neg', '0': None} | lg+=8, r-=2
+  击退几率             wiki=79    官方键=Knockback_Chance         极性={'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=1
+  冷却时间             wiki=68    官方键=Cooldown_Reduction       极性={'+': 'neg', '-': 'pos', '0': None} | lg-=11, r+=5
+  控制抗性             wiki=64    官方键=Stun_Resistance          极性={'+': 'pos', '-': 'neg', '0': None} | lg+=8, r-=3
+  咒法精力消耗           wiki=63    官方键=Spells_Energy_Cost       极性={} | (原文无直接证据)
+  距离               wiki=59    官方键=-                        极性={'+': 'pos', '-': None, '0': 'neutral'} | lg+=1, w0=1
+  坚忍               wiki=57    官方键=Fortitude                极性={'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=2
+  位移抗性             wiki=55    官方键=Knockback_Resistance     极性={'+': 'pos', '-': 'neg', '0': None} | lg+=10, r-=9
+  失误几率             wiki=54    官方键=Miscast_Chance           极性={'+': 'neg', '-': 'pos', '0': None} | lg-=8, r+=7
+  疲劳抗性             wiki=52    官方键=Fatigue_Gain             极性={'+': 'pos', '-': None, '0': None} | lg+=4
+  自然抗性             wiki=49    官方键=Nature_Resistance        极性={'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=1
+  格挡力量恢复           wiki=44    官方键=-                        极性={'+': 'pos', '-': 'neg', '0': None} | lg+=5, r-=1
+  限制移动几率           wiki=42    官方键=-                        极性={'+': 'pos', '-': 'neg', '0': None} | lg+=9, r-=1
+  奇观几率             wiki=40    官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=6
+  硬直几率             wiki=39    官方键=Stun_Chance              极性={'+': 'pos', '-': None, '0': None} | lg+=4
+  魔法抗性             wiki=36    官方键=Magic_Resistance         极性={'+': 'pos', '-': 'neg', '0': None} | lg+=4, r-=1
+  奇观效果             wiki=33    官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=1
+  视野上限             wiki=28    官方键=-                        极性={'+': None, '-': 'neg', '0': None} | r-=1
+  生命上限             wiki=25    官方键=max_hp                   极性={'+': 'pos', '-': 'neg', '0': None} | r-=4, lg+=4
+  DMG:神圣伤害         wiki=23    官方键=-                        极性={} | (原文无直接证据)
+  钝击抗性             wiki=21    官方键=Blunt_Resistance         极性={} | (原文无直接证据)
+  所受伤害             wiki=20    官方键=Damage_Received          极性={'+': 'neg', '-': 'pos', '0': None} | lg-=20, r+=2
+  劈砍抗性             wiki=19    官方键=Slashing_Resistance      极性={} | (原文无直接证据)
+  撕裂抗性             wiki=19    官方键=Rending_Resistance       极性={} | (原文无直接证据)
+  精力吸取             wiki=18    官方键=Manasteal                极性={'+': 'pos', '-': None, '0': None} | lg+=4
+  穿刺抗性             wiki=18    官方键=Piercing_Resistance      极性={} | (原文无直接证据)
+  能力精力消耗           wiki=17    官方键=-                        极性={'+': 'neg', '-': 'pos', '0': None} | lg-=12, r+=2
+  生命自动恢复           wiki=17    官方键=Health_Restoration       极性={'+': 'pos', '-': None, '0': None} | lg+=2
+  兵器伤害             wiki=14    官方键=Weapon_Damage            极性={'+': 'pos', '-': 'neg', '0': None} | lg+=13, r-=6
+  疼痛抗性             wiki=13    官方键=Pain_Resistance          极性={'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=1
+  邪术抗性             wiki=12    官方键=Unholy_Resistance        极性={'+': 'pos', '-': 'neg', '0': None} | r-=1, lg+=1
+  治疗效果             wiki=12    官方键=Healing_Received         极性={'+': 'pos', '-': 'neg', '0': None} | lg+=11, r-=1
+  DMG:秘术伤害         wiki=12    官方键=-                        极性={} | (原文无直接证据)
+  距离加成             wiki=7     官方键=-                        极性={'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=1
+  霜冻抗性             wiki=7     官方键=-                        极性={} | (原文无直接证据)
+  经验收益             wiki=7     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=5
+  DMG:灼烧伤害         wiki=5     官方键=-                        极性={} | (原文无直接证据)
+  灼烧抗性             wiki=4     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=1
+  秘术抗性             wiki=4     官方键=-                        极性={'+': None, '-': 'neg', '0': None} | r-=1
+  秘术法力             wiki=4     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=2
+  生命吸取             wiki=4     官方键=Lifesteal                极性={'+': 'pos', '-': 'neg', '0': None} | lg+=16, r-=1
+  DMG:中毒伤害         wiki=4     官方键=-                        极性={} | (原文无直接证据)
+  DMG:霜冻伤害         wiki=4     官方键=-                        极性={} | (原文无直接证据)
+  炎术法力             wiki=3     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=1
+  地术法力             wiki=3     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=2
+  电术法力             wiki=3     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=1
+  冰术法力             wiki=3     官方键=-                        极性={} | (原文无直接证据)
+  DMG:邪术伤害         wiki=3     官方键=-                        极性={} | (原文无直接证据)
+  电击抗性             wiki=2     官方键=-                        极性={'+': None, '-': 'neg', '0': None} | r-=2
+  DMG:灵能伤害         wiki=2     官方键=-                        极性={} | (原文无直接证据)
+  中毒抗性             wiki=1     官方键=-                        极性={} | (原文无直接证据)
+  反伤               wiki=1     官方键=-                        极性={'+': 'pos', '-': None, '0': None} | lg+=3
+  DMG:电击伤害         wiki=1     官方键=-                        极性={} | (原文无直接证据)
+  星术法力             wiki=1     官方键=-                        极性={} | (原文无直接证据)
+  灵术法力             wiki=1     官方键=-                        极性={} | (原文无直接证据)
+  毒术法力             wiki=1     官方键=-                        极性={} | (原文无直接证据)
+  DMG:腐蚀伤害         wiki=1     官方键=-                        极性={} | (原文无直接证据)
+  饥饿抗性             wiki=0     官方键=Hunger_Resistance        极性={'+': 'pos', '-': None, '0': None} | lg+=4
+  腐蚀伤害             wiki=0     官方键=Caustic_Damage           极性={} | (原文无直接证据)
+  电击伤害             wiki=0     官方键=Shock_Damage             极性={} | (原文无直接证据)
+  生命               wiki=0     官方键=HP                       极性={} | (原文无直接证据)
+  中毒伤害             wiki=0     官方键=Poison_Damage            极性={} | (原文无直接证据)
+  霜冻伤害             wiki=0     官方键=Frost_Damage             极性={} | (原文无直接证据)
+  灼烧伤害             wiki=0     官方键=Fire_Damage              极性={} | (原文无直接证据)
+
+=== 与 wiki 标签同名但大小写/空格差异的原文标签 ===
+  精力  ->  [('个回合之内能力精力消耗便', 1), ('自身精力自动恢复便', 1), ('能力精力消耗', 14), ('精力自动恢复', 13), ('个回合之内精力自动恢复', 3)]
+  咒法精力消耗  ->  [('精力消耗', 3)]
+  DMG:劈砍伤害  ->  [('伤害', 6)]
+  钝击抗性  ->  [('个回合之内钝击抗性', 1)]
+  DMG:穿刺伤害  ->  [('伤害', 6)]
+  DMG:秘术伤害  ->  [('伤害', 6)]
+  冰术法力  ->  [('法力', 10)]
+  DMG:神圣伤害  ->  [('伤害', 6)]
+  DMG:钝击伤害  ->  [('伤害', 6)]
+  DMG:中毒伤害  ->  [('伤害', 6)]
+  DMG:灼烧伤害  ->  [('伤害', 6)]
+  DMG:霜冻伤害  ->  [('伤害', 6)]
+  DMG:灵能伤害  ->  [('伤害', 6)]
+  DMG:邪术伤害  ->  [('伤害', 6)]
+  DMG:电击伤害  ->  [('伤害', 6)]
+  星术法力  ->  [('法力', 10)]
+  灵术法力  ->  [('法力', 10)]
+  毒术法力  ->  [('法力', 10)]
+  DMG:腐蚀伤害  ->  [('伤害', 6)]
+  腐蚀伤害  ->  [('伤害', 6)]
+  电击伤害  ->  [('伤害', 6)]
+  生命  ->  [('生命上限', 8), ('目标生命相对生命上限每少', 1), ('如果目标生命高于', 1), ('目标生命每少', 1), ('生命吸取就', 1)]
+  中毒伤害  ->  [('伤害', 6)]
+  霜冻伤害  ->  [('伤害', 6)]
+  灼烧伤害  ->  [('伤害', 6), ('本次击打灼烧伤害', 1)]
+
+=== 全部原文标签极性表 ===
+  最多               {'+': 'pos', '-': 'pos', '0': 'neutral'} | w0=110, lg+=3, lg-=1, r+=1
+  暴击几率             {'+': 'pos', '-': 'neg', '0': None} | lg+=35, r-=4
+  失手几率             {'+': 'neg', '-': 'pos', '0': None} | lg-=20, r+=17
+  触发               {'+': None, '-': None, '0': 'neutral'} | w0=32
+  准度               {'+': 'pos', '-': 'neg', '0': None} | r-=16, lg+=14
+  所受伤害             {'+': 'neg', '-': 'pos', '0': None} | lg-=20, r+=2
+  位移抗性             {'+': 'pos', '-': 'neg', '0': None} | lg+=10, r-=9
+  出血几率             {'+': 'pos', '-': None, '0': None} | lg+=19
+  兵器伤害             {'+': 'pos', '-': 'neg', '0': None} | lg+=13, r-=6
+  存续               {'+': None, '-': None, '0': 'neutral'} | w0=18
+  反击几率             {'+': 'pos', '-': 'neg', '0': None} | lg+=13, r-=5
+  闪躲几率             {'+': 'pos', '-': 'neg', '0': None} | lg+=9, r-=7, lg-=1
+  生命吸取             {'+': 'pos', '-': 'neg', '0': None} | lg+=16, r-=1
+  冷却时间             {'+': 'neg', '-': 'pos', '0': None} | lg-=11, r+=5
+  失误几率             {'+': 'neg', '-': 'pos', '0': None} | lg-=8, r+=7
+  护甲穿透             {'+': 'pos', '-': None, '0': 'pos'} | lg+=13, lg0=1, w0=1
+  能力精力消耗           {'+': 'neg', '-': 'pos', '0': None} | lg-=12, r+=2
+  精力自动恢复           {'+': 'pos', '-': 'neg', '0': None} | lg+=10, r-=3
+  持续               {'+': None, '-': None, '0': 'neutral'} | w0=13
+  肢体伤害             {'+': 'pos', '-': None, '0': None} | lg+=13
+  饮食斗志             {'+': 'pos', '-': 'neg', '0': None} | lg+=10, r-=3
+  会令这个效果存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=12
+  治疗效果             {'+': 'pos', '-': 'neg', '0': None} | lg+=11, r-=1
+  饥饿               {'+': None, '-': 'pos', '0': None} | lg-=12
+  控制抗性             {'+': 'pos', '-': 'neg', '0': None} | lg+=8, r-=3
+  格挡几率             {'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=4
+  法力               {'+': 'pos', '-': 'neg', '0': None} | lg+=8, r-=2
+  暴击避免             {'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=3
+  限制移动几率           {'+': 'pos', '-': 'neg', '0': None} | lg+=9, r-=1
+  立刻恢复生命上限         {'+': None, '-': None, '0': 'pos'} | lg0=10
+  声誉收益             {'+': 'pos', '-': None, '0': None} | lg+=10
+  生命上限             {'+': 'pos', '-': 'neg', '0': None} | r-=4, lg+=4
+  出血抗性             {'+': 'pos', '-': 'neg', '0': None} | lg+=4, r-=4
+  个回合之内所受伤害        {'+': 'neg', '-': 'pos', '0': None} | r+=6, lg-=2
+  个回合之内兵器伤害        {'+': 'pos', '-': 'neg', '0': None} | lg+=6, r-=2
+  击退几率             {'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=1
+  疼痛抗性             {'+': 'pos', '-': 'neg', '0': None} | lg+=7, r-=1
+  交易划算程度           {'+': 'pos', '-': 'neg', '0': None} | g+=3, lg+=3, r-=2
+  能装               {'+': None, '-': None, '0': 'pos'} | lg0=8
+  个回合之内控制抗性        {'+': 'pos', '-': 'neg', '0': None} | r-=6, lg+=1
+  暴击效果             {'+': 'pos', '-': None, '0': None} | lg+=7
+  击打会令效果存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=7
+  免疫               {'+': 'pos', '-': None, '0': None} | lg+=7
+  奇观几率             {'+': 'pos', '-': None, '0': None} | lg+=6
+  那么               {'+': None, '-': None, '0': 'neutral'} | w0=6
+  格挡力量恢复           {'+': 'pos', '-': 'neg', '0': None} | lg+=5, r-=1
+  本次击打兵器伤害         {'+': 'pos', '-': 'neg', '0': None} | r-=5, lg+=1
+  伤害               {'+': 'pos', '-': None, '0': None} | lg+=6
+  效果存续             {'+': None, '-': None, '0': 'neutral'} | w0=6
+  射击失手几率           {'+': 'neg', '-': None, '0': None} | r+=6
+  并令其存续时间延长        {'+': None, '-': None, '0': 'pos'} | lg0=6
+  每过               {'+': None, '-': None, '0': 'neutral'} | w0=6
+  魔法抗性             {'+': 'pos', '-': 'neg', '0': None} | lg+=4, r-=1
+  护甲破坏             {'+': 'pos', '-': None, '0': None} | lg+=5
+  击晕几率             {'+': 'pos', '-': None, '0': None} | lg+=5
+  能力冷却时间           {'+': 'neg', '-': 'pos', '0': None} | lg-=4, r+=1
+  方圆               {'+': None, '-': None, '0': 'neutral'} | w0=5
+  技能精力消耗           {'+': None, '-': 'pos', '0': None} | lg-=5
+  坚忍               {'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=2
+  副手效果             {'+': 'pos', '-': None, '0': None} | lg+=5
+  经验收益             {'+': 'pos', '-': None, '0': None} | lg+=5
+  自然抗性             {'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=1
+  的存续时间延长          {'+': None, '-': None, '0': 'pos'} | w0=2, lg0=2
+  距离加成             {'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=1
+  则令其              {'+': None, '-': None, '0': 'neutral'} | w0=4
+  精力吸取             {'+': 'pos', '-': None, '0': None} | lg+=4
+  树技能的剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=3, w0=1
+  破衡几率             {'+': 'pos', '-': None, '0': None} | lg+=4
+  能当前的剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=4
+  个回合之内闪躲几率        {'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=1
+  所受伤害便            {'+': 'neg', '-': 'pos', '0': None} | lg-=3, r+=1
+  命中目标会令其          {'+': None, '-': None, '0': 'neutral'} | w0=4
+  就令               {'+': None, '-': None, '0': 'neutral'} | w0=4
+  减为               {'+': None, '-': 'neg', '0': None} | r-=4
+  并令               {'+': None, '-': None, '0': 'neutral'} | w0=4
+  硬直几率             {'+': 'pos', '-': None, '0': None} | lg+=4
+  令这个效果的存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=4
+  精力上限             {'+': 'pos', '-': 'neg', '0': None} | lg+=3, r-=1
+  疲劳抗性             {'+': 'pos', '-': None, '0': None} | lg+=4
+  都有               {'+': None, '-': None, '0': 'pos'} | lg0=4
+  疼痛变化             {'+': 'neg', '-': 'pos', '0': None} | lg-=2, r+=2
+  情境斗志变化           {'+': 'pos', '-': 'neg', '0': None} | lg+=2, r-=2
+  令自身              {'+': None, '-': None, '0': 'neutral'} | w0=4
+  周围               {'+': None, '-': None, '0': 'neutral'} | w0=4
+  护甲穿透效果为          {'+': None, '-': None, '0': 'neutral'} | w0=4
+  其他法系的失误几率就会      {'+': 'neg', '-': None, '0': None} | r+=4
+  饥饿抗性             {'+': 'pos', '-': None, '0': None} | lg+=4
+  可以令任意布防具恢复       {'+': None, '-': None, '0': 'pos'} | lg0=4
+  可以令任意皮防具恢复       {'+': None, '-': None, '0': 'pos'} | lg0=4
+  可以令任意金属防具恢复      {'+': None, '-': None, '0': 'pos'} | lg0=4
+  车队货堆容量变为         {'+': None, '-': None, '0': 'pos'} | lg0=4
+  对方圆              {'+': None, '-': None, '0': 'neutral'} | w0=3
+  燃烧持续             {'+': None, '-': None, '0': 'neutral'} | w0=3
+  对一个              {'+': None, '-': None, '0': 'neutral'} | w0=3
+  个回合之内灼烧抗性        {'+': None, '-': 'neg', '0': None} | r-=3
+  便延长              {'+': None, '-': None, '0': 'neutral'} | w0=3
+  个回合之内精力自动恢复      {'+': 'pos', '-': None, '0': None} | lg+=3
+  个回合之内电击抗性        {'+': None, '-': 'neg', '0': None} | r-=3
+  反伤               {'+': 'pos', '-': None, '0': None} | lg+=3
+  令目标获得存续          {'+': None, '-': None, '0': 'neutral'} | w0=3
+  个回合之内肢体伤害        {'+': 'pos', '-': None, '0': None} | lg+=3
+  个回合之内准度          {'+': 'pos', '-': 'neg', '0': None} | r-=2, lg+=1
+  个回合之内反击几率        {'+': 'pos', '-': None, '0': None} | lg+=3
+  回合之内所受伤害         {'+': 'neg', '-': None, '0': None} | r+=3
+  暴击几率便            {'+': 'pos', '-': None, '0': None} | lg+=3
+  个回合之内技能精力消耗      {'+': None, '-': 'pos', '0': None} | lg-=3
+  格挡力量上限           {'+': 'pos', '-': 'neg', '0': None} | lg+=2, r-=1
+  兵器伤害就            {'+': 'pos', '-': None, '0': None} | lg+=3
+  精力消耗             {'+': None, '-': 'pos', '0': None} | lg-=3
+  那么自身             {'+': None, '-': None, '0': 'neutral'} | w0=3
+  迷醉变化             {'+': 'neg', '-': 'pos', '0': None} | lg-=2, r+=1
+  还会令              {'+': None, '-': None, '0': 'neutral'} | w0=3
+  最多可以同时存在         {'+': None, '-': None, '0': 'neutral'} | w0=3
+  损失生命上限           {'+': None, '-': None, '0': 'neg'} | r0=3
+  并有               {'+': None, '-': None, '0': 'neutral'} | w0=3
+  的几率造成            {'+': None, '-': None, '0': 'neutral'} | w0=3
+  获得存续             {'+': None, '-': None, '0': 'neutral'} | w0=3
+  标记一个             {'+': None, '-': None, '0': 'neutral'} | w0=3
+  技能当前剩余冷却时间延长     {'+': None, '-': None, '0': 'neutral'} | w0=3
+  上述两项减益就增加        {'+': 'neg', '-': None, '0': None} | r+=3
+  便获得              {'+': None, '-': None, '0': 'pos'} | lg0=3
+  所获经验便            {'+': 'pos', '-': None, '0': None} | lg+=3
+  疲劳               {'+': None, '-': 'pos', '0': None} | lg-=3
+  对一片              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  自身               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  炎术法力便            {'+': 'pos', '-': None, '0': None} | lg+=2
+  如果               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  地术法力             {'+': 'pos', '-': None, '0': None} | lg+=2
+  物理抗性             {'+': 'pos', '-': None, '0': None} | lg+=2
+  层数每比             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  个回合之内冷却时间        {'+': None, '-': 'pos', '0': None} | lg-=2
+  便令自身             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  电击抗性             {'+': None, '-': 'neg', '0': None} | r-=2
+  失误伤害变化           {'+': None, '-': 'pos', '0': None} | lg-=2
+  并且令其存续时间延长       {'+': None, '-': None, '0': 'pos'} | lg0=2
+  秘术法力             {'+': 'pos', '-': None, '0': None} | lg+=2
+  法咒精力消耗           {'+': None, '-': 'pos', '0': None} | lg-=2
+  同时令其存续时间延长       {'+': None, '-': None, '0': 'pos'} | lg0=2
+  而且               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  法力便              {'+': 'pos', '-': None, '0': None} | lg+=2
+  奇观效果便            {'+': 'pos', '-': None, '0': None} | lg+=2
+  如果高于             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么兵器伤害           {'+': 'pos', '-': 'neg', '0': None} | lg+=1, r-=1
+  令目标              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  增益的具体数值分别等于      {'+': 'pos', '-': None, '0': None} | lg+=2
+  个回合之内出血抗性        {'+': None, '-': 'neg', '0': None} | r-=2
+  能力当前剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  状态延长             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么会令目标           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  并令目标             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  技能的剩余冷却时间便缩短     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  个回合之内暴击几率        {'+': 'pos', '-': None, '0': None} | lg+=2
+  反击几率便            {'+': 'pos', '-': None, '0': None} | lg+=2
+  然后令              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  当前所有剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  就令自身             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么命中目标会令其        {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么令              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  距离               {'+': 'pos', '-': None, '0': 'neutral'} | lg+=1, w0=1
+  个回合之内物理抗性        {'+': None, '-': 'neg', '0': None} | r-=2
+  个回合之内准度就         {'+': 'pos', '-': 'neg', '0': None} | lg+=1, r-=1
+  具体数值等于           {'+': 'pos', '-': None, '0': 'pos'} | lg0=1, lg+=1
+  那么触发             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  存续时间便            {'+': 'neutral', '-': None, '0': None} | w+=2
+  击杀敌人会令这个状态叠加     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  的几率令方圆           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  暴击几率就            {'+': 'pos', '-': None, '0': None} | lg+=2
+  暴击效果就            {'+': 'pos', '-': None, '0': None} | lg+=2
+  生命每少             {'+': None, '-': None, '0': 'neg'} | r0=2
+  就令能力精力消耗         {'+': None, '-': 'pos', '0': None} | lg-=2
+  有能力的剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  那么立刻恢复生命上限       {'+': None, '-': None, '0': 'pos'} | lg0=2
+  技能的剩余冷却时间缩短      {'+': None, '-': None, '0': 'pos'} | lg0=2
+  生命少于             {'+': None, '-': None, '0': 'neg'} | r0=2
+  所受伤害就            {'+': None, '-': 'pos', '0': None} | lg-=2
+  击杀敌人会令           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  向一个              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么令目标            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  本次击打击退几率         {'+': 'neutral', '-': 'neg', '0': None} | r-=1, w+=1
+  个回合之内失手几率        {'+': None, '-': 'pos', '0': None} | lg-=2
+  同时令目标            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么令自身            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  还有               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  受到的所有击打和射击准度     {'+': 'pos', '-': 'neg', '0': None} | r-=1, lg+=1
+  情境神智变化           {'+': 'pos', '-': None, '0': None} | lg+=2
+  对生命恢复上限的影响减弱     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  生命自动恢复           {'+': 'pos', '-': None, '0': None} | lg+=2
+  不少于              {'+': 'pos', '-': None, '0': None} | lg+=2
+  那么令这个技能的距离       {'+': 'pos', '-': 'neg', '0': None} | lg+=1, r-=1
+  对目标施加存续          {'+': None, '-': None, '0': 'neutral'} | w0=2
+  对目标降下存续          {'+': None, '-': None, '0': 'neutral'} | w0=2
+  机令一个身体部位状态恶化     {'+': None, '-': None, '0': 'neg'} | r0=2
+  邪术抗性             {'+': 'pos', '-': 'neg', '0': None} | r-=1, lg+=1
+  将施法者所受伤害的        {'+': None, '-': None, '0': 'pos'} | lg0=2
+  当前剩余冷却时间         {'+': 'neg', '-': None, '0': None} | r+=2
+  令方圆              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  每回合有             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  最多同时存在           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  获得               {'+': None, '-': None, '0': 'neg'} | r0=1, w0=1
+  每个周期的第           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  令其立刻恢复生命上限       {'+': None, '-': None, '0': 'pos'} | lg0=2
+  活的不死生灵防具耐久变为     {'+': None, '-': None, '0': 'neutral'} | w0=2
+  令相应身体部位的状态改善     {'+': None, '-': None, '0': 'pos'} | w0=1, lg0=1
+  对其催动法咒会令自身法力     {'+': 'pos', '-': None, '0': None} | lg+=2
+  同时所有冷却时间缩短       {'+': None, '-': None, '0': 'pos'} | lg0=2
+  还会恢复生命上限         {'+': None, '-': None, '0': 'pos'} | lg0=2
+  同时触发存续           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么令其             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  护甲穿透为            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  情境神智             {'+': 'pos', '-': 'neg', '0': None} | r-=1, lg+=1
+  向周围半径            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  本次击打硬直几率         {'+': 'pos', '-': None, '0': None} | lg+=2
+  回合之内邪术抗性         {'+': None, '-': 'neg', '0': None} | r-=2
+  而且自身             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  向方圆              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  自身所受伤害的          {'+': None, '-': None, '0': 'neutral'} | w0=2
+  投射伤害的            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  恢复的              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  那么效果存续           {'+': None, '-': None, '0': 'neutral'} | w0=2
+  击杀敌人会令层数减        {'+': None, '-': None, '0': 'pos'} | lg0=2
+  而且这些伤害每回合提高      {'+': None, '-': None, '0': 'neutral'} | w0=2
+  个回合之内邪术抗性        {'+': None, '-': 'neg', '0': None} | r-=2
+  在目标周围            {'+': None, '-': None, '0': 'neutral'} | w0=2
+  亡时会随机在邻近方格产生     {'+': None, '-': None, '0': 'neutral'} | w0=2
+  滩存续              {'+': None, '-': None, '0': 'neutral'} | w0=2
+  刻恢复生命上限和精力上限     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  投射失手几率           {'+': 'neg', '-': None, '0': None} | r+=2
+  造成               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  就有               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  令视野之内所有友方恢复      {'+': None, '-': None, '0': 'pos'} | lg0=2
+  令所有冷却时间缩短        {'+': None, '-': None, '0': 'pos'} | lg0=2
+  同时令他们            {'+': None, '-': None, '0': 'pos'} | lg0=1, w0=1
+  疼痛上限             {'+': None, '-': 'pos', '0': None} | lg-=2
+  本次击打肢体伤害         {'+': 'pos', '-': None, '0': None} | lg+=2
+  受到               {'+': None, '-': None, '0': 'neutral'} | w0=2
+  标记方圆             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  则伤害增加            {'+': None, '-': None, '0': 'pos'} | lg0=2
+  则增加              {'+': None, '-': None, '0': 'pos'} | lg0=2
+  经验收益便            {'+': 'pos', '-': None, '0': None} | lg+=2
+  击杀动物经验收益         {'+': 'pos', '-': None, '0': None} | lg+=2
+  恢复生命上限           {'+': None, '-': None, '0': 'pos'} | lg0=2
+  击杀敌人会令这个效果增加     {'+': None, '-': None, '0': 'pos'} | lg0=2
+  可以获得             {'+': None, '-': None, '0': 'neutral'} | w0=2
+  技能本身存在           {'+': 'pos', '-': 'pos', '0': None} | lg+=1, lg-=1
+  视野加成             {'+': 'pos', '-': None, '0': None} | lg+=2
+  疲劳变化幅度           {'+': None, '-': 'pos', '0': None} | lg-=2
+  位移抗性的效果减弱        {'+': None, '-': None, '0': 'neg'} | r0=2
+  投掷出去可以造成         {'+': None, '-': None, '0': 'pos'} | g0=2
+  疲劳便减             {'+': None, '-': None, '0': 'pos'} | lg0=2
+  行车范围             {'+': 'pos', '-': None, '0': None} | lg+=2
+  行车速度             {'+': 'pos', '-': None, '0': None} | lg+=2
+  车队修整时间           {'+': None, '-': 'pos', '0': None} | lg-=2
+  饲料消耗             {'+': None, '-': 'pos', '0': None} | lg-=2
+  令车队交易范围          {'+': 'pos', '-': None, '0': None} | lg+=2
+  维修价格             {'+': None, '-': 'pos', '0': None} | lg-=2
+  那么击打和射击的兵器伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  目标的伤害增加          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  损耗数量等于这一伤害的      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  力当前剩余冷却时间便缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令他们              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  炎术法力下面           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合便提升           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  几率也会以            {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时对              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  的几率就会提升          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  风暴存续             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内能力精力消耗便     {'+': None, '-': 'pos', '0': None} | lg-=1
+  灼烧抗性             {'+': 'pos', '-': None, '0': None} | lg+=1
+  这个增益就立刻进入        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  的时间便延长           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  同时               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  催动同系法咒会令方圆       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  格以内所有敌人          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  范围扩大             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  奇观几率便            {'+': 'neutral', '-': None, '0': None} | w+=1
+  自身精力自动恢复便        {'+': 'pos', '-': None, '0': None} | lg+=1
+  下一道法咒的炎术法力便      {'+': 'pos', '-': None, '0': None} | lg+=1
+  状态存续时间延长         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  最多可以同时召唤         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令本效果存续时间延长      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  身体部位状态恶化         {'+': None, '-': None, '0': 'neg'} | r0=1
+  地术法力便            {'+': 'pos', '-': None, '0': None} | lg+=1
+  格的范围内造成          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令受到影响的目标控制抗性     {'+': None, '-': 'neg', '0': None} | r-=1
+  控制抗性便分别          {'+': None, '-': 'neg', '0': None} | r-=1
+  原地不动可令自身         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  咒当前的剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令你可以同时召唤         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  与你的距离不超过         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  施法者所受伤害便         {'+': None, '-': 'pos', '0': None} | lg-=1
+  失误伤害变化便          {'+': None, '-': 'pos', '0': None} | lg-=1
+  所消耗的精力减为         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  这个数值就提高          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  当前所有所剩冷却时间延长     {'+': None, '-': None, '0': 'neg'} | r0=1
+  的几率对其造成          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  对受到影响的目标造成存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  的目标获得            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  在每个目标周围          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  这个伤害便增加          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  球状闪电每回合会对方圆      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  电会对邻近的目标额外造成     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  然后跳到             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  存续时间延长           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  当前剩余的冷却时间便缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  成的伤害和硬直几率便增加     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  催动同系法咒会令         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  击打和射击便会令目标       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么角色             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内电术法力增强      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  造成的伤害就增加         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  法力就会增强           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  精力自动恢复就增加        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  以令同系能力冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  的敌人获得            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  效果存续时间延长         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  就会令受到影响的所有目标     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  奇观几率就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  同系法咒击杀敌人会减少      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  法咒精力消耗便会因此而      {'+': None, '-': 'pos', '0': None} | lg-=1
+  冷却时间便会因此而        {'+': None, '-': 'pos', '0': None} | lg-=1
+  个回合之内失误伤害减少      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  地不动会会令这个效果叠加     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  层数为              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  炎术法力             {'+': 'pos', '-': None, '0': None} | lg+=1
+  电术法力             {'+': 'pos', '-': None, '0': None} | lg+=1
+  施法者在方圆           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个方格之内随机揭示        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  法源存续             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  方格会令这个效果叠加       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  咒当前剩余的冷却时间减少     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  范围之内的幽魂和不死生灵     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  原地不动会令失误几率       {'+': None, '-': 'pos', '0': None} | lg-=1
+  应能力树的法咒失误几率便     {'+': None, '-': 'pos', '0': None} | lg-=1
+  护甲穿透便            {'+': 'pos', '-': None, '0': None} | lg+=1
+  之内魔法抗性或自然抗性便     {'+': 'pos', '-': None, '0': None} | lg+=1
+  催动法咒会令自身         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能会令自身           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内法力          {'+': 'pos', '-': None, '0': None} | lg+=1
+  区域和实体存续时间延长      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令下一个道法咒的精力消耗     {'+': None, '-': 'pos', '0': None} | lg-=1
+  令所有法咒的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  时令视野范围之内所有敌人     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  最多叠到             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  奇观效果             {'+': 'pos', '-': None, '0': None} | lg+=1
+  所有习得的法咒精力消耗便     {'+': None, '-': 'pos', '0': None} | lg-=1
+  冷却时间便            {'+': None, '-': 'pos', '0': None} | lg-=1
+  耐久高于             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  么单手刀剑击打的出血几率     {'+': 'pos', '-': None, '0': None} | lg+=1
+  那么暴击几率           {'+': 'pos', '-': None, '0': None} | lg+=1
+  格挡时的耐久损耗减少       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令击打时的耐久损耗减少      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  运用同一能力树的技能令      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能的冷却时间缩短        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令单手刀剑击打的暴击几率     {'+': 'pos', '-': None, '0': None} | lg+=1
+  单手刀剑击打命中目标会令     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内出血几率        {'+': 'pos', '-': None, '0': None} | lg+=1
+  令这项技能的冷却时间缩短     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  目标生命相对生命上限每少     {'+': None, '-': None, '0': 'neg'} | r0=1
+  者增益的具体数值分别等于     {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果目标生命高于         {'+': None, '-': None, '0': 'neg'} | r0=1
+  或低于              {'+': None, '-': None, '0': 'neg'} | r0=1
+  那么单手斧击打的兵器伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  那么就会令目标          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个技能的剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  那么此类击打的肢体伤害      {'+': 'pos', '-': None, '0': None} | lg+=1
+  就会令目标            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  则对其造成            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  并令攻击者            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  回合之内暴击几率         {'+': 'pos', '-': None, '0': None} | lg+=1
+  首首次命中一个敌人会令其     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么匕首的击打兵器伤害      {'+': 'pos', '-': None, '0': None} | lg+=1
+  投掷匕首伤害           {'+': 'pos', '-': None, '0': None} | lg+=1
+  匕首击打造成伤害会令目标     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  匕首击打会令           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  匕首反击的兵器伤害        {'+': 'pos', '-': None, '0': None} | lg+=1
+  匕首暴击会令自身         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  这个技能的冷却时间便缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  个回合之内格挡力量恢复便     {'+': 'pos', '-': None, '0': None} | lg+=1
+  每次反击会令           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  击打破衡几率           {'+': 'pos', '-': None, '0': None} | lg+=1
+  刀剑连续命中同一目标会令     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内破衡几率        {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内格挡几率便       {'+': 'pos', '-': None, '0': None} | lg+=1
+  格挡力量恢复便          {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内兵器伤害便       {'+': 'pos', '-': None, '0': None} | lg+=1
+  当前的剩余冷却时间便缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  击打击退几率           {'+': 'pos', '-': None, '0': None} | lg+=1
+  失误几率和能力精力消耗便     {'+': None, '-': 'pos', '0': None} | lg-=1
+  那么就令他们           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么催动法咒会令         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  都会令              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  就会令              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  合之内反击几率和法力分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  催动法咒会令           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  内闪躲几率和格挡几率分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  长杖击杀敌人可令         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  内暴击几率和奇观几率分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  长杖暴击精力吸取         {'+': 'pos', '-': None, '0': None} | lg+=1
+  那么这个技能的冷却时间      {'+': None, '-': 'pos', '0': None} | lg-=1
+  这个效果最多可以叠加       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么令这个技能的冷却时间     {'+': None, '-': 'pos', '0': None} | lg-=1
+  等于本次击打所造成伤害的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  树的技能会令这个效果叠加     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  但是会令效果存续时间缩短     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个效果的存续时间便会延长     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么令这个技能冷却时间      {'+': None, '-': 'pos', '0': None} | lg-=1
+  运用同一能力树的技能会令     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么立刻恢复格挡力量上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  个回合之内格挡力量恢复      {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内精力自动恢复就     {'+': 'pos', '-': None, '0': None} | lg+=1
+  的伤害              {'+': 'pos', '-': None, '0': None} | lg+=1
+  运用这两个技能会令目标      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  这个技能距离           {'+': 'pos', '-': None, '0': None} | lg+=1
+  令自身剩余的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  那么可以标记           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令受到伤害的目标         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  就是               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能会令这个效果额外叠加     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  这一下射程            {'+': 'pos', '-': None, '0': None} | lg+=1
+  令目标获得            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  几率的影响分别由每个方格     {'+': None, '-': 'neg', '0': None} | r-=1
+  改为               {'+': None, '-': 'neg', '0': None} | r-=1
+  令小型障碍对准度的影响由     {'+': None, '-': 'neg', '0': None} | r-=1
+  令中型障碍的影响由        {'+': None, '-': 'neg', '0': None} | r-=1
+  邻近目标准度所受的影响由     {'+': None, '-': 'neg', '0': None} | r-=1
+  射击               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  之外目标准度所受的影响由     {'+': None, '-': 'neg', '0': None} | r-=1
+  令投石兵器的准度         {'+': 'pos', '-': None, '0': None} | lg+=1
+  加成就减少            {'+': None, '-': None, '0': 'neg'} | r0=1
+  的护甲穿透            {'+': 'pos', '-': None, '0': None} | lg+=1
+  会令视野范围之内所有目标     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  这个效果最多叠加         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么还会令目标          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么视野范围之内所有目标     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能的准度            {'+': 'pos', '-': None, '0': None} | lg+=1
+  目标生命每少           {'+': None, '-': None, '0': 'neg'} | r0=1
+  次射击或投射的暴击效果就     {'+': 'pos', '-': None, '0': None} | lg+=1
+  肢体伤害就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  护甲穿透就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  其进行的近身击打兵器伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  也会令目标获得          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  组状态的效果存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令这一个技能距离         {'+': 'pos', '-': None, '0': None} | lg+=1
+  存续时间就            {'+': 'neutral', '-': None, '0': None} | w+=1
+  令这个技能的距离         {'+': 'pos', '-': None, '0': None} | lg+=1
+  生命吸取就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  精力吸取就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  令这组效果的存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  个回合或者切换武器可令你     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能准度             {'+': 'pos', '-': None, '0': None} | lg+=1
+  会令目标             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内暴击避免        {'+': None, '-': 'neg', '0': None} | r-=1
+  的负面影响增强          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  的存续时间额外          {'+': 'neutral', '-': None, '0': None} | w+=1
+  会令               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  就令兵器伤害           {'+': 'pos', '-': None, '0': None} | lg+=1
+  就令坚忍             {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果目标护甲耐久大于       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  发动的击打和射击护甲穿透     {'+': 'pos', '-': None, '0': None} | lg+=1
+  或者护甲耐久为          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  么命中目标会令其所受伤害     {'+': 'neg', '-': None, '0': None} | r+=1
+  力当前剩余的冷却时间增加     {'+': None, '-': None, '0': 'neg'} | r0=1
+  那么这个技能的距离        {'+': 'pos', '-': None, '0': None} | lg+=1
+  这个技能的距离便         {'+': None, '-': 'neg', '0': None} | r-=1
+  最短为              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  反击几率和闪躲几率便分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  令所有邻近敌人          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  如果当前生命少于         {'+': None, '-': None, '0': 'neg'} | r0=1
+  变为               {'+': None, '-': None, '0': 'neg'} | r0=1
+  自身闪躲几率每有         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  魔法抗性和自然抗性便分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  令所有邻近敌人失手几率      {'+': 'neg', '-': None, '0': None} | r+=1
+  会令状态的存续时间延长      {'+': None, '-': None, '0': 'neg'} | r0=1
+  其为目标的击打或射击准度     {'+': 'pos', '-': None, '0': None} | lg+=1
+  会令这个技能兵器伤害       {'+': 'pos', '-': None, '0': None} | lg+=1
+  那么令兵器伤害          {'+': 'pos', '-': None, '0': None} | lg+=1
+  技能距离             {'+': 'pos', '-': None, '0': None} | lg+=1
+  副手效果就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  便立刻恢复格挡力量上限      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令这个技能的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  技能会令层数减          {'+': None, '-': None, '0': 'neg'} | r0=1
+  那么双手可以再接连击打      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能时的副手效果         {'+': 'pos', '-': None, '0': None} | lg+=1
+  生命低于             {'+': None, '-': None, '0': 'neg'} | r0=1
+  还会令暴击几率          {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内暴击几率就       {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内反击几率就       {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果目标与你相距         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能会令本次击打兵器伤害     {'+': None, '-': 'neg', '0': None} | r-=1
+  个回合之内位移抗性        {'+': None, '-': 'neg', '0': None} | r-=1
+  技能的剩余冷却时间就缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  原地不动会令           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么这类击打的护甲穿透      {'+': 'pos', '-': None, '0': None} | lg+=1
+  令兵器伤害            {'+': 'pos', '-': None, '0': None} | lg+=1
+  长杆刃器暴击肢体伤害       {'+': 'pos', '-': None, '0': None} | lg+=1
+  害数值等于目标生命上限的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令其               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  器击打邻近目标的击退几率     {'+': 'pos', '-': None, '0': None} | lg+=1
+  目标所有能力冷却时间延长     {'+': None, '-': None, '0': 'neg'} | r0=1
+  击打击晕几率           {'+': 'pos', '-': None, '0': None} | lg+=1
+  打会令效果的存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时第一次击打会令目标      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内钝击抗性        {'+': None, '-': 'neg', '0': None} | r-=1
+  本次击打距离           {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合的精力自动恢复       {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果目标护甲耐久高于       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  棒击打的护甲破坏         {'+': 'pos', '-': None, '0': None} | lg+=1
+  或护甲耐久低于          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令双手锤棒击打的肢体伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内硬直几率        {'+': 'pos', '-': None, '0': None} | lg+=1
+  回合之内位移抗性         {'+': None, '-': 'neg', '0': None} | r-=1
+  如果目标距你           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  或生命每少            {'+': None, '-': None, '0': 'neg'} | r0=1
+  的伤害等于目标生命上限的     {'+': None, '-': None, '0': 'neg'} | r0=1
+  那么命中目标就会令其       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  双手斧命中目标会令其       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内格挡几率        {'+': None, '-': 'neg', '0': None} | r-=1
+  如果目标格挡几率为        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  手斧击打这个目标会令自身     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  如果目标生命多于         {'+': None, '-': None, '0': 'neg'} | r0=1
+  么令双手斧的击打肢体伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果目标生命少于         {'+': None, '-': None, '0': 'neg'} | r0=1
+  么令双手斧击打的兵器伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  双手斧暴击会令你         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  便会令              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  同一技能树技能的冷却时间     {'+': None, '-': 'pos', '0': None} | lg-=1
+  浆果和药草有           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令疲劳抗性            {'+': 'pos', '-': None, '0': None} | lg+=1
+  的经验收益增益          {'+': 'pos', '-': None, '0': None} | lg+=1
+  受影响身体部位的状态恶化     {'+': None, '-': None, '0': 'neg'} | r0=1
+  出血抗性在            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内            {'+': 'pos', '-': None, '0': None} | lg+=1
+  便令疼痛             {'+': 'neg', '-': None, '0': None} | r+=1
+  抗性增益的存续时间延长为     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  精神和消解疲劳的效果提升     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  疲劳变化             {'+': None, '-': 'pos', '0': None} | lg-=1
+  疼痛增幅数值等于         {'+': None, '-': None, '0': 'neg'} | r0=1
+  视野半径上限           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令视野              {'+': 'pos', '-': None, '0': None} | lg+=1
+  到其他生物声响的几率提高     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  那么会永久令其所受伤害      {'+': 'neg', '-': None, '0': None} | r+=1
+  令击打和射击的准度        {'+': 'pos', '-': None, '0': None} | lg+=1
+  令失手几率            {'+': None, '-': 'pos', '0': None} | lg-=1
+  角色的暴击避免每有        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  的所有击打和射击暴击效果     {'+': None, '-': 'neg', '0': None} | r-=1
+  令闪躲几率            {'+': 'pos', '-': None, '0': None} | lg+=1
+  劳导致负面状态的临界提高     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  最高可以提至           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  饥饿和口渴加剧的速度减缓     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  饮食斗志自动降低的速度      {'+': None, '-': 'pos', '0': None} | lg-=1
+  令疼痛抗性            {'+': 'pos', '-': None, '0': None} | lg+=1
+  的存续时间缩短          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令免疫消解迷醉的效果增强     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令生命上限            {'+': 'pos', '-': None, '0': None} | lg+=1
+  受到的击打和射击肢体伤害     {'+': None, '-': 'neutral', '0': None} | w-=1
+  那么这个技能剩余冷却时间     {'+': None, '-': 'pos', '0': None} | lg-=1
+  每个身体部位的防护        {'+': 'pos', '-': None, '0': None} | lg+=1
+  或闪躲几率            {'+': 'pos', '-': None, '0': None} | lg+=1
+  回合之内兵器伤害         {'+': None, '-': 'neg', '0': None} | r-=1
+  人上述减益的存续时间额外     {'+': 'pos', '-': None, '0': None} | lg+=1
+  令其反击几率下一回合之前     {'+': None, '-': 'neg', '0': None} | r-=1
+  个回合之内冷却时间缩短      {'+': None, '-': 'pos', '0': None} | lg-=1
+  闪躲几率就            {'+': 'pos', '-': None, '0': None} | lg+=1
+  并且攻击方            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  的所有击打和射击护甲穿透     {'+': None, '-': 'neg', '0': None} | r-=1
+  耐久的损耗速度          {'+': None, '-': 'pos', '0': None} | lg-=1
+  令维修工具的维修效果提升     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  身上每一件耐久高于        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令相应身体部位出血抗性     {'+': 'pos', '-': None, '0': None} | lg+=1
+  也会令暴击避免          {'+': 'pos', '-': None, '0': None} | lg+=1
+  下一回合开始之前所受伤害     {'+': None, '-': 'pos', '0': None} | lg-=1
+  内闪躲几率和反击几率分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  能力树技能的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  那么原地不动会令         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内能力精力消耗      {'+': None, '-': 'pos', '0': None} | lg-=1
+  会令相应身体部位的防护      {'+': 'pos', '-': None, '0': None} | lg+=1
+  令相应身体部位的出血抗性     {'+': 'pos', '-': None, '0': None} | lg+=1
+  还会令闪躲几率          {'+': 'pos', '-': None, '0': None} | lg+=1
+  重型防具的耐久损耗速度就     {'+': None, '-': 'pos', '0': None} | lg-=1
+  精力自动恢复就          {'+': 'pos', '-': None, '0': None} | lg+=1
+  令两个目标            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  与中心相距            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  恢复幅度等于所受伤害的      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  则令存续时间缩短         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  格范围之内的           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个敌人分别射出          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  位置周围             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内的准度         {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内的施法距离       {'+': 'pos', '-': None, '0': None} | lg+=1
+  个回合之内的失误伤害变化     {'+': None, '-': 'pos', '0': None} | lg-=1
+  令这道法咒的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  续期间所损失生命和精力的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个效果存续期间所受伤害的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内魔法抗性        {'+': None, '-': 'neg', '0': None} | r-=1
+  秘术抗性             {'+': None, '-': 'neg', '0': None} | r-=1
+  个回合之内距离          {'+': 'pos', '-': None, '0': None} | lg+=1
+  值等于实体自身耐久上限的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  而且下一次催动精力消耗      {'+': None, '-': 'pos', '0': None} | lg-=1
+  个实体都会令失误伤害变化     {'+': None, '-': 'pos', '0': None} | lg-=1
+  而是触发             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会射出              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令目标恢复生命上限        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令其接下来            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  射击或运用能力会令层数      {'+': None, '-': 'pos', '0': None} | lg-=1
+  令其恢复生命上限         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  活的不死生灵护甲耐久变为     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  且所有能力冷却时间缩短      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  在目标方格形成存续        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  幅度等于所造成伤害数值的     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  害数值不超过其生命上限的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  咒法目标仅限生命少于       {'+': None, '-': None, '0': 'neg'} | r0=1
+  令这个友方所受伤害        {'+': None, '-': 'neutral', '0': None} | w-=1
+  幅度等于友方所受伤害的      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  幽魂消失             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么令幽魂的生命上限提高     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  并令其暴击几率永久        {'+': 'pos', '-': None, '0': None} | lg+=1
+  并令其              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  回合之内失手几率         {'+': 'neg', '-': None, '0': None} | r+=1
+  法者当前所有冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  一个友方不死生灵生命上限     {'+': None, '-': None, '0': 'neg'} | r0=1
+  剩余冷却时间           {'+': None, '-': 'pos', '0': None} | lg-=1
+  恢复幅度等于所耗精力的      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令他们恢复生命上限        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  复活的不死生灵护甲耐久为     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  近方格的所有敌方失手几率     {'+': 'neg', '-': None, '0': None} | r+=1
+  生命第一次降到          {'+': None, '-': None, '0': 'neg'} | r0=1
+  移到其他方格会令         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  所有友方立刻恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  就令自身所受伤害         {'+': None, '-': 'pos', '0': None} | lg-=1
+  不死生灵立刻恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时令视野之内所有敌人      {'+': None, '-': None, '0': 'neutral'} | w0=1
+  而且所有能力冷却时间缩短     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  自身便法力            {'+': 'pos', '-': None, '0': None} | lg+=1
+  复活方圆             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令他们立刻恢复生命上限      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  还令他们             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  所有能力当前冷却时间缩短     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  缩短幅度为            {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时立刻恢复生命上限       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  会令所有能力冷却时间增加     {'+': None, '-': None, '0': 'neg'} | r0=1
+  使用物品或投掷物品会造成     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  如果生命目前为          {'+': None, '-': None, '0': 'neg'} | r0=1
+  咒法则会令生命上限在后续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  么所有剩余的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令受到的所有击打生命吸取     {'+': 'pos', '-': None, '0': None} | lg+=1
+  上述效果的存续时间就延长     {'+': None, '-': None, '0': 'neg'} | r0=1
+  施法者的生命上限永久提升     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  击打目标会令自身获得       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令双方获得            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么存续             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  之内所有变节信徒获得存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  引来方圆             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  本次护甲穿透为          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  并令敌方             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  发现敌人会令这个技能进入     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  本次击打破衡几率         {'+': 'pos', '-': None, '0': None} | lg+=1
+  令自身接下来           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  回合之内闪躲几率         {'+': 'pos', '-': None, '0': None} | lg+=1
+  然后触发存续           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令自身闪躲几率          {'+': 'pos', '-': None, '0': None} | lg+=1
+  本次击打暴击效果         {'+': 'pos', '-': None, '0': None} | lg+=1
+  则令目标             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  目标所处方格形成一滩存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  回合内邪术抗性          {'+': None, '-': 'neg', '0': None} | r-=1
+  而是立刻恢复生命上限       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  而是令其立刻恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  邻近方格分别出现一滩存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  同时令自身            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  每回合就损失生命上限       {'+': None, '-': None, '0': 'neg'} | r0=1
+  内的随机一个友方获得存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  其兵器伤害便           {'+': 'pos', '-': None, '0': None} | lg+=1
+  准度便              {'+': 'pos', '-': None, '0': None} | lg+=1
+  生命上限和兵器伤害就分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  命中敌方就会令其         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  每个周期第            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  次击打暴击几率          {'+': 'pos', '-': None, '0': None} | lg+=1
+  么令视野之内所有友方获得     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  所造成伤害数值的         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  触手所受伤害的          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  本体所受伤害的          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  本体的生命上限会降低       {'+': None, '-': None, '0': 'neg'} | r0=1
+  而且所受伤害永久         {'+': 'neg', '-': None, '0': None} | r+=1
+  自身兵器伤害便          {'+': 'pos', '-': None, '0': None} | lg+=1
+  的几率令目标           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  本次击打击晕几率         {'+': 'pos', '-': None, '0': None} | lg+=1
+  所有冷却时间就缩短        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  本次击打灼烧伤害         {'+': 'pos', '-': None, '0': None} | lg+=1
+  造成的疼痛增加          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  并令烙铁信徒生命吸取永久     {'+': 'pos', '-': None, '0': None} | lg+=1
+  方格和其后的三格产生存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  则其自身灼烧抗性         {'+': None, '-': 'neg', '0': None} | r-=1
+  立刻恢复自身生命上限       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  信徒每回合就恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令一个友方获得          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  自身所有冷却时间缩短       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  本次反伤有            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  上述所有加成最多叠加       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  同时标记一条           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  几率               {'+': 'pos', '-': None, '0': None} | lg+=1
+  这个技能运用           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  同时令施法者法力永久       {'+': 'pos', '-': None, '0': None} | lg+=1
+  随机一个身体部位状态恶化     {'+': None, '-': None, '0': 'neg'} | r0=1
+  令视野之内所有友方法力      {'+': 'pos', '-': None, '0': None} | lg+=1
+  就立刻恢复生命上限        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时所有冷却时间永久       {'+': None, '-': 'pos', '0': None} | lg-=1
+  本次击打准度           {'+': None, '-': 'neg', '0': None} | r-=1
+  位移抗性和控制抗性分别      {'+': None, '-': 'neg', '0': None} | r-=1
+  个回合损失的生命不会超过     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  每当损失             {'+': None, '-': None, '0': 'neg'} | r0=1
+  耐久是凶煞生命上限的       {'+': None, '-': None, '0': 'neg'} | r0=1
+  但治疗效果            {'+': 'pos', '-': None, '0': None} | lg+=1
+  本次击打兵器伤害就        {'+': 'pos', '-': None, '0': None} | lg+=1
+  本次击打的肢体伤害就       {'+': 'pos', '-': None, '0': None} | lg+=1
+  当前剩余的冷却时间就缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  个回合之内治疗效果        {'+': None, '-': 'neg', '0': None} | r-=1
+  所有正面效果存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  所有负面效果存续时间延长     {'+': None, '-': None, '0': 'neg'} | r0=1
+  所有正面效果缩短         {'+': None, '-': None, '0': 'neg'} | r0=1
+  护甲耐久降为           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  对邻近所有方格造成        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  随后立刻恢复生命上限       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  所有冷却时间缩短         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  还会令治疗效果永久        {'+': 'pos', '-': None, '0': None} | lg+=1
+  失手几率永久           {'+': None, '-': 'pos', '0': None} | lg-=1
+  所受伤害永久           {'+': None, '-': 'pos', '0': None} | lg-=1
+  击打有              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  就获得存续            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令这个效果延长         {'+': None, '-': None, '0': 'neg'} | r0=1
+  会令其自身和施法者        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内生命吸取        {'+': 'pos', '-': None, '0': None} | lg+=1
+  和邻近的两个方格产生存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  最多额外击打           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  视野上限             {'+': None, '-': 'neg', '0': None} | r-=1
+  生命首次降到           {'+': None, '-': None, '0': 'neg'} | r0=1
+  发现敌人会令这项能力进入     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令一个友方获得存续        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  值分别等于自身剩余生命的     {'+': None, '-': None, '0': 'neg'} | r0=1
+  时在所有邻近方格留下存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  在血中会立刻恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  而且有              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  幅度等于             {'+': 'neutral', '-': None, '0': None} | w+=1
+  效果影响或生命降到        {'+': None, '-': None, '0': 'neg'} | r0=1
+  这个技能当前冷却时间增加     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么狗对其造成的伤害       {'+': 'pos', '-': None, '0': None} | lg+=1
+  之内所有友方的兵器伤害便     {'+': 'pos', '-': None, '0': None} | lg+=1
+  而且获得             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  技能剩余的冷却时间便缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  剩余的冷却时间每回合缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  一个友方立刻恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  效果延长             {'+': None, '-': None, '0': 'pos'} | lg0=1
+  前所有剩余的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  回合之内精力自动恢复速度     {'+': 'pos', '-': None, '0': None} | lg+=1
+  技能当前剩余冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  目标和其周围           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  并令亡蜂群的伤害         {'+': None, '-': 'neg', '0': None} | r-=1
+  力当前剩余的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  召唤               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  就增加              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  每回合恢复            {'+': None, '-': None, '0': 'pos'} | lg0=1
+  久会令魔法抗性和自然抗性     {'+': 'pos', '-': None, '0': None} | lg+=1
+  同时恢复             {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令视野内每一匹狼闪躲几率     {'+': 'pos', '-': None, '0': None} | lg+=1
+  视野内每一匹野狗闪躲几率     {'+': 'pos', '-': None, '0': None} | lg+=1
+  具体数值分别为          {'+': 'pos', '-': None, '0': None} | lg+=1
+  则立刻恢复自身生命上限      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  那么立刻恢复自身生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  回合内的生命吸取         {'+': 'pos', '-': None, '0': None} | lg+=1
+  并令鼠群的伤害          {'+': None, '-': 'neg', '0': None} | r-=1
+  并令蝙蝠的伤害          {'+': None, '-': 'neg', '0': None} | r-=1
+  回合内的闪躲几率         {'+': 'pos', '-': None, '0': None} | lg+=1
+  伤害不少于目标生命上限的     {'+': None, '-': None, '0': 'neg'} | r0=1
+  的几率对目标造成         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  刻令一个友方恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时令其获得           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  所有友方所有冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  而会令它们获得          {'+': None, '-': None, '0': 'neutral'} | w0=1
+  移动到半径            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内护甲穿透        {'+': 'pos', '-': None, '0': None} | lg+=1
+  中就会令所有冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时令              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合内的暴击几率        {'+': 'pos', '-': None, '0': None} | lg+=1
+  那么命中的身体部位        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内防护          {'+': None, '-': 'neg', '0': None} | r-=1
+  那么对其的击打准度        {'+': 'pos', '-': None, '0': None} | lg+=1
+  看到敌人会令这个技能进入     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  的冷却时间缩短          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  治疗效果便            {'+': 'pos', '-': None, '0': None} | lg+=1
+  生命相对自身生命上限每少     {'+': None, '-': None, '0': 'neg'} | r0=1
+  令当前地点所有食岩虫伤害     {'+': 'pos', '-': None, '0': None} | lg+=1
+  未在               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  个回合之内的闪避几率       {'+': 'pos', '-': None, '0': None} | lg+=1
+  的冷却时间            {'+': 'neg', '-': None, '0': None} | r+=1
+  也会令蛛母暴击几率        {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果自身或目标周围        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  标记一条             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  对命中的第一个目标造成      {'+': 'pos', '-': None, '0': None} | lg+=1
+  最远               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  并令这些目标获得存续       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  合在标记区域产生一滩存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令所有僵尸恢复生命上限      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  并令他们             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  回合内的伤害           {'+': 'pos', '-': None, '0': None} | lg+=1
+  或有               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  然后触发             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  并且               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  回合内所受伤害          {'+': 'neg', '-': None, '0': None} | r+=1
+  那么本次击打伤害         {'+': 'pos', '-': None, '0': None} | lg+=1
+  的方格和周围很大范围内的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令曼狄科立刻恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  髅原本所在方格会出现存续     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  或者获得             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  可以额外获得           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  的赏金和             {'+': None, '-': None, '0': 'pos'} | lg0=1
+  每交               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  还能获得             {'+': None, '-': None, '0': 'pos'} | lg0=1
+  个回合之内的所得经验       {'+': 'pos', '-': None, '0': None} | lg+=1
+  的触发频率便提高         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  最高               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  面精神状态的存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  而且令这些状态的效果增强     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  正面精神状态的效果        {'+': 'pos', '-': None, '0': None} | lg+=1
+  每当你第一次扫清         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  这个几率便提高          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  每当有              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  能力树每习得           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  相应法系的法力便         {'+': 'pos', '-': None, '0': None} | lg+=1
+  失误几率便            {'+': None, '-': 'pos', '0': None} | lg-=1
+  每个回合有            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  视野之内所有敌人所受伤害     {'+': 'neg', '-': None, '0': None} | r+=1
+  声誉收益便            {'+': 'pos', '-': None, '0': None} | lg+=1
+  同时还会获得           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  经验收益和疲劳抗性便       {'+': 'pos', '-': None, '0': None} | lg+=1
+  立刻触发             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么就是             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  任一能力树每习得         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  总计最多             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  兵器伤害便            {'+': 'pos', '-': None, '0': None} | lg+=1
+  生命上限便            {'+': 'pos', '-': None, '0': None} | lg+=1
+  上述所有效果最多叠加       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  发负面效果的临界值便提高     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  移向其他方格就有         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  车队在周围            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  林声誉同步提升的幅度增大     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  这两个几率每个回合升高      {'+': None, '-': None, '0': 'neg'} | r0=1
+  还会立刻恢复           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  如果情境斗志变为         {'+': None, '-': None, '0': 'neg'} | r0=1
+  击打和射箭会令失手几率      {'+': 'neg', '-': None, '0': None} | r+=1
+  催动法咒会令失误几率       {'+': 'neg', '-': None, '0': None} | r+=1
+  技能冷却时间延长         {'+': None, '-': None, '0': 'neg'} | r0=1
+  到影响的身体部位状态恶化     {'+': None, '-': None, '0': 'neg'} | r0=1
+  电系法咒失误几率便        {'+': 'neg', '-': None, '0': None} | r+=1
+  会令这个效果持续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  目标一个身体部位状态恶化     {'+': None, '-': None, '0': 'neg'} | r0=1
+  击或运用能力会令效果层数     {'+': None, '-': 'pos', '0': None} | lg-=1
+  身受到的所有击打生命吸取     {'+': 'pos', '-': None, '0': None} | lg+=1
+  这个效果的存续时间就延长     {'+': None, '-': None, '0': 'neg'} | r0=1
+  但会令效果的存续时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  都会令效果存续时间延长      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  射击会令效果存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令当前所有冷却时间缩短      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  如果当前生力少于         {'+': None, '-': None, '0': 'neg'} | r0=1
+  立刻恢复生力上限         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  生命降到             {'+': None, '-': None, '0': 'neg'} | r0=1
+  不动会令效果存续时间延长     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  技能会令效果层数减        {'+': None, '-': None, '0': 'neg'} | r0=1
+  狗造成的伤害           {'+': 'pos', '-': None, '0': None} | lg+=1
+  受的所有击打和射击的准度     {'+': 'pos', '-': None, '0': None} | lg+=1
+  肢体伤害都会           {'+': 'pos', '-': None, '0': None} | lg+=1
+  施法者当前的冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  失误会令所有能力当前增加     {'+': None, '-': None, '0': 'neg'} | r0=1
+  者剩余的所有冷却时间缩短     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  自动恢复每次恢复生命上限     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  动恢复每次恢复精力上限的     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  最低可达             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  等级上限为            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令兵器伤害           {'+': 'pos', '-': None, '0': None} | lg+=1
+  格挡力量             {'+': 'pos', '-': None, '0': None} | lg+=1
+  力量如果达到           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令反击几率           {'+': 'pos', '-': None, '0': None} | lg+=1
+  失手几率和失误几率        {'+': None, '-': 'pos', '0': None} | lg-=1
+  敏捷若达到            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令准度             {'+': 'pos', '-': None, '0': None} | lg+=1
+  攻击和法咒的护甲穿透       {'+': 'pos', '-': None, '0': None} | lg+=1
+  感知若达到            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  视野               {'+': 'pos', '-': None, '0': None} | lg+=1
+  暴击几率和奇观几率        {'+': 'pos', '-': None, '0': None} | lg+=1
+  会令精力上限           {'+': 'pos', '-': None, '0': None} | lg+=1
+  活力若达到            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令冷却时间           {'+': None, '-': 'pos', '0': None} | lg-=1
+  意志若达到            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  如果准度超过           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  准度就              {'+': None, '-': 'neg', '0': None} | r-=1
+  目标距离你            {'+': None, '-': None, '0': 'neutral'} | w0=1
+  弓的准度还会           {'+': None, '-': 'neg', '0': None} | r-=1
+  弓的准度则            {'+': None, '-': 'neg', '0': None} | r-=1
+  那么效果减弱           {'+': None, '-': None, '0': 'neg'} | r0=1
+  失手就              {'+': 'neg', '-': None, '0': None} | r+=1
+  这一属性最高可达         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  则防护的效果           {'+': None, '-': 'neg', '0': None} | r-=1
+  降低               {'+': None, '-': None, '0': 'neg'} | r0=1
+  斗志低于             {'+': None, '-': None, '0': 'neg'} | r0=1
+  神智低于             {'+': None, '-': None, '0': 'neg'} | r0=1
+  每次催动法咒           {'+': 'neg', '-': None, '0': None} | r+=1
+  跳过回合             {'+': None, '-': 'pos', '0': None} | lg-=1
+  待在原地             {'+': None, '-': 'pos', '0': None} | lg-=1
+  免疫变化             {'+': 'pos', '-': None, '0': None} | lg+=1
+  相应身体部位状态         {'+': 'pos', '-': None, '0': None} | lg+=1
+  神智变化             {'+': None, '-': 'neg', '0': None} | r-=1
+  药膏的效果减弱          {'+': None, '-': None, '0': 'neg'} | r0=1
+  可以修复最多           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  烟气有              {'+': None, '-': None, '0': 'neutral'} | w0=1
+  视野减少             {'+': None, '-': None, '0': 'neg'} | r0=1
+  无视               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  几率造成             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  周边               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  骨器同时最多可以赋予       {'+': None, '-': None, '0': 'neutral'} | w0=1
+  扩大               {'+': None, '-': None, '0': 'pos'} | lg0=1
+  以让提灯的照明时间恢复到     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  效果的存续时间缩短        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  最高可至             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  令所有身体部位状态改善      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  于迷醉消退的促进效果增强     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  造成的伤害减少          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  保质时限             {'+': 'pos', '-': None, '0': None} | lg+=1
+  情境斗志             {'+': 'pos', '-': None, '0': None} | lg+=1
+  餐食效果存续时间         {'+': 'pos', '-': None, '0': None} | lg+=1
+  效力和持续时间增加        {'+': None, '-': None, '0': 'pos'} | lg0=1
+  可令迷醉缓解           {'+': None, '-': None, '0': 'pos'} | lg0=1
+  同时恢复生命上限         {'+': None, '-': None, '0': 'pos'} | lg0=1
+  身体各个部位情况好转       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  回合之内神智减          {'+': None, '-': None, '0': 'neg'} | r0=1
+  则奇观几率            {'+': 'pos', '-': None, '0': None} | lg+=1
+  以让蜡烛提灯照明时间恢复     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  队货堆的所有食物保质时限     {'+': 'pos', '-': None, '0': None} | lg+=1
+  营地睡觉可以令你多获得      {'+': None, '-': None, '0': 'pos'} | lg0=1
+  如果斗志高于           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令角色疲劳抗性         {'+': 'pos', '-': None, '0': None} | lg+=1
+  如果神智高于           {'+': None, '-': None, '0': 'neutral'} | w0=1
+  会令经验收益           {'+': 'pos', '-': None, '0': None} | lg+=1
+  恢复生命和伤情的效果增强     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  还能令免疫提升          {'+': None, '-': None, '0': 'pos'} | lg0=1
+  那么这两项增益分别提升到     {'+': None, '-': None, '0': 'pos'} | lg0=1
+  令经验收益            {'+': 'pos', '-': None, '0': None} | lg+=1
+  令契据的标准时限延长       {'+': None, '-': None, '0': 'pos'} | lg0=1
+  还会令预付款数额         {'+': 'pos', '-': None, '0': None} | lg+=1
+  声誉收益和金钱收益就分别     {'+': 'pos', '-': None, '0': None} | lg+=1
+  扎营可以显示方圆         {'+': None, '-': None, '0': 'neutral'} | w0=1
+  提升幅度为交易所获金币的     {'+': None, '-': None, '0': 'neutral'} | w0=1
+  那么这个百分比变为        {'+': None, '-': None, '0': 'neutral'} | w0=1
+  商货销售利润           {'+': 'pos', '-': None, '0': None} | lg+=1
+  生意人库存            {'+': 'pos', '-': None, '0': None} | lg+=1
+  令车队内部的成本加成定价     {'+': None, '-': 'pos', '0': None} | lg-=1
+  修理费用             {'+': None, '-': 'pos', '0': None} | lg-=1
+  享受               {'+': None, '-': None, '0': 'neutral'} | w0=1
+  视野范围             {'+': 'pos', '-': None, '0': None} | lg+=1
+  提供方圆             {'+': None, '-': None, '0': 'neutral'} | w0=1
+  效果耗费             {'+': None, '-': 'pos', '0': None} | lg-=1
+  随行人员效果耗费         {'+': None, '-': 'pos', '0': None} | lg-=1

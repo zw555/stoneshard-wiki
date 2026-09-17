@@ -1,0 +1,12 @@
+exe_text_segments: 16439
+sample keys: ['raw']
+sample: {"raw": "t\u0012轇\u0016\u0001Hǅ"}
+
+=== 含近色标记的短文本段 (最多150条) ===
+  [8399/raw] woundedWord;~r~ранена~/~;~r~wounded~/~;~r~受伤了~/~;~r~verwundet~/~;~r~lastimada~/~;~r~blessée~/~;~r~è ferita~/~;~r~ferido~/~;~r~jest ranna~/~;~r~yaralanmış~/~;~r~軽傷~/~;~r~상처를 입었습니다~/~;
+  [8400/raw] injuredWord;~r~травмирована~/~;~r~injured~/~;~r~伤得不轻~/~;~r~verletzt~/~;~r~herida~/~;~r~contusionnée~/~;~r~è lesa~/~;~r~lesionado~/~;~r~jest okaleczona~/~;~r~sakatlanmış~/~;~r~負傷~/~;~r~부상을 당했습니다~/~;
+  [8401/raw] maimedWord;~r~изувечена~/~;~r~maimed~/~;~r~废了~/~;~r~verstümmelt~/~;~r~mutilada~/~;~r~mutilée~/~;~r~è menomata~/~;~r~mutilado~/~;~r~jest rozszarpana~/~;~r~yırtılmış~/~;~r~重傷~/~;~r~불구가 되었습니다~/~;
+  [8402/raw] bleedingAction;~r~кровоточит~/~;~r~bleeding~/~;~r~正在出血~/~;~r~blutend~/~;~r~sangrando~/~;~r~sanglante~/~;~r~è sanguinante~/~;~r~sangrando~/~;~r~krwawi~/~;~r~kanıyor~/~;~r~出血中~/~;~r~출혈이 발생했습니다~/~;
+
+=== 直接搜含 技/咒/精 力消耗 或 冷却时间 且带标记的段 ===
+  total: 0

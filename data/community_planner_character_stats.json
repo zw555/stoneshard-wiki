@@ -1,0 +1,1001 @@
+{
+  "source": "data/utmt_dump/GameObjects/gml_Object_o_characterBottomContainer_Other_10.gml",
+  "baseline": {
+    "source": "data/utmt_dump/GameObjects/gml_Object_o_dataLoader_Other_10.gml",
+    "character": "Verren",
+    "attributes": {
+      "STR": 10,
+      "AGL": 10,
+      "PRC": 10,
+      "Vitality": 10,
+      "WIL": 10
+    }
+  },
+  "rows": [
+    {
+      "type": "header",
+      "key": "char_text_9",
+      "label": {
+        "zh": "战斗",
+        "en": "Combat"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "DMG",
+      "label": {
+        "zh": "主手伤害",
+        "en": "DMG"
+      },
+      "tooltip": {
+        "zh": "你用主手兵器可以造成这么多伤害。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "OFFDMG",
+      "label": {
+        "zh": "副手伤害",
+        "en": "OFFDMG"
+      },
+      "tooltip": {
+        "zh": "你用副手兵器可以造成这么多伤害。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Weapon_Damage",
+      "label": {
+        "zh": "兵器伤害",
+        "en": "Weapon Damage"
+      },
+      "tooltip": {
+        "zh": "影响你通过攻击所造成的 物理攻击 。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Mainhand_Efficiency",
+      "label": {
+        "zh": "主手效果",
+        "en": "Mainhand Efficiency"
+      },
+      "tooltip": {
+        "zh": "手部效果影响相应手上兵器的攻击数值。  如果角色 双持兵器 ，这只手的效果会受到负面影响。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Offhand_Efficiency",
+      "label": {
+        "zh": "副手效果",
+        "en": "Offhand Efficiency"
+      },
+      "tooltip": {
+        "zh": "手部效果影响相应手上兵器的攻击数值。  如果角色 双持兵器 ，这只手的效果会受到负面影响。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Bodypart_Damage",
+      "label": {
+        "zh": "肢体伤害",
+        "en": "Bodypart Damage"
+      },
+      "tooltip": {
+        "zh": "你的攻击还会对敌人的身体部位造成这么多伤害。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Armor_Damage",
+      "label": {
+        "zh": "护甲破坏",
+        "en": "Armor Damage"
+      },
+      "tooltip": {
+        "zh": "你的攻击还会对敌人的护甲造成这么多破坏。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Armor_Piercing",
+      "label": {
+        "zh": "护甲穿透",
+        "en": "Armor Piercing"
+      },
+      "tooltip": {
+        "zh": "你的攻击会无视这么多防护。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Hit_Chance",
+      "label": {
+        "zh": "准度",
+        "en": "Hit Chance"
+      },
+      "tooltip": {
+        "zh": "你的击打、射击 投射有这么大的几率命中目标。  如果准度超过 100% ，目标的闪躲几率将相应降低。  你与目标的距离会影响远程兵器的准度，每隔一个方格，准度就 -2% 。  除此之外，目标距离你 1 格时，弓的准度还会 -50% ，距离 2 格时，弓的准度则 -25% 。   攻击 技能本身存在 +4% 的准度加成。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "CRT",
+      "label": {
+        "zh": "暴击几率",
+        "en": "CRT"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率造成额外的伤害，同时额外触发一种特殊效果，额外效果因兵器种类而异。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "CRTD",
+      "label": {
+        "zh": "暴击效果",
+        "en": "CRTD"
+      },
+      "tooltip": {
+        "zh": "暴击会额外造成这么多伤害。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "CTA",
+      "label": {
+        "zh": "反击几率",
+        "en": "CTA"
+      },
+      "tooltip": {
+        "zh": "你受到近身攻击之后，有这么大的几率击打一次，不消耗回合。  每个敌人每个回合只能被反击一次。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "FMB",
+      "label": {
+        "zh": "失手几率",
+        "en": "FMB"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率只会造成 一半 的伤害。  兵器双持 会提高这个几率。  你与目标的距离会影响远程兵器的失手几率，每隔一个方格，失手就 +2% 。  击打或者射击 投射失手会令本次攻击的 硬直 、 击晕 、 击退 、 限制移动 、 破衡 和 出血 的几率归零。  远程攻击如果失手但命中目标时，箭矢弹丸损坏的几率提高。   攻击 技能本身存在 -4% 的失手几率加成"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Abilities_Energy_Cost",
+      "label": {
+        "zh": "能力精力消耗",
+        "en": "Abilities Energy Cost"
+      },
+      "tooltip": {
+        "zh": "这是技能和咒法实际所耗精力与其正常所耗精力的比值。  最低可达 25%"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Skills_Energy_Cost",
+      "label": {
+        "zh": "技能精力消耗",
+        "en": "Skills Energy Cost"
+      },
+      "tooltip": {
+        "zh": "这个属性影响技能实际所耗精力与其正常所耗精力的比值。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Spells_Energy_Cost",
+      "label": {
+        "zh": "咒法精力消耗",
+        "en": "Spells Energy Cost"
+      },
+      "tooltip": {
+        "zh": "这个属性影响咒法实际所耗精力与其正常所耗精力的比值。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Cooldown_Reduction",
+      "label": {
+        "zh": "冷却时间",
+        "en": "Cooldown Reduction"
+      },
+      "tooltip": {
+        "zh": "这是所有能力实际冷却时间与其正常冷却时间的比值。   兵器双持 会对这个属性产生负面影响。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "VSN",
+      "label": {
+        "zh": "视野上限",
+        "en": "VSN"
+      },
+      "tooltip": {
+        "zh": "你最远可以看到周围这么远的地方。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "currentVSN",
+      "label": {
+        "zh": "视野",
+        "en": "currentVSN"
+      },
+      "tooltip": {
+        "zh": "你现在视野范围这么大。  如果环境昏暗，你的角色可以看到现在视野范围之外照亮的方格，前提是这些方格位于你的视野上限之内。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Bonus_Range",
+      "label": {
+        "zh": "距离加成",
+        "en": "Bonus Range"
+      },
+      "tooltip": {
+        "zh": "影响你远程攻击和某些咒法的距离。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Bleeding_Chance",
+      "label": {
+        "zh": "出血几率",
+        "en": "Bleeding Chance"
+      },
+      "tooltip": {
+        "zh": "你的攻击命中目标的身体部位之后，有这么大的几率造成 出血 。   出血 会在一定时间内令相应的身体部位持续受到伤害，并逐渐加重这个部位的伤情。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Daze_Chance",
+      "label": {
+        "zh": "击晕几率",
+        "en": "Daze Chance"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率令目标 眩晕 。  目标 眩晕 之后，无法运用能力，对位移和控制的抗性也会相应减弱。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Stun_Chance",
+      "label": {
+        "zh": "硬直几率",
+        "en": "Stun Chance"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率令目标 硬直 。   硬直 状态下，目标必须跳过回合。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Knockback_Chance",
+      "label": {
+        "zh": "击退几率",
+        "en": "Knockback Chance"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率令目标 后退 一个方格。  如果目标后退的方格有其他生物或物体，这个目标将受到 钝击伤害 ，并且有一定几率 眩晕1个回合 。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Immob_Chance",
+      "label": {
+        "zh": "限制移动几率",
+        "en": "Immob Chance"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率令目标 移动受限 。  目标如果 移动受限 ，就无法移动到其他方格。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Stagger_Chance",
+      "label": {
+        "zh": "破衡几率",
+        "en": "Stagger Chance"
+      },
+      "tooltip": {
+        "zh": "你的攻击有这么大的几率令其 失衡 ，站立不稳。  目标 失衡 时，攻防属性均会大幅减弱。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Lifesteal",
+      "label": {
+        "zh": "生命吸取",
+        "en": "Lifesteal"
+      },
+      "tooltip": {
+        "zh": "你通过物理攻击对敌人造成伤害时，会获得一定的生命，数值等于攻击伤害与这一比例的乘积。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Manasteal",
+      "label": {
+        "zh": "精力吸取",
+        "en": "Manasteal"
+      },
+      "tooltip": {
+        "zh": "你通过物理攻击对敌人造成伤害时，会获得一定的精力，数值等于攻击伤害与这一比例的乘积。"
+      }
+    },
+    {
+      "type": "header",
+      "key": "char_text_11",
+      "label": {
+        "zh": "生存",
+        "en": "Survival"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "HP",
+      "label": {
+        "zh": "生命",
+        "en": "HP"
+      },
+      "tooltip": {
+        "zh": "你 死亡 之前可以承受这么多伤害。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Health_Restoration",
+      "label": {
+        "zh": "生命自动恢复",
+        "en": "Health Restoration"
+      },
+      "tooltip": {
+        "zh": "生命自动恢复的速度。 这个数字越大，自动恢复的频率越高。  默认状态下，生命自动恢复每次恢复生命上限 5% 的生命。  战斗期间，生命会暂时停止自动恢复。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Healing_Received",
+      "label": {
+        "zh": "治疗效果",
+        "en": "Healing Received"
+      },
+      "tooltip": {
+        "zh": "生命各类恢复手段实际恢复的比例。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "MP",
+      "label": {
+        "zh": "精力",
+        "en": "MP"
+      },
+      "tooltip": {
+        "zh": "你有这么多精力可以运用能力和进行游泳等其他行动。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "MP_Restoration",
+      "label": {
+        "zh": "精力自动恢复",
+        "en": "MP Restoration"
+      },
+      "tooltip": {
+        "zh": "精力自动恢复的速度。 这个数字越大，自动恢复的频率越高。  默认状态下，精力自动恢复每次恢复精力上限的 5% 。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "DEF",
+      "label": {
+        "zh": "防护",
+        "en": "DEF"
+      },
+      "tooltip": {
+        "zh": "身体部位受到攻击，可以立刻吸收这么多伤害。  在抗性之前生效。  如果所受伤害为 魔法伤害 或 自然伤害 ，则防护的效果 -33% 。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "PRR",
+      "label": {
+        "zh": "格挡几率",
+        "en": "PRR"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率挡住近身攻击，吸收全部或部分伤害。 如果配有盾牌，还能挡住物理和魔法的投射物。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Block_Power",
+      "label": {
+        "zh": "格挡力量",
+        "en": "Block Power"
+      },
+      "tooltip": {
+        "zh": "你的格挡当前和最多分别可以吸收这么多伤害。  每次格挡成功，格挡力量都会相应变小，后续每个回合会逐渐恢复。  如果格挡的是近身攻击所造成的 魔法伤害 或 自然伤害 ，那么效果减弱 33% 。  基础格挡力量的上限与 力量 有关。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Block_Recovery",
+      "label": {
+        "zh": "格挡力量恢复",
+        "en": "Block Recovery"
+      },
+      "tooltip": {
+        "zh": "这是格挡力量每回合恢复的数值与上限的比值。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "EVS",
+      "label": {
+        "zh": "闪躲几率",
+        "en": "EVS"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率部分闪躲一次成功的近身攻击，将其变成失手攻击，也有这么大的几率躲开一次失手攻击，完全无视其原本可以造成的伤害。  如果对方是物理投射或魔法投射，你的闪躲几率 减半 ，如果依然成功闪躲，则可以完全无视其原本可以造成的伤害。  如果闪躲几率为 负数 ，对方攻击的准度将相应提高。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Crit_Avoid",
+      "label": {
+        "zh": "暴击避免",
+        "en": "Crit Avoid"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率将一次暴击变为普通攻击，以此避免这次暴击攻击。  如果暴击避免为负数，那么受到暴击攻击的可能性会增大。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Fortitude",
+      "label": {
+        "zh": "坚忍",
+        "en": "Fortitude"
+      },
+      "tooltip": {
+        "zh": "影响负面物理、心理和存续效果的存续时间，也会影响 出血 、 中毒 、 着火 和 酸浴 造成的持续伤害。  还会减缓 斗志 和 神智 降低的速度。  这一属性最高可达 50% 。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Bleeding_Resistance",
+      "label": {
+        "zh": "出血抗性",
+        "en": "Bleeding Resistance"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率不会因为敌人的攻击和能力而 出血 。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Stun_Resistance",
+      "label": {
+        "zh": "控制抗性",
+        "en": "Stun Resistance"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率不会因敌人的攻击和能力而 硬直 、 眩晕 或 混乱 。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Knockback_Resistance",
+      "label": {
+        "zh": "位移抗性",
+        "en": "Knockback Resistance"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率不会被敌人的攻击和能力 击退 、 拖拉 、 限制移动 和 破衡 。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Hunger_Resistance",
+      "label": {
+        "zh": "饥饿抗性",
+        "en": "Hunger Resistance"
+      },
+      "tooltip": {
+        "zh": "影响饥饿加剧的速度。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Toxicity_Resistance",
+      "label": {
+        "zh": "迷醉抗性",
+        "en": "Toxicity Resistance"
+      },
+      "tooltip": {
+        "zh": "影响迷醉加重的速度。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Pain_Resistance",
+      "label": {
+        "zh": "疼痛抗性",
+        "en": "Pain Resistance"
+      },
+      "tooltip": {
+        "zh": "影响疼痛加剧的速度。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Fatigue_Gain",
+      "label": {
+        "zh": "疲劳抗性",
+        "en": "Fatigue Gain"
+      },
+      "tooltip": {
+        "zh": "影响你疲劳的速度。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Received_XP",
+      "label": {
+        "zh": "经验收益",
+        "en": "Received XP"
+      },
+      "tooltip": {
+        "zh": "所有经验收益来源可以获得这么多经验。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "ReputationGainGlobal",
+      "label": {
+        "zh": "声誉收益",
+        "en": "ReputationGainGlobal"
+      },
+      "tooltip": {
+        "zh": "影响你各种渠道的声誉收益。"
+      }
+    },
+    {
+      "type": "header",
+      "key": "char_text_13",
+      "label": {
+        "zh": "伤害抗性",
+        "en": "Damage Resistance"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Damage_Received",
+      "label": {
+        "zh": "所受伤害",
+        "en": "Damage Received"
+      },
+      "tooltip": {
+        "zh": "你实际会受到这么多伤害。 在防护和抗性之后生效。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Damage_Returned",
+      "label": {
+        "zh": "反伤",
+        "en": "Damage Returned"
+      },
+      "tooltip": {
+        "zh": "敌人对你造成近身伤害时，会分担初始伤害中这么大比例的伤害。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Physical_Resistance",
+      "label": {
+        "zh": "物理抗性",
+        "en": "Physical Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 物理伤害 （ 劈砍 、 穿刺 、 钝击 和 撕裂 伤害）会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Nature_Resistance",
+      "label": {
+        "zh": "自然抗性",
+        "en": "Nature Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 自然伤害 （ 灼烧 、 霜冻 、 电击 、 中毒 和 腐蚀 伤害）会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Magic_Resistance",
+      "label": {
+        "zh": "魔法抗性",
+        "en": "Magic Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 魔法伤害 （ 秘术 、 邪术 、 神圣 和 灵能伤害 ）会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Slashing_Resistance",
+      "label": {
+        "zh": "劈砍抗性",
+        "en": "Slashing Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 劈砍伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Piercing_Resistance",
+      "label": {
+        "zh": "穿刺抗性",
+        "en": "Piercing Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 穿刺伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Blunt_Resistance",
+      "label": {
+        "zh": "钝击抗性",
+        "en": "Blunt Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 钝击伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Rending_Resistance",
+      "label": {
+        "zh": "撕裂抗性",
+        "en": "Rending Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 撕裂伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Fire_Resistance",
+      "label": {
+        "zh": "灼烧抗性",
+        "en": "Fire Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 灼烧伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Poison_Resistance",
+      "label": {
+        "zh": "中毒抗性",
+        "en": "Poison Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 中毒伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Frost_Resistance",
+      "label": {
+        "zh": "霜冻抗性",
+        "en": "Frost Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 霜冻伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Shock_Resistance",
+      "label": {
+        "zh": "电击抗性",
+        "en": "Shock Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 电击伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Caustic_Resistance",
+      "label": {
+        "zh": "腐蚀抗性",
+        "en": "Caustic Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 腐蚀伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Arcane_Resistance",
+      "label": {
+        "zh": "秘术抗性",
+        "en": "Arcane Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 秘术伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Sacred_Resistance",
+      "label": {
+        "zh": "神圣抗性",
+        "en": "Sacred Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 神圣伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Unholy_Resistance",
+      "label": {
+        "zh": "邪术抗性",
+        "en": "Unholy Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 邪术伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Psionic_Resistance",
+      "label": {
+        "zh": "灵能抗性",
+        "en": "Psionic Resistance"
+      },
+      "tooltip": {
+        "zh": "你所受到的 灵能伤害 会减少这么多百分点。"
+      }
+    },
+    {
+      "type": "header",
+      "key": "char_text_10",
+      "label": {
+        "zh": "魔法",
+        "en": "Magic"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Magic_Power",
+      "label": {
+        "zh": "法力",
+        "en": "Magic Power"
+      },
+      "tooltip": {
+        "zh": "影响多数法咒的伤害和效果。  也会影响攻击所造成的 魔法伤害 和 自然伤害 。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Miracle_Chance",
+      "label": {
+        "zh": "奇观几率",
+        "en": "Miracle Chance"
+      },
+      "tooltip": {
+        "zh": "你有这么大的几率放出强力咒法。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Miracle_Power",
+      "label": {
+        "zh": "奇观效果",
+        "en": "Miracle Power"
+      },
+      "tooltip": {
+        "zh": "这个系数表示咒法奇观的增益效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Miscast_Chance",
+      "label": {
+        "zh": "失误几率",
+        "en": "Miscast Chance"
+      },
+      "tooltip": {
+        "zh": "你催动法咒有这么大的几率犯错，导致自己失误。  施法失误会令施法者自己受到相应类别的伤害，会造成更多疲劳，还会影响其神智。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Backfire_Damage",
+      "label": {
+        "zh": "失误伤害",
+        "en": "Backfire Damage"
+      },
+      "tooltip": {
+        "zh": "你施法失误会对自己造成这么多伤害。  伤害具体的数值等于相应咒法精力消耗乘以这个百分比的结果，伤害的类别与相应咒法相同。  可以受到以下行动影响:  每次催动法咒 +30%  跳过回合 -10%  待在原地 -10%"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Spell_Hit_Chance",
+      "label": {
+        "zh": "法咒准度",
+        "en": "Spell Hit Chance"
+      },
+      "tooltip": {
+        "zh": "这是你投射法咒命中目标的基础几率。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Spell_Armor_Piercing",
+      "label": {
+        "zh": "法咒护甲穿透",
+        "en": "Spell Armor Piercing"
+      },
+      "tooltip": {
+        "zh": "你的法咒可以无视敌人这么多的防护。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Pyromantic_Power",
+      "label": {
+        "zh": "炎术法力",
+        "en": "Pyromantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有炎系咒法的效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Geomantic_Power",
+      "label": {
+        "zh": "地术法力",
+        "en": "Geomantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有地系咒法的效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Electromantic_Power",
+      "label": {
+        "zh": "电术法力",
+        "en": "Electromantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有电系咒法的效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Venomantic_Power",
+      "label": {
+        "zh": "毒术法力",
+        "en": "Venomantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有毒系咒法的效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Cryomantic_Power",
+      "label": {
+        "zh": "冰术法力",
+        "en": "Cryomantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有冰系咒法的效果。"
+      }
+    },
+    {
+      "type": "space"
+    },
+    {
+      "type": "stat",
+      "key": "Arcanistic_Power",
+      "label": {
+        "zh": "秘术法力",
+        "en": "Arcanistic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有秘系咒法的效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Astromantic_Power",
+      "label": {
+        "zh": "星术法力",
+        "en": "Astromantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有星系咒法的效果。"
+      }
+    },
+    {
+      "type": "stat",
+      "key": "Psimantic_Power",
+      "label": {
+        "zh": "灵术法力",
+        "en": "Psimantic Power"
+      },
+      "tooltip": {
+        "zh": "表示所有灵系咒法的效果。"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Stoneshard 交易行情</title>
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --line:#e2ddd2; --ink:#2c2a26; --sub:#8a857a; --acc:#7a4b2a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif; padding:24px; }
+  header { max-width:1200px; margin:0 auto 16px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .meta { color:var(--sub); font-size:13px; }
+  .tabs { max-width:1200px; margin:0 auto 14px; display:flex; gap:8px; flex-wrap:wrap; }
+  .tab { padding:7px 16px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:13.5px; }
+  .tab.on { background:var(--acc); color:#fff; border-color:var(--acc); }
+  .wrap { max-width:1200px; margin:0 auto; }
+  #q { width:100%; padding:9px 14px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:var(--card); margin-bottom:12px; }
+  #count { color:var(--sub); font-size:12.5px; margin-bottom:10px; }
+  #grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; display:flex; gap:12px; }
+  .card img { width:44px; height:44px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
+  .nm { font-weight:600; } .en { color:var(--sub); font-size:12px; font-weight:400; display:block; }
+  .base { font-size:12px; color:var(--sub); margin-top:2px; }
+  .sel { margin-top:6px; font-size:12.5px; }
+  .sel div { padding:1px 0; }
+  .sel b { color:#3d7a3d; }
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; font-size:13px; }
+  th, td { padding:8px 12px; border-bottom:1px solid var(--line); text-align:left; }
+  th { background:#f1ece1; font-weight:600; }
+  tr:last-child td { border-bottom:none; }
+  .note { background:#f4efe4; border-radius:8px; padding:10px 14px; font-size:12.5px; margin-bottom:12px; }
+  .merch { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; }
+  .mrow { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 12px; display:flex; gap:8px; font-size:13px; }
+  .mrow b { color:var(--acc); margin-left:auto; }
+  h2.sec { font-size:17px; margin:6px 0 10px; }
+  .hide { display:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Stoneshard 交易行情</h1>
+  <div class="meta">数据来源：社区 wiki（v0.9.4.24）· 收购价基准条件：完整耐久、非赃物、普通品质、默认声望、无价格波动</div>
+</header>
+<div class="tabs">
+  <div class="tab on" data-v="items">物品收购排行</div>
+  <div class="tab" data-v="merchants">商人排行</div>
+  <div class="tab" data-v="mech">交易机制</div>
+</div>
+<div class="wrap">
+  <div id="v-items">
+    <input id="q" placeholder="搜索物品：中文名 / 英文名（如 阿娜的剑、dagger、大剑）">
+    <div id="count"></div>
+    <div id="grid"></div>
+  </div>
+  <div id="v-merchants" class="hide">
+    <div class="note">按“在多少件装备的最优收购商前三名中出现”排序，可看出谁最适合出手装备。</div>
+    <div class="merch" id="mlist"></div>
+  </div>
+  <div id="v-mech" class="hide">
+    <h2 class="sec">品类需求系数</h2>
+    <div class="note">商人收购价 = 基准价 × 品类系数 ×（1 + 品类修正 + 运行时需求）。下表为各品类在游戏配置中的系数键。</div>
+    <div id="cats"></div>
+    <h2 class="sec" style="margin-top:18px">城镇声望与交易好感度</h2>
+    <div class="note">声望层级会直接影响交易价格（好感度为负 = 商人压价）。</div>
+    <div id="towns"></div>
+    <h2 class="sec" style="margin-top:18px">价格公式</h2>
+    <div id="formula"></div>
+  </div>
+</div>
+<script>
+const DATA = __DATA__, MECH = __MECH__, LB = __LB__;
+function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const $ = id => document.getElementById(id);
+
+function renderItems(){
+  const kw = $("q").value.trim().toLowerCase();
+  let n = 0, h = "";
+  for (const it of DATA){
+    if (!it.sel.length) continue;
+    if (kw && !((it.zh + " " + it.en).toLowerCase().includes(kw))) continue;
+    n++;
+    if (n > 240) continue;   // 首屏渲染上限，搜索可细化
+    h += `<div class="card"><img loading="lazy" src="icons/${esc(it.ic)}" onerror="this.style.visibility='hidden'">
+      <div><div class="nm">${esc(it.zh)}<span class="en">${esc(it.en)}</span></div>
+      <div class="base">基准价 ${it.base ?? "—"} 金</div>
+      <div class="sel">${it.sel.map(s => `<div>${esc(s.rank)} <b>${s.price}</b> ${esc(s.who)}</div>`).join("")}</div></div></div>`;
+  }
+  $("grid").innerHTML = h;
+  $("count").textContent = `显示 ${Math.min(n,240)} / ${n} 件有收购数据的装备`;
+}
+function renderMerchants(){
+  const max = LB.length ? LB[0][1] : 1;
+  $("mlist").innerHTML = LB.map(([who, c]) =>
+    `<div class="mrow"><span>${esc(who)}</span><b>${c} 件</b></div>`).join("");
+}
+function renderMech(){
+  $("cats").innerHTML = `<table><tr><th>品类</th><th>英文</th><th>配置键</th><th>运行时需求键（玩家出售 / 购买）</th></tr>` +
+    MECH.categories.map(c => `<tr><td>${esc(c.zh)}</td><td>${esc(c.en)}</td><td><code>${c.keys.map(esc).join(", ")}</code></td>
+      <td>${c.rt.player_sells ? "出售 " + esc(c.rt.player_sells) : ""}${c.rt.player_buys ? " / 购买 " + esc(c.rt.player_buys) : ""}</td></tr>`).join("") + `</table>`;
+  $("towns").innerHTML = `<table><tr><th>城镇</th><th>声望层级</th><th>交易好感度</th></tr>` +
+    MECH.towns.map(t => t.tiers.map((tt, i) =>
+      `<tr>${i === 0 ? `<td rowspan="${t.tiers.length}">${esc(t.zh)}</td>` : ""}<td>${esc(tt.zh)} <span style="color:#8a857a">${esc(tt.en)}</span></td>
+       <td>${tt.fav == null ? "—" : (tt.fav > 0 ? "+" : "") + (tt.fav * 100).toFixed(0) + "%"}</td></tr>`).join("")).join("") + `</table>`;
+  $("formula").innerHTML = `<table><tr><th>项目</th><th>公式</th></tr>` +
+    Object.entries(MECH.formula).map(([k, v]) => `<tr><td><code>${esc(k)}</code></td><td>${esc(v)}</td></tr>`).join("") + `</table>`;
+}
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.remove("on"));
+  t.classList.add("on");
+  ["items","merchants","mech"].forEach(v => $("v-" + v).classList.toggle("hide", v !== t.dataset.v));
+});
+$("q").oninput = renderItems;
+renderItems(); renderMerchants(); renderMech();
+</script>
+</body>
+</html>

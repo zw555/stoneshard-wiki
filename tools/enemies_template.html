@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Stoneshard 敌人图鉴</title>
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --line:#e2ddd2; --ink:#2c2a26; --sub:#8a857a; --acc:#7a4b2a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif; padding:24px; }
+  header { max-width:1200px; margin:0 auto 18px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .meta { color:var(--sub); font-size:13px; }
+  .bar { max-width:1200px; margin:0 auto 16px; display:flex; gap:10px; flex-wrap:wrap; }
+  #q { flex:1; min-width:260px; padding:9px 14px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:var(--card); }
+  #grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; display:flex; gap:12px; }
+  .card img { width:56px; height:56px; object-fit:contain; image-rendering:pixelated; flex:none; background:#efeadf; border-radius:6px; }
+  .nm { font-weight:600; } .nm .en { color:var(--sub); font-size:12px; font-weight:400; display:block; }
+  .tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:99px; background:#efe7d8; color:var(--acc); margin:2px 4px 2px 0; }
+  .st { margin-top:6px; font-size:12px; color:#55503f; }
+  .st b { color:#3d7a3d; }
+  #count { max-width:1200px; margin:0 auto 10px; color:var(--sub); font-size:12.5px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Stoneshard 敌人图鉴</h1>
+  <div class="meta">数值来源：stoneshardwiki.com 社区数据（v0.9.4.24）· 图标：data.win 提取</div>
+</header>
+<div class="bar">
+  <input id="q" placeholder="搜索：名称 / 阵营（如 骷髅、beasts、Undead）">
+</div>
+<div id="count"></div>
+<div id="grid"></div>
+<script>
+const DATA = __DATA__;
+const q = document.getElementById("q"), grid = document.getElementById("grid"), count = document.getElementById("count");
+const RANK = ["", "危险等级 1", "危险等级 2", "危险等级 3", "危险等级 4", "危险等级 5"];
+function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function statLine(e){
+  const s = e.st || {};
+  const parts = [];
+  if (s.resources) parts.push(`HP <b>${s.resources.HP}</b>`);
+  if (s.attributes) parts.push(`力量 <b>${s.attributes.STR}</b>`, `敏捷 <b>${s.attributes.AGL}</b>`, `意志 <b>${s.attributes.WIL}</b>`);
+  if (s.combat && s.combat["Total Damage"] != null) parts.push(`总伤害 <b>${s.combat["Total Damage"]}</b>`);
+  return parts.join(" · ");
+}
+function render(){
+  const kw = q.value.trim().toLowerCase();
+  let n = 0;
+  const frag = document.createDocumentFragment();
+  for (const e of DATA){
+    if (kw){
+      const hay = (e.zh + " " + e.en + " " + e.fa + " " + e.id).toLowerCase();
+      if (!hay.includes(kw)) continue;
+    }
+    n++;
+    const d = document.createElement("div");
+    d.className = "card";
+    d.innerHTML = `<img loading="lazy" src="icons/${e.ic}" onerror="this.style.visibility='hidden'">
+      <div><div class="nm">${esc(e.zh) || esc(e.en)}<span class="en">${esc(e.en)}</span></div>
+      <span class="tag">${esc(e.fa)}</span><span class="tag">${RANK[e.rk]||""}</span>
+      <div class="st">${statLine(e)}</div></div>`;
+    frag.appendChild(d);
+  }
+  grid.replaceChildren(frag);
+  count.textContent = `显示 ${n} / ${DATA.length} 个敌人`;
+}
+q.oninput = render;
+render();
+</script>
+</body>
+</html>

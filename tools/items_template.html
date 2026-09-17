@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Stoneshard 物品/技能图鉴 — 图标 + 名称 + 描述</title>
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --line:#e2ddd2; --ink:#2c2a26; --sub:#8a857a; --acc:#7a4b2a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif; padding:24px; }
+  header { max-width:1200px; margin:0 auto 18px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .meta { color:var(--sub); font-size:13px; }
+  .bar { max-width:1200px; margin:0 auto 16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  #q { flex:1; min-width:260px; padding:9px 14px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:var(--card); }
+  .chip { padding:6px 14px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:13px; }
+  .chip.on { background:var(--acc); color:#fff; border-color:var(--acc); }
+  #grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; display:flex; gap:12px; cursor:default; }
+  .card img { width:48px; height:48px; object-fit:contain; image-rendering:pixelated; flex:none; background:#efeadf; border-radius:6px; }
+  .nm { font-weight:600; }
+  .nm .zh { display:block; }
+  .nm .en { color:var(--sub); font-size:12px; font-weight:400; }
+  .ds { margin-top:4px; font-size:12.5px; color:#55503f; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:99px; background:#efe7d8; color:var(--acc); margin-bottom:3px; }
+  #count { max-width:1200px; margin:0 auto 10px; color:var(--sub); font-size:12.5px; }
+  /* 居中由 position:fixed + inset:0 + margin:auto 完成（不能写 position:relative，
+     那会覆盖浏览器默认的弹窗定位，弹窗会掉进文档流：不居中、关掉时还会让页面跳动） */
+  dialog { border:1px solid var(--line); border-radius:12px; padding:0; background:var(--card); color:var(--ink);
+           width:min(520px, 92vw); height:fit-content; max-height:82vh; margin:auto;
+           display:flex; flex-direction:column; overflow:hidden; }
+  dialog:not([open]) { display:none; }
+  dialog:modal { position:fixed; inset:0; }
+  dialog::backdrop { background:rgba(0,0,0,.35); }
+  #dlgbody { overflow-y:auto; padding:20px; flex:1 1 auto; }
+  .dlg-x { position:absolute; right:8px; top:8px; width:30px; height:30px; line-height:1; font-size:19px; border:0; border-radius:8px;
+           background:transparent; color:var(--sub); cursor:pointer; z-index:3; }
+  .dlg-x:hover { background:#efe7d8; color:var(--acc); }
+  dialog img { width:96px; height:96px; image-rendering:pixelated; background:#efeadf; border-radius:8px; float:right; margin:22px 0 0 14px; }
+  dialog h2 { font-size:18px; margin-bottom:2px; }
+  dialog .en { color:var(--sub); font-size:13px; margin-bottom:10px; }
+  dialog .desc { margin-top:8px; white-space:pre-wrap; }
+  dialog .extra { margin-top:10px; padding-top:8px; border-top:1px dashed var(--line); font-size:13px; color:#55503f; }
+  /* 数值配色：与游戏一致 —— 增益绿、减益红。判定依据是游戏原文的 ~lg~ / ~r~ 标记，
+     不是数值的正负号（例如"失手几率 -4%"在游戏里是绿的，因为减失手是好事） */
+  .hl, .c-green { color:#3d7a3d; font-weight:600; }
+  .c-red   { color:#c0392b; font-weight:600; }
+  .c-gold  { color:#9a6b1a; font-weight:600; }
+  .c-blue  { color:#2f6ea8; font-weight:600; }
+  .c-purple{ color:#6b4a9a; font-weight:600; }
+  .c-dim   { color:#7d7a6e; font-weight:600; }
+  .c-w     { color:inherit; font-weight:600; }
+  .stats { margin:10px 0 4px; padding:8px 12px; background:#f4efe4; border-radius:8px; font-size:13px; clear:both; }
+  .strow { padding:2px 0; }
+  .strow.meta { color:var(--sub); font-size:12px; margin-top:4px; }
+  .strow.legend { color:var(--sub); font-size:11.5px; margin-top:6px; padding-top:6px; border-top:1px dashed var(--line); }
+  .strow.legend .lg { color:#3d7a3d; font-weight:600; }
+  .strow.legend .rd { color:#c0392b; font-weight:600; }
+  .price-tag { position:absolute; right:10px; top:10px; font-size:12px; color:var(--acc); font-weight:600; }
+  .card { position:relative; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Stoneshard 物品 / 技能图鉴</h1>
+  <div class="meta">数据源：StoneShard.exe 本体多语言文本 + data.win 精灵图标 · 图标+名称+描述三合一</div>
+</header>
+<div class="bar">
+  <input id="q" placeholder="搜索：中文名 / 英文名 / 内部名（如 出血、bleeding、whetstone）">
+  <button class="chip on" data-t="all">全部</button>
+  <button class="chip" data-t="item">物品</button>
+  <button class="chip" data-t="skill">技能</button>
+  <button class="chip" data-t="spell">法术</button>
+</div>
+<div id="count"></div>
+<div id="grid"></div>
+<dialog id="dlg">
+  <button class="dlg-x" id="dlgx" type="button" title="关闭（Esc / 点空白处也可）" aria-label="关闭">&times;</button>
+  <div id="dlgbody"></div>
+</dialog>
+<script>
+const DATA = __DATA__;
+/* 属性极性表：来自游戏原文的颜色标记挖掘结果
+   { "失手几率": {"+":"neg","-":"pos"}, ... }  pos=游戏内绿色(增益) neg=游戏内红色(减益) */
+const POLARITY = __POLARITY__;
+let type = "all";
+const q = document.getElementById("q"), grid = document.getElementById("grid"), count = document.getElementById("count");
+const TYPE_ZH = {item:"物品", skill:"技能", spell:"法术"};
+
+function esc(s){ return (s == null ? "" : String(s)).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+/* 游戏文本颜色标记：~r~红(惩罚) ~lg~绿(加成) ~w~白(普通强调) ~y~黄(名词) ~bl~蓝 … -> 对应颜色 */
+const TAG_CLS = { r:"c-red", lg:"c-green", g:"c-green", w:"c-w", W:"c-w",
+                  y:"c-gold", sy:"c-gold", ly:"c-gold", o:"c-gold", ur:"c-gold", Y:"c-gold",
+                  bl:"c-blue", lb:"c-blue", p:"c-purple", pr:"c-purple", cg:"c-purple",
+                  gr:"c-dim", s:"c-dim", u:"c-dim", Ig:"c-dim" };
+function fmt(s){
+  s = esc(s).replace(/##/g, "\n")
+    .replace(/~([A-Za-z_]{1,8})~(.*?)~\/~/g, (m, tag, body) => `<b class="${TAG_CLS[tag] || "c-w"}">${body}</b>`)
+    .replace(/~[A-Za-z_]{1,8}~/g, "");
+  return s.replace(/\n/g, "<br>");
+}
+/* 数值配色：依据游戏数据 —— 属性 × 正负号 查 PC 极性表，得到游戏内真实颜色。
+   pos = 游戏内绿(增益)，neg = 游戏内红(减益)，neutral = 中性(不强加颜色)。
+   查不到该属性时，才退回"按正负号"的通例（+绿 / -红）。 */
+function signOf(v){
+  v = String(v == null ? "" : v).trim();
+  return (v.startsWith("-") || v.startsWith("\u2212")) ? "-" : (v.startsWith("+") ? "+" : "0");
+}
+function statCls(label, v){
+  const sg = signOf(v);
+  const pol = POLARITY[String(label == null ? "" : label).trim()];
+  let kind = pol ? pol[sg] : null;
+  if (!kind) kind = sg === "-" ? "neg" : (sg === "+" ? "pos" : "neutral");
+  return kind === "neg" ? "c-red" : (kind === "pos" ? "c-green" : "c-w");
+}
+function statTitle(label, v){
+  const pol = POLARITY[String(label == null ? "" : label).trim()];
+  if (!pol) return "该属性无游戏原文配色依据，按正负号显示";
+  const sg = signOf(v), kind = pol[sg];
+  if (kind === "neg") return "游戏内标记为红色（减益）";
+  if (kind === "pos") return "游戏内标记为绿色（增益）";
+  return "游戏内为中性数值";
+}
+
+function render(){
+  const kw = q.value.trim().toLowerCase();
+  let n = 0;
+  const frag = document.createDocumentFragment();
+  for (const it of DATA){
+    if (type !== "all" && it.t !== type) continue;
+    if (kw){
+      const hay = (it.en + " " + it.zh + " " + it.de + " " + it.dz + " " + it.s).toLowerCase();
+      if (!hay.includes(kw)) continue;
+    }
+    n++;
+    const d = document.createElement("div");
+    d.className = "card";
+    d.innerHTML = `<img loading="lazy" src="${it.i}" onerror="this.style.visibility='hidden'">
+      ${it.st && it.st.price ? `<span class="price-tag">${it.st.price}金</span>` : ""}
+      <div><span class="tag">${TYPE_ZH[it.t]||it.t}</span>
+      <div class="nm"><span class="zh">${esc(it.zh) || esc(it.en)}</span><span class="en">${esc(it.zh ? it.en : it.s)}</span></div>
+      <div class="ds">${fmt(it.dz || it.de || "")}</div></div>`;
+    d.onclick = () => openDlg(it);
+    frag.appendChild(d);
+  }
+  grid.replaceChildren(frag);
+  count.textContent = `显示 ${n} / ${DATA.length} 条`;
+}
+let savedY = 0;   // 打开弹窗前记录页面滚动位置，关闭后还原
+function openDlg(it){
+  let st = "";
+  if (it.st){
+    const parts = [];
+    if (it.st.damage && it.st.damage.length)
+      parts.push('<div class="strow">' + it.st.damage.map(d => `<b class="${statCls(d.label, d.value)}" title="${statTitle(d.label, d.value)}">${esc(d.value)}</b> ${esc(d.label)}`).join(" · ") + "</div>");
+    if (it.st.stats && it.st.stats.length)
+      parts.push(it.st.stats.map(s => `<div class="strow">${esc(s.label)} <b class="${statCls(s.label, s.value)}" title="${statTitle(s.label, s.value)}">${esc(s.value)}</b></div>`).join(""));
+    const meta = [];
+    if (it.st.durability) meta.push(`耐久 ${it.st.durability}`);
+    if (it.st.price) meta.push(`价格 ${it.st.price} 金`);
+    if (it.st.rarity) meta.push(esc(it.st.rarity));
+    if (meta.length) parts.push(`<div class="strow meta">${meta.join(" · ")}</div>`);
+    if (it.st.stats && it.st.stats.length)
+      parts.push('<div class="strow legend"><span class="lg">绿色 = 增益</span> · <span class="rd">红色 = 减益</span> · 依据游戏原文的颜色标记判定（与游戏内显示一致）</div>');
+    if (parts.length) st = `<div class="stats">${parts.join("")}</div>`;
+  }
+  document.getElementById("dlgbody").innerHTML =
+    `<img src="${it.i}"><h2>${esc(it.zh) || esc(it.en)}</h2>
+     <div class="en">${esc(it.en)} · 内部名 <code>${esc(it.s)}</code></div>
+     ${st}
+     <div class="desc">${fmt(it.dz || it.de || "（无描述数据）")}</div>
+     ${it.x && it.x.length ? `<div class="extra">${it.x.map(x => fmt(x.zh || x.en)).join("<br><br>")}</div>` : ""}`;
+  document.getElementById("dlgbody").scrollTop = 0;   // 每次打开都从顶部看起
+  savedY = window.scrollY;
+  document.getElementById("dlg").showModal();
+}
+/* 关闭方式：× 按钮 / 点弹窗外空白 / Esc */
+const dlg = document.getElementById("dlg");
+document.getElementById("dlgx").onclick = () => dlg.close();
+dlg.addEventListener("mousedown", e => {
+  const r = dlg.getBoundingClientRect();
+  const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+  if (!inside) dlg.close();
+});
+/* 关闭后还原页面滚动位置（否则会跳回顶部） */
+dlg.addEventListener("close", () => {
+  const y = savedY;
+  requestAnimationFrame(() => window.scrollTo(0, y));
+});
+q.oninput = render;
+document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+  document.querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
+  c.classList.add("on"); type = c.dataset.t; render();
+});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,7732 @@
+{
+ "schema": "stoneshardwiki.stat_polarity.v1",
+ "note": "polarity: pos=游戏内绿色(增益) / neg=游戏内红色(减益)。来源=游戏原文 ~lg~ ~r~ 标记，不按正负号推断。",
+ "sources": {
+  "game_text": "data/localization.jsonl",
+  "official_key": "data/community_planner_buffs.json",
+  "curated": "tools/build_stat_polarity.py CURATED",
+  "fallback": "heuristic"
+ },
+ "labels": {
+  "Abilities Energy Cost and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Abilities Energy Cost for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Ability Point for every": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Abomination with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Accuracy and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Accuracy for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Accuracy for each missing": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Accuracy over": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Activates": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Additionally grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "All bonuses stack up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "All effects stack up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Also grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Also grants them": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Applies enemies with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Applies with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Arcane Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Archon for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Durability grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Durability is": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Durability is above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Durability is below": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Durability is set to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Penetration and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Armor Penetration for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Avoidance if Health is below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Backfire Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Backfire Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Backfire Damage Change and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Backfire Damage Change for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bat Swarm": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bleed Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bleed Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bleed Resistance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bleed Resistance bonus to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bleed Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Block Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Block Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Block Chance or": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Block Power Recovery for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Block Power for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bodypart Damage and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bodypart Damage for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Both effects stack up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Bows also receive": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Brander": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Caravan Storage with": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Chance for each enemy within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Condition and also grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Condition by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Condition of all body parts by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Condition of each body part by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Condition of its body parts by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Contracts by": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Control Resistance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Control Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Cooldowns Duration and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Cooldowns Duration for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Counter Chance and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Counter Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Creates": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crit Avoidance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crit Avoidance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crit Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crit Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crit Chance if Health is below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Crit Chance if it's above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crit Efficiency for each": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Critical dagger strikes grant": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Crushing Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Dagger strikes grant": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Damage Reflection for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Damage Taken and": {
+   "+": "pos",
+   "-": "neutral",
+   "0": null
+  },
+  "Damage Taken for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Damage and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Damage for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Damage while Health is below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Damaging counters replenish": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Daze Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Deathstinger Swarm": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Delivers a strike to a": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Delivers a strike with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Delivers an attack with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Diet Morale loss by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Dodge Chance and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Dodge Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Dogs": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Durability above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Durability is above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Durability loss by": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each Spiderling within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each enemy within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each level up grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each lost": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each missed shot grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each missing": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Each received hit grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each received strike grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each successful hit grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each turn has": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Each turn restores": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Each turn with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Electromantic Power for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Energy Cost and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Energy Restoration and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Energy Restoration for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Energy and grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Energy for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Energy to the caster for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Every": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Expands the Caravan Storage to": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Experience Gain and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Experience Gain for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fatigue Resistance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fatigue by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Fire Resistance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fire Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fire bolts deal": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Fits": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Followers' stock for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fortitude for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Full blocks and dodges grant": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fumble Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Fumble Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Gain if Sanity is above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants": {
+   "+": "pos",
+   "-": "pos",
+   "0": "pos"
+  },
+  "Grants additional": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants all received strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants all shots": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants axe strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants critical spear strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants dagger counters": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants mace strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants sling shots": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants strikes and shots": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants sword strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants the ally": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Grants the skill": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants the strike": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants two-handed axe strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Grants two-handed mace strikes": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Hands Efficiency and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Hands Efficiency for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Has": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Healing Efficiency and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Health Restoration and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Health and permanently grants": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Health drops below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Health for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Health increases the penalty by": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "Health is above": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Health is below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Health is either above": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Health to the summoner for": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Hitting the arm with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Hitting the leg with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Hunger and Thirst by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "If Health is at": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "If an enemy within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "If the target is": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "If the target's Block Chance is": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "If there's an open flame within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Increases this chance by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Intoxication by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Killing animals grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Killing enemies grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Life Drain and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Loses": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Magic Power and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Magic Power for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Magic Resistance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Magic or Nature Resistances for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Main Hand Efficiency and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Marks a": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Marks a large area within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Marks an enemy's tile and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Markup and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Max Block Power for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Max Energy Threshold by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Max Energy and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Max Energy and grant": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Max Energy and grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Max Health Threshold by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Max Health and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Max Health by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "Max Health for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Miracle Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Miracle Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Morale below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Morale is reduced to": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Move Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Move Resistance is": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Moving to other tiles grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Nakkatar": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Nature Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Nature Resistance for each": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Once per": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Only": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Pain Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Pain and with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Partial blocks grant": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Penetration for each missing": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Permanently grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Physical Resistance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Physical Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Points of Interest within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Power for each enemy within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Proselytes within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Proselytes within Vision for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Protection for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Protection is": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Psyche States by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Psyche states by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Pyromantic Power and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Pyromantic Power for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Ranged weapons receive": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "Rat Swarm": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Reaching the thresholds of": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Receiving": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Reduces Backfire Damage by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Reduces Vision to": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Reduces all cooldowns by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Reduces intoxication by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Reduces the skill's cooldown by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Refills the candle lantern by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Refills the candle lantern to": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Reflects": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Replenishes": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Replenishes Energy for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Reputation Gain and": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Resistance if Morale is above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Restless and grants them": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Restless within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Restores": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Restores up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Reward and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Rockeaters on the location": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Sanity below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Sanity by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Sates": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "School and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Shock Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Situations grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Skills Energy Cost for": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Sleeping at the Camp grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Sleeping at the camp is": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Spells Energy Cost and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Stagger Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Stat Point and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Stat Point for every": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Steals": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "Strikes against allies receive": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Strikes and shots grant": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "Strikes have": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Stun Chance and": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Stun Chance by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Stun Chance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Sword hits grant": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Takes a shot with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "The chance increases up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "The charm can grant up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "The damage dealt is equal to": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "The effect stacks up to": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "The skill can be used": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "The smoke has": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "The spell's damage increases by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Then replenishes": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Thrown daggers deal": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Trade Favorability and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Transfers": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Undead ally for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Undead within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Undead within Vision for": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "Unholy Resistance for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Using abilities with": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Using spells grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision by": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision grant": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision permanently grants": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Vision with": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "Weapon Damage and": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "Weapon Damage for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Weapon Damage for every": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Weapon Damage if it's above": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "When Armor Durability reaches": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "When Health drops below": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "While the Caravan is within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "With": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Wolves within": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Wraith disappears for": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "Wraith's Max Health by": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "一个友方不死生灵生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "一个友方立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "上述两项减益就增加": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "上述所有加成最多叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "上述所有效果最多叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "上述效果的存续时间就延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "下一回合开始之前所受伤害": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "下一道法咒的炎术法力便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "不动会令效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "不少于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "不死生灵立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "与中心相距": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "与你的距离不超过": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "且所有能力冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内位移抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内兵器伤害便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内准度就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内出血几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内出血抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内反击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内反击几率就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内失误伤害减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "个回合之内所受伤害": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内技能精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内控制抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内暴击几率就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内暴击避免": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内格挡几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内格挡几率便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内格挡力量恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内格挡力量恢复便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内治疗效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内灼烧抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内物理抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内生命吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内电击抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内电术法力增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "个回合之内的准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内的失误伤害变化": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内的所得经验": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内的施法距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内的闪避几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内破衡几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内硬直几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内精力自动恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内精力自动恢复就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内能力精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内能力精力消耗便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个回合之内距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内邪术抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内钝击抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内防护": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合之内魔法抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合便提升": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "个回合内的暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合或者切换武器可令你": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合损失的生命不会超过": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个回合的精力自动恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个实体都会令失误伤害变化": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "个技能的剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "个效果存续期间所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "个效果的存续时间便会延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个敌人分别射出": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "个方格之内随机揭示": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "中就会令所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "中毒伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "中毒抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "久会令魔法抗性和自然抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "么令双手斧击打的兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "么令双手斧的击打肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "么令视野之内所有友方获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "么单手刀剑击打的出血几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "么命中目标会令其所受伤害": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "么所有剩余的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "之内所有友方的兵器伤害便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "之内所有变节信徒获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "之内魔法抗性或自然抗性便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "之外目标准度所受的影响由": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "也会令暴击避免": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "也会令目标获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "也会令蛛母暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "于迷醉消退的促进效果增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "亡时会随机在邻近方格产生": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "交易划算程度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "享受": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "人上述减益的存续时间额外": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令一个友方获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令一个友方获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令下一个道法咒的精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "令两个目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令中型障碍的影响由": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令他们": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令他们恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令他们立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令你可以同时召唤": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令免疫消解迷醉的效果增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令其反击几率下一回合之前": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令其恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令其接下来": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令其立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令击打和射击的准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令击打时的耐久损耗减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令单手刀剑击打的暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令双手锤棒击打的肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令双方获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令受到伤害的目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令受到影响的目标控制抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令受到的所有击打生命吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "令契据的标准时限延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令小型障碍对准度的影响由": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令当前地点所有食岩虫伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令当前所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "令所有僵尸恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "令所有法咒的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "令所有身体部位状态改善": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令所有邻近敌人": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令所有邻近敌人失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "令投石兵器的准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令曼狄科立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令疲劳抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令疼痛抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令目标恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令目标获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令目标获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令相应身体部位的出血抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令相应身体部位的状态改善": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令经验收益": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令维修工具的维修效果提升": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令自身剩余的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "令自身接下来": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令自身闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令视野": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令视野之内所有友方恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令视野之内所有友方法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令视野内每一匹狼闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令车队交易范围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令车队内部的成本加成定价": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "令这一个技能距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令这个友方所受伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令这个技能的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "令这个技能的距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "令这个效果的存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令这组效果的存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "令这道法咒的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "令这项技能的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "令闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "以令同系能力冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "以让提灯的照明时间恢复到": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "以让蜡烛提灯照明时间恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "任一能力树每习得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令其自身和施法者": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "会令准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令反击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令所有能力冷却时间增加": {
+   "+": "neg",
+   "-": "pos",
+   "0": "neg"
+  },
+  "会令本效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令状态的存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令相应身体部位出血抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令相应身体部位的防护": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令精力上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令经验收益": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令视野范围之内所有目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令角色疲劳抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令这个技能兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "会令这个效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "会令这个效果延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "会令这个效果持续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "会射出": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "伤害不少于目标生命上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "但会令效果的存续时间缩短": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "但是会令效果存续时间缩短": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "但治疗效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "位移抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "位移抗性和控制抗性分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "位移抗性的效果减弱": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "位置周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "使用物品或投掷物品会造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "便令疼痛": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "便令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "便会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "便延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "便立刻恢复格挡力量上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "便获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "保质时限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "信徒每回合就恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "修理费用": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "值分别等于自身剩余生命的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "值等于实体自身耐久上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "催动同系法咒会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "催动同系法咒会令方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "催动法咒会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "催动法咒会令失误几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "催动法咒会令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "免疫": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "免疫变化": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "兵器伤害便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "兵器伤害就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "其为目标的击打或射击准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "其他法系的失误几率就会": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "其兵器伤害便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "其进行的近身击打兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "具体数值分别为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "具体数值等于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "内暴击几率和奇观几率分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "内的随机一个友方获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "内闪躲几率和反击几率分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "内闪躲几率和格挡几率分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "冰术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "冷却时间便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "冷却时间便会因此而": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "准度便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "准度就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "减为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "几率也会以": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "几率的影响分别由每个方格": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "几率造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "出血几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "出血抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "出血抗性在": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击或运用能力会令效果层数": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "击打会令效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "击打击晕几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击打击退几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击打和射击便会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击打和射箭会令失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "击打有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击打目标会令自身获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击打破衡几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击晕几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击杀动物经验收益": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击杀敌人会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "击杀敌人会令层数减": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "击杀敌人会令这个效果增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "击杀敌人会令这个状态叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "击退几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "刀剑连续命中同一目标会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则令存续时间缩短": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则伤害增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "则其自身灼烧抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "则奇观几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则对其造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "则立刻恢复自身生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "则防护的效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "到其他生物声响的几率提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "到影响的身体部位状态恶化": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "刻令一个友方恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "刻恢复生命上限和精力上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "前所有剩余的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "剩余冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "剩余的冷却时间每回合缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "副手效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "副手效果就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "劈砍伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "劈砍抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "力当前剩余冷却时间便缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "力当前剩余的冷却时间增加": {
+   "+": "neg",
+   "-": "pos",
+   "0": "neg"
+  },
+  "力当前剩余的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "力量如果达到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "加成就减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "动恢复每次恢复精力上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "劳导致负面状态的临界提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "匕首击打会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "匕首击打造成伤害会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "匕首反击的兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "匕首暴击会令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "区域和实体存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "单手刀剑击打命中目标会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "原地不动会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "原地不动会令失误几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "原地不动可令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "双手斧命中目标会令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "双手斧暴击会令你": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "反伤": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "反击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "反击几率便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "反击几率和闪躲几率便分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "发动的击打和射击护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "发现敌人会令这个技能进入": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "发现敌人会令这项能力进入": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "发负面效果的临界值便提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "受到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "受到的击打和射击肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "受到的所有击打和射击准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "受影响身体部位的状态恶化": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "受的所有击打和射击的准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "变为": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "召唤": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "可令迷醉缓解": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "可以令任意布防具恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "可以令任意皮防具恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "可以令任意金属防具恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "可以修复最多": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "可以获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "可以额外获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "合之内反击几率和法力分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "合在标记区域产生一滩存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同一技能树技能的冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "同时": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时令他们": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "同时令其存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "同时令其获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时令施法者法力永久": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时令视野之内所有敌人": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时对": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "同时恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "同时所有冷却时间永久": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "同时所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "同时标记一条": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "同时第一次击打会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时触发存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "同时还会获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "同系法咒击杀敌人会减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "向一个": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "向周围半径": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "向方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "周边": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "命中敌方就会令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "命中目标会令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "和邻近的两个方格产生存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "咒当前剩余的冷却时间减少": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "咒当前的剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "咒法则会令生命上限在后续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "咒法目标仅限生命少于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "咒法精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": "neutral"
+  },
+  "商货销售利润": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "器击打邻近目标的击退几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内位移抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "回合之内所受伤害": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内神智减": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "回合之内精力自动恢复速度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内邪术抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合之内闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合内所受伤害": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "回合内的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合内的生命吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合内的闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "回合内邪术抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "在每个目标周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "在目标周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "在目标方格形成存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "在血中会立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "地不动会会令这个效果叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "地术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "地术法力便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "坚忍": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "增益的具体数值分别等于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "声誉收益": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "声誉收益便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "声誉收益和金钱收益就分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "复活方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "复活的不死生灵护甲耐久为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "失手几率和失误几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "失手几率永久": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "失手就": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "失误会令所有能力当前增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "失误伤害变化": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "失误伤害变化便": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "失误几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "失误几率便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "失误几率和能力精力消耗便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "奇观几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "奇观几率便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "奇观几率就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "奇观效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "奇观效果便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果准度超过": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果当前生力少于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果当前生命少于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果情境斗志变为": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果斗志高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果生命目前为": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果目标与你相距": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果目标护甲耐久大于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果目标护甲耐久高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果目标格挡几率为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果目标生命多于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果目标生命少于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果目标生命高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "如果目标距你": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果神智高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果自身或目标周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "如果高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "存续时间便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "存续时间就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "害数值不超过其生命上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "害数值等于目标生命上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对一个": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对一片": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对其催动法咒会令自身法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对受到影响的目标造成存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对命中的第一个目标造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对生命恢复上限的影响减弱": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "对目标施加存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对目标降下存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "对邻近所有方格造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "射击": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "射击会令效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "射击失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "射击或运用能力会令层数": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "将施法者所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "就令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就令兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就令坚忍": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就令能力精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "就令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就令自身所受伤害": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "就会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就会令受到影响的所有目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就是": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "就立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "就获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "层数为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "层数每比": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "幅度等于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "幅度等于友方所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "幅度等于所造成伤害数值的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "并且": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并且令其存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "并且攻击方": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令亡蜂群的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令他们": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令其存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "并令其暴击几率永久": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令攻击者": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令敌方": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令烙铁信徒生命吸取永久": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令蝙蝠的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令这些目标获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并令鼠群的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "并有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "幽魂消失": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "应能力树的法咒失误几率便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "弓的准度则": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "弓的准度还会": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "引来方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "当前剩余冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "当前剩余的冷却时间便缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "当前剩余的冷却时间就缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "当前所有剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "当前所有所剩冷却时间延长": {
+   "+": "neg",
+   "-": "pos",
+   "0": "neg"
+  },
+  "当前的剩余冷却时间便缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "待在原地": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "总计最多": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "恢复幅度等于所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "恢复幅度等于所耗精力的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "恢复生命和伤情的效果增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "恢复的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "情境斗志": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "情境斗志变化": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "情境神智": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "情境神智变化": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "意志若达到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "感知若达到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "成的伤害和硬直几率便增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "或低于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "或护甲耐久低于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "或有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "或生命每少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "或者护甲耐久为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "或者获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "或闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "所受伤害": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所受伤害便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所受伤害就": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所受伤害永久": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所有习得的法咒精力消耗便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所有冷却时间就缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "所有友方所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "所有友方立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "所有正面效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "所有正面效果缩短": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "所有能力当前冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所有负面效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "所消耗的精力减为": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "所获经验便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "所造成伤害数值的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "手斧击打这个目标会令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "扎营可以显示方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "打会令效果的存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "扩大": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "技能会令层数减": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "技能会令效果层数减": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "技能会令本次击打兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "技能会令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "技能会令这个效果额外叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "技能冷却时间延长": {
+   "+": "neg",
+   "-": "pos",
+   "0": "neg"
+  },
+  "技能准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "技能剩余的冷却时间便缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "技能当前剩余冷却时间延长": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "技能当前剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "技能时的副手效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "技能本身存在": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "技能的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "技能的准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "技能的剩余冷却时间便缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "技能的剩余冷却时间就缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "技能的剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "技能精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "技能距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "投射伤害的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "投射失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "投掷出去可以造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "投掷匕首伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "抗性增益的存续时间延长为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "护甲破坏": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "护甲穿透为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "护甲穿透便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "护甲穿透就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "护甲穿透效果为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "护甲耐久降为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "持续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "损失生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "损耗数量等于这一伤害的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "控制抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "控制抗性便分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "提供方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "提升幅度为交易所获金币的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "撕裂抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "改为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "攻击和法咒的护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "效力和持续时间增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "效果存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "效果延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "效果影响或生命降到": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "效果的存续时间缩短": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "效果耗费": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "敏捷若达到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "斗志低于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "方格会令这个效果叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "方格和其后的三格产生存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "施法者在方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "施法者当前的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "施法者所受伤害便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "施法者的生命上限永久提升": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "无视": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "时令视野范围之内所有敌人": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "时在所有邻近方格留下存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "星术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "暴击几率便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "暴击几率和奇观几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "暴击几率就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "暴击效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "暴击效果就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "暴击避免": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最低可达": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最多": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "最多叠到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最多可以同时召唤": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最多可以同时存在": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最多同时存在": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最多额外击打": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最短为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最远": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最高": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最高可以提至": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "最高可至": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "有能力的剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "未在": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本体所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "本体的生命上限会降低": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "本次击打兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打兵器伤害就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打击晕几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打击退几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打暴击效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打灼烧伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打的肢体伤害就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打破衡几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打硬直几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次击打距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次反伤有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "本次护甲穿透为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "机令一个身体部位状态恶化": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "林声誉同步提升的幅度增大": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "标记一个": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "标记一条": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "标记方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "树技能的剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "树的技能会令这个效果叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格以内所有敌人": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格挡几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格挡力量": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格挡力量上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格挡力量恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格挡力量恢复便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格挡时的耐久损耗减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格的范围内造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "格范围之内的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "棒击打的护甲破坏": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "次击打暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "次射击或投射的暴击效果就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "正面精神状态的效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每个周期的第": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每个周期第": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每个回合有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每个身体部位的防护": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每交": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每回合就损失生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "每回合恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "每回合有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每当你第一次扫清": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每当损失": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "每当有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每次催动法咒": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "每次反击会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "每过": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "毒术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "治疗效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "治疗效果便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "法力便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "法力就会增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "法咒精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "法咒精力消耗便会因此而": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "法源存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "法者当前所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "活力若达到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "活的不死生灵护甲耐久变为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "活的不死生灵防具耐久变为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "浆果和药草有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "滩存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "灵术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "灵能伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "灼烧伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "灼烧抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "炎术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "炎术法力下面": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "炎术法力便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "烟气有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "然后令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "然后触发": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "然后触发存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "然后跳到": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "燃烧持续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "物理抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "状态存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "状态延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "狗造成的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "球状闪电每回合会对方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命上限便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命上限和兵器伤害就分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命低于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生命吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命吸取就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命少于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生命每少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生命相对自身生命上限每少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生命第一次降到": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生命自动恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "生命降到": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生命首次降到": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "生意人库存": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "电会对邻近的目标额外造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "电击伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "电击抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "电术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "电系法咒失误几率便": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "疲劳": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "疲劳便减": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "疲劳变化": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "疲劳变化幅度": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "疲劳抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "疼痛上限": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "疼痛变化": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "疼痛增幅数值等于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "疼痛抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的伤害等于目标生命上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "的冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "的几率令方圆": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的几率令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的几率对其造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的几率对目标造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的几率就会提升": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的几率造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "的存续时间缩短": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "的存续时间额外": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的所有击打和射击护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的所有击打和射击暴击效果": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的敌人获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的方格和周围很大范围内的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的时间便延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的目标获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的经验收益增益": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的触发频率便提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "的负面影响增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "的赏金和": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "目标一个身体部位状态恶化": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "目标和其周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "目标所处方格形成一滩存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "目标所有能力冷却时间延长": {
+   "+": "neg",
+   "-": "pos",
+   "0": "neg"
+  },
+  "目标生命每少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "目标生命相对生命上限每少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "目标的伤害增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "目标距离你": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "相应法系的法力便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "相应身体部位状态": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "看到敌人会令这个技能进入": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "破衡几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "硬直几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "神圣伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "神智低于": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "神智变化": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "秘术伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "秘术抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "秘术法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "移到其他方格会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "移动到半径": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "移向其他方格就有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "穿刺伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "穿刺抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "立刻恢复生力上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "立刻恢复自身生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "立刻触发": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "等于本次击打所造成伤害的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "等级上限为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "精力": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "精力上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "精力吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "精力吸取就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "精力自动恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "精力自动恢复就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "精力自动恢复就增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "精神和消解疲劳的效果提升": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "组状态的效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "经验收益": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "经验收益便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "经验收益和疲劳抗性便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "续期间所损失生命和精力的": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "维修价格": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "缩短幅度为": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "者剩余的所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "者增益的具体数值分别等于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而且": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而且下一次催动精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "而且令这些状态的效果增强": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "而且所受伤害永久": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "而且所有能力冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "而且有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而且自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而且获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而且这些伤害每回合提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而会令它们获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "而是令其立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "而是立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "而是触发": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "耐久是凶煞生命上限的": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "耐久的损耗速度": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "耐久高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "肢体伤害就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "肢体伤害都会": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "能力冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "能力当前剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "能力树技能的冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "能力树每习得": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "能力精力消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "能当前的剩余冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "能装": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "腐蚀伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "自动恢复每次恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "自然抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "自身便法力": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "自身兵器伤害便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "自身所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "自身所有冷却时间缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "自身精力自动恢复便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "自身闪躲几率每有": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "范围之内的幽魂和不死生灵": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "范围扩大": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "药膏的效果减弱": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "获得存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "营地睡觉可以令你多获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "行车范围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "行车速度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "视野": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "视野上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "视野之内所有敌人所受伤害": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "视野内每一匹野狗闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "视野减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "视野加成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "视野半径上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "视野范围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "角色的暴击避免每有": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "触发": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "触手所受伤害的": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "距离加成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "跳过回合": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "身上每一件耐久高于": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "身体各个部位情况好转": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "身体部位状态恶化": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "身受到的所有击打生命吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "车队修整时间": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "车队在周围": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "车队货堆容量变为": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "运用同一能力树的技能令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "运用同一能力树的技能会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "运用这两个技能会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "近方格的所有敌方失手几率": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "还令他们": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还会令暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还会令治疗效果永久": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还会令闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还会令预付款数额": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还会恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "还会立刻恢复": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "还有": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "还能令免疫提升": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "还能获得": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "这一下射程": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这一属性最高可达": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这两个几率每个回合升高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "这个伤害便增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "这个几率便提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "这个增益就立刻进入": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这个技能当前冷却时间增加": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "这个技能的冷却时间便缩短": {
+   "+": "neg",
+   "-": "pos",
+   "0": "pos"
+  },
+  "这个技能的距离便": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这个技能距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这个技能运用": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这个效果最多叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这个效果最多可以叠加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "这个效果的存续时间就延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "这个数值就提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "迷醉变化": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "造成": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "造成的伤害减少": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "造成的伤害就增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "造成的疼痛增加": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么令兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么令幽魂的生命上限提高": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "那么令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么令自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么令这个技能冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "那么令这个技能的冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "那么令这个技能的距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么会永久令其所受伤害": {
+   "+": "neg",
+   "-": "neg",
+   "0": null
+  },
+  "那么催动法咒会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么击打和射击的兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么匕首的击打兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么单手斧击打的兵器伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么原地不动会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么双手可以再接连击打": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么可以标记": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么命中的身体部位": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么命中目标会令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么命中目标就会令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么对其的击打准度": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么就令他们": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么就会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么就是": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么效果减弱": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "那么效果存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么暴击几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么本次击打伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么此类击打的肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么狗对其造成的伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么立刻恢复格挡力量上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "那么立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "那么立刻恢复自身生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "那么自身": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么视野范围之内所有目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么角色": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么触发": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么还会令目标": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么这两项增益分别提升到": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "那么这个技能剩余冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "那么这个技能的冷却时间": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "那么这个技能的距离": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么这个百分比变为": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "那么这类击打的护甲穿透": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "邪术伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "邪术抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "邻近方格分别出现一滩存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "邻近目标准度所受的影响由": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "都会令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "都会令效果存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "都有": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "重型防具的耐久损耗速度就": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "钝击伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "钝击抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "长杆刃器暴击肢体伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "长杖击杀敌人可令": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "长杖暴击精力吸取": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "闪躲几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "闪躲几率就": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "队货堆的所有食物保质时限": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "降低": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "限制移动几率": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "随后立刻恢复生命上限": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "随机一个身体部位状态恶化": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neg"
+  },
+  "随行人员效果耗费": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "霜冻伤害": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "霜冻抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": "neutral"
+  },
+  "面精神状态的存续时间延长": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "风暴存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "餐食效果存续时间": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "饥饿": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "饥饿和口渴加剧的速度减缓": {
+   "+": "pos",
+   "-": "neg",
+   "0": "pos"
+  },
+  "饥饿抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "饮食斗志": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "饮食斗志自动降低的速度": {
+   "+": "pos",
+   "-": "pos",
+   "0": null
+  },
+  "饲料消耗": {
+   "+": "neg",
+   "-": "pos",
+   "0": null
+  },
+  "首首次命中一个敌人会令其": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "骨器同时最多可以赋予": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "髅原本所在方格会出现存续": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "魔法抗性": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  },
+  "魔法抗性和自然抗性便分别": {
+   "+": "pos",
+   "-": "neg",
+   "0": null
+  }
+ },
+ "source_kind": {
+  "那么击打和射击的兵器伤害": "game_text+fallback",
+  "目标的伤害增加": "game_text+fallback",
+  "Fire bolts deal": "game_text+fallback",
+  "对方圆": "game_text+fallback",
+  "损耗数量等于这一伤害的": "game_text+fallback",
+  "力当前剩余冷却时间便缩短": "game_text+fallback",
+  "Energy for": "game_text+fallback",
+  "燃烧持续": "game_text+fallback",
+  "令他们": "game_text+fallback",
+  "炎术法力下面": "game_text+fallback",
+  "个回合便提升": "game_text+fallback",
+  "Fire Resistance for": "game_text+fallback",
+  "Grants": "game_text",
+  "Pyromantic Power for": "game_text+fallback",
+  "对一个": "game_text+fallback",
+  "几率也会以": "game_text+fallback",
+  "同时对": "game_text+fallback",
+  "对一片": "game_text+fallback",
+  "自身": "game_text+fallback",
+  "个回合之内灼烧抗性": "game_text+fallback",
+  "的几率就会提升": "game_text+fallback",
+  "风暴存续": "game_text+fallback",
+  "个回合之内能力精力消耗便": "game_text+fallback",
+  "Abilities Energy Cost for": "game_text+fallback",
+  "炎术法力便": "game_text+fallback",
+  "灼烧抗性": "game_text+fallback",
+  "这个增益就立刻进入": "game_text+fallback",
+  "的时间便延长": "game_text+fallback",
+  "同时": "game_text+fallback",
+  "最多": "game_text",
+  "The effect stacks up to": "game_text+fallback",
+  "催动同系法咒会令方圆": "game_text+fallback",
+  "格以内所有敌人": "game_text+fallback",
+  "生命上限": "game_text",
+  "Fire Resistance and": "game_text+fallback",
+  "Max Health for": "game_text+fallback",
+  "如果": "game_text+fallback",
+  "范围扩大": "game_text+fallback",
+  "奇观几率便": "game_text+fallback",
+  "Pyromantic Power and": "game_text+fallback",
+  "Chance for each enemy within": "game_text+fallback",
+  "自身精力自动恢复便": "game_text+fallback",
+  "冷却时间": "game_text",
+  "失误几率": "game_text",
+  "下一道法咒的炎术法力便": "game_text+fallback",
+  "状态存续时间延长": "game_text+fallback",
+  "法力": "game_text",
+  "地术法力": "game_text+fallback",
+  "能力精力消耗": "game_text",
+  "最多可以同时召唤": "game_text+fallback",
+  "Only": "game_text+fallback",
+  "存续": "game_text+fallback",
+  "便延长": "game_text+fallback",
+  "物理抗性": "game_text+fallback",
+  "自然抗性": "game_text",
+  "魔法抗性": "game_text",
+  "出血抗性": "game_text",
+  "位移抗性": "game_text",
+  "控制抗性": "game_text",
+  "会令本效果存续时间延长": "game_text+fallback",
+  "层数每比": "game_text+fallback",
+  "身体部位状态恶化": "game_text+fallback",
+  "地术法力便": "game_text+fallback",
+  "Condition of its body parts by": "game_text+fallback",
+  "Vision grants": "game_text+fallback",
+  "格的范围内造成": "game_text+fallback",
+  "令受到影响的目标控制抗性": "game_text+fallback",
+  "Applies with": "game_text+fallback",
+  "Control Resistance and": "game_text",
+  "控制抗性便分别": "game_text+fallback",
+  "Applies enemies with": "game_text+fallback",
+  "原地不动可令自身": "game_text+fallback",
+  "个回合之内冷却时间": "game_text+fallback",
+  "暴击避免": "game_text",
+  "精力自动恢复": "game_text",
+  "Energy Restoration for": "game_text+fallback",
+  "便令自身": "game_text+fallback",
+  "个回合之内精力自动恢复": "game_text+fallback",
+  "咒当前的剩余冷却时间缩短": "game_text+fallback",
+  "令你可以同时召唤": "game_text+fallback",
+  "与你的距离不超过": "game_text+fallback",
+  "施法者所受伤害便": "game_text+fallback",
+  "失误伤害变化便": "game_text+fallback",
+  "所受伤害": "game_text",
+  "所消耗的精力减为": "game_text+fallback",
+  "Damage Taken and": "game_text",
+  "这个数值就提高": "game_text+fallback",
+  "当前所有所剩冷却时间延长": "game_text+fallback",
+  "的几率对其造成": "game_text+fallback",
+  "电击抗性": "game_text+fallback",
+  "的存续时间延长": "game_text+fallback",
+  "对受到影响的目标造成存续": "game_text+fallback",
+  "的目标获得": "game_text+fallback",
+  "在每个目标周围": "game_text+fallback",
+  "个回合之内电击抗性": "game_text+fallback",
+  "Shock Resistance for": "game_text+fallback",
+  "这个伤害便增加": "game_text+fallback",
+  "The spell's damage increases by": "game_text+fallback",
+  "球状闪电每回合会对方圆": "game_text+fallback",
+  "电会对邻近的目标额外造成": "game_text+fallback",
+  "然后跳到": "game_text+fallback",
+  "存续时间延长": "game_text+fallback",
+  "当前剩余的冷却时间便缩短": "game_text+fallback",
+  "成的伤害和硬直几率便增加": "game_text+fallback",
+  "Stun Chance by": "game_text+fallback",
+  "催动同系法咒会令": "game_text+fallback",
+  "击打和射击便会令目标": "game_text+fallback",
+  "那么角色": "game_text+fallback",
+  "个回合之内电术法力增强": "game_text+fallback",
+  "Vision grant": "game_text+fallback",
+  "Electromantic Power for": "game_text+fallback",
+  "造成的伤害就增加": "game_text+fallback",
+  "法力就会增强": "game_text+fallback",
+  "精力自动恢复就增加": "game_text+fallback",
+  "Max Energy and": "game_text+fallback",
+  "以令同系能力冷却时间缩短": "game_text+fallback",
+  "的敌人获得": "game_text+fallback",
+  "效果存续时间延长": "game_text+fallback",
+  "Vision by": "game_text+fallback",
+  "就会令受到影响的所有目标": "game_text+fallback",
+  "奇观几率就": "game_text+fallback",
+  "同系法咒击杀敌人会减少": "game_text+fallback",
+  "法咒精力消耗便会因此而": "game_text+fallback",
+  "冷却时间便会因此而": "game_text+fallback",
+  "Spells Energy Cost and": "game_text+fallback",
+  "Cooldowns Duration for": "game_text+fallback",
+  "个回合之内失误伤害减少": "game_text+fallback",
+  "失手几率": "game_text",
+  "失误伤害变化": "game_text+fallback",
+  "地不动会会令这个效果叠加": "game_text+fallback",
+  "层数为": "game_text+fallback",
+  "Reduces Backfire Damage by": "game_text+fallback",
+  "持续": "game_text+fallback",
+  "距离加成": "game_text",
+  "并且令其存续时间延长": "game_text+fallback",
+  "炎术法力": "game_text+fallback",
+  "奇观几率": "game_text+fallback",
+  "暴击几率": "game_text",
+  "电术法力": "game_text+fallback",
+  "反伤": "game_text+curated",
+  "秘术法力": "game_text+fallback",
+  "施法者在方圆": "game_text+fallback",
+  "个方格之内随机揭示": "game_text+fallback",
+  "法源存续": "game_text+fallback",
+  "法咒精力消耗": "game_text+fallback",
+  "方格会令这个效果叠加": "game_text+fallback",
+  "同时令其存续时间延长": "game_text+fallback",
+  "咒当前剩余的冷却时间减少": "game_text+fallback",
+  "Creates": "game_text+fallback",
+  "范围之内的幽魂和不死生灵": "game_text+fallback",
+  "个回合之内所受伤害": "game_text",
+  "Damage Taken for": "game_text+fallback",
+  "令目标获得存续": "game_text+fallback",
+  "原地不动会令失误几率": "game_text+fallback",
+  "应能力树的法咒失误几率便": "game_text+fallback",
+  "护甲穿透便": "game_text+fallback",
+  "Backfire Chance and": "game_text+fallback",
+  "而且": "game_text+fallback",
+  "之内魔法抗性或自然抗性便": "game_text+fallback",
+  "Energy and grants": "game_text+fallback",
+  "Magic or Nature Resistances for": "game_text+fallback",
+  "催动法咒会令自身": "game_text+fallback",
+  "个回合之内兵器伤害": "game_text",
+  "技能会令自身": "game_text+fallback",
+  "个回合之内法力": "game_text+fallback",
+  "Using spells grants": "game_text+fallback",
+  "Weapon Damage and": "game_text",
+  "Crit Chance for": "game_text+fallback",
+  "Magic Power and": "game_text",
+  "Backfire Chance for": "game_text+fallback",
+  "Both effects stack up to": "game_text+fallback",
+  "区域和实体存续时间延长": "game_text+fallback",
+  "令下一个道法咒的精力消耗": "game_text+fallback",
+  "Energy Cost and": "game_text+fallback",
+  "令所有法咒的冷却时间缩短": "game_text+fallback",
+  "时令视野范围之内所有敌人": "game_text+fallback",
+  "最多叠到": "game_text+fallback",
+  "奇观效果": "game_text+fallback",
+  "Nature Resistance for": "game_text+fallback",
+  "Miracle Chance and": "game_text+fallback",
+  "所有习得的法咒精力消耗便": "game_text+fallback",
+  "冷却时间便": "game_text+fallback",
+  "法力便": "game_text+fallback",
+  "奇观效果便": "game_text+fallback",
+  "Counter Chance for": "game_text+fallback",
+  "触发": "game_text+fallback",
+  "反击几率": "game_text",
+  "格挡几率": "game_text",
+  "闪躲几率": "game_text",
+  "出血几率": "game_text+fallback",
+  "会令这个效果存续时间延长": "game_text+fallback",
+  "则令其": "game_text+fallback",
+  "耐久高于": "game_text+fallback",
+  "么单手刀剑击打的出血几率": "game_text+fallback",
+  "如果高于": "game_text+fallback",
+  "那么兵器伤害": "game_text",
+  "那么暴击几率": "game_text+fallback",
+  "格挡时的耐久损耗减少": "game_text+fallback",
+  "令击打时的耐久损耗减少": "game_text+fallback",
+  "Grants sword strikes": "game_text+fallback",
+  "Durability is above": "game_text+fallback",
+  "Weapon Damage if it's above": "game_text+fallback",
+  "Crit Chance if it's above": "game_text+fallback",
+  "Durability loss by": "game_text+fallback",
+  "运用同一能力树的技能令": "game_text+fallback",
+  "技能的冷却时间缩短": "game_text+fallback",
+  "令单手刀剑击打的暴击几率": "game_text+fallback",
+  "兵器伤害": "game_text",
+  "精力吸取": "game_text+fallback",
+  "单手刀剑击打命中目标会令": "game_text+fallback",
+  "个回合之内出血几率": "game_text+fallback",
+  "护甲穿透": "game_text+curated",
+  "Sword hits grant": "game_text+fallback",
+  "Bleed Chance and": "game_text+fallback",
+  "Armor Penetration for": "game_text+fallback",
+  "令这项技能的冷却时间缩短": "game_text+fallback",
+  "令目标": "game_text+fallback",
+  "Max Block Power for": "game_text+fallback",
+  "肢体伤害": "game_text+fallback",
+  "目标生命相对生命上限每少": "game_text+fallback",
+  "者增益的具体数值分别等于": "game_text+fallback",
+  "Grants the strike": "game_text+fallback",
+  "树技能的剩余冷却时间缩短": "game_text+fallback",
+  "如果目标生命高于": "game_text+fallback",
+  "或低于": "game_text+fallback",
+  "那么单手斧击打的兵器伤害": "game_text+fallback",
+  "Grants axe strikes": "game_text+fallback",
+  "Health is either above": "game_text+fallback",
+  "个回合之内肢体伤害": "game_text+fallback",
+  "增益的具体数值分别等于": "game_text+fallback",
+  "Bodypart Damage for": "game_text+fallback",
+  "Accuracy and": "game_text",
+  "那么就会令目标": "game_text+fallback",
+  "个回合之内出血抗性": "game_text+fallback",
+  "Bleed Resistance and": "game_text+fallback",
+  "个技能的剩余冷却时间缩短": "game_text+fallback",
+  "Control Resistance for": "game_text+fallback",
+  "护甲破坏": "game_text+curated",
+  "能力当前剩余冷却时间缩短": "game_text+fallback",
+  "Move Resistance for": "game_text+fallback",
+  "击晕几率": "game_text+fallback",
+  "破衡几率": "game_text+fallback",
+  "状态延长": "game_text+fallback",
+  "那么会令目标": "game_text+fallback",
+  "个回合之内准度": "game_text",
+  "Fumble Chance and": "game_text+fallback",
+  "Weapon Damage for": "game_text+fallback",
+  "那么此类击打的肢体伤害": "game_text+fallback",
+  "Bodypart Damage and": "game_text+fallback",
+  "Grants mace strikes": "game_text+fallback",
+  "Daze Chance and": "game_text+fallback",
+  "就会令目标": "game_text+fallback",
+  "个回合之内控制抗性": "game_text",
+  "Crit Avoidance for": "game_text+fallback",
+  "能当前的剩余冷却时间缩短": "game_text+fallback",
+  "则对其造成": "game_text+fallback",
+  "暴击效果": "game_text+fallback",
+  "那么": "game_text+fallback",
+  "个回合之内反击几率": "game_text+fallback",
+  "Counter Chance and": "game_text",
+  "Bleed Chance for": "game_text+fallback",
+  "并令攻击者": "game_text+fallback",
+  "回合之内暴击几率": "game_text+fallback",
+  "首首次命中一个敌人会令其": "game_text+fallback",
+  "那么匕首的击打兵器伤害": "game_text+fallback",
+  "投掷匕首伤害": "game_text+fallback",
+  "Thrown daggers deal": "game_text+fallback",
+  "匕首击打造成伤害会令目标": "game_text+fallback",
+  "能力冷却时间": "game_text",
+  "匕首击打会令": "game_text+fallback",
+  "匕首反击的兵器伤害": "game_text+fallback",
+  "Dagger strikes grant": "game_text+fallback",
+  "Grants dagger counters": "game_text+fallback",
+  "匕首暴击会令自身": "game_text+fallback",
+  "个回合之内闪躲几率": "game_text",
+  "并令目标": "game_text+fallback",
+  "回合之内所受伤害": "game_text+fallback",
+  "Critical dagger strikes grant": "game_text+fallback",
+  "Dodge Chance for": "game_text+fallback",
+  "Bleed Resistance for": "game_text+fallback",
+  "技能的剩余冷却时间便缩短": "game_text+fallback",
+  "这个技能的冷却时间便缩短": "game_text+fallback",
+  "个回合之内格挡力量恢复便": "game_text+fallback",
+  "每次反击会令": "game_text+fallback",
+  "个回合之内暴击几率": "game_text+fallback",
+  "Block Power Recovery for": "game_text+fallback",
+  "准度": "game_text",
+  "击打破衡几率": "game_text+fallback",
+  "暴击几率便": "game_text+fallback",
+  "反击几率便": "game_text+fallback",
+  "所受伤害便": "game_text",
+  "然后令": "game_text+fallback",
+  "个回合之内技能精力消耗": "game_text+fallback",
+  "Max Energy and grant": "game_text+fallback",
+  "Skills Energy Cost for": "game_text+fallback",
+  "刀剑连续命中同一目标会令": "game_text+fallback",
+  "个回合之内破衡几率": "game_text+fallback",
+  "个回合之内格挡几率便": "game_text+fallback",
+  "格挡力量恢复便": "game_text+fallback",
+  "Stagger Chance and": "game_text+fallback",
+  "Each received strike grants": "game_text+fallback",
+  "Block Chance and": "game_text+fallback",
+  "个回合之内兵器伤害便": "game_text+fallback",
+  "当前的剩余冷却时间便缩短": "game_text+fallback",
+  "格挡力量上限": "game_text",
+  "格挡力量恢复": "game_text",
+  "击打击退几率": "game_text+fallback",
+  "失误几率和能力精力消耗便": "game_text+fallback",
+  "Fumble Chance for": "game_text+fallback",
+  "那么就令他们": "game_text+fallback",
+  "那么催动法咒会令": "game_text+fallback",
+  "都会令": "game_text+fallback",
+  "就会令": "game_text+fallback",
+  "合之内反击几率和法力分别": "game_text+fallback",
+  "催动法咒会令": "game_text+fallback",
+  "内闪躲几率和格挡几率分别": "game_text+fallback",
+  "Magic Power for": "game_text+fallback",
+  "Dodge Chance and": "game_text",
+  "Block Chance for": "game_text+fallback",
+  "长杖击杀敌人可令": "game_text+fallback",
+  "内暴击几率和奇观几率分别": "game_text+fallback",
+  "长杖暴击精力吸取": "game_text+fallback",
+  "当前所有剩余冷却时间缩短": "game_text+fallback",
+  "Crit Chance and": "game_text+fallback",
+  "Miracle Chance for": "game_text+fallback",
+  "Grants additional": "game_text+fallback",
+  "命中目标会令其": "game_text+fallback",
+  "就令自身": "game_text+fallback",
+  "那么这个技能的冷却时间": "game_text+fallback",
+  "那么命中目标会令其": "game_text+fallback",
+  "这个效果最多可以叠加": "game_text+fallback",
+  "那么令这个技能的冷却时间": "game_text+fallback",
+  "等于本次击打所造成伤害的": "game_text+fallback",
+  "Block Power for": "game_text+fallback",
+  "树的技能会令这个效果叠加": "game_text+fallback",
+  "但是会令效果存续时间缩短": "game_text+fallback",
+  "个效果的存续时间便会延长": "game_text+fallback",
+  "那么令这个技能冷却时间": "game_text+fallback",
+  "运用同一能力树的技能会令": "game_text+fallback",
+  "那么立刻恢复格挡力量上限": "game_text+fallback",
+  "Damaging counters replenish": "game_text+fallback",
+  "那么令": "game_text+fallback",
+  "Partial blocks grant": "game_text+fallback",
+  "就令": "game_text+fallback",
+  "个回合之内格挡力量恢复": "game_text+fallback",
+  "个回合之内精力自动恢复就": "game_text+fallback",
+  "Each received hit grants": "game_text+fallback",
+  "的伤害": "game_text+fallback",
+  "运用这两个技能会令目标": "game_text+fallback",
+  "距离": "game_text+curated",
+  "方圆": "game_text+fallback",
+  "Each enemy within": "game_text+fallback",
+  "这个技能距离": "game_text+fallback",
+  "令自身剩余的冷却时间缩短": "game_text+fallback",
+  "那么可以标记": "game_text+fallback",
+  "令受到伤害的目标": "game_text+fallback",
+  "就是": "game_text+fallback",
+  "限制移动几率": "game_text",
+  "击退几率": "game_text",
+  "技能精力消耗": "game_text+fallback",
+  "技能会令这个效果额外叠加": "game_text+fallback",
+  "这一下射程": "game_text+fallback",
+  "Takes a shot with": "game_text+fallback",
+  "令目标获得": "game_text+fallback",
+  "几率的影响分别由每个方格": "game_text+fallback",
+  "改为": "game_text+fallback",
+  "令小型障碍对准度的影响由": "game_text+fallback",
+  "减为": "game_text+fallback",
+  "令中型障碍的影响由": "game_text+fallback",
+  "邻近目标准度所受的影响由": "game_text+fallback",
+  "射击": "game_text+fallback",
+  "之外目标准度所受的影响由": "game_text+fallback",
+  "令投石兵器的准度": "game_text+fallback",
+  "加成就减少": "game_text+fallback",
+  "Grants sling shots": "game_text+fallback",
+  "的护甲穿透": "game_text+fallback",
+  "会令视野范围之内所有目标": "game_text+fallback",
+  "个回合之内物理抗性": "game_text+fallback",
+  "这个效果最多叠加": "game_text+fallback",
+  "那么还会令目标": "game_text+fallback",
+  "Armor Penetration and": "game_text+fallback",
+  "Vision with": "game_text",
+  "Physical Resistance for": "game_text+fallback",
+  "那么视野范围之内所有目标": "game_text+fallback",
+  "个回合之内准度就": "game_text",
+  "Each missed shot grants": "game_text+fallback",
+  "Accuracy for": "game_text+fallback",
+  "技能的准度": "game_text+fallback",
+  "并令": "game_text+fallback",
+  "目标生命每少": "game_text+fallback",
+  "次射击或投射的暴击效果就": "game_text+fallback",
+  "肢体伤害就": "game_text+fallback",
+  "护甲穿透就": "game_text+fallback",
+  "具体数值等于": "game_text+fallback",
+  "Grants all shots": "game_text+fallback",
+  "Penetration for each missing": "game_text+fallback",
+  "其进行的近身击打兵器伤害": "game_text+fallback",
+  "那么触发": "game_text+fallback",
+  "也会令目标获得": "game_text+fallback",
+  "组状态的效果存续时间延长": "game_text+fallback",
+  "令这一个技能距离": "game_text+fallback",
+  "Grants the skill": "game_text",
+  "存续时间便": "game_text+fallback",
+  "击杀敌人会令这个状态叠加": "game_text+fallback",
+  "Activates": "game_text+fallback",
+  "的几率令方圆": "game_text+fallback",
+  "存续时间就": "game_text+fallback",
+  "令这个技能的距离": "game_text+fallback",
+  "兵器伤害就": "game_text+fallback",
+  "暴击几率就": "game_text+fallback",
+  "暴击效果就": "game_text+fallback",
+  "生命吸取就": "game_text+fallback",
+  "精力吸取就": "game_text+fallback",
+  "令这组效果的存续时间延长": "game_text+fallback",
+  "个回合或者切换武器可令你": "game_text+fallback",
+  "技能准度": "game_text+fallback",
+  "会令目标": "game_text+fallback",
+  "个回合之内暴击避免": "game_text+fallback",
+  "坚忍": "game_text",
+  "的负面影响增强": "game_text+fallback",
+  "Crit Avoidance and": "game_text+fallback",
+  "Fortitude for": "game_text+fallback",
+  "的存续时间额外": "game_text+fallback",
+  "精力消耗": "game_text+fallback",
+  "会令": "game_text+fallback",
+  "生命每少": "game_text+fallback",
+  "就令兵器伤害": "game_text+fallback",
+  "就令能力精力消耗": "game_text+fallback",
+  "就令坚忍": "game_text+fallback",
+  "Accuracy for each missing": "game_text+fallback",
+  "Cooldowns Duration and": "game_text+fallback",
+  "如果目标护甲耐久大于": "game_text+fallback",
+  "发动的击打和射击护甲穿透": "game_text+fallback",
+  "或者护甲耐久为": "game_text+fallback",
+  "么命中目标会令其所受伤害": "game_text+fallback",
+  "Grants strikes and shots": "game_text+fallback",
+  "Armor Durability is above": "game_text+fallback",
+  "Armor Durability is": "game_text+fallback",
+  "本次击打兵器伤害": "game_text",
+  "有能力的剩余冷却时间缩短": "game_text+fallback",
+  "力当前剩余的冷却时间增加": "game_text+fallback",
+  "那么这个技能的距离": "game_text+fallback",
+  "Delivers a strike with": "game_text",
+  "Reduces all cooldowns by": "game_text+fallback",
+  "这个技能的距离便": "game_text+fallback",
+  "最短为": "game_text+fallback",
+  "那么自身": "game_text+fallback",
+  "反击几率和闪躲几率便分别": "game_text+fallback",
+  "令所有邻近敌人": "game_text+fallback",
+  "疼痛抗性": "game_text",
+  "如果当前生命少于": "game_text+fallback",
+  "那么立刻恢复生命上限": "game_text+fallback",
+  "Health is below": "game_text+fallback",
+  "变为": "game_text+fallback",
+  "自身闪躲几率每有": "game_text+fallback",
+  "魔法抗性和自然抗性便分别": "game_text+fallback",
+  "令所有邻近敌人失手几率": "game_text+fallback",
+  "Magic Resistance and": "game_text",
+  "Nature Resistance for each": "game_text+fallback",
+  "Full blocks and dodges grant": "game_text+fallback",
+  "Once per": "game_text+fallback",
+  "会令状态的存续时间延长": "game_text+fallback",
+  "其为目标的击打或射击准度": "game_text+fallback",
+  "会令这个技能兵器伤害": "game_text+fallback",
+  "那么令兵器伤害": "game_text+fallback",
+  "技能距离": "game_text+fallback",
+  "副手效果就": "game_text+fallback",
+  "Each successful hit grants": "game_text+fallback",
+  "Hands Efficiency for": "game_text+fallback",
+  "便立刻恢复格挡力量上限": "game_text+fallback",
+  "副手效果": "game_text+fallback",
+  "技能的剩余冷却时间缩短": "game_text+fallback",
+  "令这个技能的冷却时间缩短": "game_text+fallback",
+  "Power for each enemy within": "game_text+fallback",
+  "Each missing": "game_text+fallback",
+  "技能会令层数减": "game_text+fallback",
+  "那么双手可以再接连击打": "game_text+fallback",
+  "技能时的副手效果": "game_text+fallback",
+  "Main Hand Efficiency and": "game_text+fallback",
+  "生命少于": "game_text+fallback",
+  "生命低于": "game_text+fallback",
+  "还会令暴击几率": "game_text+fallback",
+  "Hands Efficiency and": "game_text+fallback",
+  "Crit Chance if Health is below": "game_text+fallback",
+  "Additionally grants": "game_text+fallback",
+  "Avoidance if Health is below": "game_text+fallback",
+  "所受伤害就": "game_text+fallback",
+  "个回合之内暴击几率就": "game_text+fallback",
+  "个回合之内反击几率就": "game_text+fallback",
+  "击杀敌人会令": "game_text+fallback",
+  "如果目标与你相距": "game_text+fallback",
+  "If the target is": "game_text+fallback",
+  "向一个": "game_text+fallback",
+  "技能会令本次击打兵器伤害": "game_text+fallback",
+  "Delivers a strike to a": "game_text+fallback",
+  "个回合之内位移抗性": "game_text+fallback",
+  "技能的剩余冷却时间就缩短": "game_text+fallback",
+  "原地不动会令": "game_text+fallback",
+  "那么这类击打的护甲穿透": "game_text+fallback",
+  "令兵器伤害": "game_text+fallback",
+  "长杆刃器暴击肢体伤害": "game_text+fallback",
+  "害数值等于目标生命上限的": "game_text+fallback",
+  "Grants critical spear strikes": "game_text+fallback",
+  "令其": "game_text+fallback",
+  "器击打邻近目标的击退几率": "game_text+fallback",
+  "Physical Resistance and": "game_text+fallback",
+  "硬直几率": "game_text+fallback",
+  "目标所有能力冷却时间延长": "game_text+fallback",
+  "击打击晕几率": "game_text+fallback",
+  "打会令效果的存续时间延长": "game_text+fallback",
+  "令这个效果的存续时间延长": "game_text+fallback",
+  "同时第一次击打会令目标": "game_text+fallback",
+  "个回合之内钝击抗性": "game_text+fallback",
+  "Crushing Resistance for": "game_text+fallback",
+  "本次击打距离": "game_text+fallback",
+  "个回合的精力自动恢复": "game_text+fallback",
+  "如果目标护甲耐久高于": "game_text+fallback",
+  "棒击打的护甲破坏": "game_text+fallback",
+  "或护甲耐久低于": "game_text+fallback",
+  "令双手锤棒击打的肢体伤害": "game_text+fallback",
+  "Grants two-handed mace strikes": "game_text+fallback",
+  "Armor Durability is below": "game_text+fallback",
+  "个回合之内硬直几率": "game_text+fallback",
+  "Stun Chance for": "game_text+fallback",
+  "那么令目标": "game_text+fallback",
+  "回合之内位移抗性": "game_text+fallback",
+  "如果目标距你": "game_text+fallback",
+  "或生命每少": "game_text+fallback",
+  "的伤害等于目标生命上限的": "game_text+fallback",
+  "本次击打击退几率": "game_text+fallback",
+  "那么命中目标就会令其": "game_text+fallback",
+  "双手斧命中目标会令其": "game_text+fallback",
+  "个回合之内格挡几率": "game_text+fallback",
+  "如果目标格挡几率为": "game_text+fallback",
+  "手斧击打这个目标会令自身": "game_text+fallback",
+  "个回合之内失手几率": "game_text+fallback",
+  "If the target's Block Chance is": "game_text+fallback",
+  "如果目标生命多于": "game_text+fallback",
+  "么令双手斧的击打肢体伤害": "game_text+fallback",
+  "如果目标生命少于": "game_text+fallback",
+  "么令双手斧击打的兵器伤害": "game_text+fallback",
+  "Grants two-handed axe strikes": "game_text+fallback",
+  "Health is above": "game_text+fallback",
+  "双手斧暴击会令你": "game_text+fallback",
+  "同时令目标": "game_text+fallback",
+  "便会令": "game_text+fallback",
+  "同一技能树技能的冷却时间": "game_text+fallback",
+  "那么令自身": "game_text+fallback",
+  "还有": "game_text+fallback",
+  "浆果和药草有": "game_text+fallback",
+  "令疲劳抗性": "game_text+fallback",
+  "的经验收益增益": "game_text+fallback",
+  "With": "game_text+fallback",
+  "受影响身体部位的状态恶化": "game_text+fallback",
+  "出血抗性在": "game_text+fallback",
+  "个回合之内": "game_text+fallback",
+  "便令疼痛": "game_text+fallback",
+  "抗性增益的存续时间延长为": "game_text+fallback",
+  "Bleed Resistance bonus to": "game_text+fallback",
+  "精神和消解疲劳的效果提升": "game_text+fallback",
+  "精力上限": "game_text",
+  "疲劳抗性": "game_text+curated",
+  "疲劳变化": "game_text+fallback",
+  "疼痛增幅数值等于": "game_text+fallback",
+  "视野半径上限": "game_text+fallback",
+  "令视野": "game_text+fallback",
+  "到其他生物声响的几率提高": "game_text+fallback",
+  "那么会永久令其所受伤害": "game_text+fallback",
+  "都有": "game_text+fallback",
+  "令击打和射击的准度": "game_text+fallback",
+  "令失手几率": "game_text+fallback",
+  "受到的所有击打和射击准度": "game_text",
+  "角色的暴击避免每有": "game_text+fallback",
+  "的所有击打和射击暴击效果": "game_text+fallback",
+  "令闪躲几率": "game_text+fallback",
+  "Also grants them": "game_text+fallback",
+  "Crit Efficiency for each": "game_text+fallback",
+  "劳导致负面状态的临界提高": "game_text+fallback",
+  "最高可以提至": "game_text+fallback",
+  "饥饿和口渴加剧的速度减缓": "game_text+fallback",
+  "饮食斗志自动降低的速度": "game_text+fallback",
+  "令疼痛抗性": "game_text+fallback",
+  "情境神智变化": "game_text+fallback",
+  "疼痛变化": "game_text",
+  "情境斗志变化": "game_text",
+  "Fatigue by": "game_text+fallback",
+  "Hunger and Thirst by": "game_text+fallback",
+  "Diet Morale loss by": "game_text+fallback",
+  "的存续时间缩短": "game_text+fallback",
+  "对生命恢复上限的影响减弱": "game_text+fallback",
+  "令免疫消解迷醉的效果增强": "game_text+fallback",
+  "令生命上限": "game_text+fallback",
+  "生命自动恢复": "game_text+fallback",
+  "迷醉变化": "game_text",
+  "Max Health Threshold by": "game_text+fallback",
+  "Intoxication by": "game_text+fallback",
+  "Health Restoration and": "game_text+fallback",
+  "受到的击打和射击肢体伤害": "game_text+fallback",
+  "那么这个技能剩余冷却时间": "game_text+fallback",
+  "每个身体部位的防护": "game_text+fallback",
+  "不少于": "game_text+fallback",
+  "或闪躲几率": "game_text+fallback",
+  "Block Chance or": "game_text+fallback",
+  "回合之内兵器伤害": "game_text+fallback",
+  "人上述减益的存续时间额外": "game_text+fallback",
+  "Max Energy and grants": "game_text+fallback",
+  "令其反击几率下一回合之前": "game_text+fallback",
+  "那么令这个技能的距离": "game_text",
+  "还会令": "game_text+fallback",
+  "个回合之内冷却时间缩短": "game_text+fallback",
+  "闪躲几率就": "game_text+fallback",
+  "并且攻击方": "game_text+fallback",
+  "的所有击打和射击护甲穿透": "game_text+fallback",
+  "耐久的损耗速度": "game_text+fallback",
+  "令维修工具的维修效果提升": "game_text+fallback",
+  "身上每一件耐久高于": "game_text+fallback",
+  "会令相应身体部位出血抗性": "game_text+fallback",
+  "也会令暴击避免": "game_text+fallback",
+  "Durability above": "game_text+fallback",
+  "下一回合开始之前所受伤害": "game_text+fallback",
+  "内闪躲几率和反击几率分别": "game_text+fallback",
+  "能力树技能的冷却时间缩短": "game_text+fallback",
+  "那么原地不动会令": "game_text+fallback",
+  "个回合之内能力精力消耗": "game_text+fallback",
+  "Abilities Energy Cost and": "game_text",
+  "All effects stack up to": "game_text+fallback",
+  "会令相应身体部位的防护": "game_text+fallback",
+  "令相应身体部位的出血抗性": "game_text+fallback",
+  "还会令闪躲几率": "game_text+fallback",
+  "重型防具的耐久损耗速度就": "game_text+fallback",
+  "精力自动恢复就": "game_text+fallback",
+  "令两个目标": "game_text+fallback",
+  "对目标施加存续": "game_text+fallback",
+  "与中心相距": "game_text+fallback",
+  "恢复幅度等于所受伤害的": "game_text+fallback",
+  "则令存续时间缩短": "game_text+fallback",
+  "Replenishes Energy for": "game_text+fallback",
+  "格范围之内的": "game_text+fallback",
+  "个敌人分别射出": "game_text+fallback",
+  "位置周围": "game_text+fallback",
+  "个回合之内的准度": "game_text+fallback",
+  "个回合之内的施法距离": "game_text+fallback",
+  "个回合之内的失误伤害变化": "game_text+fallback",
+  "Backfire Damage Change for": "game_text+fallback",
+  "令这道法咒的冷却时间缩短": "game_text+fallback",
+  "续期间所损失生命和精力的": "game_text+fallback",
+  "个效果存续期间所受伤害的": "game_text+fallback",
+  "个回合之内魔法抗性": "game_text+fallback",
+  "秘术抗性": "game_text+fallback",
+  "Arcane Resistance for": "game_text+fallback",
+  "个回合之内距离": "game_text+fallback",
+  "伤害": "game_text+fallback",
+  "值等于实体自身耐久上限的": "game_text+fallback",
+  "Damage Reflection for": "game_text+fallback",
+  "而且下一次催动精力消耗": "game_text+fallback",
+  "个实体都会令失误伤害变化": "game_text+fallback",
+  "Backfire Damage Change and": "game_text+fallback",
+  "而是触发": "game_text+fallback",
+  "Damage and": "game_text+fallback",
+  "会射出": "game_text+fallback",
+  "令目标恢复生命上限": "game_text+fallback",
+  "令其接下来": "game_text+fallback",
+  "生命吸取": "game_text",
+  "Replenishes": "game_text+fallback",
+  "对目标降下存续": "game_text+fallback",
+  "治疗效果": "game_text",
+  "机令一个身体部位状态恶化": "game_text+fallback",
+  "射击或运用能力会令层数": "game_text+fallback",
+  "令其恢复生命上限": "game_text+fallback",
+  "活的不死生灵护甲耐久变为": "game_text+fallback",
+  "且所有能力冷却时间缩短": "game_text+fallback",
+  "Armor Durability is set to": "game_text+fallback",
+  "立刻恢复生命上限": "game_text+fallback",
+  "邪术抗性": "game_text",
+  "在目标方格形成存续": "game_text+fallback",
+  "Energy to the caster for": "game_text+fallback",
+  "幅度等于所造成伤害数值的": "game_text+fallback",
+  "Undead within Vision for": "game_text+fallback",
+  "害数值不超过其生命上限的": "game_text+fallback",
+  "咒法目标仅限生命少于": "game_text+fallback",
+  "效果存续": "game_text+fallback",
+  "令这个友方所受伤害": "game_text+fallback",
+  "将施法者所受伤害的": "game_text+fallback",
+  "幅度等于友方所受伤害的": "game_text+fallback",
+  "Undead ally for": "game_text+fallback",
+  "Grants the ally": "game_text+fallback",
+  "Transfers": "game_text+fallback",
+  "射击失手几率": "game_text+fallback",
+  "幽魂消失": "game_text+fallback",
+  "那么令幽魂的生命上限提高": "game_text+fallback",
+  "并令其暴击几率永久": "game_text+fallback",
+  "Wraith disappears for": "game_text+fallback",
+  "Wraith's Max Health by": "game_text+fallback",
+  "并令其": "game_text+fallback",
+  "回合之内失手几率": "game_text+fallback",
+  "当前剩余冷却时间": "game_text+fallback",
+  "法者当前所有冷却时间缩短": "game_text+fallback",
+  "一个友方不死生灵生命上限": "game_text+fallback",
+  "剩余冷却时间": "game_text+fallback",
+  "恢复幅度等于所耗精力的": "game_text+fallback",
+  "Steals": "game_text+fallback",
+  "Health for": "game_text+fallback",
+  "令方圆": "game_text+fallback",
+  "令他们恢复生命上限": "game_text+fallback",
+  "复活的不死生灵护甲耐久为": "game_text+fallback",
+  "Undead within": "game_text+fallback",
+  "近方格的所有敌方失手几率": "game_text+fallback",
+  "每回合有": "game_text+fallback",
+  "Each turn with": "game_text+fallback",
+  "最多同时存在": "game_text+fallback",
+  "生命第一次降到": "game_text+fallback",
+  "获得": "game_text+fallback",
+  "When Health drops below": "game_text+fallback",
+  "移到其他方格会令": "game_text+fallback",
+  "Moving to other tiles grants": "game_text+fallback",
+  "所有友方立刻恢复生命上限": "game_text+fallback",
+  "就令自身所受伤害": "game_text+fallback",
+  "每个周期的第": "game_text+fallback",
+  "不死生灵立刻恢复生命上限": "game_text+fallback",
+  "同时令视野之内所有敌人": "game_text+fallback",
+  "令其立刻恢复生命上限": "game_text+fallback",
+  "活的不死生灵防具耐久变为": "game_text+fallback",
+  "而且所有能力冷却时间缩短": "game_text+fallback",
+  "Unholy Resistance for": "game_text+fallback",
+  "自身便法力": "game_text+fallback",
+  "Vision permanently grants": "game_text+fallback",
+  "复活方圆": "game_text+fallback",
+  "令他们立刻恢复生命上限": "game_text+fallback",
+  "还令他们": "game_text+fallback",
+  "所有能力当前冷却时间缩短": "game_text+fallback",
+  "缩短幅度为": "game_text+fallback",
+  "Restless within": "game_text+fallback",
+  "令相应身体部位的状态改善": "game_text+fallback",
+  "同时立刻恢复生命上限": "game_text+fallback",
+  "会令所有能力冷却时间增加": "game_text+fallback",
+  "使用物品或投掷物品会造成": "game_text+fallback",
+  "如果生命目前为": "game_text+fallback",
+  "咒法则会令生命上限在后续": "game_text+fallback",
+  "If Health is at": "game_text+fallback",
+  "么所有剩余的冷却时间缩短": "game_text+fallback",
+  "令受到的所有击打生命吸取": "game_text+fallback",
+  "上述效果的存续时间就延长": "game_text+fallback",
+  "Grants all received strikes": "game_text+fallback",
+  "对其催动法咒会令自身法力": "game_text+fallback",
+  "同时所有冷却时间缩短": "game_text+fallback",
+  "施法者的生命上限永久提升": "game_text+fallback",
+  "还会恢复生命上限": "game_text+fallback",
+  "Max Health by": "game_text+fallback",
+  "最多可以同时存在": "game_text+fallback",
+  "同时触发存续": "game_text+fallback",
+  "击打目标会令自身获得": "game_text+fallback",
+  "那么令其": "game_text+fallback",
+  "令双方获得": "game_text+fallback",
+  "那么存续": "game_text+fallback",
+  "之内所有变节信徒获得存续": "game_text+fallback",
+  "Proselytes within Vision for": "game_text+fallback",
+  "护甲穿透为": "game_text+fallback",
+  "引来方圆": "game_text+fallback",
+  "本次护甲穿透为": "game_text+fallback",
+  "并令敌方": "game_text+fallback",
+  "情境神智": "game_text",
+  "发现敌人会令这个技能进入": "game_text+fallback",
+  "Proselytes within": "game_text+fallback",
+  "向周围半径": "game_text+fallback",
+  "本次击打硬直几率": "game_text+fallback",
+  "Stun Chance and": "game_text+fallback",
+  "本次击打破衡几率": "game_text+fallback",
+  "令自身接下来": "game_text+fallback",
+  "回合之内闪躲几率": "game_text+fallback",
+  "然后触发存续": "game_text+fallback",
+  "令自身闪躲几率": "game_text+fallback",
+  "本次击打暴击效果": "game_text+fallback",
+  "损失生命上限": "game_text+fallback",
+  "则令目标": "game_text+fallback",
+  "回合之内邪术抗性": "game_text+fallback",
+  "目标所处方格形成一滩存续": "game_text+fallback",
+  "而且自身": "game_text+fallback",
+  "回合内邪术抗性": "game_text+fallback",
+  "而是立刻恢复生命上限": "game_text+fallback",
+  "Loses": "game_text+fallback",
+  "而是令其立刻恢复生命上限": "game_text+fallback",
+  "邻近方格分别出现一滩存续": "game_text+fallback",
+  "同时令自身": "game_text+fallback",
+  "Permanently grants": "game_text+fallback",
+  "每回合就损失生命上限": "game_text+fallback",
+  "内的随机一个友方获得存续": "game_text+fallback",
+  "Vision for": "game_text+fallback",
+  "其兵器伤害便": "game_text+fallback",
+  "准度便": "game_text+fallback",
+  "生命上限和兵器伤害就分别": "game_text+fallback",
+  "命中敌方就会令其": "game_text+fallback",
+  "Max Health and": "game_text+fallback",
+  "每个周期第": "game_text+fallback",
+  "次击打暴击几率": "game_text+fallback",
+  "么令视野之内所有友方获得": "game_text+fallback",
+  "所造成伤害数值的": "game_text+fallback",
+  "Health to the summoner for": "game_text+fallback",
+  "触手所受伤害的": "game_text+fallback",
+  "本体所受伤害的": "game_text+fallback",
+  "本体的生命上限会降低": "game_text+fallback",
+  "而且所受伤害永久": "game_text+fallback",
+  "自身兵器伤害便": "game_text+fallback",
+  "If an enemy within": "game_text+fallback",
+  "的几率令目标": "game_text+fallback",
+  "向方圆": "game_text+fallback",
+  "本次击打击晕几率": "game_text+fallback",
+  "并有": "game_text+fallback",
+  "的几率造成": "game_text+fallback",
+  "所有冷却时间就缩短": "game_text+fallback",
+  "本次击打灼烧伤害": "game_text+fallback",
+  "造成的疼痛增加": "game_text+fallback",
+  "并令烙铁信徒生命吸取永久": "game_text+fallback",
+  "Brander": "game_text+fallback",
+  "方格和其后的三格产生存续": "game_text+fallback",
+  "则其自身灼烧抗性": "game_text+fallback",
+  "立刻恢复自身生命上限": "game_text+fallback",
+  "信徒每回合就恢复生命上限": "game_text+fallback",
+  "令一个友方获得": "game_text+fallback",
+  "自身所受伤害的": "game_text+fallback",
+  "自身所有冷却时间缩短": "game_text+fallback",
+  "投射伤害的": "game_text+fallback",
+  "本次反伤有": "game_text+fallback",
+  "Reflects": "game_text+fallback",
+  "上述所有加成最多叠加": "game_text+fallback",
+  "All bonuses stack up to": "game_text+fallback",
+  "令自身": "game_text+fallback",
+  "同时标记一条": "game_text+fallback",
+  "几率": "game_text+fallback",
+  "这个技能运用": "game_text+fallback",
+  "Marks a": "game_text+fallback",
+  "Strikes against allies receive": "game_text+fallback",
+  "The skill can be used": "game_text+fallback",
+  "同时令施法者法力永久": "game_text+fallback",
+  "随机一个身体部位状态恶化": "game_text+fallback",
+  "令视野之内所有友方法力": "game_text+fallback",
+  "就立刻恢复生命上限": "game_text+fallback",
+  "同时所有冷却时间永久": "game_text+fallback",
+  "Health and permanently grants": "game_text+fallback",
+  "本次击打准度": "game_text+fallback",
+  "位移抗性和控制抗性分别": "game_text+fallback",
+  "恢复的": "game_text+fallback",
+  "个回合损失的生命不会超过": "game_text+fallback",
+  "每当损失": "game_text+fallback",
+  "Each lost": "game_text+fallback",
+  "耐久是凶煞生命上限的": "game_text+fallback",
+  "但治疗效果": "game_text+fallback",
+  "Abomination with": "game_text+fallback",
+  "本次击打兵器伤害就": "game_text+fallback",
+  "本次击打的肢体伤害就": "game_text+fallback",
+  "当前剩余的冷却时间就缩短": "game_text+fallback",
+  "Pain and with": "game_text+fallback",
+  "Reduces the skill's cooldown by": "game_text+fallback",
+  "个回合之内治疗效果": "game_text+fallback",
+  "Healing Efficiency and": "game_text",
+  "Pain Resistance for": "game_text+fallback",
+  "所有正面效果存续时间延长": "game_text+fallback",
+  "所有负面效果存续时间延长": "game_text+fallback",
+  "所有正面效果缩短": "game_text+fallback",
+  "护甲耐久降为": "game_text+fallback",
+  "对邻近所有方格造成": "game_text+fallback",
+  "随后立刻恢复生命上限": "game_text+fallback",
+  "When Armor Durability reaches": "game_text+fallback",
+  "Then replenishes": "game_text+fallback",
+  "所有冷却时间缩短": "game_text+fallback",
+  "还会令治疗效果永久": "game_text+fallback",
+  "失手几率永久": "game_text+fallback",
+  "所受伤害永久": "game_text+fallback",
+  "击打有": "game_text+fallback",
+  "Strikes have": "game_text+fallback",
+  "就获得存续": "game_text+fallback",
+  "那么效果存续": "game_text+fallback",
+  "击杀敌人会令层数减": "game_text+fallback",
+  "会令这个效果延长": "game_text+fallback",
+  "获得存续": "game_text+fallback",
+  "标记一个": "game_text+fallback",
+  "而且这些伤害每回合提高": "game_text+fallback",
+  "会令其自身和施法者": "game_text+fallback",
+  "个回合之内生命吸取": "game_text+fallback",
+  "和邻近的两个方格产生存续": "game_text+fallback",
+  "最多额外击打": "game_text+fallback",
+  "视野上限": "game_text+curated",
+  "Nakkatar": "game_text+fallback",
+  "生命首次降到": "game_text+fallback",
+  "个回合之内邪术抗性": "game_text+fallback",
+  "发现敌人会令这项能力进入": "game_text+fallback",
+  "在目标周围": "game_text+fallback",
+  "令一个友方获得存续": "game_text+fallback",
+  "亡时会随机在邻近方格产生": "game_text+fallback",
+  "滩存续": "game_text+fallback",
+  "刻恢复生命上限和精力上限": "game_text+fallback",
+  "Using abilities with": "game_text+fallback",
+  "值分别等于自身剩余生命的": "game_text+fallback",
+  "时在所有邻近方格留下存续": "game_text+fallback",
+  "在血中会立刻恢复生命上限": "game_text+fallback",
+  "The damage dealt is equal to": "game_text+fallback",
+  "而且有": "game_text+fallback",
+  "投射失手几率": "game_text+fallback",
+  "幅度等于": "game_text+fallback",
+  "效果影响或生命降到": "game_text+fallback",
+  "造成": "game_text+fallback",
+  "就有": "game_text+fallback",
+  "Delivers an attack with": "game_text+fallback",
+  "Hitting the leg with": "game_text+fallback",
+  "Hitting the arm with": "game_text+fallback",
+  "这个技能当前冷却时间增加": "game_text+fallback",
+  "那么狗对其造成的伤害": "game_text+fallback",
+  "Dogs": "game_text+fallback",
+  "之内所有友方的兵器伤害便": "game_text+fallback",
+  "Vision": "game_text+fallback",
+  "令视野之内所有友方恢复": "game_text+fallback",
+  "而且获得": "game_text+fallback",
+  "技能剩余的冷却时间便缩短": "game_text+fallback",
+  "剩余的冷却时间每回合缩短": "game_text+fallback",
+  "一个友方立刻恢复生命上限": "game_text+fallback",
+  "效果延长": "game_text+fallback",
+  "令所有冷却时间缩短": "game_text+fallback",
+  "前所有剩余的冷却时间缩短": "game_text+fallback",
+  "同时令他们": "game_text+fallback",
+  "回合之内精力自动恢复速度": "game_text+fallback",
+  "Energy Restoration and": "game_text+fallback",
+  "技能当前剩余冷却时间缩短": "game_text+fallback",
+  "目标和其周围": "game_text+fallback",
+  "技能当前剩余冷却时间延长": "game_text+fallback",
+  "上述两项减益就增加": "game_text+fallback",
+  "并令亡蜂群的伤害": "game_text+fallback",
+  "Health increases the penalty by": "game_text+fallback",
+  "Deathstinger Swarm": "game_text+fallback",
+  "力当前剩余的冷却时间缩短": "game_text+fallback",
+  "召唤": "game_text+fallback",
+  "Every": "game_text+fallback",
+  "就增加": "game_text+fallback",
+  "每回合恢复": "game_text+fallback",
+  "久会令魔法抗性和自然抗性": "game_text+fallback",
+  "Each turn restores": "game_text+fallback",
+  "Armor Durability grants": "game_text+fallback",
+  "同时恢复": "game_text+fallback",
+  "Wolves within": "game_text+fallback",
+  "令视野内每一匹狼闪躲几率": "game_text+fallback",
+  "视野内每一匹野狗闪躲几率": "game_text+fallback",
+  "疼痛上限": "game_text+fallback",
+  "Damage while Health is below": "game_text+fallback",
+  "具体数值分别为": "game_text+fallback",
+  "本次击打肢体伤害": "game_text+fallback",
+  "则立刻恢复自身生命上限": "game_text+fallback",
+  "那么立刻恢复自身生命上限": "game_text+fallback",
+  "回合内的生命吸取": "game_text+fallback",
+  "Life Drain and": "game_text+fallback",
+  "并令鼠群的伤害": "game_text+fallback",
+  "Rat Swarm": "game_text+fallback",
+  "并令蝙蝠的伤害": "game_text+fallback",
+  "Bat Swarm": "game_text+fallback",
+  "回合内的闪躲几率": "game_text+fallback",
+  "伤害不少于目标生命上限的": "game_text+fallback",
+  "的几率对目标造成": "game_text+fallback",
+  "刻令一个友方恢复生命上限": "game_text+fallback",
+  "同时令其获得": "game_text+fallback",
+  "所有友方所有冷却时间缩短": "game_text+fallback",
+  "而会令它们获得": "game_text+fallback",
+  "受到": "game_text+fallback",
+  "移动到半径": "game_text+fallback",
+  "个回合之内护甲穿透": "game_text+fallback",
+  "Receiving": "game_text+fallback",
+  "Damage for": "game_text+fallback",
+  "中就会令所有冷却时间缩短": "game_text+fallback",
+  "同时令": "game_text+fallback",
+  "个回合内的暴击几率": "game_text+fallback",
+  "那么命中的身体部位": "game_text+fallback",
+  "个回合之内防护": "game_text+fallback",
+  "Protection for": "game_text+fallback",
+  "那么对其的击打准度": "game_text+fallback",
+  "看到敌人会令这个技能进入": "game_text+fallback",
+  "的冷却时间缩短": "game_text+fallback",
+  "治疗效果便": "game_text+fallback",
+  "生命相对自身生命上限每少": "game_text+fallback",
+  "令当前地点所有食岩虫伤害": "game_text+fallback",
+  "Rockeaters on the location": "game_text+fallback",
+  "未在": "game_text+fallback",
+  "个回合之内的闪避几率": "game_text+fallback",
+  "周围": "game_text+fallback",
+  "的冷却时间": "game_text+fallback",
+  "也会令蛛母暴击几率": "game_text+fallback",
+  "Each Spiderling within": "game_text+fallback",
+  "如果自身或目标周围": "game_text+fallback",
+  "If there's an open flame within": "game_text+fallback",
+  "标记一条": "game_text+fallback",
+  "对命中的第一个目标造成": "game_text+fallback",
+  "Archon for": "game_text+fallback",
+  "最远": "game_text+fallback",
+  "标记方圆": "game_text+fallback",
+  "并令这些目标获得存续": "game_text+fallback",
+  "Marks a large area within": "game_text+fallback",
+  "合在标记区域产生一滩存续": "game_text+fallback",
+  "令所有僵尸恢复生命上限": "game_text+fallback",
+  "并令他们": "game_text+fallback",
+  "回合内的伤害": "game_text+fallback",
+  "Restless and grants them": "game_text+fallback",
+  "则伤害增加": "game_text+fallback",
+  "则增加": "game_text+fallback",
+  "或有": "game_text+fallback",
+  "然后触发": "game_text+fallback",
+  "并且": "game_text+fallback",
+  "回合内所受伤害": "game_text+fallback",
+  "那么本次击打伤害": "game_text+fallback",
+  "护甲穿透效果为": "game_text+fallback",
+  "的方格和周围很大范围内的": "game_text+fallback",
+  "Marks an enemy's tile and": "game_text+fallback",
+  "令曼狄科立刻恢复生命上限": "game_text+fallback",
+  "髅原本所在方格会出现存续": "game_text+fallback",
+  "或者获得": "game_text+fallback",
+  "可以额外获得": "game_text+fallback",
+  "的赏金和": "game_text+fallback",
+  "每交": "game_text+fallback",
+  "还能获得": "game_text+fallback",
+  "个回合之内的所得经验": "game_text+fallback",
+  "Reward and": "game_text+fallback",
+  "Also grants": "game_text+fallback",
+  "Stat Point and": "game_text+fallback",
+  "Weapon Damage for every": "game_text+fallback",
+  "Killing enemies grants": "game_text+fallback",
+  "Experience Gain for": "game_text+fallback",
+  "的触发频率便提高": "game_text+fallback",
+  "最高": "game_text+fallback",
+  "面精神状态的存续时间延长": "game_text+fallback",
+  "而且令这些状态的效果增强": "game_text+fallback",
+  "正面精神状态的效果": "game_text+fallback",
+  "Psyche states by": "game_text+fallback",
+  "每当你第一次扫清": "game_text+fallback",
+  "这个几率便提高": "game_text+fallback",
+  "经验收益便": "game_text+fallback",
+  "每当有": "game_text+fallback",
+  "便获得": "game_text+fallback",
+  "能力树每习得": "game_text+fallback",
+  "Increases this chance by": "game_text+fallback",
+  "Stat Point for every": "game_text+fallback",
+  "Ability Point for every": "game_text+fallback",
+  "相应法系的法力便": "game_text+fallback",
+  "失误几率便": "game_text+fallback",
+  "所获经验便": "game_text+fallback",
+  "School and": "game_text+fallback",
+  "每个回合有": "game_text+fallback",
+  "Each turn has": "game_text+fallback",
+  "视野之内所有敌人所受伤害": "game_text+fallback",
+  "声誉收益便": "game_text+fallback",
+  "同时还会获得": "game_text+fallback",
+  "Reputation Gain and": "game_text+fallback",
+  "经验收益和疲劳抗性便": "game_text+fallback",
+  "立刻触发": "game_text+fallback",
+  "那么就是": "game_text+fallback",
+  "任一能力树每习得": "game_text+fallback",
+  "总计最多": "game_text+fallback",
+  "Experience Gain and": "game_text+fallback",
+  "兵器伤害便": "game_text+fallback",
+  "生命上限便": "game_text+fallback",
+  "上述所有效果最多叠加": "game_text+fallback",
+  "发负面效果的临界值便提高": "game_text+fallback",
+  "击杀动物经验收益": "game_text+fallback",
+  "Killing animals grants": "game_text+fallback",
+  "移向其他方格就有": "game_text+fallback",
+  "车队在周围": "game_text+fallback",
+  "While the Caravan is within": "game_text+fallback",
+  "交易划算程度": "game_text",
+  "林声誉同步提升的幅度增大": "game_text+fallback",
+  "其他法系的失误几率就会": "game_text+fallback",
+  "这两个几率每个回合升高": "game_text+fallback",
+  "还会立刻恢复": "game_text+fallback",
+  "如果情境斗志变为": "game_text+fallback",
+  "Morale is reduced to": "game_text+fallback",
+  "击打和射箭会令失手几率": "game_text+fallback",
+  "催动法咒会令失误几率": "game_text+fallback",
+  "技能冷却时间延长": "game_text+fallback",
+  "Strikes and shots grant": "game_text+fallback",
+  "到影响的身体部位状态恶化": "game_text+fallback",
+  "Condition by": "game_text+fallback",
+  "电系法咒失误几率便": "game_text+fallback",
+  "会令这个效果持续时间延长": "game_text+fallback",
+  "目标一个身体部位状态恶化": "game_text+fallback",
+  "击或运用能力会令效果层数": "game_text+fallback",
+  "身受到的所有击打生命吸取": "game_text+fallback",
+  "这个效果的存续时间就延长": "game_text+fallback",
+  "但会令效果的存续时间缩短": "game_text+fallback",
+  "都会令效果存续时间延长": "game_text+fallback",
+  "击打会令效果存续时间延长": "game_text+fallback",
+  "射击会令效果存续时间延长": "game_text+fallback",
+  "恢复生命上限": "game_text+fallback",
+  "击杀敌人会令这个效果增加": "game_text+fallback",
+  "令当前所有冷却时间缩短": "game_text+fallback",
+  "如果当前生力少于": "game_text+fallback",
+  "立刻恢复生力上限": "game_text+fallback",
+  "生命降到": "game_text+fallback",
+  "Health drops below": "game_text+fallback",
+  "不动会令效果存续时间延长": "game_text+fallback",
+  "技能会令效果层数减": "game_text+fallback",
+  "狗造成的伤害": "game_text+fallback",
+  "并令其存续时间延长": "game_text+fallback",
+  "受的所有击打和射击的准度": "game_text+fallback",
+  "肢体伤害都会": "game_text+fallback",
+  "施法者当前的冷却时间缩短": "game_text+fallback",
+  "失误会令所有能力当前增加": "game_text+fallback",
+  "者剩余的所有冷却时间缩短": "game_text+fallback",
+  "自动恢复每次恢复生命上限": "game_text+fallback",
+  "动恢复每次恢复精力上限的": "game_text+fallback",
+  "最低可达": "game_text+fallback",
+  "可以获得": "game_text+fallback",
+  "Each level up grants": "game_text+fallback",
+  "等级上限为": "game_text+fallback",
+  "会令兵器伤害": "game_text+fallback",
+  "格挡力量": "game_text+fallback",
+  "力量如果达到": "game_text+fallback",
+  "Reaching the thresholds of": "game_text+fallback",
+  "会令反击几率": "game_text+fallback",
+  "失手几率和失误几率": "game_text+fallback",
+  "敏捷若达到": "game_text+fallback",
+  "会令准度": "game_text+fallback",
+  "攻击和法咒的护甲穿透": "game_text+fallback",
+  "感知若达到": "game_text+fallback",
+  "视野": "game_text+fallback",
+  "暴击几率和奇观几率": "game_text+fallback",
+  "会令精力上限": "game_text+fallback",
+  "活力若达到": "game_text+fallback",
+  "会令冷却时间": "game_text+fallback",
+  "意志若达到": "game_text+fallback",
+  "如果准度超过": "game_text+fallback",
+  "准度就": "game_text+fallback",
+  "目标距离你": "game_text+fallback",
+  "弓的准度还会": "game_text+fallback",
+  "弓的准度则": "game_text+fallback",
+  "技能本身存在": "game_text",
+  "Accuracy over": "game_text+fallback",
+  "Ranged weapons receive": "game_text",
+  "Bows also receive": "game_text+fallback",
+  "那么效果减弱": "game_text+fallback",
+  "失手就": "game_text+fallback",
+  "这一属性最高可达": "game_text+fallback",
+  "则防护的效果": "game_text+fallback",
+  "Protection is": "game_text+fallback",
+  "降低": "game_text+fallback",
+  "Max Energy Threshold by": "game_text+fallback",
+  "斗志低于": "game_text+fallback",
+  "Morale below": "game_text+fallback",
+  "神智低于": "game_text+fallback",
+  "Sanity below": "game_text+fallback",
+  "每次催动法咒": "game_text+fallback",
+  "跳过回合": "game_text+fallback",
+  "待在原地": "game_text+fallback",
+  "免疫变化": "game_text+fallback",
+  "相应身体部位状态": "game_text+fallback",
+  "神智变化": "game_text+fallback",
+  "药膏的效果减弱": "game_text+fallback",
+  "视野加成": "game_text+fallback",
+  "经验收益": "game_text+curated",
+  "饥饿抗性": "game_text+fallback",
+  "每过": "game_text+fallback",
+  "疲劳变化幅度": "game_text+fallback",
+  "可以修复最多": "game_text+fallback",
+  "Restores up to": "game_text+fallback",
+  "能装": "game_text+fallback",
+  "Fits": "game_text+fallback",
+  "位移抗性的效果减弱": "game_text+fallback",
+  "Has": "game_text+fallback",
+  "Move Resistance is": "game_text+fallback",
+  "烟气有": "game_text+fallback",
+  "视野减少": "game_text+fallback",
+  "The smoke has": "game_text+fallback",
+  "Reduces Vision to": "game_text+fallback",
+  "无视": "game_text+fallback",
+  "几率造成": "game_text+fallback",
+  "周边": "game_text+fallback",
+  "可以令任意布防具恢复": "game_text+fallback",
+  "Restores": "game_text+fallback",
+  "可以令任意皮防具恢复": "game_text+fallback",
+  "可以令任意金属防具恢复": "game_text+fallback",
+  "骨器同时最多可以赋予": "game_text+fallback",
+  "The charm can grant up to": "game_text+fallback",
+  "扩大": "game_text+fallback",
+  "以让提灯的照明时间恢复到": "game_text+fallback",
+  "Refills the candle lantern to": "game_text+fallback",
+  "饥饿": "game_text+fallback",
+  "疲劳": "game_text+fallback",
+  "饮食斗志": "game_text",
+  "免疫": "game_text+fallback",
+  "效果的存续时间缩短": "game_text+fallback",
+  "最高可至": "game_text+fallback",
+  "The chance increases up to": "game_text+fallback",
+  "令所有身体部位状态改善": "game_text+fallback",
+  "Condition of all body parts by": "game_text+fallback",
+  "于迷醉消退的促进效果增强": "game_text+fallback",
+  "造成的伤害减少": "game_text+fallback",
+  "投掷出去可以造成": "game_text+fallback",
+  "保质时限": "game_text+fallback",
+  "情境斗志": "game_text+fallback",
+  "餐食效果存续时间": "game_text+fallback",
+  "疲劳便减": "game_text+fallback",
+  "效力和持续时间增加": "game_text+fallback",
+  "Psyche States by": "game_text+fallback",
+  "可令迷醉缓解": "game_text+fallback",
+  "Reduces intoxication by": "game_text+fallback",
+  "同时恢复生命上限": "game_text+fallback",
+  "身体各个部位情况好转": "game_text+fallback",
+  "Sates": "game_text+fallback",
+  "Condition of each body part by": "game_text+fallback",
+  "回合之内神智减": "game_text+fallback",
+  "Sanity by": "game_text+fallback",
+  "则奇观几率": "game_text+fallback",
+  "Fatigue Resistance and": "game_text+fallback",
+  "以让蜡烛提灯照明时间恢复": "game_text+fallback",
+  "Refills the candle lantern by": "game_text+fallback",
+  "声誉收益": "game_text+fallback",
+  "队货堆的所有食物保质时限": "game_text+fallback",
+  "营地睡觉可以令你多获得": "game_text+fallback",
+  "Sleeping at the Camp grants": "game_text+fallback",
+  "如果斗志高于": "game_text+fallback",
+  "会令角色疲劳抗性": "game_text+fallback",
+  "如果神智高于": "game_text+fallback",
+  "会令经验收益": "game_text+fallback",
+  "Resistance if Morale is above": "game_text+fallback",
+  "Gain if Sanity is above": "game_text+fallback",
+  "恢复生命和伤情的效果增强": "game_text+fallback",
+  "还能令免疫提升": "game_text+fallback",
+  "那么这两项增益分别提升到": "game_text+fallback",
+  "Sleeping at the camp is": "game_text+fallback",
+  "Condition and also grants": "game_text+fallback",
+  "车队货堆容量变为": "game_text+fallback",
+  "Caravan Storage with": "game_text+fallback",
+  "Expands the Caravan Storage to": "game_text+fallback",
+  "行车范围": "game_text+fallback",
+  "行车速度": "game_text+fallback",
+  "车队修整时间": "game_text+fallback",
+  "饲料消耗": "game_text+fallback",
+  "令经验收益": "game_text+fallback",
+  "令车队交易范围": "game_text+fallback",
+  "令契据的标准时限延长": "game_text+fallback",
+  "还会令预付款数额": "game_text+fallback",
+  "Contracts by": "game_text+fallback",
+  "声誉收益和金钱收益就分别": "game_text+fallback",
+  "Situations grants": "game_text+fallback",
+  "扎营可以显示方圆": "game_text+fallback",
+  "提升幅度为交易所获金币的": "game_text+fallback",
+  "那么这个百分比变为": "game_text+fallback",
+  "商货销售利润": "game_text+fallback",
+  "生意人库存": "game_text+fallback",
+  "令车队内部的成本加成定价": "game_text+fallback",
+  "修理费用": "game_text+fallback",
+  "Followers' stock for": "game_text+fallback",
+  "Markup and": "game_text+fallback",
+  "享受": "game_text+fallback",
+  "视野范围": "game_text+fallback",
+  "提供方圆": "game_text+fallback",
+  "Points of Interest within": "game_text+fallback",
+  "维修价格": "game_text+fallback",
+  "效果耗费": "game_text+fallback",
+  "随行人员效果耗费": "game_text+fallback",
+  "Trade Favorability and": "game_text+fallback",
+  "精力": "curated",
+  "咒法精力消耗": "curated",
+  "霜冻伤害": "fallback",
+  "毒术法力": "fallback",
+  "灼烧伤害": "fallback",
+  "邪术伤害": "fallback",
+  "秘术伤害": "fallback",
+  "中毒伤害": "fallback",
+  "穿刺抗性": "fallback",
+  "霜冻抗性": "fallback",
+  "电击伤害": "fallback",
+  "生命": "fallback",
+  "劈砍伤害": "fallback",
+  "穿刺伤害": "fallback",
+  "神圣伤害": "fallback",
+  "灵能伤害": "fallback",
+  "钝击伤害": "fallback",
+  "劈砍抗性": "fallback",
+  "星术法力": "fallback",
+  "灵术法力": "fallback",
+  "腐蚀伤害": "fallback",
+  "中毒抗性": "fallback",
+  "冰术法力": "fallback",
+  "钝击抗性": "fallback",
+  "撕裂抗性": "fallback"
+ },
+ "official_keys": {
+  "Bleeding_Resistance": "出血抗性",
+  "Nature_Resistance": "自然抗性",
+  "Armor_Damage": "护甲破坏",
+  "Hunger_Resistance": "饥饿抗性",
+  "Pain_Resistance": "疼痛抗性",
+  "Knockback_Chance": "击退几率",
+  "Daze_Chance": "击晕几率",
+  "Stun_Chance": "硬直几率",
+  "Cooldown_Reduction": "冷却时间",
+  "Bodypart_Damage": "肢体伤害",
+  "Skills_Energy_Cost": "技能精力消耗",
+  "Spells_Energy_Cost": "咒法精力消耗",
+  "Stun_Resistance": "控制抗性",
+  "Knockback_Resistance": "位移抗性",
+  "Block_Power": "格挡力量",
+  "Unholy_Resistance": "邪术抗性",
+  "Magic_Resistance": "魔法抗性",
+  "Rending_Resistance": "撕裂抗性",
+  "Blunt_Resistance": "钝击抗性",
+  "Physical_Resistance": "物理抗性",
+  "Piercing_Resistance": "穿刺抗性",
+  "Slashing_Resistance": "劈砍抗性",
+  "Healing_Received": "治疗效果",
+  "Fortitude": "坚忍",
+  "CRT": "暴击几率",
+  "MP": "精力",
+  "Armor_Piercing": "护甲穿透",
+  "Health_Restoration": "生命自动恢复",
+  "Manasteal": "精力吸取",
+  "Lifesteal": "生命吸取",
+  "FMB": "失手几率",
+  "CRTD": "暴击效果",
+  "Damage_Received": "所受伤害",
+  "Weapon_Damage": "兵器伤害",
+  "Hit_Chance": "准度",
+  "MP_Restoration": "精力自动恢复",
+  "Caustic_Damage": "腐蚀伤害",
+  "Magic_Power": "法力",
+  "CTA": "反击几率",
+  "EVS": "闪躲几率",
+  "Shock_Damage": "电击伤害",
+  "PRR": "格挡几率",
+  "HP": "生命",
+  "Poison_Damage": "中毒伤害",
+  "Frost_Damage": "霜冻伤害",
+  "Fire_Damage": "灼烧伤害",
+  "Bleeding_Chance": "出血几率",
+  "Miscast_Chance": "失误几率",
+  "Fatigue_Gain": "疲劳抗性",
+  "max_hp": "生命上限"
+ },
+ "key_direction": {
+  "MP_Restoration": "minus_good",
+  "Pain_Resistance": "minus_good"
+ }
+}
