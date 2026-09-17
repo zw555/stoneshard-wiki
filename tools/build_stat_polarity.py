@@ -9,9 +9,10 @@
 """
 import json, io, re, os, collections, math
 
-DATA = r'E:\GameProject\stoneshard-wiki\data'
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA = os.path.join(ROOT, 'data')
 OUTJSON = os.path.join(DATA, 'stat_polarity.json')
-REPORT = r'E:\GameProject\stoneshard-wiki\ssw_meta\probe_polarity_report.txt'
+REPORT = os.path.join(ROOT, 'ssw_meta', 'probe_polarity_report.txt')
 
 rep = []
 def w(*a):
@@ -297,7 +298,9 @@ out = {
     'official_keys': key2zh,
     'key_direction': dict(key_dir),
 }
-io.open(OUTJSON, 'w', encoding='utf-8').write(json.dumps(out, ensure_ascii=False, indent=1))
+# sort_keys=True：输出确定性，重复构建不会产生无意义的 git diff
+io.open(OUTJSON, 'w', encoding='utf-8').write(
+    json.dumps(out, ensure_ascii=False, indent=1, sort_keys=True))
 n_game = sum(1 for k in wiki_labels if 'game_text' in src_kind.get(k, ''))
 print('labels total:', len(final), '| wiki labels:', len(wiki_labels),
       '| 有游戏原文直接证据:', n_game, '| 未解析:', len(unresolved))

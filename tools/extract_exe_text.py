@@ -12,7 +12,9 @@ as JSONL for later structuring.
 """
 import json, os, re, sys
 
-EXE = r"E:\SteamLibrary\steamapps\common\Stoneshard\StoneShard.exe"
+from _game import game_exe
+
+EXE = game_exe()
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
 os.makedirs(OUT_DIR, exist_ok=True)
 

@@ -13,9 +13,11 @@ preceding NUL-delimited segment, so we capture that as `prev_context`.
 import json, os
 from collections import Counter
 
+from _game import game_exe
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
-EXE = r"E:\SteamLibrary\steamapps\common\Stoneshard\StoneShard.exe"
+EXE = game_exe()
 
 LANGS = ["ru", "en", "zh", "de", "es", "fr", "it", "pt", "pl", "tr", "ja", "ko"]
 CJK = __import__("re").compile(r"[\u4e00-\u9fff]")

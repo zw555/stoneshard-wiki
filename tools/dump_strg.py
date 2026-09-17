@@ -2,7 +2,9 @@
 """Parse GameMaker data.win STRG chunk: dump all strings to JSON."""
 import struct, json, os
 
-DATA_WIN = r"E:\SteamLibrary\steamapps\common\Stoneshard\data.win"
+from _game import data_win
+
+DATA_WIN = data_win()
 OUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
 os.makedirs(OUT_DIR, exist_ok=True)
 

@@ -13,7 +13,9 @@ Output:
 import struct, bz2, zlib, os, json, time
 from PIL import Image
 
-DATA_WIN = r"E:\SteamLibrary\steamapps\common\Stoneshard\data.win"
+from _game import data_win
+
+DATA_WIN = data_win()
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 ICON_DIR = os.path.join(SITE, "icons")
