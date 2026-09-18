@@ -38,6 +38,21 @@ def slim_enemies():
     d = json.load(open(os.path.join(DATA, "community_enemies.json"), encoding="utf-8"))
     out = []
     for e in d["enemies"]:
+        # 技能：只保留中英描述（描述无 /*KEY*/ 占位符，无需公式引擎）
+        sk = [{"id": s.get("id", ""), "zh": s.get("name", ""), "en": s.get("name_en", ""),
+               "dz": (s.get("descs") or {}).get("zh", ""),
+               "de": (s.get("descs") or {}).get("en", ""),
+               "kind": s.get("kind", "")} for s in e.get("skills") or []]
+        # 掉落：多候选全部展开（同一掉落脚本可能掉不同品质物品）
+        dp = []
+        for dd in e.get("drops") or []:
+            for c in dd.get("candidates") or []:
+                nm = c.get("names") or {}
+                if not nm.get("zh") and not nm.get("en"):
+                    continue
+                dp.append({"zh": nm.get("zh", ""), "en": nm.get("en", ""),
+                           "ic": (c.get("icon") or "").replace("_0.png", ".png"),
+                           "ch": dd.get("chance")})
         out.append({
             "id": e.get("id", ""),
             "en": e.get("name", ""),
@@ -47,6 +62,9 @@ def slim_enemies():
             "rk": e.get("rank") or 0,
             "ic": (e.get("sprite") or "").replace("_0.png", ".png"),
             "st": e.get("stats") or {},
+            "sk": sk,
+            "dp": dp,
+            "bs": bool(e.get("is_boss")),
         })
     out.sort(key=lambda x: (x["fa"], x["rk"], x["en"].lower()))
     return out

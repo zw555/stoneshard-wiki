@@ -13,30 +13,206 @@
   .bar { max-width:1200px; margin:0 auto 16px; display:flex; gap:10px; flex-wrap:wrap; }
   #q { flex:1; min-width:260px; padding:9px 14px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:var(--card); }
   #grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
-  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; display:flex; gap:12px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; display:flex; gap:12px; cursor:default; }
   .card img { width:56px; height:56px; object-fit:contain; image-rendering:pixelated; flex:none; background:#efeadf; border-radius:6px; }
   .nm { font-weight:600; } .nm .en { color:var(--sub); font-size:12px; font-weight:400; display:block; }
   .tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:99px; background:#efe7d8; color:var(--acc); margin:2px 4px 2px 0; }
+  .tag.boss { background:#f3ded9; color:#a83a26; font-weight:600; }
   .st { margin-top:6px; font-size:12px; color:#55503f; }
   .st b { color:#3d7a3d; }
   #count { max-width:1200px; margin:0 auto 10px; color:var(--sub); font-size:12.5px; }
+  /* 分类导航（与 items 页一致） */
+  .navrow { max-width:1200px; margin:0 auto 10px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .navrow .nlbl { color:var(--sub); font-size:12.5px; font-weight:600; }
+  .chip { padding:6px 14px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:13px; }
+  .chip.on { background:var(--acc); color:#fff; border-color:var(--acc); }
+  .chip .cnt { opacity:.6; font-size:11px; margin-left:2px; }
+  /* 详情弹窗（与 items 页一致的视觉语言） */
+  dialog { border:1px solid var(--line); border-radius:12px; padding:0; background:var(--card); color:var(--ink);
+           width:min(560px, 92vw); height:fit-content; max-height:84vh; margin:auto;
+           display:flex; flex-direction:column; overflow:hidden; }
+  dialog:not([open]) { display:none; }
+  dialog:modal { position:fixed; inset:0; }
+  dialog::backdrop { background:rgba(0,0,0,.35); }
+  #dlgbody { overflow-y:auto; padding:20px; flex:1 1 auto; }
+  .dlg-x { position:absolute; right:8px; top:8px; width:30px; height:30px; line-height:1; font-size:19px; border:0; border-radius:8px;
+           background:transparent; color:var(--sub); cursor:pointer; z-index:3; }
+  .dlg-x:hover { background:#efe7d8; color:var(--acc); }
+  dialog .head img { width:88px; height:88px; image-rendering:pixelated; background:#efeadf; border-radius:8px; float:right; margin:0 0 10px 14px; }
+  dialog h2 { font-size:18px; margin-bottom:2px; }
+  dialog .en { color:var(--sub); font-size:13px; margin-bottom:8px; }
+  dialog h3 { font-size:13.5px; color:var(--acc); margin:14px 0 6px; padding-top:8px; border-top:1px dashed var(--line); }
+  dialog h3:first-of-type { border-top:0; }
+  .stats { padding:8px 12px; background:#f4efe4; border-radius:8px; font-size:13px; }
+  .strow { padding:2px 0; }
+  .strow b { font-weight:600; }
+  .sec2 { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .skill { margin:6px 0; padding:8px 12px; background:#f4efe4; border-radius:8px; }
+  .skill .skh { font-size:13px; margin-bottom:2px; }
+  .skill .skh .skid { color:var(--sub); font-size:11px; }
+  .skill .skd { font-size:12.5px; color:#55503f; }
+  .drops { display:flex; flex-wrap:wrap; gap:6px; }
+  .drop { display:flex; align-items:center; gap:5px; padding:3px 8px; background:#f4efe4; border-radius:8px; font-size:12.5px; }
+  .drop img { width:22px; height:22px; object-fit:contain; image-rendering:pixelated; }
+  .drop i { font-style:normal; color:var(--acc); font-size:11px; }
+  .note { color:var(--sub); font-size:11.5px; margin-top:4px; }
+  /* 游戏文本颜色标记（与 items 页一致） */
+  .c-green { color:#3d7a3d; font-weight:600; }
+  .c-red   { color:#c0392b; font-weight:600; }
+  .c-gold  { color:#9a6b1a; font-weight:600; }
+  .c-blue  { color:#2f6ea8; font-weight:600; }
+  .c-purple{ color:#6b4a9a; font-weight:600; }
+  .c-dim   { color:#7d7a6e; font-weight:600; }
+  .c-w     { color:inherit; font-weight:600; }
 </style>
 </head>
 <body>
 <header>
   <h1>Stoneshard 敌人图鉴</h1>
-  <div class="meta">数值来源：stoneshardwiki.com 社区数据（v0.9.4.24）· 图标：data.win 提取</div>
+  <div class="meta">数值来源：stoneshardwiki.com 社区数据（反编译 GML）· 图标：data.win 提取 · 点卡片看完整详情</div>
 </header>
 <div class="bar">
-  <input id="q" placeholder="搜索：名称 / 阵营（如 骷髅、beasts、Undead）">
+  <input id="q" placeholder="搜索：名称 / 阵营 / 技能名（如 骷髅、beasts、Cut）">
 </div>
+<div class="navrow" id="nav1"></div>
+<div class="navrow" id="nav2"></div>
+<div class="navrow" id="nav3"></div>
 <div id="count"></div>
 <div id="grid"></div>
+<dialog id="dlg">
+  <button class="dlg-x" id="dlgx" type="button" title="关闭（Esc / 点空白处也可）" aria-label="关闭">&times;</button>
+  <div id="dlgbody"></div>
+</dialog>
 <script>
 const DATA = __DATA__;
 const q = document.getElementById("q"), grid = document.getElementById("grid"), count = document.getElementById("count");
+const nav1 = document.getElementById("nav1"), nav2 = document.getElementById("nav2"), nav3 = document.getElementById("nav3");
 const RANK = ["", "危险等级 1", "危险等级 2", "危险等级 3", "危险等级 4", "危险等级 5"];
-function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const RANK_ZH = ["", "一", "二", "三", "四", "五"];
+/* ===== 分类过滤状态（阵营 / 危险等级 / 首领），localStorage 持久化 ===== */
+let fa = "all", rk = 0, bs = 0;
+try { const sv = JSON.parse(localStorage.getItem("ssw_enemyfilters") || "null");
+      if (sv){ fa = sv.fa || "all"; rk = +sv.rk || 0; bs = +sv.bs || 0; } } catch(e){}
+function saveF(){ try { localStorage.setItem("ssw_enemyfilters", JSON.stringify({ fa, rk, bs })); } catch(e){} }
+function esc(s){ return (s == null ? "" : String(s)).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+/* 游戏文本颜色标记：~r~红 ~lg~绿 ~w~白 ~y~黄 ~bl~蓝 … -> 对应颜色（同 items 页） */
+const TAG_CLS = { r:"c-red", lg:"c-green", g:"c-green", w:"c-w", W:"c-w",
+                  y:"c-gold", sy:"c-gold", ly:"c-gold", o:"c-gold", ur:"c-gold", Y:"c-gold",
+                  bl:"c-blue", lb:"c-blue", p:"c-purple", pr:"c-purple", cg:"c-purple",
+                  gr:"c-dim", s:"c-dim", u:"c-dim", Ig:"c-dim" };
+function fmt(s){
+  return esc(s).replace(/##/g, "\n")
+    .replace(/~([A-Za-z_]{1,8})~(.*?)~\/~/g, (m, tag, body) => `<b class="${TAG_CLS[tag] || "c-w"}">${body}</b>`)
+    .replace(/~[A-Za-z_]{1,8}~/g, "")
+    .replace(/\n/g, "<br>");
+}
+/* ===== 键名中文化 ===== */
+const W_ZH = { Physical:"物理", Piercing:"穿刺", Caustic:"腐蚀", Fire:"火焰", Unholy:"邪秽", Poison:"毒性",
+               Magical:"魔法", Frost:"冰霜", Sacred:"神圣", Bleeding:"流血", Stun:"眩晕", Knockback:"击退",
+               Pain:"疼痛", Cut:"切割", Crushing:"钝击" };
+const ARMOR_ZH = { Light:"轻型", Medium:"中型", Heavy:"重型", None:"无" };
+const SIZE_ZH = { tiny:"微小", small:"小型", medium:"中型", large:"大型", huge:"巨型" };
+const MATTER_ZH = { flesh:"血肉", undead:"亡骸", construct:"构装", plant:"植物", metal:"金属", stone:"岩石" };
+function wordZh(s){
+  if (s == null || s === "") return "";
+  if (ARMOR_ZH[s]) return ARMOR_ZH[s];
+  if (SIZE_ZH[s]) return SIZE_ZH[s];
+  if (MATTER_ZH[s]) return MATTER_ZH[s];
+  return s;
+}
+function dmgZh(k){
+  const m = String(k).replace(/_(Resistance|Damage)$/, "");
+  const suffix = /Resistance$/.test(k) ? "抗性" : "伤害";
+  return (W_ZH[m] || m) + suffix;
+}
+function rows(pairs){
+  const arr = pairs.filter(p => p[1] !== undefined && p[1] !== null && p[1] !== "" && p[1] !== 0 || (p[0] === "可游泳" && p[1] != null));
+  return arr.length ? `<div class="stats">${arr.map(([k, v]) => `<div class="strow">${k} <b>${esc(v)}</b></div>`).join("")}</div>` : "";
+}
+function resRows(res){
+  const arr = Object.entries(res).map(([k, v]) => {
+    const zh = dmgZh(k);
+    const val = v > 0 ? `+${v}` : String(v);
+    const cls = v > 0 ? "c-green" : (v < 0 ? "c-red" : "");
+    return [zh, `<span class="${cls}">${esc(val)}</span>`];
+  });
+  return arr.length ? `<div class="stats">${arr.map(([k, v]) => `<div class="strow">${k} <b>${v}</b></div>`).join("")}</div>` : "";
+}
+/* ===== 详情内容 ===== */
+function detailHtml(e){
+  const s = e.st || {};
+  const sec = [];
+  if (s.resources)
+    sec.push('<h3>资源</h3>' + rows([["生命值", s.resources.HP], ["法力值", s.resources.MP],
+      ["法力恢复", s.resources.MP_Restoration], ["生命恢复", s.resources.Health_Restoration]]));
+  let combat = [];
+  if (s.combat) combat.push(["命中率", s.combat.Hit_Chance], ["闪避", s.combat.EVS],
+    ["躲闪几率", s.combat.Avoiding_Chance], ["总伤害", s.combat["Total Damage"]]);
+  if (s.damage) for (const [k, v] of Object.entries(s.damage)) combat.push([dmgZh(k), v]);
+  if (combat.length) sec.push('<h3>战斗</h3>' + rows(combat));
+  if (s.attributes)
+    sec.push('<h3>属性</h3>' + rows([["力量", s.attributes.STR], ["敏捷", s.attributes.AGL],
+      ["活力", s.attributes.Vitality], ["感知", s.attributes.PRC], ["意志", s.attributes.WIL]]));
+  if (s.resistance && Object.keys(s.resistance).length)
+    sec.push('<h3>抗性（未列出的为 0）</h3>' + resRows(s.resistance));
+  if (s.identity)
+    sec.push('<h3>特征</h3>' + rows([["护甲类型", wordZh(s.identity.armor)], ["体型", wordZh(s.identity.size)],
+      ["材质", wordZh(s.identity.matter)], ["视野", s.identity.VIS], ["击杀经验", s.identity.XP]]));
+  if (s.behavior){
+    const b = [];
+    if (s.behavior.Morale != null && s.behavior.Morale !== 0) b.push(["士气", s.behavior.Morale]);
+    if (s.behavior.canSwim != null) b.push(["可游泳", s.behavior.canSwim ? "是" : "否"]);
+    if (s.behavior.achievement) b.push(["成就", s.behavior.achievement]);
+    if (b.length) sec.push('<h3>行为</h3>' + rows(b));
+  }
+  if (e.sk && e.sk.length){
+    const sorted = [...e.sk.filter(x => x.kind === "active"), ...e.sk.filter(x => x.kind !== "active")];
+    sec.push(`<h3>技能（${e.sk.length}）</h3>` + sorted.map(x =>
+      `<div class="skill"><div class="skh"><b>${esc(x.zh) || esc(x.en)}</b> <span class="tag">${x.kind === "active" ? "主动" : "被动"}</span> <span class="skid">${esc(x.id)}</span></div>
+       <div class="skd">${fmt(x.dz || x.de || "")}</div></div>`).join(""));
+  }
+  if (e.dp && e.dp.length){
+    sec.push(`<h3>击杀掉落（${e.dp.length}）</h3><div class="drops">` + e.dp.map(p =>
+      `<div class="drop" title="${esc(p.en)}"><img loading="lazy" src="icons/${p.ic}" onerror="this.style.visibility='hidden'">
+       <span>${esc(p.zh) || esc(p.en)}</span>${p.ch != null && p.ch < 1 ? `<i>${Math.round(p.ch * 100)}%</i>` : ""}</div>`).join("") +
+      '</div><div class="note">带百分比为独立掉落概率；不带者为战利品脚本掉落（概率由脚本决定）。</div>');
+  }
+  return `<div class="head"><img src="icons/${e.ic}" onerror="this.style.visibility='hidden'">
+    <h2>${esc(e.zh) || esc(e.en)}</h2>
+    <div class="en">${esc(e.en)} · 内部名 <code>${esc(e.id)}</code></div>
+    <span class="tag">${esc(e.fa)}</span><span class="tag">${RANK[e.rk] || ""}</span>${e.bs ? '<span class="tag boss">首领</span>' : ""}
+    ${sec.join("")}`;
+}
+/* ===== 分类导航构建 ===== */
+function chip(label, cnt, on, cb){
+  const b = document.createElement("button");
+  b.className = "chip" + (on ? " on" : "");
+  b.innerHTML = `${esc(label)}<span class="cnt">${cnt}</span>`;
+  b.onclick = cb;
+  return b;
+}
+function buildNav1(){
+  const cm = new Map();
+  for (const e of DATA) cm.set(e.fa, (cm.get(e.fa) || 0) + 1);
+  nav1.replaceChildren(chip("全部", DATA.length, fa === "all", () => { fa = "all"; saveF(); buildNav1(); render(); }));
+  for (const [f, c] of [...cm.entries()].sort((a, b) => b[1] - a[1]))
+    nav1.appendChild(chip(f, c, fa === f, () => { fa = f; saveF(); buildNav1(); render(); }));
+}
+function buildNav2(){
+  const cm = {};
+  for (let i = 1; i <= 5; i++) cm[i] = 0;
+  for (const e of DATA) cm[e.rk] = (cm[e.rk] || 0) + 1;
+  nav2.replaceChildren(chip("全部", DATA.length, rk === 0, () => { rk = 0; saveF(); buildNav2(); render(); }));
+  for (let i = 1; i <= 5; i++)
+    nav2.appendChild(chip(RANK_ZH[i], cm[i] || 0, rk === i, () => { rk = i; saveF(); buildNav2(); render(); }));
+}
+function buildNav3(){
+  const nb = DATA.filter(e => e.bs).length;
+  nav3.replaceChildren(chip("全部", DATA.length, bs === 0, () => { bs = 0; saveF(); buildNav3(); render(); }));
+  nav3.appendChild(chip("首领", nb, bs === 1, () => { bs = 1; saveF(); buildNav3(); render(); }));
+  nav3.appendChild(chip("普通", DATA.length - nb, bs === 2, () => { bs = 2; saveF(); buildNav3(); render(); }));
+}
+/* ===== 卡片 ===== */
 function statLine(e){
   const s = e.st || {};
   const parts = [];
@@ -50,8 +226,14 @@ function render(){
   let n = 0;
   const frag = document.createDocumentFragment();
   for (const e of DATA){
+    if (fa !== "all" && e.fa !== fa) continue;
+    if (rk && e.rk !== rk) continue;
+    if (bs === 1 && !e.bs) continue;
+    if (bs === 2 && e.bs) continue;
     if (kw){
-      const hay = (e.zh + " " + e.en + " " + e.fa + " " + e.id).toLowerCase();
+      const skNames = (e.sk || []).map(x => x.zh + " " + x.en + " " + x.id).join(" ");
+      const dpNames = (e.dp || []).map(x => x.zh + " " + x.en).join(" ");
+      const hay = (e.zh + " " + e.en + " " + e.fa + " " + e.id + " " + skNames + " " + dpNames).toLowerCase();
       if (!hay.includes(kw)) continue;
     }
     n++;
@@ -59,14 +241,36 @@ function render(){
     d.className = "card";
     d.innerHTML = `<img loading="lazy" src="icons/${e.ic}" onerror="this.style.visibility='hidden'">
       <div><div class="nm">${esc(e.zh) || esc(e.en)}<span class="en">${esc(e.en)}</span></div>
-      <span class="tag">${esc(e.fa)}</span><span class="tag">${RANK[e.rk]||""}</span>
+      <span class="tag">${esc(e.fa)}</span><span class="tag">${RANK[e.rk] || ""}</span>${e.bs ? '<span class="tag boss">首领</span>' : ""}
       <div class="st">${statLine(e)}</div></div>`;
+    d.onclick = () => openDlg(e);
     frag.appendChild(d);
   }
   grid.replaceChildren(frag);
   count.textContent = `显示 ${n} / ${DATA.length} 个敌人`;
 }
+/* ===== 弹窗开关（同 items 页：× / 点空白 / Esc，关闭还原滚动位置） ===== */
+let savedY = 0, lastE = null;
+function openDlg(e){
+  lastE = e;
+  document.getElementById("dlgbody").innerHTML = detailHtml(e);
+  document.getElementById("dlgbody").scrollTop = 0;
+  savedY = window.scrollY;
+  document.getElementById("dlg").showModal();
+}
+const dlg = document.getElementById("dlg");
+document.getElementById("dlgx").onclick = () => dlg.close();
+dlg.addEventListener("mousedown", e => {
+  const r = dlg.getBoundingClientRect();
+  const inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
+  if (!inside) dlg.close();
+});
+dlg.addEventListener("close", () => {
+  const y = savedY;
+  requestAnimationFrame(() => window.scrollTo(0, y));
+});
 q.oninput = render;
+buildNav1(); buildNav2(); buildNav3();
 render();
 </script>
 </body>

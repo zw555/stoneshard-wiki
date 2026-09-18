@@ -44,6 +44,15 @@
   .desc .c-w     { color:inherit; font-weight:600; }
   .tag { display:inline-block; font-size:11px; padding:1px 8px; border-radius:99px; background:#efe7d8; color:var(--acc); margin-right:4px; }
   #count { color:var(--sub); font-size:12.5px; margin-bottom:10px; }
+  .ph { border-bottom:1px dashed #a49e8f; color:#7d7a6e; cursor:help; font-weight:400; }
+  .attrbar { margin:0 0 14px; padding:8px 14px; background:var(--card); border:1px solid var(--line);
+             border-radius:10px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; font-size:13px; }
+  .attrbar .alabel { font-weight:600; color:var(--acc); }
+  .attrbar label { display:flex; align-items:center; gap:4px; }
+  .attrbar input { width:52px; padding:4px 6px; border:1px solid var(--line); border-radius:6px; font-size:13px; background:var(--bg); }
+  .attrbar button { padding:4px 12px; border:1px solid var(--line); border-radius:6px; background:var(--card); cursor:pointer; font-size:12.5px; }
+  .attrbar button:hover { background:#efe7d8; }
+  .attrbar .anote { color:var(--sub); font-size:11.5px; flex-basis:100%; }
 </style>
 </head>
 <body>
@@ -55,12 +64,92 @@
   <aside id="branches"></aside>
   <main>
     <input id="q" placeholder="搜索技能：中文名 / 英文名 / 说明（如 出血、格挡、pyromancy）">
+    <div class="attrbar" id="attrbar"></div>
     <div id="count"></div>
     <div id="content"></div>
   </main>
 </div>
 <script>
 const DATA = __DATA__;
+/* 占位符公式库：反编译 GML 表达式（build_formulas.py 从社区数据集提取）。
+   节点自带的 f 字段（同键不同技能公式不同）优先于全局 by_key。 */
+const FORMULAS = __FORMULAS__;
+
+/* ===== 角色属性面板与占位符求值引擎 =====
+   基准值来自社区规划器的属性引擎（从其打包 JS 逆向，与 GML 一致）：
+   属性阈值制（15/20/25/30 各一档），无装备、未习得技能、无增益的裸角色。 */
+const DEF_ATTRS = { STR:10, AGL:10, PRC:10, VIT:10, WIL:10 };
+const ATTR_ZH = { STR:"力量", AGL:"敏捷", PRC:"感知", VIT:"活力", WIL:"意志" };
+let ATTRS = (function(){
+  try {
+    const a = JSON.parse(localStorage.getItem("ssw_attrs"));
+    if (a && ["STR","AGL","PRC","VIT","WIL"].every(k => +a[k] >= 5 && +a[k] <= 30))
+      return { STR:+a.STR, AGL:+a.AGL, PRC:+a.PRC, VIT:+a.VIT, WIL:+a.WIL };
+  } catch(e){}
+  return { ...DEF_ATTRS };
+})();
+function saveAttrs(){ localStorage.setItem("ssw_attrs", JSON.stringify(ATTRS)); }
+const th = x => (x>=15?1:0)+(x>=20?1:0)+(x>=25?1:0)+(x>=30?1:0);
+function baseCtx(){
+  const s=ATTRS.STR, a=ATTRS.AGL, p=ATTRS.PRC, v=ATTRS.VIT, w=ATTRS.WIL;
+  const ts=th(s), ta=th(a), tp=th(p), tv=th(v), tw=th(w);
+  return { STR:s, AGL:a, PRC:p, WIL:w, Vitality:v,
+    Magic_Power: 100+7.5*tw,
+    Pyromantic_Power:0, Geomantic_Power:0, Electromantic_Power:0, Venomantic_Power:0,
+    Cryomantic_Power:0, Arcanistic_Power:0, Astromantic_Power:0, Psimantic_Power:0,
+    HP: 100+15*tv, max_hp: 100+15*tv, max_mp: 60+4*v,
+    PRR:0, Block_PowerMax:0, Legs_DEF:0, Body_DEF:0,
+    Spell_Hit_Chance: 1.5*p, Miscast_Chance: 35-1.5*a,
+    Miracle_Chance: 5+5*tp, Miracle_Power: 25,
+    Mainhand_Efficiency:100, Offhand_Efficiency:100,
+    EVS: 1+5*ta, Knockback_Chance:0,
+    CRT: 1+5*tp, CRTD: 25+10*ts, CTA: -14+1.5*a, FMB: 35-1.5*a,
+    Hit_Chance: 65+1.5*p, Weapon_Damage: 85+1.5*s, Armor_Piercing: -15+1.5*p,
+    Bodypart_Damage: 7.5*ts, Armor_Damage: 15*ts,
+    Fortitude: 7.5*tw, Stun_Resistance: 7.5*tv, Knockback_Resistance: 7.5*ta,
+    Pain_Resistance: 7.5*tw, Cooldown_Reduction: 115-1.5*w, Abilities_Energy_Cost: 115-1.5*w,
+    Health_Restoration:10, Healing_Received:100, MP_Restoration:2*v,
+    Crit_Avoid:0, Lifesteal:0, Manasteal:0,
+    Stagger_Chance:0, Daze_Chance:0, Stun_Chance:0, Immob_Chance:0, Bleeding_Chance:0,
+    Skills_Energy_Cost:0, Spells_Energy_Cost:0, Damage_Received:100, Backfire_Damage:0 };
+}
+let CTX = baseCtx();
+function evalExpr(expr, ctx){
+  if (expr.indexOf("scr_") !== -1) return null;   // 依赖敌人参数，静态算不出
+  let unknown = false;
+  let e = expr.replace(/owner\.([A-Za-z_0-9]+)/g, (m,k) => {
+    const v = ctx[k];
+    if (v === undefined){ unknown = true; return "0"; }
+    return "(" + v + ")";
+  });
+  if (unknown) return null;
+  e = e.replace(/math_round\(/g, "Math.round(")
+       .replace(/\bmax\(/g, "Math.max(").replace(/\bmin\(/g, "Math.min(");
+  if (!/^[\d\s+\-*/(),.]*$/.test(e.replace(/Math\.(round|max|min)\(/g, ""))) return null;
+  try { return new Function('"use strict";return (' + e + ')')(); } catch(err){ return null; }
+}
+function fmtNum(v){
+  if (v == null || !isFinite(v)) return null;
+  const r = Math.round(v * 10) / 10;
+  return Number.isInteger(r) ? String(r) : r.toFixed(1);
+}
+function resolveKey(key, itemF){
+  if (itemF && itemF[key] != null){
+    const v = evalExpr(itemF[key], CTX);
+    return v == null ? null : fmtNum(v);
+  }
+  const exprs = FORMULAS && FORMULAS[key];
+  if (!exprs) return null;
+  let val = null;
+  for (const e of exprs){
+    const v = evalExpr(e, CTX);
+    if (v == null) return null;
+    if (val == null) val = v;
+    else if (Math.abs(v - val) > 1e-9) return null;
+  }
+  return fmtNum(val);
+}
+
 let cur = 0;
 const $ = id => document.getElementById(id);
 function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
@@ -69,8 +158,14 @@ const TAG_CLS = { r:"c-red", lg:"c-green", g:"c-green", w:"c-w", W:"c-w",
                   y:"c-gold", sy:"c-gold", ly:"c-gold", o:"c-gold", ur:"c-gold", Y:"c-gold",
                   bl:"c-blue", lb:"c-blue", p:"c-purple", pr:"c-purple", cg:"c-purple",
                   gr:"c-dim", s:"c-dim", u:"c-dim", Ig:"c-dim" };
-function fmt(s){
-  return esc(s).replace(/##/g, "<br>")
+function fmt(s, itemF){
+  return esc(s)
+    .replace(/\/\*([A-Za-z_0-9]+)\*\//g, (m, key) => {
+      const v = resolveKey(key, itemF);
+      if (v !== null) return v;
+      return '<span class="ph" title="运行时数值：取决于装备 / 敌人 / 界面状态（' + key + '），静态无法计算">?</span>';
+    })
+    .replace(/##/g, "<br>")
     .replace(/~([A-Za-z_]{1,8})~(.*?)~\/~/g, (m, tag, body) => `<b class="${TAG_CLS[tag] || "c-w"}">${body}</b>`)
     .replace(/~[A-Za-z_]{1,8}~/g, "");
 }
@@ -108,7 +203,7 @@ function nodeCard(n){
       <div><div class="nm">${esc(n.zh) || esc(n.en)}<span class="en">${esc(n.en)}</span></div>
       ${n.tier ? `<span class="tag">层级 ${n.tier}</span>` : ""}</div></div>
     ${reqLine(n) ? `<div class="reqs">${reqLine(n)}</div>` : ""}
-    <div class="desc">${fmt(n.desc || "")}</div></div>`;
+    <div class="desc">${fmt(n.desc || "", n.f)}</div></div>`;
 }
 function render(){
   const kw = $("q").value.trim().toLowerCase();
@@ -135,6 +230,34 @@ function render(){
   $("content").innerHTML = h;
 }
 $("q").oninput = render;
+/* ---- 属性面板 ---- */
+const attrbar = document.getElementById("attrbar");
+function buildPanel(){
+  let h = '<span class="alabel">角色属性</span>';
+  for (const k of ["STR","AGL","PRC","VIT","WIL"])
+    h += `<label>${ATTR_ZH[k]} <input type="number" min="5" max="30" step="1" data-k="${k}" value="${ATTRS[k]}"></label>`;
+  h += '<button id="areset" type="button">重置为 10</button>';
+  h += '<span class="anote">技能描述里的运行时数值会按以上属性换算（按无装备、未习得技能的裸角色计算，基准公式来自社区规划器逆向）。灰色 <span class="ph">?</span> 表示取决于装备/敌人/界面状态，无法静态计算。</span>';
+  attrbar.innerHTML = h;
+  attrbar.querySelectorAll("input").forEach(inp => inp.onchange = () => {
+    let v = Math.round(+inp.value);
+    if (!isFinite(v)) v = 10;
+    v = Math.max(5, Math.min(30, v));
+    inp.value = v;
+    ATTRS[inp.dataset.k] = v;
+    saveAttrs();
+    CTX = baseCtx();
+    render();
+  });
+  attrbar.querySelector("#areset").onclick = () => {
+    ATTRS = { ...DEF_ATTRS };
+    saveAttrs();
+    CTX = baseCtx();
+    buildPanel();
+    render();
+  };
+}
+buildPanel();
 renderBranches(); render();
 </script>
 </body>

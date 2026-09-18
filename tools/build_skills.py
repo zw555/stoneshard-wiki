@@ -12,8 +12,8 @@ DATA = os.path.join(ROOT, "data")
 SITE = os.path.join(ROOT, "site")
 TOOLS = os.path.dirname(os.path.abspath(__file__))
 
-ATTR_ZH = {"STR": "力量", "AGL": "敏捷", "PRC": "感知", "VIT": "体质",
-           "WIL": "意志", "Vitality": "体质", "Perception": "感知"}
+ATTR_ZH = {"STR": "力量", "AGL": "敏捷", "PRC": "感知", "VIT": "活力",
+           "WIL": "意志", "Vitality": "活力", "Perception": "感知"}
 
 
 def icon_of(image):
@@ -59,6 +59,11 @@ def main():
             "x": pos.get("visual_x") or 0, "y": pos.get("visual_y") or 0,
             "branch": pos.get("branch") or "",
         })
+        # per-node placeholder formulas (reverse-engineered GML from the game)
+        f = {fr["key"]: fr["display_expression"].strip()
+             for fr in (n.get("formula_refs") or []) if fr.get("display_expression")}
+        if f:
+            br["nodes"][-1]["f"] = f
 
     for k, br in branches.items():
         br["nodes"].sort(key=lambda n: (n["tier"], n["y"], n["x"]))
@@ -80,7 +85,9 @@ def main():
         b["icon"] = b["nodes"][0]["ic"] if b["nodes"] else ""
 
     tpl = open(os.path.join(TOOLS, "skills_template.html"), encoding="utf-8").read()
+    formulas = json.load(open(os.path.join(DATA, "formulas.json"), encoding="utf-8"))
     html = tpl.replace("__DATA__", json.dumps(payload, ensure_ascii=False))
+    html = html.replace("__FORMULAS__", json.dumps(formulas["by_key"], ensure_ascii=False, sort_keys=True))
     out = os.path.join(SITE, "skills.html")
     with open(out, "w", encoding="utf-8") as f:
         f.write(html)

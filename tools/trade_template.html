@@ -15,23 +15,36 @@
   .tab.on { background:var(--acc); color:#fff; border-color:var(--acc); }
   .wrap { max-width:1200px; margin:0 auto; }
   #q { width:100%; padding:9px 14px; border:1px solid var(--line); border-radius:8px; font-size:14px; background:var(--card); margin-bottom:12px; }
+  .sortrow { display:flex; gap:8px; align-items:center; margin-bottom:10px; flex-wrap:wrap; }
+  .sortrow .chip { padding:4px 12px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:12.5px; }
+  .sortrow .chip.on { background:var(--acc); color:#fff; border-color:var(--acc); }
   #count { color:var(--sub); font-size:12.5px; margin-bottom:10px; }
-  #grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+  #grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; display:flex; gap:12px; }
   .card img { width:44px; height:44px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
   .nm { font-weight:600; } .en { color:var(--sub); font-size:12px; font-weight:400; display:block; }
   .base { font-size:12px; color:var(--sub); margin-top:2px; }
   .sel { margin-top:6px; font-size:12.5px; }
-  .sel div { padding:1px 0; }
-  .sel b { color:#3d7a3d; }
+  .sel .r1 { font-size:13.5px; }
+  .sel .r1 b { color:#3d7a3d; font-size:15px; }
+  .sel .rest { color:var(--sub); font-size:12px; margin-top:2px; }
+  .badge { display:inline-block; font-size:11px; padding:1px 7px; border-radius:99px; margin-left:6px; vertical-align:1px; }
+  .badge.hi { background:#e4efdd; color:#3d7a3d; font-weight:600; }
+  .badge.lo { background:#f3ded9; color:#a83a26; font-weight:600; }
+  .gain { font-size:11.5px; color:#9a6b1a; margin-top:3px; }
   table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; font-size:13px; }
   th, td { padding:8px 12px; border-bottom:1px solid var(--line); text-align:left; }
   th { background:#f1ece1; font-weight:600; }
   tr:last-child td { border-bottom:none; }
+  td b.hi { color:#3d7a3d; } td b.lo { color:#a83a26; }
   .note { background:#f4efe4; border-radius:8px; padding:10px 14px; font-size:12.5px; margin-bottom:12px; }
-  .merch { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; }
-  .mrow { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:8px 12px; display:flex; gap:8px; font-size:13px; }
-  .mrow b { color:var(--acc); margin-left:auto; }
+  .merch { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:10px; }
+  .mrow { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font-size:13px; }
+  .mrow .mh { display:flex; align-items:baseline; gap:8px; }
+  .mrow .mh b { font-size:14px; }
+  .mrow .mh .cnt { margin-left:auto; color:var(--acc); font-weight:600; }
+  .mrow .ms { color:var(--sub); font-size:12px; margin:2px 0 6px; }
+  .mrow .cat { font-size:12px; color:#55503f; }
   h2.sec { font-size:17px; margin:6px 0 10px; }
   .hide { display:none; }
 </style>
@@ -39,27 +52,44 @@
 <body>
 <header>
   <h1>Stoneshard 交易行情</h1>
-  <div class="meta">数据来源：社区 wiki（v0.9.4.24）· 收购价基准条件：完整耐久、非赃物、普通品质、默认声望、无价格波动</div>
+  <div class="meta">数据来源：社区 wiki（v0.9.4.24）· 收购价基准条件：完整耐久、非赃物、普通品质、默认声望、无价格波动 · 回收率 = 收购价 ÷ 商店基准价</div>
 </header>
 <div class="tabs">
-  <div class="tab on" data-v="items">物品收购排行</div>
-  <div class="tab" data-v="merchants">商人排行</div>
+  <div class="tab on" data-v="items">卖谁最赚 · 按物品</div>
+  <div class="tab" data-v="merchants">商人收购榜</div>
+  <div class="tab" data-v="cats">品类规律</div>
   <div class="tab" data-v="mech">交易机制</div>
 </div>
 <div class="wrap">
   <div id="v-items">
-    <input id="q" placeholder="搜索物品：中文名 / 英文名（如 阿娜的剑、dagger、大剑）">
+    <input id="q" placeholder="搜索物品：中文名 / 英文名 / 品类（如 阿娜的剑、dagger、铠甲）">
+    <div class="sortrow" id="isort">
+      <span style="color:var(--sub);font-size:12.5px">排序</span>
+      <button class="chip on" data-s="rec">回收率高→低</button>
+      <button class="chip" data-s="price">卖价高→低</button>
+      <button class="chip" data-s="diff">换商人多赚</button>
+      <button class="chip" data-s="name">名称</button>
+    </div>
     <div id="count"></div>
     <div id="grid"></div>
   </div>
   <div id="v-merchants" class="hide">
-    <div class="note">按“在多少件装备的最优收购商前三名中出现”排序，可看出谁最适合出手装备。</div>
+    <div class="note">「最优次数」= 该商人是多少件装备的<strong>第 1 名收购商</strong>（给出全场最高价）；平均回收率越高说明这家商人整体给价越肥。可切换排序。</div>
+    <div class="sortrow" id="msort">
+      <span style="color:var(--sub);font-size:12.5px">排序</span>
+      <button class="chip on" data-s="top1">最优次数</button>
+      <button class="chip" data-s="avg">平均回收率</button>
+    </div>
     <div class="merch" id="mlist"></div>
+  </div>
+  <div id="v-cats" class="hide">
+    <div class="note">按品类聚合的收购规律：平均回收率越高的品类，卖Anywhere都不吃亏；「最常见第 1 名商人」告诉你这一类东西优先找谁出手。直接回答「什么商人收购什么类的东西价更高」。</div>
+    <div id="cats"></div>
   </div>
   <div id="v-mech" class="hide">
     <h2 class="sec">品类需求系数</h2>
     <div class="note">商人收购价 = 基准价 × 品类系数 ×（1 + 品类修正 + 运行时需求）。下表为各品类在游戏配置中的系数键。</div>
-    <div id="cats"></div>
+    <div id="catsmech"></div>
     <h2 class="sec" style="margin-top:18px">城镇声望与交易好感度</h2>
     <div class="note">声望层级会直接影响交易价格（好感度为负 = 商人压价）。</div>
     <div id="towns"></div>
@@ -68,33 +98,132 @@
   </div>
 </div>
 <script>
-const DATA = __DATA__, MECH = __MECH__, LB = __LB__;
-function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const DATA = __DATA__, MECH = __MECH__;
+function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 const $ = id => document.getElementById(id);
+const pct = r => (r * 100).toFixed(0) + "%";
 
+/* 品类解析：type_text = [品质] [修饰] [大类]，如 "普通 投石兵器 远程兵器" / "普通 轻型 铠甲" */
+function catOf(ty){
+  const parts = (ty || "").split(/\s+/).filter(Boolean);
+  if (!parts.length) return { cat: "未知", sub: "" };
+  if (parts.length === 1) return { cat: parts[0], sub: "" };
+  return { cat: parts[parts.length - 1], sub: parts.slice(1, -1).join(" ") };
+}
+/* 条目增强：第1名回收率、品类、top1与top3差额 */
+for (const it of DATA){
+  const { cat, sub } = catOf(it.ty);
+  it.cat = cat; it.sub = sub;
+  const b = it.base || 0;
+  it.rec = it.sel.length && b ? it.sel[0].price / b : null;       // 第1名回收率
+  it.diff = it.sel.length >= 3 && b ? it.sel[0].price - it.sel[2].price : null; // 换商人多赚
+}
+const ITEMS = DATA.filter(x => x.sel.length && x.rec != null);
+
+/* ===== 商人聚合 ===== */
+const MERCH = (function(){
+  const m = {};
+  for (const it of ITEMS)
+    it.sel.forEach((s, i) => {
+      const o = m[s.who] || (m[s.who] = { who: s.who, top1: 0, top3: 0, recs: [], cats: {} });
+      o.top3++;
+      const r = s.price / it.base;
+      o.recs.push(r);
+      if (i === 0){
+        o.top1++;
+        o.cats[it.cat] = (o.cats[it.cat] || 0) + 1;
+      }
+    });
+  return Object.values(m).map(o => {
+    o.avg = o.recs.reduce((a, x) => a + x, 0) / o.recs.length;
+    o.max = Math.max(...o.recs);
+    o.topCats = Object.entries(o.cats).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    return o;
+  });
+})();
+
+/* ===== 品类聚合 ===== */
+const CATS = (function(){
+  const m = {};
+  for (const it of ITEMS){
+    const c = m[it.cat] || (m[it.cat] = { cat: it.cat, n: 0, recs: [], best: {} });
+    c.n++;
+    c.recs.push(it.rec);
+    if (it.sel[0]) c.best[it.sel[0].who] = (c.best[it.sel[0].who] || 0) + 1;
+  }
+  return Object.values(m).map(c => {
+    c.avg = c.recs.reduce((a, x) => a + x, 0) / c.recs.length;
+    c.max = Math.max(...c.recs);
+    c.who = Object.entries(c.best).sort((a, b) => b[1] - a[1])[0];
+    return c;
+  }).sort((a, b) => b.avg - a.avg);
+})();
+
+/* ===== Tab1 物品 ===== */
+let isort = "rec";
 function renderItems(){
   const kw = $("q").value.trim().toLowerCase();
+  let arr = ITEMS.filter(it => !kw || (it.zh + " " + it.en + " " + it.ty).toLowerCase().includes(kw));
+  const cmp = {
+    rec:   (a, b) => b.rec - a.rec,
+    price: (a, b) => b.sel[0].price - a.sel[0].price,
+    diff:  (a, b) => (b.diff || 0) - (a.diff || 0),
+    name:  (a, b) => (a.zh || a.en).localeCompare(b.zh || b.en, "zh"),
+  }[isort];
+  arr.sort(cmp);
+  const maxRec = Math.max(...ITEMS.map(x => x.rec));
   let n = 0, h = "";
-  for (const it of DATA){
-    if (!it.sel.length) continue;
-    if (kw && !((it.zh + " " + it.en).toLowerCase().includes(kw))) continue;
+  for (const it of arr){
     n++;
     if (n > 240) continue;   // 首屏渲染上限，搜索可细化
+    const [r1, r2, r3] = it.sel;
+    const badge = it.rec >= maxRec - 1e-9 ? '<span class="badge hi">回收率最高档</span>'
+                : (it.rec < 0.20 ? '<span class="badge lo">低价收购</span>' : "");
     h += `<div class="card"><img loading="lazy" src="icons/${esc(it.ic)}" onerror="this.style.visibility='hidden'">
-      <div><div class="nm">${esc(it.zh)}<span class="en">${esc(it.en)}</span></div>
-      <div class="base">基准价 ${it.base ?? "—"} 金</div>
-      <div class="sel">${it.sel.map(s => `<div>${esc(s.rank)} <b>${s.price}</b> ${esc(s.who)}</div>`).join("")}</div></div></div>`;
+      <div><div class="nm">${esc(it.zh)}${badge}<span class="en">${esc(it.en)} · ${esc(it.cat)}${it.sub ? " · " + esc(it.sub) : ""}</span></div>
+      <div class="base">商店基准价 ${it.base} 金</div>
+      <div class="sel"><div class="r1"><b>${r1.price}</b> ${esc(r1.who)}<span class="badge ${it.rec >= 0.25 ? "hi" : ""}">回收率 ${pct(it.rec)}</span></div>
+      <div class="rest">第2名 ${r2 ? r2.price + " " + esc(r2.who) : "—"} · 第3名 ${r3 ? r3.price + " " + esc(r3.who) : "—"}</div></div>
+      ${it.diff > 0 ? `<div class="gain">挑对商人比第 3 名多赚 ${it.diff} 金</div>` : ""}</div></div>`;
   }
   $("grid").innerHTML = h;
-  $("count").textContent = `显示 ${Math.min(n,240)} / ${n} 件有收购数据的装备`;
+  $("count").textContent = `显示 ${Math.min(n, 240)} / ${n} 件有收购数据的装备`;
 }
+$("isort").querySelectorAll(".chip").forEach(c => c.onclick = () => {
+  $("isort").querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
+  c.classList.add("on"); isort = c.dataset.s; renderItems();
+});
+
+/* ===== Tab2 商人榜 ===== */
+let msort = "top1";
 function renderMerchants(){
-  const max = LB.length ? LB[0][1] : 1;
-  $("mlist").innerHTML = LB.map(([who, c]) =>
-    `<div class="mrow"><span>${esc(who)}</span><b>${c} 件</b></div>`).join("");
+  const arr = [...MERCH].sort(msort === "top1" ? (a, b) => b.top1 - a.top1 : (a, b) => b.avg - a.avg);
+  const maxAvg = Math.max(...MERCH.map(x => x.avg));
+  $("mlist").innerHTML = arr.map(o => {
+    const cats = o.topCats.map(([c, n]) => `${esc(c)}×${n}`).join("、");
+    return `<div class="mrow"><div class="mh"><b>${esc(o.who)}</b><span class="cnt">${o.top1} 次最优</span></div>
+      <div class="ms">进入前三 ${o.top3} 件 · 平均回收率 <b class="${o.avg >= maxAvg - 1e-9 ? "hi" : ""}" style="${o.avg >= maxAvg - 1e-9 ? "color:#3d7a3d" : ""}">${pct(o.avg)}</b> · 单件最高回收率 ${pct(o.max)}</div>
+      <div class="cat">最常给出最高价的品类：${cats || "—"}</div></div>`;
+  }).join("");
 }
+$("msort").querySelectorAll(".chip").forEach(c => c.onclick = () => {
+  $("msort").querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
+  c.classList.add("on"); msort = c.dataset.s; renderMerchants();
+});
+
+/* ===== Tab3 品类规律 ===== */
+function renderCats(){
+  $("cats").innerHTML = `<table><tr><th>品类</th><th>样本数</th><th>平均回收率</th><th>单件最高</th><th>最常见第 1 名商人</th></tr>` +
+    CATS.map(c => `<tr><td>${esc(c.cat)}</td><td>${c.n}</td>
+      <td><b class="${c.avg === CATS[0].avg ? "hi" : (c.avg === CATS[CATS.length - 1].avg ? "lo" : "")}">${pct(c.avg)}</b></td>
+      <td>${pct(c.max)}</td>
+      <td>${c.who ? esc(c.who[0]) + ` <span style="color:#8a857a">(${c.who[1]} 次)</span>` : "—"}</td></tr>`).join("") +
+    `</table><div class="note" style="margin-top:10px">回收率 = 收购价 ÷ 商店基准价。游戏默认收购约为基准价的两成；个别品类（如远程兵器、首饰）配置了更高的收购系数，优先把这类东西卖给出价最高的商人收益差距最明显。</div>`;
+}
+
+/* ===== Tab4 机制 ===== */
 function renderMech(){
-  $("cats").innerHTML = `<table><tr><th>品类</th><th>英文</th><th>配置键</th><th>运行时需求键（玩家出售 / 购买）</th></tr>` +
+  $("catsmech").innerHTML = `<table><tr><th>品类</th><th>英文</th><th>配置键</th><th>运行时需求键（玩家出售 / 购买）</th></tr>` +
     MECH.categories.map(c => `<tr><td>${esc(c.zh)}</td><td>${esc(c.en)}</td><td><code>${c.keys.map(esc).join(", ")}</code></td>
       <td>${c.rt.player_sells ? "出售 " + esc(c.rt.player_sells) : ""}${c.rt.player_buys ? " / 购买 " + esc(c.rt.player_buys) : ""}</td></tr>`).join("") + `</table>`;
   $("towns").innerHTML = `<table><tr><th>城镇</th><th>声望层级</th><th>交易好感度</th></tr>` +
@@ -104,13 +233,14 @@ function renderMech(){
   $("formula").innerHTML = `<table><tr><th>项目</th><th>公式</th></tr>` +
     Object.entries(MECH.formula).map(([k, v]) => `<tr><td><code>${esc(k)}</code></td><td>${esc(v)}</td></tr>`).join("") + `</table>`;
 }
+
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.querySelectorAll(".tab").forEach(x => x.classList.remove("on"));
   t.classList.add("on");
-  ["items","merchants","mech"].forEach(v => $("v-" + v).classList.toggle("hide", v !== t.dataset.v));
+  ["items", "merchants", "cats", "mech"].forEach(v => $("v-" + v).classList.toggle("hide", v !== t.dataset.v));
 });
 $("q").oninput = renderItems;
-renderItems(); renderMerchants(); renderMech();
+renderItems(); renderMerchants(); renderCats(); renderMech();
 </script>
 </body>
 </html>

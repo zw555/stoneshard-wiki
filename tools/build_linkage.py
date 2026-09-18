@@ -256,6 +256,65 @@ def main():
                     n_stats += 1
     print("items with numeric stats:", n_stats)
 
+    # attach classification from community dataset (四级层级，注入 l1 code + 细分中文)
+    # 匹配方式与 formulas.per_item_norm 一致：规范化英文名
+    cls_path = os.path.join(DATA, "community_wiki_zh.json")
+    n_cls = 0
+    if os.path.exists(cls_path):
+        wiki = json.load(open(cls_path, encoding="utf-8"))["items"]
+        def _norm(s):
+            return re.sub(r"[^a-z0-9]", "", (s or "").lower())
+        cls_map = {}
+        for w in wiki:
+            c = w.get("classification")
+            if not c:
+                continue
+            key = _norm(w.get("name_en") or w.get("id"))
+            if key and key not in cls_map:
+                tr = w.get("tier_raw")
+                try:
+                    tr = int(tr)
+                except (TypeError, ValueError):
+                    tr = None
+                if tr is not None and not (1 <= tr <= 5):
+                    tr = None
+                cls_map[key] = (c, tr)
+        # 通用「药剂」(potion) 在游戏内没有独立图标，potion01-04 的水/空瓶精灵即其外观，
+        # 手动挂到 wiki 的 potion 分类上，让「药水」细分导航非空
+        SPRITE_CLS_OVERRIDE = {}
+        for _pn in ("01", "02", "03", "04"):
+            SPRITE_CLS_OVERRIDE["potion%s_water" % _pn] = "potion"
+            SPRITE_CLS_OVERRIDE["potion%s_empty" % _pn] = "potion"
+        for it in items:
+            if it["type"] != "item":
+                continue
+            # 精灵名 rest（s_inv_flask_water -> flaskwater）优先：本地化名常与 wiki id 不同
+            rest = it["sprite"]
+            for p in PREFIXES:
+                if rest.startswith(p):
+                    rest = rest[len(p):]
+                    break
+            override_id = SPRITE_CLS_OVERRIDE.get(rest)
+            hit = (cls_map.get(_norm(override_id)) if override_id else None) \
+                or cls_map.get(_norm(rest)) or cls_map.get(_norm(it["name_en"]))
+            if not hit:
+                continue
+            c, tr = hit
+            l1 = c.get("l1", {})
+            l2 = c.get("l2", {})
+            l3 = c.get("l3", {})
+            code = l1.get("code") or ""
+            l2zh = l2.get("labels", {}).get("zh") or ""
+            # 饮品二级全是「喝」，用三级细分（酒水/药水/水/奶类）做导航维度
+            if code == "food" and l2zh == "喝":
+                sub = l3.get("labels", {}).get("zh") or ""
+            else:
+                sub = l2zh
+            it["cl"] = [code, sub]
+            it["tr"] = tr
+            n_cls += 1
+    print("items with classification:", n_cls)
+
     with open(os.path.join(DATA, "items.json"), "w", encoding="utf-8") as f:
         json.dump(items, f, ensure_ascii=False)
 
@@ -275,7 +334,24 @@ def main():
     payload = [{"s": it["sprite"], "t": it["type"], "i": it["icon"],
                 "en": it["name_en"], "zh": it["name_zh"],
                 "de": it["desc_en"], "dz": it["desc_zh"],
-                "x": it["extra"], "st": it.get("stats") or None} for it in items]
+                "x": it["extra"], "st": it.get("stats") or None,
+                "cl": it.get("cl") or None, "tr": it.get("tr") or None} for it in items]
+
+    # 占位符公式：build_formulas.py 从社区数据集的反编译 GML 提取。
+    # per_item_norm 按规范化英文名索引（items.json 没有 wiki id），条目自带公式
+    # 优先于全局 by_key（同名占位符在不同技能里的缩放公式不同）。
+    fpath = os.path.join(DATA, "formulas.json")
+    f_by_key, f_norm = {}, {}
+    if os.path.exists(fpath):
+        _f = json.load(open(fpath, encoding="utf-8"))
+        f_by_key, f_norm = _f.get("by_key", {}), _f.get("per_item_norm", {})
+    matched_f = 0
+    for p, it in zip(payload, items):
+        m = f_norm.get(re.sub(r"[^a-z0-9]", "", (it["name_en"] or "").lower()))
+        if m:
+            p["f"] = m
+            matched_f += 1
+    print("placeholder formulas: per-item matched=%d / by_key=%d keys" % (matched_f, len(f_by_key)))
 
     # 属性极性表（由 build_stat_polarity.py 从游戏原文 ~lg~ / ~r~ 标记挖掘而来）
     # 只注入本页实际用到的标签，避免无关/噪声条目被误匹配
@@ -308,6 +384,7 @@ def main():
                 encoding="utf-8").read()
     html = html.replace("__DATA__", json.dumps(payload, ensure_ascii=False))
     html = html.replace("__POLARITY__", json.dumps(pol, ensure_ascii=False))
+    html = html.replace("__FORMULAS__", json.dumps(f_by_key, ensure_ascii=False, sort_keys=True))
     out = os.path.join(SITE, "items.html")
     with open(out, "w", encoding="utf-8") as f:
         f.write(html)

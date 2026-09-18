@@ -57,6 +57,33 @@
   .strow.legend .rd { color:#c0392b; font-weight:600; }
   .price-tag { position:absolute; right:10px; top:10px; font-size:12px; color:var(--acc); font-weight:600; }
   .card { position:relative; }
+  /* 描述内运行时占位符：算不出时显示灰色 ?（悬停看原因） */
+  .ph { border-bottom:1px dashed #a49e8f; color:var(--sub); cursor:help; font-weight:400; }
+  /* 全局角色属性面板 */
+  .attrbar { max-width:1200px; margin:0 auto 16px; padding:8px 14px; background:var(--card);
+             border:1px solid var(--line); border-radius:10px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; font-size:13px; }
+  .attrbar .alabel { font-weight:600; color:var(--acc); }
+  .attrbar label { display:flex; align-items:center; gap:4px; }
+  .attrbar input { width:52px; padding:4px 6px; border:1px solid var(--line); border-radius:6px; font-size:13px; background:var(--bg); }
+  .attrbar button { padding:4px 12px; border:1px solid var(--line); border-radius:6px; background:var(--card); cursor:pointer; font-size:12.5px; }
+  .attrbar button:hover { background:#efe7d8; }
+  .attrbar .anote { color:var(--sub); font-size:11.5px; flex-basis:100%; }
+  /* 分类导航与视图切换 */
+  .navrow { max-width:1200px; margin:0 auto 10px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+  .navrow .nlbl { color:var(--sub); font-size:12.5px; font-weight:600; }
+  .chip .cnt { opacity:.6; font-size:11px; margin-left:2px; }
+  .tag.ttag { background:#e3dbc6; font-weight:700; letter-spacing:.5px; min-width:26px; text-align:center; }
+  .seg { display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-left:auto; flex:none; }
+  .seg button { border:0; padding:7px 14px; background:var(--card); cursor:pointer; font-size:13px; color:var(--ink); }
+  .seg button + button { border-left:1px solid var(--line); }
+  .seg button.on { background:var(--acc); color:#fff; }
+  /* 详情视图：宽卡片，展示与弹窗一致的完整信息 */
+  #grid.detail { grid-template-columns:repeat(auto-fill,minmax(560px,1fr)); }
+  #grid.detail .card { padding:14px; }
+  #grid.detail .card img { width:64px; height:64px; }
+  #grid.detail .ds { -webkit-line-clamp:unset; overflow:visible; margin-top:6px; }
+  #grid.detail .stats { margin:8px 0 2px; }
+  #grid.detail .dextra { margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); font-size:12.5px; color:#55503f; }
 </style>
 </head>
 <body>
@@ -66,12 +93,16 @@
 </header>
 <div class="bar">
   <input id="q" placeholder="搜索：中文名 / 英文名 / 内部名（如 出血、bleeding、whetstone）">
-  <button class="chip on" data-t="all">全部</button>
-  <button class="chip" data-t="item">物品</button>
-  <button class="chip" data-t="skill">技能</button>
-  <button class="chip" data-t="spell">法术</button>
+  <div class="seg" id="vseg" title="切换列表展示方式">
+    <button data-v="thumb" type="button">缩略列表</button>
+    <button data-v="detail" type="button">详情列表</button>
+  </div>
 </div>
+<div class="navrow" id="nav1"></div>
+<div class="navrow" id="nav2" hidden></div>
+<div class="navrow" id="nav3"></div>
 <div id="count"></div>
+<div class="attrbar" id="attrbar"></div>
 <div id="grid"></div>
 <dialog id="dlg">
   <button class="dlg-x" id="dlgx" type="button" title="关闭（Esc / 点空白处也可）" aria-label="关闭">&times;</button>
@@ -82,9 +113,163 @@ const DATA = __DATA__;
 /* 属性极性表：来自游戏原文的颜色标记挖掘结果
    { "失手几率": {"+":"neg","-":"pos"}, ... }  pos=游戏内绿色(增益) neg=游戏内红色(减益) */
 const POLARITY = __POLARITY__;
-let type = "all";
+/* 占位符公式库：反编译 GML 表达式（build_formulas.py 从社区数据集提取）
+   by_key: 全局按键聚合；条目自带的 f 字段（同键不同技能公式不同）优先 */
+const FORMULAS = __FORMULAS__;
+
+/* ===== 角色属性面板与占位符求值引擎 =====
+   基准值来自社区规划器的属性引擎（从其打包 JS 逆向，与 GML 一致）：
+   属性阈值制（15/20/25/30 各一档），无装备、未习得技能、无增益的裸角色。 */
+const DEF_ATTRS = { STR:10, AGL:10, PRC:10, VIT:10, WIL:10 };
+const ATTR_ZH = { STR:"力量", AGL:"敏捷", PRC:"感知", VIT:"活力", WIL:"意志" };
+let ATTRS = (function(){
+  try {
+    const a = JSON.parse(localStorage.getItem("ssw_attrs"));
+    if (a && ["STR","AGL","PRC","VIT","WIL"].every(k => +a[k] >= 5 && +a[k] <= 30))
+      return { STR:+a.STR, AGL:+a.AGL, PRC:+a.PRC, VIT:+a.VIT, WIL:+a.WIL };
+  } catch(e){}
+  return { ...DEF_ATTRS };
+})();
+function saveAttrs(){ localStorage.setItem("ssw_attrs", JSON.stringify(ATTRS)); }
+const th = x => (x>=15?1:0)+(x>=20?1:0)+(x>=25?1:0)+(x>=30?1:0);
+function baseCtx(){
+  const s=ATTRS.STR, a=ATTRS.AGL, p=ATTRS.PRC, v=ATTRS.VIT, w=ATTRS.WIL;
+  const ts=th(s), ta=th(a), tp=th(p), tv=th(v), tw=th(w);
+  return { STR:s, AGL:a, PRC:p, WIL:w, Vitality:v,
+    Magic_Power: 100+7.5*tw,
+    Pyromantic_Power:0, Geomantic_Power:0, Electromantic_Power:0, Venomantic_Power:0,
+    Cryomantic_Power:0, Arcanistic_Power:0, Astromantic_Power:0, Psimantic_Power:0,
+    HP: 100+15*tv, max_hp: 100+15*tv, max_mp: 60+4*v,
+    PRR:0, Block_PowerMax:0, Legs_DEF:0, Body_DEF:0,
+    Spell_Hit_Chance: 1.5*p, Miscast_Chance: 35-1.5*a,
+    Miracle_Chance: 5+5*tp, Miracle_Power: 25,
+    Mainhand_Efficiency:100, Offhand_Efficiency:100,
+    EVS: 1+5*ta, Knockback_Chance:0,
+    CRT: 1+5*tp, CRTD: 25+10*ts, CTA: -14+1.5*a, FMB: 35-1.5*a,
+    Hit_Chance: 65+1.5*p, Weapon_Damage: 85+1.5*s, Armor_Piercing: -15+1.5*p,
+    Bodypart_Damage: 7.5*ts, Armor_Damage: 15*ts,
+    Fortitude: 7.5*tw, Stun_Resistance: 7.5*tv, Knockback_Resistance: 7.5*ta,
+    Pain_Resistance: 7.5*tw, Cooldown_Reduction: 115-1.5*w, Abilities_Energy_Cost: 115-1.5*w,
+    Health_Restoration:10, Healing_Received:100, MP_Restoration:2*v,
+    Crit_Avoid:0, Lifesteal:0, Manasteal:0,
+    Stagger_Chance:0, Daze_Chance:0, Stun_Chance:0, Immob_Chance:0, Bleeding_Chance:0,
+    Skills_Energy_Cost:0, Spells_Energy_Cost:0, Damage_Received:100, Backfire_Damage:0 };
+}
+let CTX = baseCtx();
+function evalExpr(expr, ctx){
+  if (expr.indexOf("scr_") !== -1) return null;   // 依赖敌人参数，静态算不出
+  let unknown = false;
+  let e = expr.replace(/owner\.([A-Za-z_0-9]+)/g, (m,k) => {
+    const v = ctx[k];
+    if (v === undefined){ unknown = true; return "0"; }
+    return "(" + v + ")";
+  });
+  if (unknown) return null;
+  e = e.replace(/math_round\(/g, "Math.round(")
+       .replace(/\bmax\(/g, "Math.max(").replace(/\bmin\(/g, "Math.min(");
+  // 白名单校验：去掉三个允许的函数名后必须只剩纯算术字符
+  if (!/^[\d\s+\-*/(),.]*$/.test(e.replace(/Math\.(round|max|min)\(/g, ""))) return null;
+  try { return new Function('"use strict";return (' + e + ')')(); } catch(err){ return null; }
+}
+function fmtNum(v){
+  if (v == null || !isFinite(v)) return null;
+  const r = Math.round(v * 10) / 10;
+  return Number.isInteger(r) ? String(r) : r.toFixed(1);
+}
+function resolveKey(key, itemF){
+  if (itemF && itemF[key] != null){
+    const v = evalExpr(itemF[key], CTX);
+    return v == null ? null : fmtNum(v);   // 条目自带公式：权威，算不出就不再兜底
+  }
+  const exprs = FORMULAS && FORMULAS[key];
+  if (!exprs) return null;
+  let val = null;
+  for (const e of exprs){
+    const v = evalExpr(e, CTX);
+    if (v == null) return null;            // 有变体算不出 → 视为不可靠
+    if (val == null) val = v;
+    else if (Math.abs(v - val) > 1e-9) return null;  // 变体结果互相矛盾 → 占位符
+  }
+  return fmtNum(val);
+}
+
+/* ===== 分类导航 =====
+   一级分类取自社区数据集的四级层级（classification.l1），
+   饮品细分用三级（酒水/药水/水/奶类，build_linkage.py 已归一化注入 cl 字段） */
+const CATS = [
+  { code:"all",      zh:"全部" },
+  { code:"weapon",   zh:"武器" },
+  { code:"armor",    zh:"防具" },
+  { code:"jewelry",  zh:"首饰" },
+  { code:"food",     zh:"食物 / 药水 / 酒水" },
+  { code:"artifact", zh:"文物" },
+  { code:"other",    zh:"其他" },
+  { code:"skill",    zh:"技能" },
+  { code:"spell",    zh:"法术" },
+];
+function catOf(it){
+  if (it.t === "skill") return "skill";
+  if (it.t === "spell") return "spell";
+  if (it.t !== "item" || !it.cl) return "other";
+  return it.cl[0];
+}
+let cat = "all", sub = "", type = "all";   // type 保留为兼容旧变量（不再用于过滤）
 const q = document.getElementById("q"), grid = document.getElementById("grid"), count = document.getElementById("count");
+const nav1 = document.getElementById("nav1"), nav2 = document.getElementById("nav2"), nav3 = document.getElementById("nav3");
 const TYPE_ZH = {item:"物品", skill:"技能", spell:"法术"};
+const TIER_CHN = {1:"一", 2:"二", 3:"三", 4:"四", 5:"五"};
+
+function buildNav1(){
+  const counts = {};
+  for (const it of DATA){
+    const c = catOf(it);
+    counts[c] = (counts[c] || 0) + 1;
+  }
+  nav1.innerHTML = CATS.map(c =>
+    `<button class="chip${cat === c.code ? " on" : ""}" data-c="${c.code}">${c.zh}<span class="cnt">${c.code === "all" ? DATA.length : (counts[c.code] || 0)}</span></button>`
+  ).join("");
+  nav1.querySelectorAll("button").forEach(b => b.onclick = () => {
+    cat = b.dataset.c; sub = ""; tierF = -1;
+    buildNav1(); buildNav2(); buildNav3(); render();
+  });
+}
+function buildNav2(){
+  const show = !(cat === "all" || cat === "other" || cat === "skill" || cat === "spell");
+  const m = new Map();
+  if (show)
+    for (const it of DATA){
+      if (catOf(it) !== cat || !it.cl || !it.cl[1]) continue;
+      m.set(it.cl[1], (m.get(it.cl[1]) || 0) + 1);
+    }
+  if (!m.size){ nav2.hidden = true; nav2.innerHTML = ""; return; }
+  nav2.hidden = false;
+  nav2.innerHTML = '<span class="nlbl">细分</span>' +
+    `<button class="chip${sub === "" ? " on" : ""}" data-s="">全部</button>` +
+    [...m.entries()].sort((a, b) => b[1] - a[1]).map(([s, c]) =>
+      `<button class="chip${sub === s ? " on" : ""}" data-s="${esc(s)}">${esc(s)}<span class="cnt">${c}</span></button>`
+    ).join("");
+  nav2.querySelectorAll("button").forEach(b => b.onclick = () => {
+    sub = b.dataset.s; buildNav2(); render();
+  });
+}
+/* 等级过滤：-1=全部，0=无等级，1-5=对应等级。计数随一级分类联动。 */
+let tierF = -1;
+function buildNav3(){
+  const counts = { "-1": 0, "0": 0, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0 };
+  for (const it of DATA){
+    if (cat !== "all" && catOf(it) !== cat) continue;
+    counts[String(it.tr >= 1 && it.tr <= 5 ? it.tr : 0)]++;
+    counts["-1"]++;
+  }
+  nav3.hidden = false;
+  nav3.innerHTML = '<span class="nlbl">等级</span>' +
+    [["-1", "全部"], ["1", "一"], ["2", "二"], ["3", "三"], ["4", "四"], ["5", "五"], ["0", "无等级"]]
+      .map(([v, l]) => `<button class="chip${tierF === +v ? " on" : ""}" data-tv="${v}">${l}<span class="cnt">${counts[v]}</span></button>`)
+      .join("");
+  nav3.querySelectorAll("button").forEach(b => b.onclick = () => {
+    tierF = +b.dataset.tv; buildNav3(); render();
+  });
+}
 
 function esc(s){ return (s == null ? "" : String(s)).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 /* 游戏文本颜色标记：~r~红(惩罚) ~lg~绿(加成) ~w~白(普通强调) ~y~黄(名词) ~bl~蓝 … -> 对应颜色 */
@@ -92,8 +277,14 @@ const TAG_CLS = { r:"c-red", lg:"c-green", g:"c-green", w:"c-w", W:"c-w",
                   y:"c-gold", sy:"c-gold", ly:"c-gold", o:"c-gold", ur:"c-gold", Y:"c-gold",
                   bl:"c-blue", lb:"c-blue", p:"c-purple", pr:"c-purple", cg:"c-purple",
                   gr:"c-dim", s:"c-dim", u:"c-dim", Ig:"c-dim" };
-function fmt(s){
-  s = esc(s).replace(/##/g, "\n")
+function fmt(s, itemF){
+  s = esc(s)
+    .replace(/\/\*([A-Za-z_0-9]+)\*\//g, (m, key) => {
+      const v = resolveKey(key, itemF);
+      if (v !== null) return v;
+      return '<span class="ph" title="运行时数值：取决于装备 / 敌人 / 界面状态（' + key + '），静态无法计算">?</span>';
+    })
+    .replace(/##/g, "\n")
     .replace(/~([A-Za-z_]{1,8})~(.*?)~\/~/g, (m, tag, body) => `<b class="${TAG_CLS[tag] || "c-w"}">${body}</b>`)
     .replace(/~[A-Za-z_]{1,8}~/g, "");
   return s.replace(/\n/g, "<br>");
@@ -121,12 +312,46 @@ function statTitle(label, v){
   return "游戏内为中性数值";
 }
 
+/* ===== 视图切换：缩略（图标+名称+3行摘要）/ 详情（宽卡片，内容与弹窗一致） ===== */
+const vseg = document.getElementById("vseg");
+let view = "thumb";
+try { if (localStorage.getItem("ssw_itemview") === "detail") view = "detail"; } catch(e){}
+function setView(v, skipRender){
+  view = v;
+  try { localStorage.setItem("ssw_itemview", v); } catch(e){}
+  vseg.querySelectorAll("button").forEach(b => b.classList.toggle("on", b.dataset.v === v));
+  grid.classList.toggle("detail", v === "detail");
+  if (!skipRender) render();
+}
+
+/* 数值块（弹窗与详情卡片共用）：legend 仅弹窗显示 */
+function statsHtml(it, withLegend){
+  if (!it.st) return "";
+  const parts = [];
+  if (it.st.damage && it.st.damage.length)
+    parts.push('<div class="strow">' + it.st.damage.map(d => `<b class="${statCls(d.label, d.value)}" title="${statTitle(d.label, d.value)}">${esc(d.value)}</b> ${esc(d.label)}`).join(" · ") + "</div>");
+  if (it.st.stats && it.st.stats.length)
+    parts.push(it.st.stats.map(s => `<div class="strow">${esc(s.label)} <b class="${statCls(s.label, s.value)}" title="${statTitle(s.label, s.value)}">${esc(s.value)}</b></div>`).join(""));
+  const meta = [];
+  if (it.st.durability) meta.push(`耐久 ${it.st.durability}`);
+  if (it.st.price) meta.push(`价格 ${it.st.price} 金`);
+  if (it.st.rarity) meta.push(esc(it.st.rarity));
+  if (meta.length) parts.push(`<div class="strow meta">${meta.join(" · ")}</div>`);
+  if (withLegend && it.st.stats && it.st.stats.length)
+    parts.push('<div class="strow legend"><span class="lg">绿色 = 增益</span> · <span class="rd">红色 = 减益</span> · 依据游戏原文的颜色标记判定（与游戏内显示一致）</div>');
+  return parts.length ? `<div class="stats">${parts.join("")}</div>` : "";
+}
+
 function render(){
   const kw = q.value.trim().toLowerCase();
+  const isDetail = view === "detail";
   let n = 0;
   const frag = document.createDocumentFragment();
   for (const it of DATA){
-    if (type !== "all" && it.t !== type) continue;
+    if (cat !== "all" && catOf(it) !== cat) continue;
+    if (sub && (!it.cl || it.cl[1] !== sub)) continue;
+    if (tierF === 0 && it.tr) continue;
+    if (tierF >= 1 && it.tr !== tierF) continue;
     if (kw){
       const hay = (it.en + " " + it.zh + " " + it.de + " " + it.dz + " " + it.s).toLowerCase();
       if (!hay.includes(kw)) continue;
@@ -134,42 +359,38 @@ function render(){
     n++;
     const d = document.createElement("div");
     d.className = "card";
+    const catTag = it.cl && it.cl[1] ? ` · ${esc(it.cl[1])}` : "";
+    const tierBadge = it.tr ? `<span class="tag ttag" title="装备等级：${TIER_CHN[it.tr]}">${TIER_CHN[it.tr]}</span>` : "";
+    const desc = fmt(it.dz || it.de || "", it.f);
     d.innerHTML = `<img loading="lazy" src="${it.i}" onerror="this.style.visibility='hidden'">
       ${it.st && it.st.price ? `<span class="price-tag">${it.st.price}金</span>` : ""}
-      <div><span class="tag">${TYPE_ZH[it.t]||it.t}</span>
+      <div>${tierBadge}<span class="tag">${TYPE_ZH[it.t]||it.t}${catTag}</span>
       <div class="nm"><span class="zh">${esc(it.zh) || esc(it.en)}</span><span class="en">${esc(it.zh ? it.en : it.s)}</span></div>
-      <div class="ds">${fmt(it.dz || it.de || "")}</div></div>`;
+      ${isDetail
+        ? statsHtml(it, false) + `<div class="ds">${desc}</div>` +
+          (it.x && it.x.length ? `<div class="dextra">${it.x.map(x => fmt(x.zh || x.en, it.f)).join("<br><br>")}</div>` : "")
+        : `<div class="ds">${desc}</div>`}</div>`;
     d.onclick = () => openDlg(it);
     frag.appendChild(d);
   }
   grid.replaceChildren(frag);
-  count.textContent = `显示 ${n} / ${DATA.length} 条`;
+  count.textContent = `显示 ${n} / ${DATA.length} 条${isDetail ? " · 详情视图" : ""}`;
 }
 let savedY = 0;   // 打开弹窗前记录页面滚动位置，关闭后还原
-function openDlg(it){
-  let st = "";
-  if (it.st){
-    const parts = [];
-    if (it.st.damage && it.st.damage.length)
-      parts.push('<div class="strow">' + it.st.damage.map(d => `<b class="${statCls(d.label, d.value)}" title="${statTitle(d.label, d.value)}">${esc(d.value)}</b> ${esc(d.label)}`).join(" · ") + "</div>");
-    if (it.st.stats && it.st.stats.length)
-      parts.push(it.st.stats.map(s => `<div class="strow">${esc(s.label)} <b class="${statCls(s.label, s.value)}" title="${statTitle(s.label, s.value)}">${esc(s.value)}</b></div>`).join(""));
-    const meta = [];
-    if (it.st.durability) meta.push(`耐久 ${it.st.durability}`);
-    if (it.st.price) meta.push(`价格 ${it.st.price} 金`);
-    if (it.st.rarity) meta.push(esc(it.st.rarity));
-    if (meta.length) parts.push(`<div class="strow meta">${meta.join(" · ")}</div>`);
-    if (it.st.stats && it.st.stats.length)
-      parts.push('<div class="strow legend"><span class="lg">绿色 = 增益</span> · <span class="rd">红色 = 减益</span> · 依据游戏原文的颜色标记判定（与游戏内显示一致）</div>');
-    if (parts.length) st = `<div class="stats">${parts.join("")}</div>`;
-  }
+let lastItem = null;
+function fillDlg(it){
+  const st = statsHtml(it, true);
   document.getElementById("dlgbody").innerHTML =
     `<img src="${it.i}"><h2>${esc(it.zh) || esc(it.en)}</h2>
-     <div class="en">${esc(it.en)} · 内部名 <code>${esc(it.s)}</code></div>
+     <div class="en">${esc(it.en)} · 内部名 <code>${esc(it.s)}</code>${it.tr ? ` · ${TIER_CHN[it.tr]}阶` : ""}</div>
      ${st}
-     <div class="desc">${fmt(it.dz || it.de || "（无描述数据）")}</div>
-     ${it.x && it.x.length ? `<div class="extra">${it.x.map(x => fmt(x.zh || x.en)).join("<br><br>")}</div>` : ""}`;
+     <div class="desc">${fmt(it.dz || it.de || "（无描述数据）", it.f)}</div>
+     ${it.x && it.x.length ? `<div class="extra">${it.x.map(x => fmt(x.zh || x.en, it.f)).join("<br><br>")}</div>` : ""}`;
   document.getElementById("dlgbody").scrollTop = 0;   // 每次打开都从顶部看起
+}
+function openDlg(it){
+  lastItem = it;
+  fillDlg(it);
   savedY = window.scrollY;
   document.getElementById("dlg").showModal();
 }
@@ -187,10 +408,42 @@ dlg.addEventListener("close", () => {
   requestAnimationFrame(() => window.scrollTo(0, y));
 });
 q.oninput = render;
-document.querySelectorAll(".chip").forEach(c => c.onclick = () => {
-  document.querySelectorAll(".chip").forEach(x => x.classList.remove("on"));
-  c.classList.add("on"); type = c.dataset.t; render();
-});
+/* ---- 属性面板 ---- */
+const attrbar = document.getElementById("attrbar");
+function buildPanel(){
+  let h = '<span class="alabel">角色属性</span>';
+  for (const k of ["STR","AGL","PRC","VIT","WIL"])
+    h += `<label>${ATTR_ZH[k]} <input type="number" min="5" max="30" step="1" data-k="${k}" value="${ATTRS[k]}"></label>`;
+  h += '<button id="areset" type="button">重置为 10</button>';
+  h += '<span class="anote">描述里的运行时数值会按以上属性换算（按无装备、未习得技能的裸角色计算，基准公式来自社区规划器逆向）。灰色 <span class="ph">?</span> 表示取决于装备/敌人/界面状态，无法静态计算。</span>';
+  attrbar.innerHTML = h;
+  attrbar.querySelectorAll("input").forEach(inp => inp.onchange = () => {
+    let v = Math.round(+inp.value);
+    if (!isFinite(v)) v = 10;
+    v = Math.max(5, Math.min(30, v));
+    inp.value = v;
+    ATTRS[inp.dataset.k] = v;
+    saveAttrs();
+    onAttrsChange();
+  });
+  attrbar.querySelector("#areset").onclick = () => {
+    ATTRS = { ...DEF_ATTRS };
+    saveAttrs();
+    buildPanel();
+    onAttrsChange();
+  };
+}
+function onAttrsChange(){
+  CTX = baseCtx();
+  render();
+  if (document.getElementById("dlg").open && lastItem) fillDlg(lastItem);
+}
+buildPanel();
+buildNav1();
+buildNav2();
+buildNav3();
+setView(view, true);   // 应用已保存的视图选择（class/按钮态），不重复渲染
+vseg.querySelectorAll("button").forEach(b => b.onclick = () => setView(b.dataset.v));
 render();
 </script>
 </body>

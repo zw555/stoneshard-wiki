@@ -47,12 +47,6 @@ def main():
     pages = parse_pages()
     stats = json.load(open(RE_STATS, encoding="utf-8")) if os.path.exists(RE_STATS) else {}
 
-    # merchant leaderboard
-    lb = collections.Counter()
-    for it in pages.values():
-        for s in it["sellers"]:
-            lb[s["who"]] += 1
-
     payload = []
     for sprite, it in pages.items():
         st = stats.get(sprite) or {}
@@ -60,6 +54,7 @@ def main():
             "s": sprite, "zh": it["zh"], "en": it["en"],
             "ic": re.sub(r"_\d+$", "", sprite) + ".png",
             "base": st.get("price"),
+            "ty": st.get("type_text") or "",
             "sel": it["sellers"],
         })
     payload.sort(key=lambda x: x["zh"] or x["en"])
@@ -80,13 +75,11 @@ def main():
     }
     tpl = open(os.path.join(TOOLS, "trade_template.html"), encoding="utf-8").read()
     html = (tpl.replace("__DATA__", json.dumps(payload, ensure_ascii=False))
-               .replace("__MECH__", json.dumps(mech, ensure_ascii=False))
-               .replace("__LB__", json.dumps(lb.most_common(40), ensure_ascii=False)))
+               .replace("__MECH__", json.dumps(mech, ensure_ascii=False)))
     out = os.path.join(SITE, "trade.html")
     with open(out, "w", encoding="utf-8") as f:
         f.write(html)
     print("items:", len(payload), "| with seller ranking:", with_sellers)
-    print("merchants:", len(lb), "| top5:", lb.most_common(5))
     print("wrote", out)
 
 
