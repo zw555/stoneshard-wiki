@@ -28,6 +28,25 @@ def main():
 
     nodes = [i for i in wiki["items"] if i.get("is_skill_tree_node")]
 
+    # asset_id -> node id（前置连线引用用；11 个无 asset_id：4 个基础技能根节点 + 7 个未实装占位）
+    aid2id = {}
+    for n in nodes:
+        a = (n.get("skill_tree_position") or {}).get("visual_connections", {}).get("asset_id")
+        if a:
+            aid2id[a] = n.get("id")
+
+    # 前置边：raw 的 connected_from_asset_ids 语义是「这些技能依赖本节点」（游戏中
+    # 低阶技能是高阶技能的前置，Ⅰ层是根），因此要反转：prereq(Y) = {X : Y ∈ X.from_raw}
+    raw_from = {}
+    for n in nodes:
+        vc = (n.get("skill_tree_position") or {}).get("visual_connections") or {}
+        raw_from[n.get("id")] = [aid2id[a] for a in (vc.get("connected_from_asset_ids") or []) if a in aid2id]
+    deps = {n.get("id"): [] for n in nodes}
+    for x, ys in raw_from.items():
+        for y in ys:
+            if y in deps:
+                deps[y].append(x)
+
     # books by tree key
     books_by_tree = collections.defaultdict(list)
     for b in books:
@@ -58,6 +77,8 @@ def main():
             "attr": attrs, "attrv": pos.get("attributes_value_to_open") or 0,
             "x": pos.get("visual_x") or 0, "y": pos.get("visual_y") or 0,
             "branch": pos.get("branch") or "",
+            "ph": not pos.get("unlock_tier"),   # 未实装占位节点（ph_*）
+            "from": sorted(deps.get(n.get("id"), [])),
         })
         # per-node placeholder formulas (reverse-engineered GML from the game)
         f = {fr["key"]: fr["display_expression"].strip()

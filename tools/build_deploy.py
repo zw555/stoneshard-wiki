@@ -8,7 +8,8 @@ import json, os, re, shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 DEPLOY = os.path.join(ROOT, "site_deploy")
-PAGES = ["index.html", "items.html", "skills.html", "enemies.html", "trade.html"]
+PAGES = ["index.html", "items.html", "skills.html", "enemies.html", "trade.html", "planner.html"]
+EXTRA_FILES = ["planner_data.js"]
 
 
 def referenced():
@@ -26,7 +27,7 @@ def main():
         shutil.rmtree(DEPLOY)
     os.makedirs(os.path.join(DEPLOY, "icons"), exist_ok=True)
 
-    for f in PAGES:
+    for f in PAGES + EXTRA_FILES:
         shutil.copy2(os.path.join(SITE, f), os.path.join(DEPLOY, f))
 
     copied = 0

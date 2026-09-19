@@ -53,6 +53,43 @@
   .attrbar button { padding:4px 12px; border:1px solid var(--line); border-radius:6px; background:var(--card); cursor:pointer; font-size:12.5px; }
   .attrbar button:hover { background:#efe7d8; }
   .attrbar .anote { color:var(--sub); font-size:11.5px; flex-basis:100%; }
+  /* ===== 树状图视图（游戏内坐标 + 前置连线 + 模拟加点） ===== */
+  .viewbar { display:flex; gap:8px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+  .viewbar .chip { padding:5px 14px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:13px; }
+  .viewbar .chip.on { background:var(--acc); color:#fff; border-color:var(--acc); }
+  .viewbar .siminfo { margin-left:auto; color:var(--sub); font-size:12.5px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .viewbar .siminfo b { color:var(--acc); }
+  .viewbar input[type=range] { width:110px; }
+  .tree { position:relative; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:auto; }
+  .tree svg.edges { position:absolute; left:0; top:0; pointer-events:none; }
+  .tnode { position:absolute; width:96px; text-align:center; cursor:pointer; user-select:none; }
+  .tnode .ico { width:56px; height:56px; margin:0 auto; border-radius:10px; background:#efeadf; border:2px solid var(--line);
+                display:flex; align-items:center; justify-content:center; transition:border-color .12s, box-shadow .12s; }
+  .tnode img { width:46px; height:46px; object-fit:contain; image-rendering:pixelated; }
+  .tnode .nm { font-size:11.5px; line-height:1.3; margin-top:4px; color:var(--ink); }
+  .tnode.on .ico { border-color:var(--acc); background:#f3e4d3; box-shadow:0 0 0 3px rgba(122,75,42,.25); }
+  .tnode.avail .ico { border-color:#b7a98a; }
+  .tnode.avail:hover .ico, .tnode.on:hover .ico { border-color:var(--acc); }
+  .tnode.avail, .tnode.on { cursor:pointer; }
+  .tnode.lock { cursor:not-allowed; }
+  .tnode.lock .ico { opacity:.42; filter:grayscale(1); }
+  .tnode.lock .nm { color:var(--sub); }
+  .tnode.plc .ico { border-style:dashed; }
+  .tnode .ttier { position:absolute; left:2px; top:2px; font-size:10px; color:#fff; background:#8a857a; border-radius:6px; padding:0 5px; }
+  .tnode.on .ttier { background:var(--acc); }
+  #ninfo { margin-top:12px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 16px; }
+  #ninfo:empty { display:none; }
+  #ninfo .nm2 { font-weight:600; font-size:15px; }
+  #ninfo .req2 { color:#55503f; font-size:12.5px; margin:4px 0; }
+  #ninfo .reason { color:#c0392b; font-size:12.5px; margin-top:4px; }
+  /* ===== 悬停富提示（跟随鼠标） ===== */
+  #tip { position:fixed; z-index:60; max-width:360px; background:var(--card); border:1px solid var(--line);
+         border-radius:10px; box-shadow:0 6px 24px rgba(0,0,0,.16); padding:10px 14px; font-size:12.5px;
+         pointer-events:none; display:none; }
+  #tip .tnm { font-weight:600; font-size:13.5px; margin-bottom:2px; }
+  #tip .treq { color:#55503f; margin:2px 0; }
+  #tip .twhy { color:#c0392b; margin:2px 0; }
+  #tip .desc { margin-top:4px; }
 </style>
 </head>
 <body>
@@ -69,6 +106,7 @@
     <div id="content"></div>
   </main>
 </div>
+<div id="tip"></div>
 <script>
 const DATA = __DATA__;
 /* 占位符公式库：反编译 GML 表达式（build_formulas.py 从社区数据集提取）。
@@ -153,6 +191,18 @@ function resolveKey(key, itemF){
 let cur = 0;
 const $ = id => document.getElementById(id);
 function esc(s){ return (s||"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+/* ===== 模拟加点状态 =====
+   sim[branchKey] = 已习得节点 id 数组；LVL = 模拟角色等级（门槛校验用）。均持久化。 */
+let sim = (function(){
+  try { const s = JSON.parse(localStorage.getItem("ssw_sim")); if (s && typeof s === "object") return s; } catch(e){}
+  return {};
+})();
+let LVL = (function(){ const v = +localStorage.getItem("ssw_lvl"); return (v >= 1 && v <= 30) ? v : 30; })();
+function saveSim(){ localStorage.setItem("ssw_sim", JSON.stringify(sim)); }
+function saveLvl(){ localStorage.setItem("ssw_lvl", String(LVL)); }
+let viewMode = localStorage.getItem("ssw_skview") === "list" ? "list" : "tree";
+const ATTR_KEY = { "力量":"STR", "敏捷":"AGL", "感知":"PRC", "活力":"VIT", "意志":"WIL" };
+const TIER_ZH = { 1:"Ⅰ", 2:"Ⅱ", 3:"Ⅲ", 4:"Ⅳ" };
 /* 游戏文本颜色标记：~r~红(惩罚) ~lg~绿(加成) ~w~白(普通强调) ~y~黄(名词) … -> 对应颜色 */
 const TAG_CLS = { r:"c-red", lg:"c-green", g:"c-green", w:"c-w", W:"c-w",
                   y:"c-gold", sy:"c-gold", ly:"c-gold", o:"c-gold", ur:"c-gold", Y:"c-gold",
@@ -172,9 +222,102 @@ function fmt(s, itemF){
 function reqLine(n){
   const p = [];
   if (n.lv) p.push(`角色等级 <b>${n.lv}</b>`);
-  if (n.attr && n.attr.length && n.attrv) p.push(`${n.attr.join("/")} <b>${n.attrv}</b>`);
+  if (n.attr && n.attr.length && n.attrv) p.push(`${n.attr.join("/")} 任一 <b>${n.attrv}</b>`);
   if (n.tier) p.push(`层级 <b>${n.tier}</b>`);
   return p.join(" · ");
+}
+/* ===== 树状图：节点状态计算 ===== */
+function attrOk(n){
+  /* 游戏内属性门槛是「任一达标」：力量/敏捷/感知 14 = 三选一 */
+  if (!n.attr || !n.attr.length || !n.attrv) return true;
+  return n.attr.some(zh => ATTRS[ATTR_KEY[zh]] !== undefined && ATTRS[ATTR_KEY[zh]] >= n.attrv);
+}
+function attrReqText(n){
+  return `${n.attr.join("/")} 任一 ≥ ${n.attrv}`;
+}
+function nodeState(b, n){
+  const got = new Set(sim[b.key] || []);
+  if (n.ph) return { st: "plc", why: "游戏内尚未实装（占位节点）" };
+  if (got.has(n.id)) return { st: "on", why: "" };   // 已习得：门槛只管学习，不影响已学状态
+  const miss = (n.from || []).filter(id => !got.has(id)).map(id => {
+    const p = b.nodes.find(x => x.id === id);
+    return p ? (p.zh || p.en) : id;
+  });
+  if (miss.length) return { st: "lock", why: "需先习得：" + miss.join("、") };
+  if (n.lv && LVL < n.lv) return { st: "lock", why: `角色等级不足（需 ${n.lv}，当前 ${LVL}）` };
+  if (n.attr && n.attr.length && n.attrv && !attrOk(n))
+    return { st: "lock", why: `属性不足（需 ${attrReqText(n)}，当前 ` +
+      n.attr.map(zh => `${zh} ${ATTRS[ATTR_KEY[zh]] ?? "?"}`).join("/") + `）` };
+  return { st: "avail", why: "" };
+}
+function treeHtml(b){
+  const S = 2.6, SY = 1.9, PAD = 30, NW = 96;
+  const xs = b.nodes.map(n => n.x), ys = b.nodes.map(n => n.y);
+  const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const W = (maxX - minX) * S + NW + PAD * 2, H = (maxY - minY) * SY + 130 + PAD;
+  const px = n => (n.x - minX) * S + PAD, py = n => (n.y - minY) * SY + PAD;
+  const got = new Set(sim[b.key] || []);
+  let edges = "";
+  for (const n of b.nodes)
+    for (const fid of (n.from || [])){
+      const p = b.nodes.find(x => x.id === fid);
+      if (!p) continue;
+      const lit = got.has(fid) && got.has(n.id);
+      edges += `<line x1="${px(p) + NW / 2}" y1="${py(p) + 30}" x2="${px(n) + NW / 2}" y2="${py(n) + 30}"
+        stroke="${lit ? "#7a4b2a" : "#cfc7b4"}" stroke-width="${lit ? 2.5 : 1.5}" ${lit ? "" : 'stroke-dasharray="4 3"'}/>`;
+    }
+  let nodes = "";
+  for (const n of b.nodes){
+    const s = nodeState(b, n);
+    nodes += `<div class="tnode ${s.st}" data-id="${esc(n.id)}" style="left:${px(n)}px;top:${py(n)}px">
+      ${n.tier ? `<span class="ttier">${TIER_ZH[n.tier] || n.tier}</span>` : ""}
+      <div class="ico"><img loading="lazy" src="icons/${esc(n.ic)}" onerror="this.style.visibility='hidden'"></div>
+      <div class="nm">${esc(n.zh) || esc(n.en)}</div></div>`;
+  }
+  return `<div class="tree" style="width:${W}px;height:${H}px">
+    <svg class="edges" width="${W}" height="${H}">${edges}</svg>${nodes}</div>
+    <div id="ninfo"></div>`;
+}
+function infoPanel(b, n, reason){
+  const el = document.getElementById("ninfo");
+  if (!n){ el.innerHTML = ""; return; }
+  const s = nodeState(b, n);
+  const reqs = [];
+  if (n.from && n.from.length) reqs.push("前置：" + n.from.map(id => {
+    const p = b.nodes.find(x => x.id === id); return p ? (p.zh || p.en) : id;
+  }).join("、"));
+  if (n.lv) reqs.push(`角色等级 ${n.lv}`);
+  if (n.attr && n.attr.length && n.attrv) reqs.push(attrReqText(n));
+  el.innerHTML = `<div class="nm2">${esc(n.zh) || esc(n.en)}
+      <span class="tag">${n.tier ? "层级 " + (TIER_ZH[n.tier] || n.tier) : "—"}</span>
+      <span class="tag">${(sim[b.key] || []).includes(n.id) ? "已习得 ✓" : s.st === "avail" ? "可习得" : s.st === "plc" ? "未实装" : "未解锁"}</span></div>
+    ${reqs.length ? `<div class="req2">${esc(reqs.join(" · "))}</div>` : ""}
+    ${reason || s.why ? `<div class="reason">${esc(reason || s.why)}</div>` : ""}
+    <div class="desc" style="margin-top:6px">${fmt(n.desc || "", n.f)}</div>`;
+}
+function toggleNode(b, n){
+  const got = sim[b.key] || (sim[b.key] = []);
+  const i = got.indexOf(n.id);
+  if (i >= 0){
+    const dependent = b.nodes.find(x => (x.from || []).includes(n.id) && got.includes(x.id));
+    if (dependent){
+      infoPanel(b, n, `无法取消：已习得的「${dependent.zh || dependent.en}」依赖本技能（请先取消它）`);
+      return;
+    }
+    got.splice(i, 1);
+    infoPanel(b, n);
+  } else {
+    const s = nodeState(b, n);
+    if (s.st === "lock" || s.st === "plc"){
+      infoPanel(b, n);
+      document.getElementById("ninfo").scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return;
+    }
+    got.push(n.id);
+    infoPanel(b, n);
+  }
+  saveSim();
+  render();   // 重画树（连线点亮/状态变化）
 }
 function renderBranches(){
   const groups = [];
@@ -205,6 +348,56 @@ function nodeCard(n){
     ${reqLine(n) ? `<div class="reqs">${reqLine(n)}</div>` : ""}
     <div class="desc">${fmt(n.desc || "", n.f)}</div></div>`;
 }
+/* ===== 悬停富提示：状态 + 门槛 + 锁定原因 + 完整描述，跟随鼠标 ===== */
+function tipHtml(b, n){
+  const s = nodeState(b, n);
+  const got = new Set(sim[b.key] || []);
+  const stTag = got.has(n.id) ? "已习得 ✓" : s.st === "avail" ? "可习得（点击加点）" : s.st === "plc" ? "未实装" : "未解锁";
+  const reqs = [];
+  if (n.from && n.from.length)
+    reqs.push("前置：" + n.from.map(id => { const p = b.nodes.find(x => x.id === id); return p ? (p.zh || p.en) : id; }).join("、"));
+  if (n.lv) reqs.push(`角色等级 ${n.lv}`);
+  if (n.attr && n.attr.length && n.attrv) reqs.push(attrReqText(n));
+  return `<div class="tnm">${esc(n.zh) || esc(n.en)}
+      <span class="tag">${stTag}</span>${n.tier ? `<span class="tag">层级 ${TIER_ZH[n.tier] || n.tier}</span>` : ""}</div>
+    ${reqs.length ? `<div class="treq">${esc(reqs.join(" · "))}</div>` : ""}
+    ${s.why ? `<div class="twhy">${esc(s.why)}</div>` : ""}
+    <div class="desc">${fmt(n.desc || "", n.f)}</div>`;
+}
+function moveTip(ev){
+  const tip = document.getElementById("tip");
+  const pad = 16, w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = ev.clientX + pad, y = ev.clientY + pad;
+  if (x + w > innerWidth - 8) x = ev.clientX - w - pad;
+  if (y + h > innerHeight - 8) y = ev.clientY - h - pad;
+  tip.style.left = Math.max(8, x) + "px";
+  tip.style.top = Math.max(8, y) + "px";
+}
+let lastSel = null;   // 树状图里最后点击的节点（渲染后恢复信息面板）
+function viewbarHtml(b){
+  const spent = (sim[b.key] || []).length;
+  return `<div class="viewbar">
+    <button class="chip${viewMode === "tree" ? " on" : ""}" data-v="tree">树状图</button>
+    <button class="chip${viewMode === "list" ? " on" : ""}" data-v="list">列表</button>
+    <span class="siminfo">
+      <span>本树已投入 <b>${spent}</b> 技能点</span>
+      <span>角色等级 <b id="lvlv">${LVL}</b> <input type="range" min="1" max="30" value="${LVL}" id="lvlr"></span>
+      <button class="chip" id="simreset" type="button">清空本树加点</button>
+    </span></div>`;
+}
+function bindViewbar(b){
+  document.querySelectorAll(".viewbar .chip[data-v]").forEach(c => c.onclick = () => {
+    viewMode = c.dataset.v; localStorage.setItem("ssw_skview", viewMode); render();
+  });
+  const r = document.getElementById("lvlr");
+  if (r) r.oninput = () => {
+    LVL = +r.value; saveLvl();
+    document.getElementById("lvlv").textContent = LVL;
+    render();   // 等级变化会改变节点可解锁状态
+  };
+  const rs = document.getElementById("simreset");
+  if (rs) rs.onclick = () => { delete sim[b.key]; saveSim(); lastSel = null; render(); };
+}
 function render(){
   const kw = $("q").value.trim().toLowerCase();
   let h = "", n = 0;
@@ -224,10 +417,39 @@ function render(){
       h += `<div class="books">` + b.books.map(bk =>
         `<div class="book"><b>${esc(bk.zh)}</b> <span style="color:#8a857a">${esc(bk.en)}</span> — ${esc(bk.desc).slice(0,120)}</div>`).join("") + `</div>`;
     }
-    h += `<div class="nodes">` + b.nodes.map(nodeCard).join("") + `</div>`;
-    $("count").textContent = `共 ${DATA.length} 个技能系 · ${DATA.reduce((a, x) => a + x.nodes.length, 0)} 个技能`;
+    h += viewbarHtml(b);
+    if (viewMode === "tree"){
+      h += treeHtml(b);
+      $("count").textContent = `点击节点模拟加点（绿色高亮=已习得，虚线=前置未满足）· 共 ${DATA.length} 个技能系`;
+    } else {
+      h += `<div class="nodes">` + b.nodes.map(nodeCard).join("") + `</div>`;
+      $("count").textContent = `共 ${DATA.length} 个技能系 · ${DATA.reduce((a, x) => a + x.nodes.length, 0)} 个技能`;
+    }
   }
   $("content").innerHTML = h;
+  if (!kw){
+    const b = DATA[cur];
+    bindViewbar(b);
+    if (viewMode === "tree"){
+      $("content").querySelectorAll(".tnode").forEach(el => {
+        const node = b.nodes.find(x => x.id === el.dataset.id);
+        el.onclick = () => { lastSel = node ? node.id : null; toggleNode(b, node); };
+        el.onmouseenter = ev => {
+          if (!node) return;
+          const tip = document.getElementById("tip");
+          tip.innerHTML = tipHtml(b, node);
+          tip.style.display = "block";
+          moveTip(ev);
+        };
+        el.onmousemove = moveTip;
+        el.onmouseleave = () => { document.getElementById("tip").style.display = "none"; };
+      });
+      if (lastSel){
+        const node = b.nodes.find(x => x.id === lastSel);
+        if (node) infoPanel(b, node);
+      }
+    }
+  }
 }
 $("q").oninput = render;
 /* ---- 属性面板 ---- */

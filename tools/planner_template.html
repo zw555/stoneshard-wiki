@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>配装规划器 · Stoneshard 中文资料库</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#1b1a17; --panel:#26241f; --line:#3d3a34; --fg:#e8e2d4; --dim:#a89f8c; --acc:#7a4b2a; --acc2:#c99b62; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif; }
+  a { color:var(--acc2); }
+  .layout { max-width:1280px; margin:0 auto; display:flex; gap:18px; padding:16px; align-items:flex-start; }
+  aside { width:430px; flex:none; }
+  main { flex:1; min-width:0; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin-bottom:14px; }
+  .card h3 { margin:2px 0 10px; font-size:15px; color:var(--acc2); }
+  .hint { color:var(--dim); font-size:12px; margin:6px 0 0; }
+  /* 属性行 */
+  .arow { display:flex; align-items:center; gap:8px; padding:3px 0; }
+  .arow .nm { width:64px; }
+  .arow .vv { width:34px; text-align:center; font-weight:600; }
+  .arow .tiers { color:var(--dim); font-size:12px; width:52px; }
+  .stepper { display:flex; align-items:center; gap:4px; }
+  .stepper button { width:24px; height:24px; border-radius:6px; border:1px solid var(--line); background:#302d27; color:var(--fg); cursor:pointer; font-size:15px; line-height:1; }
+  .stepper button:hover { background:var(--acc); }
+  /* 装备槽 */
+  .slot { border:1px solid var(--line); border-radius:8px; padding:7px 9px; margin-bottom:7px; background:#211f1b; }
+  .slot .top { display:flex; align-items:center; gap:8px; }
+  .slot .snm { width:58px; color:var(--dim); font-size:12px; flex:none; }
+  .slot .ichip { display:flex; align-items:center; gap:8px; min-width:0; flex:1; }
+  .slot img { width:34px; height:34px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
+  .slot .inm { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; cursor:pointer; }
+  .slot .inm:hover { color:var(--acc2); }
+  .slot .none { color:#6b6455; cursor:pointer; flex:1; padding:4px 0; }
+  .slot .none:hover { color:var(--acc2); }
+  .slot .x { border:none; background:none; color:var(--dim); cursor:pointer; font-size:15px; }
+  .slot .x:hover { color:#e07b5f; }
+  .slot .mods { display:flex; gap:6px; margin-top:6px; flex-wrap:wrap; }
+  .slot select { background:#302d27; color:var(--fg); border:1px solid var(--line); border-radius:6px; font-size:12px; padding:2px 4px; max-width:150px; }
+  .rar-独一无二 { color:#d8a94e; } .rar-卓越 { color:#b38ee0; } .rar-优质 { color:#7fb069; } .rar-普通 { color:var(--dim); }
+  /* buff */
+  .brow { display:flex; align-items:center; gap:8px; padding:3px 0; flex-wrap:wrap; }
+  .brow input[type=range] { flex:1; min-width:90px; accent-color:var(--acc); }
+  .brow .stg { width:30px; text-align:center; color:var(--acc2); font-weight:600; }
+  /* 面板 */
+  .pgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:4px 14px; }
+  .phead { grid-column:1/-1; color:var(--acc2); font-weight:700; border-bottom:1px solid var(--line); padding:8px 0 3px; margin-top:6px; font-size:14px; }
+  .prow { display:flex; align-items:baseline; gap:6px; padding:2px 4px; border-radius:6px; cursor:default; }
+  .prow:hover { background:#302d27; }
+  .prow .lb { color:var(--dim); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .prow b { font-weight:600; }
+  .prow .dl { font-size:11px; width:56px; text-align:right; }
+  .up { color:#8fc97e; } .down { color:#e07b5f; }
+  /* 弹窗选择器 */
+  dialog { background:var(--panel); color:var(--fg); border:1px solid var(--line); border-radius:12px; width:min(680px,94vw); max-height:82vh; padding:14px; }
+  dialog::backdrop { background:rgba(0,0,0,.55); }
+  dialog h3 { margin:0 0 8px; color:var(--acc2); }
+  dialog input[type=search] { width:100%; padding:7px 10px; border-radius:8px; border:1px solid var(--line); background:#1b1a17; color:var(--fg); margin-bottom:8px; }
+  .ilist { overflow-y:auto; max-height:62vh; }
+  .irow { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:8px; cursor:pointer; }
+  .irow:hover { background:#302d27; }
+  .irow img { width:36px; height:36px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; }
+  .irow .meta { color:var(--dim); font-size:12px; }
+  .irow .stt { color:var(--dim); font-size:12px; max-width:280px; }
+  #tip { position:fixed; display:none; z-index:99; background:#111009; border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-size:12px; max-width:320px; pointer-events:none; }
+  #tip .src { color:var(--dim); }
+  .toolbar { display:flex; gap:10px; align-items:center; margin-bottom:12px; flex-wrap:wrap; }
+  .btn { border:1px solid var(--line); background:#302d27; color:var(--fg); border-radius:8px; padding:5px 12px; cursor:pointer; }
+  .btn:hover { background:var(--acc); }
+  @media (max-width: 980px){ .layout{flex-direction:column} aside{width:100%} }
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside>
+    <div class="card">
+      <h3>角色属性</h3>
+      <div id="attrs"></div>
+      <p class="hint">属性为阈值制：15/20/25/30 每过一档，衍生命中/暴击/抗性等随之提升。公式与游戏一致。</p>
+    </div>
+    <div class="card">
+      <h3>装备</h3>
+      <div id="slots"></div>
+    </div>
+    <div class="card">
+      <h3>技能站姿增益 <span class="hint" style="display:inline">（开启后计入面板）</span></h3>
+      <div id="buffs"></div>
+      <p class="hint">目前数据集可精确计算 10 个武器系站姿技能的阶段增益；其余技能多为条件触发效果，不进静态面板。加点模拟请用<a href="skills.html">技能树页</a>。</p>
+    </div>
+    <button class="btn" id="reset">↺ 重置全部</button>
+  </aside>
+  <main>
+    <div class="card">
+      <div class="toolbar">
+        <h3 style="margin:0">角色面板</h3>
+        <span class="hint">数值 = 属性 + 装备 + 附魔/诅咒 + 技能站姿 的游戏公式合成结果；悬停查看来源。</span>
+      </div>
+      <div class="pgrid" id="panel"></div>
+    </div>
+  </main>
+</div>
+<div id="tip"></div>
+<dialog id="picker">
+  <h3 id="pk-title">选择装备</h3>
+  <input type="search" id="pk-q" placeholder="搜索：名称 / 类型（如 长剑 皮甲 戒指）">
+  <div class="ilist" id="pk-list"></div>
+</dialog>
+
+<script src="planner_data.js"></script>
+<script>
+/* ================= 状态 ================= */
+const DEF = { attrs:{STR:10,AGL:10,PRC:10,VIT:10,WIL:10}, slots:{}, mods:{}, buffs:{} };
+let ST;
+try { ST = JSON.parse(localStorage.getItem("ssw_planner_v1")) || null; } catch(e){}
+if (!ST || !ST.attrs) ST = JSON.parse(JSON.stringify(DEF));
+function save(){ localStorage.setItem("ssw_planner_v1", JSON.stringify(ST)); }
+const ATTR_ZH = { STR:"力量", AGL:"敏捷", PRC:"感知", VIT:"活力", WIL:"意志" };
+const ATTR_KEY = { STR:"STR", AGL:"AGL", PRC:"PRC", VIT:"Vitality", WIL:"WIL" };
+const SLOTS = [
+  ["weapon","主手"],["offhand","副手"],["ammo","弹药"],["head","头部"],
+  ["chest","身体"],["cloak","披风"],["belt","腰带"],["hands","手部"],
+  ["boots","靴子"],["neck","项链"],["ring1","戒指Ⅰ"],["ring2","戒指Ⅱ"]];
+const SLOT_ACCEPT = { weapon:["weapon"], offhand:["offhand"], ammo:["ammo"], head:["head"],
+  chest:["chest"], cloak:["cloak"], belt:["belt"], hands:["hands"], boots:["boots"],
+  neck:["neck"], ring1:["ring"], ring2:["ring"] };
+const ENCH_MT = { weapon:"Weapon", offhand:"Weapon", ammo:"Weapon",
+  head:"Armor", chest:"Armor", cloak:"Armor", belt:"Armor", hands:"Armor", boots:"Armor",
+  neck:"Jewelry", ring1:"Jewelry", ring2:"Jewelry" };
+const ITEM_BY_ID = {}; PD.items.forEach(i => ITEM_BY_ID[i.id] = i);
+const ENCH_BY_ID = {}; PD.ench.forEach(e => ENCH_BY_ID[e.id] = e);
+const CURSE_BY_ID = {}; PD.curse.forEach(c => CURSE_BY_ID[c.id] = c);
+const keyZh = k => PD.keyZh[k] || k.replace(/_/g," ").toLowerCase();
+const fmt = k => v => {
+  if (v === null || v === undefined) return "";
+  if (["DMG","OFFDMG","VSN","Block_Power","HP","MP"].includes(k)) return String(v);
+  let n = typeof v === "number" ? v : parseFloat(v);
+  if (!isFinite(n)) return String(v);
+  const s = Math.abs(n - Math.round(n)) < .001 ? String(Math.round(n)) : String(Number(n.toFixed(1)));
+  return s + "%";
+};
+
+/* ================= 属性引擎 =================
+   忠实移植社区规划器 kr() 的游戏公式（含阈值档、双持、格挡、附魔/诅咒、站姿增益）。 */
+const PHYS = ["Slashing_Damage","Piercing_Damage","Blunt_Damage","Rending_Damage"];
+const RES_KEYS = ["Physical_Resistance","Nature_Resistance","Magic_Resistance","Slashing_Resistance",
+  "Piercing_Resistance","Blunt_Resistance","Rending_Resistance","Fire_Resistance","Frost_Resistance",
+  "Shock_Resistance","Caustic_Resistance","Poison_Resistance","Arcane_Resistance","Unholy_Resistance",
+  "Sacred_Resistance","Psionic_Resistance","Bleeding_Resistance"];
+const POWERS = ["Pyromantic_Power","Geomantic_Power","Electromantic_Power","Venomantic_Power",
+  "Cryomantic_Power","Arcanistic_Power","Astromantic_Power","Psimantic_Power"];
+const DW_PENALTY = { Mainhand_Efficiency:-25, Offhand_Efficiency:-50, Cooldown_Reduction:15, FMB:5, Miscast_Chance:10 };
+const clamp = (x,a,b) => Math.min(b, Math.max(a,x));
+const tiers = x => (x>=15?1:0)+(x>=20?1:0)+(x>=25?1:0)+(x>=30?1:0);
+const blockF = it => PD.blockF[it.sec] || 0;
+
+function enchAmount(fx, cursed, he){
+  if (fx.m === "max_hp_fraction") return he * fx.v;
+  return cursed ? Math.ceil(fx.v * PD.curseMult) : fx.v;
+}
+/* 单槽附魔+诅咒汇总：返回 Map(key->数值) */
+function slotModTotals(slot, he){
+  const out = new Map();
+  const mc = (ST.mods[slot] || {});
+  const item = ITEM_BY_ID[ST.slots[slot]];
+  if (!item) return out;
+  const mt = ENCH_MT[slot];
+  const cursed = !!(mc.curse && CURSE_BY_ID[mc.curse] && CURSE_BY_ID[mc.curse].mt.includes(mt));
+  (mc.ench || []).slice(0,2).forEach(id => {
+    const e = ENCH_BY_ID[id];
+    if (!e || !e.mt.includes(mt)) return;
+    e.fx.forEach(f => out.set(f.k, (out.get(f.k)||0) + enchAmount(f, cursed, he)));
+  });
+  if (cursed) CURSE_BY_ID[mc.curse].fx.forEach(f => out.set(f.k, (out.get(f.k)||0) + enchAmount(f, cursed, he)));
+  return out;
+}
+
+/* 核心计算。输入 ST，输出 { vals:{k:v}, src:{k:[{who,v}]}, bare:{k:v} } */
+function compute(){
+  /* 先算同属性裸角色基准（只用属性，不影响来源追踪） */
+  const bvals = computeBare();
+  const d = new Map(), c = new Map(), src = new Map();
+  const j = k => d.get(k) || 0, A = k => c.get(k) || 0;
+  const D = (k,v,who) => { d.set(k,(d.get(k)||0)+v); if (who && v) (src.get(k) || src.set(k,[]).get(k)).push({who,v}); };
+  const C2 = (k,v,who) => { c.set(k,(c.get(k)||0)+v); if (who && v) (src.get(k) || src.set(k,[]).get(k)).push({who,v}); };
+  const push = (k,who,v) => { if (v) (src.get(k) || src.set(k,[]).get(k)).push({who,v}); };
+
+  /* 装备属性+伤害 → d（全部）/ c（除主副手）。
+     伤害进 d 是关键：有物理伤害加成(Z)时 DMG 才切换为 武器伤害×兵器伤害% 公式 */
+  for (const [slot,id] of Object.entries(ST.slots)){
+    const it = ITEM_BY_ID[id]; if (!it) continue;
+    const wo = (slot === "weapon" || slot === "offhand");
+    const who = { t:"item", name:it.zh };
+    for (const [k,v] of Object.entries(it.st)){ D(k,v,who); if (!wo) C2(k,v,null); }
+    for (const [k,v] of Object.entries(it.dmg)){ D(k,v,who); if (!wo) C2(k,v,null); }
+  }
+  /* 站姿 buff → d + c */
+  for (const [bid,stage] of Object.entries(ST.buffs)){
+    if (!stage) continue;
+    const b = PD.buffs.find(x => x.id === bid); if (!b) continue;
+    const who = { t:"buff", name:b.zh + (b.max>1 ? " · 阶段"+stage : "") };
+    b.m.forEach(m => {
+      let v = m.vs[stage] ?? m.vs[Math.min(...Object.keys(m.vs).map(Number))] ?? 0;
+      D(m.k, v, who); C2(m.k, v, null);
+    });
+  }
+  /* 属性（5..30，含装备加成） */
+  const R = clamp(j("STR") + ST.attrs.STR, 5, 30), F = clamp(j("AGL") + ST.attrs.AGL, 5, 30),
+        w = clamp(j("PRC") + ST.attrs.PRC, 5, 30), E = clamp(j("Vitality") + ST.attrs.VIT, 5, 30),
+        M = clamp(j("WIL") + ST.attrs.WIL, 5, 30);
+  const V = tiers(F), z = tiers(w), q = tiers(E), ee = tiers(M), se = tiers(R);
+  const he = Math.round(100 + j("HP") + j("max_hp") + q*15);   // 诅咒计算用的预诅咒最大生命
+  /* 附魔/诅咒：两遍（诅咒 max_hp_fraction 需要先知道 HP） */
+  const v1 = new Map(), v2 = new Map();
+  for (const slot of Object.keys(ST.slots)){
+    const k1 = slotModTotals(slot, 0);
+    if (k1.size){ v1.set(slot,k1); for (const [k,v] of k1){ D(k,v,{t:"ench",name:slotEnchName(slot)}); if (slot!=="weapon"&&slot!=="offhand") C2(k,v,null); } }
+  }
+  for (const slot of Object.keys(ST.slots)){
+    const k2 = slotModTotals(slot, he);
+    if (k2.size){ v2.set(slot,k2);
+      for (const [k,v] of k2){
+        const dv = v - ((v1.get(slot)||new Map()).get(k) || 0);
+        if (dv){ D(k,dv,null); if (slot!=="weapon"&&slot!=="offhand") C2(k,dv,null); }
+      }
+    }
+  }
+  function slotEnchName(slot){
+    const mc = ST.mods[slot] || {}; const names = [];
+    (mc.ench||[]).slice(0,2).forEach(id => ENCH_BY_ID[id] && names.push(ENCH_BY_ID[id].zh));
+    if (mc.curse && CURSE_BY_ID[mc.curse]) names.push("诅咒:"+CURSE_BY_ID[mc.curse].zh);
+    const it = ITEM_BY_ID[ST.slots[slot]];
+    return (it ? it.zh : slot) + (names.length ? " · " + names.join("/") : "");
+  }
+  /* 双持惩罚 */
+  const u = ITEM_BY_ID[ST.slots.weapon], m = ITEM_BY_ID[ST.slots.offhand];
+  const is1h = it => it && it.cat === "1h";
+  const is2h = it => it && (it.cat === "2h" || (it.cat === "ranged" && !ST.slots.ammo));
+  const dual = is1h(u) && is1h(m);
+  if (dual) for (const [k,v] of Object.entries(DW_PENALTY)){ d.set(k,(d.get(k)||0)+v); c.set(k,(c.get(k)||0)+v); push(k,{t:"pen",name:"双持惩罚"},v); }
+  const hasAmmo = !!ST.slots.ammo;
+  const H = u ? is2h(u) : false;
+  const le = !!(u && (is1h(u) || is2h(u))), ce = !!(m && is1h(m));
+  const J = (le?1:0) + (ce?1:0);
+  const mhEff = clamp(100 + j("Mainhand_Efficiency") + 2.5*V, 30, 125);
+  const ofEff = clamp(100 + j("Offhand_Efficiency") + 2.5*V, 30, 125);
+  const C = ((H ? Math.max(100,mhEff) : mhEff) / 100);
+  let G = ((H ? Math.max(100,ofEff) : ofEff) / 100);
+  if (J === 1) G = C;
+  const Yi = (it,k) => it ? ((it.dmg[k]||0) + (it.st[k]||0)) : 0;
+  const K = (slot,k) => { const mm = (v2.get(slot) || v1.get(slot)); return mm ? (mm.get(k)||0) : 0; };
+  const ae = k => (Yi(u,k) + K("weapon",k)) * C;
+  const we = k => (Yi(m,k) + K("offhand",k)) * G;
+  const Pe = k => ae(k) + we(k) + A(k);
+
+  const vals = {}, s = (k,v) => vals[k] = v;
+  const hasDmgBonus = PHYS.some(k => j(k) !== 0);
+  const mhWD = (Yi(u,"Weapon_Damage") + K("weapon","Weapon_Damage")) * C;
+  const ofWD = (Yi(m,"Weapon_Damage") + K("offhand","Weapon_Damage")) * G;
+  const WD = clamp(85 + A("Weapon_Damage") + 1.5*R + mhWD + ofWD, 25, 250);
+  let dm = 4 + .33*R, odm = 0;
+  if (hasDmgBonus){
+    const Oe = ae("Slashing_Damage")+ae("Piercing_Damage")+ae("Blunt_Damage")+ae("Rending_Damage")+we("Rending_Damage");
+    const T  = we("Slashing_Damage")+we("Piercing_Damage")+we("Blunt_Damage");
+    dm = Oe * WD/100; odm = T * WD/100;
+    if (H){ const mx = Math.max(dm,odm); dm = mx; odm = mx; }
+  }
+  s("DMG", Math.round(dm*10)/10); s("OFFDMG", Math.round(odm*10)/10);
+  s("Weapon_Damage", Math.round(WD*10)/10);
+  s("Mainhand_Efficiency", mhEff); s("Offhand_Efficiency", ofEff);
+  s("Bodypart_Damage", clamp(7.5*se + Pe("Bodypart_Damage"), 0, 250));
+  s("Armor_Damage", clamp(15*se + Pe("Armor_Damage"), 0, 300));
+  s("Armor_Piercing", clamp(-15 + 1.5*w + Pe("Armor_Piercing"), 0, 100));
+  s("Hit_Chance", clamp(65 + 1.5*w + Pe("Hit_Chance"), 10, 150));
+  s("CRT", clamp(1 + z*5 + Pe("CRT"), 0, 100));
+  s("CRTD", clamp(125 + se*10 + Pe("CRTD"), 125, 250) - 100);
+  s("CTA", clamp(-14 + 1.5*F + j("CTA"), 0, 100));
+  const ve = (it,slot,eff) => { const f = Yi(it,"FMB") + K(slot,"FMB"); return f ? f/eff : f*eff; };
+  s("FMB", clamp(35 - 1.5*F + A("FMB") + ve(u,"weapon",C) + ve(m,"offhand",G), 0, 100));
+  s("Abilities_Energy_Cost", clamp(115 - 1.5*M + j("Abilities_Energy_Cost"), 25, 300));
+  s("Skills_Energy_Cost", clamp(j("Skills_Energy_Cost"), -75, 200));
+  s("Spells_Energy_Cost", clamp(j("Spells_Energy_Cost"), -75, 200));
+  s("Cooldown_Reduction", clamp(115 - 1.5*M + j("Cooldown_Reduction"), 25, 200));
+  s("VSN", clamp(Math.round(12*(1+.05*z) + j("VSN")), 1, 15));
+  s("Bonus_Range", Math.round(j("Bonus_Range") + z*5));
+  s("Bleeding_Chance", clamp(Pe("Bleeding_Chance"), 0, 100));
+  s("Daze_Chance", clamp(Pe("Daze_Chance"), 0, 100));
+  s("Stun_Chance", clamp(Pe("Stun_Chance"), 0, 100));
+  s("Knockback_Chance", clamp(Pe("Knockback_Chance"), 0, 100));
+  s("Immob_Chance", clamp(Pe("Immob_Chance"), 0, 100));
+  s("Stagger_Chance", clamp(Pe("Stagger_Chance"), 0, 100));
+  s("Lifesteal", clamp(Pe("Lifesteal"), 0, 100));
+  s("Manasteal", clamp(Pe("Manasteal"), 0, 100));
+  const hp = Math.round(100 + j("HP") + j("max_hp") + q*15);
+  s("HP", hp + "/" + hp);
+  s("Health_Restoration", clamp(10 + j("Health_Restoration"), 0, 100));
+  s("Healing_Received", clamp(100 + j("Healing_Received"), 0, 200));
+  const mp = Math.max(Math.round(60 + E*4 + j("MP") + j("max_mp")), 1);
+  s("MP", mp + "/" + mp);
+  s("MP_Restoration", clamp(j("MP_Restoration") + E*2, 0, 100));
+  const canBlock = hasDmgBonus || j("Block_Power") !== 0;
+  const Te = (u ? blockF(u) : 0) || (m && m.cat === "shield" ? 1 : 0);
+  const bp = canBlock ? Math.max((R*Te + j("Block_Power")) * ((100 + j("BlockPowerBonus"))/100), 0) : 0;
+  s("PRR", canBlock ? clamp(-15 + R*1.5 + j("PRR"), 0, 100) : 0);
+  s("Block_Power", Math.round(bp) + "/" + Math.round(bp));
+  s("Block_Recovery", canBlock ? clamp(j("Block_Recovery") + 5 + q*5, 1, 100) : 0);
+  s("EVS", clamp(1 + j("EVS") + V*5, -25, 125));
+  s("Crit_Avoid", clamp(j("Crit_Avoid"), -20, 100));
+  s("Fortitude", clamp(j("Fortitude") + ee*7.5, -100, 50));
+  s("Stun_Resistance", clamp(j("Stun_Resistance") + q*7.5, -100, 85));
+  s("Knockback_Resistance", clamp(j("Knockback_Resistance") + V*7.5, -100, 85));
+  s("Hunger_Resistance", clamp(j("Hunger_Resistance"), -100, 100));
+  s("Toxicity_Resistance", clamp(j("Toxicity_Resistance"), -100, 100));
+  s("Pain_Resistance", clamp(j("Pain_Resistance") + ee*7.5, -100, 100));
+  s("Fatigue_Gain", clamp(j("Fatigue_Gain"), -100, 100));
+  s("Received_XP", clamp(100 + j("Received_XP"), 25, 200));
+  s("ReputationGainGlobal", 100 + j("ReputationGainGlobal"));
+  s("Damage_Received", clamp(100 + j("Damage_Received"), 25, 200));
+  s("Damage_Returned", clamp(j("Damage_Returned"), 0, 100));
+  RES_KEYS.forEach(k => s(k, clamp(j(k), -200, 100)));
+  s("Magic_Power", clamp(100 + j("Magic_Power") + ee*7.5, 25, 300));
+  s("Miracle_Chance", clamp(5 + z*5 + j("Miracle_Chance"), 0, 100));
+  s("Miracle_Power", clamp(125 + j("Miracle_Power"), 125, 250) - 100);
+  s("Miscast_Chance", clamp(35 - 1.5*F + j("Miscast_Chance"), -200, 100));
+  s("Backfire_Damage", clamp(j("Backfire_Damage"), 0, 200));
+  s("Spell_Hit_Chance", clamp(1.5*w + j("Spell_Hit_Chance"), 5, 125));
+  s("Spell_Armor_Piercing", clamp(1.5*w + j("Spell_Armor_Piercing"), 0, 100));
+  POWERS.forEach(k => s(k, j(k)));
+
+  /* 基准：同属性裸角色（computeBare 定义见下方，只依赖 ST.attrs） */
+  function computeBare(){
+    const d2 = new Map();
+    const jj = k => d2.get(k) || 0;
+    const out = {};
+    const R2=clamp(ST.attrs.STR,5,30),F2=clamp(ST.attrs.AGL,5,30),w2=clamp(ST.attrs.PRC,5,30),
+          E2=clamp(ST.attrs.VIT,5,30),M2=clamp(ST.attrs.WIL,5,30);
+    const V2=tiers(F2),z2=tiers(w2),q2=tiers(E2),ee2=tiers(M2),se2=tiers(R2);
+    out["Bodypart_Damage"]=7.5*se2; out["Armor_Damage"]=15*se2; out["Armor_Piercing"]=-15+1.5*w2;
+    out["Hit_Chance"]=65+1.5*w2; out["CRT"]=1+z2*5; out["CRTD"]=125+se2*10-100; out["CTA"]=-14+1.5*F2;
+    out["FMB"]=35-1.5*F2; out["Abilities_Energy_Cost"]=115-1.5*M2; out["Cooldown_Reduction"]=115-1.5*M2;
+    out["VSN"]=Math.round(12*(1+.05*z2)); out["Bonus_Range"]=z2*5;
+    const hp2=Math.round(100+q2*15); out["HP"]=hp2+"/"+hp2;
+    out["Health_Restoration"]=10; out["Healing_Received"]=100;
+    const mp2=Math.max(Math.round(60+E2*4),1); out["MP"]=mp2+"/"+mp2;
+    out["MP_Restoration"]=E2*2; out["Mainhand_Efficiency"]=100+2.5*V2; out["Offhand_Efficiency"]=100+2.5*V2;
+    out["Weapon_Damage"]=85+1.5*R2; out["DMG"]=Math.round((4+.33*R2)*10)/10; out["OFFDMG"]=0;
+    out["EVS"]=1+V2*5; out["Fortitude"]=ee2*7.5; out["Stun_Resistance"]=q2*7.5;
+    out["Knockback_Resistance"]=V2*7.5; out["Pain_Resistance"]=ee2*7.5;
+    out["Magic_Power"]=100+ee2*7.5; out["Miracle_Chance"]=5+z2*5; out["Miracle_Power"]=25;
+    out["Miscast_Chance"]=35-1.5*F2; out["Spell_Hit_Chance"]=1.5*w2; out["Spell_Armor_Piercing"]=1.5*w2;
+    out["ReputationGainGlobal"]=100;
+    return out;
+  }
+  return { vals, src, bare: bvals };
+}
+
+/* ================= 渲染 ================= */
+const $ = sel => document.querySelector(sel);
+function esc(s){ return String(s??"").replace(/[&<>"]/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch])); }
+
+function renderAttrs(){
+  $("#attrs").innerHTML = Object.keys(ATTR_ZH).map(k => {
+    const v = ST.attrs[k], t = tiers(v);
+    return `<div class="arow"><span class="nm">${ATTR_ZH[k]}</span>
+      <span class="stepper"><button data-a="${k}" data-d="-1">−</button>
+      <span class="vv">${v}</span>
+      <button data-a="${k}" data-d="1">＋</button></span>
+      <span class="tiers">${t ? "已过 "+t+" 档" : ""}</span></div>`;
+  }).join("");
+  $("#attrs").onclick = e => {
+    const b = e.target.closest("button"); if (!b) return;
+    const k = b.dataset.a;
+    ST.attrs[k] = clamp(ST.attrs[k] + (+b.dataset.d), 5, 30);
+    save(); renderAttrs(); renderPanel();
+  };
+}
+function slotHtml(slot, label){
+  const id = ST.slots[slot], it = ITEM_BY_ID[id];
+  let inner;
+  if (!it){
+    inner = `<span class="none" data-pick="${slot}">＋ 选择${label}装备</span>`;
+  } else {
+    const mc = ST.mods[slot] || {};
+    const mt = ENCH_MT[slot];
+    const enchOpts = PD.ench.filter(e => e.mt.includes(mt));
+    const curseOpts = PD.curse.filter(c => c.mt.includes(mt));
+    const opt = (list, sel, ph, field) => `<option value="">${ph}</option>` +
+      list.map(e => `<option value="${e.id}" ${sel===e.id?"selected":""}>${esc(e.zh)}</option>`).join("");
+    const mods = (enchOpts.length || curseOpts.length) ? `<div class="mods">
+      <select data-slot="${slot}" data-m="ench0">${opt(enchOpts,(mc.ench||[])[0],"附魔①…")}</select>
+      <select data-slot="${slot}" data-m="ench1">${opt(enchOpts,(mc.ench||[])[1],"附魔②…")}</select>
+      <select data-slot="${slot}" data-m="curse">${opt(curseOpts,mc.curse,"诅咒…")}</select></div>` : "";
+    inner = `<span class="ichip">${it.icon?`<img loading="lazy" src="${it.icon}" onerror="this.style.visibility='hidden'">`:''}
+      <span class="inm rar-${esc(it.rar)}" data-pick="${slot}" title="${esc(it.type)}">${esc(it.zh)} <small class="rar-${esc(it.rar)}">${esc(it.rar)}</small></span>
+      <button class="x" data-clear="${slot}" title="卸下">✕</button></span>${mods}`;
+  }
+  return `<div class="slot"><div class="top"><span class="snm">${label}</span>${inner}</div></div>`;
+}
+function renderSlots(){
+  $("#slots").innerHTML = SLOTS.map(([k,l]) => slotHtml(k,l)).join("");
+  $("#slots").onclick = e => {
+    const pick = e.target.closest("[data-pick]");
+    if (pick){ openPicker(pick.dataset.pick); return; }
+    const cl = e.target.closest("[data-clear]");
+    if (cl){ delete ST.slots[cl.dataset.clear]; delete ST.mods[cl.dataset.clear]; save(); renderSlots(); renderPanel(); }
+  };
+  $("#slots").onchange = e => {
+    const sel = e.target.closest("select"); if (!sel) return;
+    const { slot, m } = sel.dataset;
+    const mc = ST.mods[slot] || (ST.mods[slot] = {});
+    if (m === "curse") mc.curse = sel.value || undefined;
+    else { mc.ench = mc.ench || []; mc.ench[m === "ench0" ? 0 : 1] = sel.value || undefined; mc.ench = mc.ench.filter(Boolean); }
+    if (!mc.ench || !mc.ench.length){ if (!mc.curse) delete ST.mods[slot]; }
+    save(); renderSlots(); renderPanel();
+  };
+}
+function renderBuffs(){
+  $("#buffs").innerHTML = PD.buffs.map(b => {
+    const on = ST.buffs[b.id] || 0;
+    const desc = b.m.slice(0,4).map(m => {
+      const bv = m.vs[on] ?? m.vs[1] ?? 0;
+      return keyZh(m.k) + " " + (bv > 0 ? "+" : "") + bv;
+    }).join("、");
+    return `<div class="brow"><label style="display:flex;align-items:center;gap:5px;min-width:0">
+      <input type="checkbox" data-b="${b.id}" ${on?"checked":""} style="accent-color:var(--acc)">
+      <span style="white-space:nowrap">${esc(b.zh)}</span></label>
+      ${b.max>1 ? `<input type="range" min="1" max="${b.max}" value="${on||b.def}" data-bs="${b.id}" ${on?"":"disabled"}>
+      <span class="stg">${on||""}</span>` : ""}
+      ${on?`<small class="hint" style="flex-basis:100%">${esc(desc)}</small>`:""}</div>`;
+  }).join("");
+  $("#buffs").onchange = e => {
+    const cb = e.target.closest("input[type=checkbox]");
+    if (cb){ ST.buffs[cb.dataset.b] = cb.checked ? (PD.buffs.find(x=>x.id===cb.dataset.b).def || 1) : 0;
+      if (!ST.buffs[cb.dataset.b]) delete ST.buffs[cb.dataset.b];
+      save(); renderBuffs(); renderPanel(); return; }
+    const rg = e.target.closest("input[type=range]");
+    if (rg){ ST.buffs[rg.dataset.bs] = +rg.value; save(); renderBuffs(); renderPanel(); }
+  };
+}
+/* 选择器 */
+let pickSlot = null;
+function openPicker(slot){
+  pickSlot = slot;
+  $("#pk-title").textContent = "选择装备 · " + SLOTS.find(x => x[0] === slot)[1];
+  $("#pk-q").value = "";
+  renderPickList("");
+  $("#picker").showModal();
+  $("#pk-q").focus();
+}
+function renderPickList(q){
+  const accept = SLOT_ACCEPT[pickSlot] || [];
+  const kw = q.trim().toLowerCase();
+  const list = PD.items.filter(i => accept.includes(i.slot) &&
+    (!kw || (i.zh||"").toLowerCase().includes(kw) || (i.en||"").toLowerCase().includes(kw) || (i.type||"").toLowerCase().includes(kw)));
+  $("#pk-list").innerHTML = list.slice(0, 300).map(i => {
+    const stt = Object.entries(i.st).slice(0,4).map(([k,v]) => keyZh(k)+" "+(v>0?"+":"")+v).join("，");
+    const dmg = Object.entries(i.dmg).map(([k,v]) => PD.dmgZh[k]+" "+v).join("，");
+    return `<div class="irow" data-id="${i.id}">
+      ${i.icon?`<img loading="lazy" src="${i.icon}" onerror="this.style.visibility='hidden'">`:''}
+      <div style="min-width:0"><div class="rar-${esc(i.rar)}">${esc(i.zh)} <small>${esc(i.rar)}</small></div>
+      <div class="meta">${esc(i.type)}${dmg?" · "+esc(dmg):""}</div>
+      ${stt?`<div class="stt">${esc(stt)}</div>`:""}</div></div>`;
+  }).join("") || `<p class="hint" style="padding:8px">没有匹配的装备</p>`;
+}
+$("#pk-q").addEventListener("input", e => renderPickList(e.target.value));
+$("#pk-list").addEventListener("click", e => {
+  const row = e.target.closest(".irow"); if (!row || !pickSlot) return;
+  if (pickSlot === "ring1" && ST.slots.ring1 === row.dataset.id) ST.slots.ring1 = row.dataset.id;
+  ST.slots[pickSlot] = row.dataset.id;
+  save(); $("#picker").close(); renderSlots(); renderPanel();
+});
+/* 面板 */
+function renderPanel(){
+  const { vals, src, bare } = compute();
+  let html = "", lastHeader = null, pendingSpace = false;
+  const num = v => typeof v === "number" ? v : parseFloat(String(v).split("/")[0]) || 0;
+  for (const r of PD.rows){
+    if (r.type === "header"){ html += `<div class="phead">${esc((r.label||{}).zh||"")}</div>`; continue; }
+    if (r.type === "space"){ html += `<div class="phead" style="border:none;margin:2px 0"></div>`; continue; }
+    if (!(r.key in vals)) continue;
+    const v = vals[r.key], b = bare[r.key];
+    let delta = "";
+    if (b !== undefined){
+      const dv = Math.round((num(v) - num(b))*10)/10;
+      if (dv > 0) delta = `<span class="dl up">▲${fmt(r.key)(dv)}</span>`;
+      else if (dv < 0) delta = `<span class="dl down">▼${fmt(r.key)(-dv)}</span>`;
+      else delta = `<span class="dl"></span>`;
+    }
+    html += `<div class="prow" data-k="${r.key}"><span class="lb">${esc(keyZh(r.key))}</span><b>${esc(fmt(r.key)(v))}</b>${delta}</div>`;
+  }
+  $("#panel").innerHTML = html;
+  const tip = $("#tip");
+  $("#panel").onmousemove = e => {
+    const row = e.target.closest(".prow");
+    if (!row){ tip.style.display = "none"; return; }
+    const k = row.dataset.k, list = src.get(k);
+    if (!list || !list.length){ tip.style.display = "none"; return; }
+    tip.innerHTML = `<b>${esc(keyZh(k))}</b>` + list.map(s2 =>
+      `<div class="src">${s2.v>0?"+":""}${Math.round(s2.v*10)/10}${["DMG","OFFDMG","VSN","Block_Power","HP","MP"].includes(k)?"":"%"} — ${esc(s2.who.name)}</div>`).join("");
+    tip.style.display = "block";
+    const x = Math.min(e.clientX + 14, innerWidth - 340), y = Math.min(e.clientY + 14, innerHeight - 30 - list.length*20);
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  };
+  $("#panel").onmouseleave = () => tip.style.display = "none";
+}
+$("#reset").onclick = () => { ST = JSON.parse(JSON.stringify(DEF)); save(); renderAttrs(); renderSlots(); renderBuffs(); renderPanel(); };
+renderAttrs(); renderSlots(); renderBuffs(); renderPanel();
+</script>
+</body>
+</html>
