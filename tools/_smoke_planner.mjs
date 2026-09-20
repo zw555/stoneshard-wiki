@@ -95,6 +95,21 @@ const shRes = await evaluate(`(function(){
 check("shield block formula", shRes.got === shRes.expect, shRes.got + " expect " + shRes.expect + " (swBP=" + shRes.swBP + " shBP=" + shRes.shBP + ")");
 check("shield enables PRR", shRes.got !== "0/0", String(shRes.got));
 
+/* 5b. 无武器时格挡同样生效（官方机制：格挡不依赖盾牌）：防具自带的格挡几率/回复要计入面板 */
+const blkRes = await evaluate(`(function(){
+  ST.slots = {}; ST.mods = {}; renderPanel();
+  const helm = PD.items.find(i => (i.st.PRR || 0) > 0 && i.slot === "head");
+  const boots = PD.items.find(i => (i.st.Block_Recovery || 0) > 0 && i.slot === "boots");
+  ST.slots.head = helm.id; if (boots) ST.slots.boots = boots.id;
+  renderPanel();
+  const v = compute().vals;
+  return { helm: helm.zh, prrGear: helm.st.PRR, PRR: v.PRR, BR: v.Block_Recovery, bootsBR: boots ? boots.st.Block_Recovery : 0 };
+})()`);
+check("no-weapon armor PRR counts", blkRes.PRR === blkRes.prrGear, JSON.stringify(blkRes));
+await evaluate(`ST.slots = {}; ST.mods = {}; renderPanel()`);
+const brBare = await evaluate(`compute().vals.Block_Recovery`);
+check("bare BR 5", brBare === 5, brBare);
+
 /* 6. 站姿 buff：热血澎湃 阶段3 → CRT / 技能精力消耗 按阶段数值 */
 const buffRes = await evaluate(`(function(){
   const buff = PD.buffs.find(b => b.zh === "热血澎湃");

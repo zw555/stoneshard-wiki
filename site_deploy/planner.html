@@ -71,30 +71,6 @@
 </style>
 </head>
 <body>
-<nav class="ssw-nav">
-  <div class="ssw-nav-inner">
-    <a class="ssw-brand" href="index.html">Stoneshard 中文资料库</a>
-    <a href="index.html" data-p="index.html">全文搜索</a>
-    <a href="items.html" data-p="items.html">物品图鉴</a>
-    <a href="skills.html" data-p="skills.html">技能树</a>
-    <a href="planner.html" class="ssw-on" data-p="planner.html">配装规划</a>
-    <a href="enemies.html" data-p="enemies.html">敌人图鉴</a>
-    <a href="trade.html" data-p="trade.html">交易行情</a>
-    <a href="icons.html" data-p="icons.html">图标库</a>
-  </div>
-</nav>
-<style>
-  .ssw-nav { background:#2c2a26; position:sticky; top:0; z-index:50; }
-  .ssw-nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:6px; padding:0 16px; height:48px; flex-wrap:wrap; }
-  .ssw-nav a { color:#cfc9bc; text-decoration:none; font-size:14px; padding:6px 12px; border-radius:6px; }
-  .ssw-nav a:hover { background:#3d3a34; color:#fff; }
-  .ssw-nav a.ssw-on { background:#7a4b2a; color:#fff; }
-  .ssw-brand { font-weight:700; color:#fff !important; margin-right:14px; }
-  @media (max-width: 720px) { .ssw-nav-inner { height:auto; padding:6px 12px; } }
-</style>
-
-
-
 <div class="layout">
   <aside>
     <div class="card">
@@ -321,12 +297,13 @@ function compute(){
   const mp = Math.max(Math.round(60 + E*4 + j("MP") + j("max_mp")), 1);
   s("MP", mp + "/" + mp);
   s("MP_Restoration", clamp(j("MP_Restoration") + E*2, 0, 100));
-  const canBlock = hasDmgBonus || j("Block_Power") !== 0;
+  /* 格挡：不设门槛，面板始终按公式显示（官方机制：无盾也可格挡近战，盾只是额外可挡远程）。
+     Te=主手武器格挡系数，无武器时为 0，仅副手盾为 1；无武器无盾时 STR 项自然归 0，仅剩装备/附魔提供的格挡力量 */
   const Te = (u ? blockF(u) : 0) || (m && m.cat === "shield" ? 1 : 0);
-  const bp = canBlock ? Math.max((R*Te + j("Block_Power")) * ((100 + j("BlockPowerBonus"))/100), 0) : 0;
-  s("PRR", canBlock ? clamp(-15 + R*1.5 + j("PRR"), 0, 100) : 0);
+  const bp = Math.max((R*Te + j("Block_Power")) * ((100 + j("BlockPowerBonus"))/100), 0);
+  s("PRR", clamp(-15 + R*1.5 + j("PRR"), 0, 100));
   s("Block_Power", Math.round(bp) + "/" + Math.round(bp));
-  s("Block_Recovery", canBlock ? clamp(j("Block_Recovery") + 5 + q*5, 1, 100) : 0);
+  s("Block_Recovery", clamp(j("Block_Recovery") + 5 + q*5, 1, 100));
   s("EVS", clamp(1 + j("EVS") + V*5, -25, 125));
   s("Crit_Avoid", clamp(j("Crit_Avoid"), -20, 100));
   s("Fortitude", clamp(j("Fortitude") + ee*7.5, -100, 50));
@@ -367,6 +344,7 @@ function compute(){
     const mp2=Math.max(Math.round(60+E2*4),1); out["MP"]=mp2+"/"+mp2;
     out["MP_Restoration"]=E2*2; out["Mainhand_Efficiency"]=100+2.5*V2; out["Offhand_Efficiency"]=100+2.5*V2;
     out["Weapon_Damage"]=85+1.5*R2; out["DMG"]=Math.round((4+.33*R2)*10)/10; out["OFFDMG"]=0;
+    out["PRR"]=clamp(-15+1.5*R2,0,100); out["Block_Power"]="0/0"; out["Block_Recovery"]=5;
     out["EVS"]=1+V2*5; out["Fortitude"]=ee2*7.5; out["Stun_Resistance"]=q2*7.5;
     out["Knockback_Resistance"]=V2*7.5; out["Pain_Resistance"]=ee2*7.5;
     out["Magic_Power"]=100+ee2*7.5; out["Miracle_Chance"]=5+z2*5; out["Miracle_Power"]=25;
