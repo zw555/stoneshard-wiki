@@ -8,7 +8,7 @@ import json, os, re, shutil
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(ROOT, "site")
 DEPLOY = os.path.join(ROOT, "site_deploy")
-PAGES = ["index.html", "items.html", "skills.html", "enemies.html", "trade.html", "planner.html"]
+PAGES = ["index.html", "items.html", "skills.html", "enemies.html", "trade.html", "planner.html", "caravan.html"]
 EXTRA_FILES = ["planner_data.js"]
 
 

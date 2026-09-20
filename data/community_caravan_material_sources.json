@@ -1,0 +1,591 @@
+{
+ "Alchemical Apparatus": {
+  "zh": "炼金器材",
+  "found": true,
+  "page": "Alchemy Apparatus",
+  "routes": [
+   "Category:Quest items"
+  ],
+  "price": 400
+ },
+ "Altar Bell": {
+  "zh": "圣铃",
+  "found": true,
+  "page": "Altar Bell",
+  "routes": [
+   "Bookshelves",
+   "Toller",
+   "<div"
+  ],
+  "price": 35
+ },
+ "Apothecary Box": {
+  "zh": "药匣",
+  "found": true,
+  "page": "Apothecary Box",
+  "routes": [
+   "Herbalists (Frid, Brynn's Herbalist)",
+   "Fair Merchant"
+  ],
+  "price": 600
+ },
+ "Bottle of Oil": {
+  "zh": "油",
+  "found": true,
+  "page": "Bottle of Oil",
+  "routes": [
+   "<div"
+  ],
+  "price": 20
+ },
+ "Bucket": {
+  "zh": "桶",
+  "found": true,
+  "page": "Bucket",
+  "routes": [
+   "Found in the vicinity of most wells and in some other locations"
+  ],
+  "price": 10
+ },
+ "Burnet": {
+  "zh": "地榆",
+  "found": true,
+  "page": "Burnet",
+  "routes": [
+   "Herbalist (Brynn Mint Square)",
+   "Pine Forests"
+  ],
+  "price": 5
+ },
+ "Cage with Pigeons": {
+  "zh": "鸽笼",
+  "found": true,
+  "page": "Cage with Pigeons",
+  "routes": [
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant"
+  ],
+  "price": 500
+ },
+ "Cages with Chickens": {
+  "zh": "鸡笼",
+  "found": false,
+  "routes": []
+ },
+ "Canvas Roll": {
+  "zh": "帆布",
+  "found": true,
+  "page": "Canvas Tent Roll",
+  "routes": [
+   "Tailors (Hold, Meric)",
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant",
+   "Category:Caravan Accessories",
+   "Category:Materials",
+   "Category:Upgrades"
+  ],
+  "price": 350
+ },
+ "Carpenter Hammer": {
+  "zh": "木工锤",
+  "found": true,
+  "page": "Carpenter Hammer",
+  "routes": [
+   "Dirk (NPC)",
+   "<div"
+  ],
+  "price": null
+ },
+ "Censer": {
+  "zh": "提炉",
+  "found": true,
+  "page": "Censer",
+  "routes": [
+   "Bookshelves"
+  ],
+  "price": 100
+ },
+ "Charcoal Chunk": {
+  "zh": "炭块",
+  "found": true,
+  "page": "Coal Chunk",
+  "routes": [
+   "Graves",
+   "Barrels"
+  ],
+  "price": 15
+ },
+ "Directives": {
+  "zh": "指示",
+  "found": false,
+  "routes": [
+   "韦伦（Verren）出售：1500 金币（本地线报专属）"
+  ],
+  "manual": true
+ },
+ "Foldable Flagpole": {
+  "zh": "组装式旗杆",
+  "found": false,
+  "routes": []
+ },
+ "Foraging Supplies": {
+  "zh": "采集用具",
+  "found": true,
+  "page": "Foraging Supplies",
+  "routes": [
+   "Herbalists (Frid, Brynn's Herbalist)",
+   "Josh",
+   "Fair Merchant"
+  ],
+  "price": 200
+ },
+ "Garlic": {
+  "zh": "大蒜",
+  "found": true,
+  "page": "Garlic",
+  "routes": [
+   "<div"
+  ],
+  "price": 4
+ },
+ "Ginger Root": {
+  "zh": "姜",
+  "found": true,
+  "page": "Ginger Root",
+  "routes": [
+   "Armuz",
+   "Fat Yann"
+  ],
+  "price": 30
+ },
+ "Hardy Tent Cloth": {
+  "zh": "结实的帐篷布",
+  "found": true,
+  "page": "Hardy Tent Cloth",
+  "routes": [
+   "Tailors (Hold, Meric)",
+   "General Merchant Docks Brynn",
+   "One-Eyed Wigmar",
+   "Fair Merchant"
+  ],
+  "price": 700
+ },
+ "Hieronite Altar": {
+  "zh": "圣会祭台",
+  "found": false,
+  "routes": []
+ },
+ "Horseshoe": {
+  "zh": "马蹄铁",
+  "found": true,
+  "page": "Horseshoe",
+  "routes": [
+   "Graves",
+   "Nightstands"
+  ],
+  "price": 10
+ },
+ "Huge Cauldron": {
+  "zh": "大锅",
+  "found": true,
+  "page": "Huge Cauldron",
+  "routes": [
+   "Blacksmith (Jebar, Dietrich)",
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant"
+  ],
+  "price": 200
+ },
+ "Incense": {
+  "zh": "熏香",
+  "found": true,
+  "page": "Incense",
+  "routes": [
+   "Chests",
+   "Armur",
+   "Esfah",
+   "General merchant"
+  ],
+  "price": 200
+ },
+ "Incense Burner": {
+  "zh": "香炉",
+  "found": false,
+  "routes": []
+ },
+ "Ironbound Chests": {
+  "zh": "箍铁箱子",
+  "found": true,
+  "page": "Ironbound Chests",
+  "routes": [
+   "Found in the world and sold by merchants."
+  ],
+  "price": 2000
+ },
+ "Ladle": {
+  "zh": "勺子",
+  "found": true,
+  "page": "Ladle",
+  "routes": [
+   "[edit | edit source]",
+   "Page last edited during patch: 0.9.2.11",
+   "ItemsArmor",
+   "Headgear",
+   "Chestpieces",
+   "Gloves",
+   "Belts",
+   "Boots",
+   "Shields",
+   "Cloaks",
+   "Bags",
+   "Weapons",
+   "Swords",
+   "Axes",
+   "Maces",
+   "Daggers",
+   "Two-Handed Swords",
+   "Two-Handed Axes",
+   "Two-Handed Maces",
+   "Spears",
+   "Staves",
+   "Bows",
+   "Crossbows",
+   "Slings",
+   "Ammunition",
+   "Quivers",
+   "Jewelry",
+   "Amulets",
+   "Rings",
+   "Consumables",
+   "Beverages",
+   "Food",
+   "Ingredients",
+   "Ingredients",
+   "Materials",
+   "Medicine",
+   "Potions",
+   "Scrolls",
+   "Tools & Traps",
+   "Loot",
+   "Quest items",
+   "Valuables",
+   "Books & Notes",
+   "Treatises",
+   "Junk",
+   "Crowns",
+   "Purse",
+   "Item mechanics",
+   "Durability",
+   "Enchantments",
+   "Cursed items",
+   "Item Rarity",
+   "Containers",
+   "Bags",
+   "Barrels",
+   "Bookshelves",
+   "Carts",
+   "Chests",
+   "Coffins",
+   "Corpses",
+   "Crates",
+   "Cupboards",
+   "Graves",
+   "Hero Sarcophagus",
+   "Nightstands",
+   "Racks",
+   "Sarcophagi",
+   "Shelves",
+   "Vases",
+   "Wardrobes",
+   "Languages",
+   "Čeština",
+   "中文",
+   "Español",
+   "English",
+   "Português",
+   "Русский",
+   "Українська"
+  ],
+  "price": 6
+ },
+ "Leek": {
+  "zh": "韭葱",
+  "found": true,
+  "page": "Leek",
+  "routes": [
+   "Can be sold by:",
+   "Shea in  Brynn.",
+   "<div"
+  ],
+  "price": 8
+ },
+ "Letter of Trading Authority": {
+  "zh": "营商许可",
+  "found": false,
+  "routes": [
+   "韦伦（Verren）出售：2000 金币（好客户专属）"
+  ],
+  "manual": true
+ },
+ "Mindwort": {
+  "zh": "金丝桃",
+  "found": true,
+  "page": "Mindwort",
+  "routes": [
+   "Crates",
+   "Fields",
+   "Random Drop from:",
+   "Rogue Pyromancer",
+   "Brigand Geomancer",
+   "<div"
+  ],
+  "price": 12
+ },
+ "Nails": {
+  "zh": "钉子",
+  "found": true,
+  "page": "Nails",
+  "routes": [
+   "Found in the world and sold by merchants.",
+   "<div"
+  ],
+  "price": 15
+ },
+ "Onion": {
+  "zh": "圆葱",
+  "found": true,
+  "page": "Onion",
+  "routes": [
+   "<div"
+  ],
+  "price": 4
+ },
+ "Pile of Letters": {
+  "zh": "书信",
+  "found": false,
+  "routes": [
+   "韦伦（Verren）出售：2000 金币（人脉网络专属）"
+  ],
+  "manual": true
+ },
+ "Quality Reins": {
+  "zh": "上好缰绳",
+  "found": true,
+  "page": "Quality Reins",
+  "routes": [
+   "One-Eyed Wigmar",
+   "General Merchant",
+   "Stableman",
+   "Fair Merchant"
+  ],
+  "price": 1200
+ },
+ "Reinforced Harness": {
+  "zh": "加固马具",
+  "found": true,
+  "page": "Reinforced Harness",
+  "routes": [],
+  "price": null
+ },
+ "Rope": {
+  "zh": "绳子",
+  "found": true,
+  "page": "Rope",
+  "routes": [
+   "Graves",
+   "Wardrobes",
+   "Barrels",
+   "<div"
+  ],
+  "price": 30
+ },
+ "Sacks of Grain": {
+  "zh": "粮食",
+  "found": true,
+  "page": "Sacks of Grain",
+  "routes": [
+   "Sold by Alan in the Mill."
+  ],
+  "price": 280
+ },
+ "Set of Ironbound Wheels": {
+  "zh": "箍铁车轮",
+  "found": true,
+  "page": "Ironbound Wheels",
+  "routes": [
+   "Category:Junk",
+   "Category:Materials",
+   "Category:Upgrades"
+  ],
+  "price": 1600
+ },
+ "Set of Sturdy Wheels": {
+  "zh": "牢固的车轮",
+  "found": true,
+  "page": "Set of Sturdy Wheels",
+  "routes": [
+   "Carpenters (Jurg, Dirk)",
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant"
+  ],
+  "price": 600
+ },
+ "Shovel": {
+  "zh": "铁锹",
+  "found": true,
+  "page": "Shovel",
+  "routes": [
+   "Sometimes sold by Bran, the Trapper.",
+   "Sometimes sold by Bert, the merchant of Osbrook.",
+   "Sometimes sold by Gerlot, the merchant of Mannshire.",
+   "Has a chance to spawn near barns by the Osbrook cemetery or the Leprosarium.",
+   "Has a chance to spawn next to randomly generated Graves in random Field tiles.",
+   "Always found outside of Bran's Cabin.",
+   "Giselbert",
+   "<div"
+  ],
+  "price": 60
+ },
+ "Sickle": {
+  "zh": "短把镰刀",
+  "found": true,
+  "page": "Sickle",
+  "routes": [
+   "<div"
+  ],
+  "price": null
+ },
+ "Signed Permit": {
+  "zh": "签了字的文书",
+  "found": false,
+  "routes": [
+   "韦伦（Verren）出售：1500 金币（往日人情专属）"
+  ],
+  "manual": true
+ },
+ "Spacious Chests": {
+  "zh": "大箱子",
+  "found": true,
+  "page": "Spacious Chests",
+  "routes": [
+   "One-Eyed Wigmar",
+   "Dirk",
+   "General Merchant",
+   "Fair Merchant"
+  ],
+  "price": 1000
+ },
+ "Spearmint": {
+  "zh": "绿薄荷",
+  "found": true,
+  "page": "Spearmint",
+  "routes": [
+   "<div"
+  ],
+  "price": 6
+ },
+ "Spice Box": {
+  "zh": "香辛料盒子",
+  "found": true,
+  "page": "Spearmint",
+  "routes": [],
+  "price": 6
+ },
+ "Spool of Thread": {
+  "zh": "线卷",
+  "found": true,
+  "page": "Spool of Thread",
+  "routes": [
+   "Crates",
+   "<div"
+  ],
+  "price": 50
+ },
+ "Straw": {
+  "zh": "秸秆",
+  "found": true,
+  "page": "Straw",
+  "routes": [
+   "Wardrobes",
+   "Nightstands",
+   "<div"
+  ],
+  "price": 3
+ },
+ "Straw Dummy": {
+  "zh": "稻草假人",
+  "found": true,
+  "page": "Straw Dummy",
+  "routes": [
+   "Carpenters (Jurg, Dirk)",
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant"
+  ],
+  "price": 200
+ },
+ "Sturdy Chest": {
+  "zh": "牢固的箱子",
+  "found": true,
+  "page": "Sturdy Chests",
+  "routes": [
+   "Carpenters (Jurg, Dirk)",
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant",
+   "Category:Junk",
+   "Category:Materials",
+   "Category:Caravan Accessories"
+  ],
+  "price": 500
+ },
+ "Thyme": {
+  "zh": "百里香",
+  "found": true,
+  "page": "Thyme",
+  "routes": [
+   "Steppes",
+   "Herbalist (Brynn Mint Square)",
+   "<div"
+  ],
+  "price": 6
+ },
+ "Toolbox": {
+  "zh": "工具箱",
+  "found": true,
+  "page": "Toolbox",
+  "routes": [
+   "Carpenter (Jurg, Dirk)",
+   "General Merchant",
+   "One-Eyed Wigmar",
+   "Fair Merchant"
+  ],
+  "price": 200
+ },
+ "Wax Candle": {
+  "zh": "蜡烛",
+  "found": true,
+  "page": "Wax Candle",
+  "routes": [
+   "Graves",
+   "Wardrobes",
+   "Cupboards",
+   "<div"
+  ],
+  "price": 30
+ },
+ "cloth": {
+  "zh": "布",
+  "found": true,
+  "page": "Bolt of Cloth",
+  "routes": [
+   "Chests",
+   "Graves"
+  ],
+  "price": 160
+ }
+}

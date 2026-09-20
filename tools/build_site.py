@@ -20,6 +20,7 @@ NAV = """
     <a href="planner.html" data-p="planner.html">配装规划</a>
     <a href="enemies.html" data-p="enemies.html">敌人图鉴</a>
     <a href="trade.html" data-p="trade.html">交易行情</a>
+    <a href="caravan.html" data-p="caravan.html">马车营地</a>
     <a href="icons.html" data-p="icons.html">图标库</a>
   </div>
 </nav>
@@ -97,7 +98,7 @@ def main():
         f.write(html)
     print("enemies:", len(enemies), "-> site/enemies.html")
 
-    for page in ("index.html", "items.html", "skills.html", "planner.html", "enemies.html", "trade.html", "icons.html"):
+    for page in ("index.html", "items.html", "skills.html", "planner.html", "enemies.html", "trade.html", "caravan.html", "icons.html"):
         inject_nav(page, page)
 
 

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>Stoneshard 马车营地 · 升级与材料</title>
+<style>
+  :root { --bg:#f6f4ef; --card:#fff; --line:#e2ddd2; --ink:#2c2a26; --sub:#8a857a; --acc:#7a4b2a; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--bg); color:var(--ink); font:14px/1.55 "Segoe UI","Microsoft YaHei",sans-serif; padding:24px; }
+  header { max-width:1200px; margin:0 auto 14px; }
+  h1 { font-size:22px; margin-bottom:4px; }
+  .meta { color:var(--sub); font-size:13px; }
+  .stats { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:8px 16px; }
+  .stat b { font-size:18px; color:var(--acc); display:block; }
+  .stat span { font-size:12px; color:var(--sub); }
+  .tabs { max-width:1200px; margin:0 auto 14px; display:flex; gap:8px; flex-wrap:wrap; }
+  .tab { padding:7px 16px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:13.5px; }
+  .tab.on { background:var(--acc); color:#fff; border-color:var(--acc); }
+  .wrap { max-width:1200px; margin:0 auto; }
+  .view { display:none; } .view.on { display:block; }
+  .note { background:#f4efe4; border-radius:8px; padding:10px 14px; font-size:12.5px; margin-bottom:12px; }
+  #grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:12px; }
+  .node { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .node .nh { display:flex; gap:10px; align-items:flex-start; }
+  .node .nh img { width:48px; height:48px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
+  .node .nm { font-weight:600; font-size:15px; }
+  .badge { display:inline-block; font-size:11px; padding:1px 7px; border-radius:99px; margin-left:6px; vertical-align:1px; }
+  .badge.basic { background:#e4efdd; color:#3d7a3d; }
+  .badge.ni { background:#eee7d8; color:#9a6b1a; }
+  .eff { font-size:12.5px; margin-top:4px; }
+  .flavor { color:var(--sub); font-size:11.5px; font-style:italic; margin-top:3px; }
+  .pre { margin-top:6px; font-size:12px; color:var(--sub); }
+  .pre .chip { display:inline-block; background:#f1ece1; border-radius:99px; padding:1px 9px; margin:1px 3px 1px 0; color:#55503f; }
+  .mats { margin-top:8px; border-top:1px dashed var(--line); padding-top:7px; }
+  .mh { font-size:11.5px; color:var(--sub); margin-bottom:4px; }
+  .mrow { display:flex; align-items:center; gap:7px; padding:3px 4px; border-radius:6px; cursor:pointer; font-size:13px; }
+  .mrow:hover { background:#f4efe4; }
+  .mrow img { width:26px; height:26px; object-fit:contain; image-rendering:pixelated; flex:none; }
+  .mrow .qn { margin-left:auto; color:var(--acc); font-weight:600; white-space:nowrap; }
+  .mrow .pr { color:var(--sub); font-size:11.5px; width:64px; text-align:right; white-space:nowrap; }
+  .routes { display:none; background:#f7f3ea; border-radius:8px; padding:7px 10px 7px 12px; margin:3px 0 5px 33px; font-size:12.5px; }
+  .routes.on { display:block; }
+  .routes li { margin:2px 0 2px 14px; color:#4c463a; }
+  .noRoute { color:var(--sub); font-size:12px; padding:3px 4px; }
+  .variant { margin-top:8px; border-top:1px dashed var(--line); padding-top:7px; font-size:12.5px; }
+  .variant .rt { font-weight:600; color:#55503f; }
+  /* 材料大全 */
+  .tgroup { margin-bottom:18px; }
+  h2.sec { font-size:16px; margin:8px 0 8px; }
+  .mgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:10px; }
+  .mitem { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 12px; }
+  .mitem .top { display:flex; align-items:center; gap:9px; cursor:pointer; }
+  .mitem .top img { width:32px; height:32px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
+  .mitem .top .nm { font-weight:600; }
+  .mitem .top .en { color:var(--sub); font-size:11.5px; display:block; font-weight:400; }
+  .mitem .top .pr { margin-left:auto; color:var(--acc); font-weight:600; font-size:12.5px; white-space:nowrap; }
+  .mitem .used { margin-top:5px; font-size:11.5px; color:var(--sub); }
+  .mitem .used .chip { background:#f1ece1; border-radius:99px; padding:1px 8px; margin:1px 3px 1px 0; display:inline-block; color:#55503f; }
+  /* 累计 */
+  table { width:100%; border-collapse:collapse; background:var(--card); border:1px solid var(--line); overflow:hidden; font-size:13px; border-radius:10px; }
+  th, td { padding:7px 12px; border-bottom:1px solid var(--line); text-align:left; }
+  th { background:#f1ece1; font-weight:600; }
+  tr:last-child td { border-bottom:none; }
+  td.r, th.r { text-align:right; }
+  .up { color:#3d7a3d; font-weight:600; }
+  tfoot td { background:#f7f3ea; font-weight:600; }
+  .hide { display:none; }
+</style>
+</head>
+<body>
+<header>
+  <h1>马车营地 · 升级与材料</h1>
+  <div class="meta">数据来源：游戏文件逆向（升级树与配方）+ 官方 wiki（获取途径与价格，v0.9.4.x「赤贫暴富」）。完成维伦的营地任务解锁马车后，打开马车书（Caravan Book）即可用材料升级。</div>
+  <div class="stats">
+    <div class="stat"><b>30</b><span>升级项（24 已实装）</span></div>
+    <div class="stat"><b id="st-mats"></b><span>材料 / 关键物品</span></div>
+    <div class="stat"><b id="st-crown"></b><span>材料约需金币（商店参考价）</span></div>
+    <div class="stat"><b id="st-verren"></b><span>维伦书信类另需</span></div>
+    <div class="stat"><b>800</b><span>满级仓库格数</span></div>
+  </div>
+</header>
+<div class="tabs" id="tabs"></div>
+<div class="wrap" id="views"></div>
+<script>
+const D = __DATA__;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ---------- 标签 ---------- */
+const tabs = [...D.branches.map(b => ["b:" + b.id, b.zh]), ["mats", "材料大全"], ["totals", "全部升级累计清单"]];
+$("#tabs").innerHTML = tabs.map(([k, z], i) => `<div class="tab ${i === 0 ? "on" : ""}" data-k="${k}">${esc(z)}</div>`).join("");
+$("#st-mats").textContent = D.totals.length;
+$("#st-crown").textContent = D.crownTotal ? D.crownTotal.toLocaleString() : "—";
+$("#st-verren").textContent = D.verrenTotal.toLocaleString() + " 金币";
+
+const fmtPrice = p => p == null ? "—" : p.toLocaleString() + " G";
+function routesHtml(m){
+  if (!m.routes || !m.routes.length) return `<div class="noRoute">获取途径待补充（欢迎实测反馈）</div>`;
+  return `<ul class="routes" data-m="${esc(m.en)}">` + m.routes.map(r => `<li>${esc(r)}</li>`).join("") + "</ul>";
+}
+function matRow(m){
+  return `<div class="mrow" data-toggle="${esc(m.en)}">
+    ${m.icon ? `<img loading="lazy" src="${m.icon}" onerror="this.style.visibility='hidden'">` : `<span style="width:26px"></span>`}
+    <span>${esc(m.zh)}</span>
+    <span class="pr">${fmtPrice(m.price)}</span>
+    <span class="qn">×${m.n}</span></div>` + routesHtml(m);
+}
+function nodeHtml(n){
+  const pre = [];
+  if (n.prereq.length) pre.push("前置：" + n.prereq.join("、"));
+  if (n.needN) pre.push(`还需已完成 ${n.needN} 项升级`);
+  let vhtml = "";
+  if (n.variants.length){
+    vhtml = n.variants.map(v => `<div class="variant"><span class="rt">${esc(v.race)}</span>：${esc(v.eff || "")}
+      <div class="mats">${v.mats.map(matRow).join("")}</div></div>`).join("");
+  }
+  return `<div class="node" id="node-${esc(n.id)}">
+    <div class="nh">${n.sprite ? `<img loading="lazy" src="${n.sprite}" onerror="this.style.visibility='hidden'">` : ""}
+      <div><span class="nm">${esc(n.zh)}</span>
+        ${n.basic ? `<span class="badge basic">自动解锁</span>` : ""}
+        ${n.notImpl ? `<span class="badge ni">未实装</span>` : ""}
+        <div class="eff">${esc(n.eff)}</div>
+        ${n.desc ? `<div class="flavor">${esc(n.desc)}</div>` : ""}</div></div>
+    ${pre.length ? `<div class="pre">${pre.map(p => `<span class="chip">${esc(p)}</span>`).join("")}</div>` : ""}
+    ${n.mats.length ? `<div class="mats"><div class="mh">升级材料（点击材料查看获取途径）</div>${n.mats.map(matRow).join("")}</div>` : ""}
+    ${vhtml}
+  </div>`;
+}
+
+/* ---------- 视图 ---------- */
+const views = [];
+for (const b of D.branches){
+  const auto = b.nodes.filter(n => n.basic).length;
+  views.push(["b:" + b.id, `<h2 class="sec">${esc(b.zh)} <span style="color:var(--sub);font-size:12px;font-weight:400">${b.nodes.length} 项（${auto} 项随马车自动解锁）</span></h2>
+    <div id="grid">${b.nodes.map(nodeHtml).join("")}</div>`]);
+}
+views.push(["mats", `<h2 class="sec">材料大全 <span style="color:var(--sub);font-size:12px;font-weight:400">按类型分组 · 点击条目展开获取途径</span></h2>` +
+  D.types.map(g => `<div class="tgroup"><h2 class="sec">${esc(g.type)} <span style="color:var(--sub);font-size:12px;font-weight:400">${g.items.length} 种</span></h2>
+    <div class="mgrid">${g.items.map(m => `<div class="mitem">
+      <div class="top" data-toggle="${esc(m.en)}">
+        ${m.icon ? `<img loading="lazy" src="${m.icon}" onerror="this.style.visibility='hidden'">` : `<span style="width:32px"></span>`}
+        <div><span class="nm">${esc(m.zh)}</span><span class="en">${esc(m.en)}</span></div>
+        <span class="pr">${fmtPrice(m.price)}</span></div>
+      ${routesHtml(m)}
+      <div class="used">用于：${m.used.map(u => `<span class="chip">${esc(u)}</span>`).join("")}</div>
+    </div>`).join("")}</div></div>`).join("")]);
+views.push(["totals", `<h2 class="sec">全部升级累计清单 <span style="color:var(--sub);font-size:12px;font-weight:400">除自动解锁 5 项外全部升满（神台按人类出身计）</span></h2>
+  <div class="note">估算总价 = 材料参考价 × 数量，<b>${D.crownTotal ? D.crownTotal.toLocaleString() : "—"}</b> 金币；另有 4 项联络类升级的书信文书只能向维伦购买，合计 <b>${D.verrenTotal.toLocaleString()}</b> 金币。多数大件可在独眼龙魏格玛（烂柳酒馆）和布林商人处买到，声望与需求会浮动实际价格。</div>
+  <table><thead><tr><th>材料</th><th>类型</th><th class="r">数量</th><th>用于</th><th class="r">参考单价</th><th class="r">小计</th></tr></thead>
+  <tbody>${D.totals.map(m => `<tr><td>${esc(m.zh)}</td><td>${esc(m.type || "其他")}</td><td class="r">×${m.total}</td>
+    <td>${esc(m.where.join("、"))}</td><td class="r">${fmtPrice(m.price)}</td><td class="r">${m.price == null ? "—" : (m.price * m.total).toLocaleString()}</td></tr>`).join("")}
+  </tbody>
+  <tfoot><tr><td colspan="5">材料合计（不含维伦书信）</td><td class="r">${D.crownTotal ? D.crownTotal.toLocaleString() + " G" : "—"}</td></tr></tfoot></table>`]);
+
+$("#views").innerHTML = views.map(([k, h]) => `<div class="view" data-v="${k}">${h}</div>`).join("");
+$("#tabs").onclick = e => {
+  const t = e.target.closest(".tab"); if (!t) return;
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x === t));
+  document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.dataset.v === t.dataset.k));
+};
+document.querySelector(".tab").classList.add("on");
+document.querySelector(".view").classList.add("on");
+
+/* 展开获取途径 */
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-toggle]"); if (!t) return;
+  const box = t.parentElement.querySelector(".routes") || t.nextElementSibling;
+  if (box) box.classList.toggle("on");
+});
+</script>
+</body>
+</html>
