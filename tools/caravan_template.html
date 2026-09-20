@@ -71,7 +71,7 @@
 <body>
 <header>
   <h1>马车营地 · 升级与材料</h1>
-  <div class="meta">数据来源：游戏文件逆向（升级树与配方）+ 官方 wiki（获取途径与价格，v0.9.4.x「赤贫暴富」）。完成维伦的营地任务解锁马车后，打开马车书（Caravan Book）即可用材料升级。</div>
+  <div class="meta">数据来源：游戏文件逆向（升级树与配方）+ 官方 wiki（获取途径与价格，v0.9.4.x「赤贫暴富」）。完成维伦的营地任务解锁马车后，打开马车书（Caravan Book）即可用材料升级。获取途径已与官方 wiki 物品页和社区实测资料交叉核对；标注「社区资料」的条目暂无官方 wiki 佐证，个别商人库存随版本轮换可能变动，欢迎实测纠错。</div>
   <div class="stats">
     <div class="stat"><b>30</b><span>升级项（24 已实装）</span></div>
     <div class="stat"><b id="st-mats"></b><span>材料 / 关键物品</span></div>
@@ -162,10 +162,11 @@ $("#tabs").onclick = e => {
 document.querySelector(".tab").classList.add("on");
 document.querySelector(".view").classList.add("on");
 
-/* 展开获取途径 */
+/* 展开获取途径（按 data-m 精确匹配，途径面板是材料行的兄弟节点） */
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-toggle]"); if (!t) return;
-  const box = t.parentElement.querySelector(".routes") || t.nextElementSibling;
+  const sel = `.routes[data-m="${(t.dataset.toggle || "").replace(/"/g, '\\"')}"]`;
+  const box = t.parentElement.querySelector(sel) || t.nextElementSibling;
   if (box) box.classList.toggle("on");
 });
 </script>

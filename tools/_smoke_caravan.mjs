@@ -94,6 +94,22 @@ check("类型分组 >= 6", mv.groups >= 6, mv.groups);
 check("材料条目 >= 50", mv.items >= 50, mv.items);
 check("维伦途径可查", mv.verren);
 
+/* 4b. 回归：点第 N 个材料必须打开第 N 个材料的途径（曾因 parentElement.querySelector 取到容器内第一个 .routes 而全开第一个） */
+const mv2 = await evaluate(`(() => {
+  const view = document.querySelector("#views .view[data-v='mats']");
+  const tops = [...view.querySelectorAll("[data-toggle]")];
+  const first = tops[0], second = tops.find(t => t !== first && t.dataset.toggle !== first.dataset.toggle);
+  first.click(); second.click();
+  const sel = s => '.routes[data-m="' + s.replace(/"/g, '\\\\"') + '"]';
+  const fb = first.parentElement.querySelector(sel(first.dataset.toggle));
+  const sb = second.parentElement.querySelector(sel(second.dataset.toggle));
+  const ok = fb.classList.contains("on") && sb.classList.contains("on");
+  first.click(); second.click(); // 收起还原
+  return { firstM: first.dataset.toggle, secondM: second.dataset.toggle,
+    ok, firstTxt: fb.textContent.slice(0, 30), secondTxt: sb.textContent.slice(0, 30) };
+})()`);
+check("点第二个材料开第二个途径", mv2.ok && mv2.firstTxt !== mv2.secondTxt, JSON.stringify(mv2));
+
 /* 5. 累计清单 */
 const tv = await evaluate(`(() => {
   document.querySelector('.tab[data-k="totals"]').click();
@@ -117,6 +133,7 @@ const v = await evaluate(`(() => {
 })()`);
 check("神台 3 出身变体", v.found && v.variants === 3, JSON.stringify(v));
 
-chrome.kill(); rmSync(profile, { recursive: true, force: true });
+chrome.kill();
+try { rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 }); } catch {}
 console.log("\n" + pass + " passed, " + fail + " failed");
 process.exit(fail ? 1 : 0);
