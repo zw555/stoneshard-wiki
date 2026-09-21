@@ -56,9 +56,11 @@ kbd { background:var(--line); border-radius:4px; padding:0 6px; font-size:12px; 
   /* ================= 全站统一外壳 · 请勿在单页重复定义这里的规则 ================= */
   :root { --ssw-ink:#2c2a26; --ssw-sub:#6f695c; --ssw-line:#e2ddd2; --ssw-acc:#7a4b2a; }
   body { margin:0; padding:0; }
-  /* 恒定预留滚动条槽：否则「内容短、无滚动条」的页面视口宽出 15px，
-     居中的 1200px 容器会横向偏移 ~7.5px，切换页面时正文左右跳动。 */
-  html { scrollbar-gutter:stable; }
+  /* 恒定显示滚动条：否则「内容短、无滚动条」的页面可用宽多出 15px，
+     居中的 1200px 容器会横向偏移 ~7.5px，切换页面时正文左右跳动。
+     （不用 scrollbar-gutter:stable —— 它只在排版上留槽、不绘制滚动条，
+       深色导航条右侧会露出一条未绘制的白缝。） */
+  html { overflow-y:scroll; }
 
   /* --- 顶部导航（通栏深色条） --- */
   .ssw-nav { background:#2c2a26; position:sticky; top:0; z-index:60; }
