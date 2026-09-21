@@ -33,18 +33,14 @@ TEMPLATE = r"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Stoneshard 图标库 (Wiki 雏形)</title>
 <style>
-:root { --bg:#f6f4ef; --panel:#fffdf8; --ink:#2b2620; --muted:#8a8177; --accent:#7c5cbf; --line:#e5dfd4; }
+:root { --bg:#f6f4ef; --panel:#fffdf8; --ink:#2b2620; --muted:#8a8177; --accent:#7a4b2a; --line:#e5dfd4; }
 * { box-sizing:border-box; margin:0; padding:0; }
 body { background:var(--bg); color:var(--ink); font-family:"Segoe UI","Microsoft YaHei",sans-serif; }
-header { background:linear-gradient(135deg,#3d2f5c,#241b3a); color:#efe9ff; padding:22px 24px 18px; }
-header h1 { font-size:22px; } header h1 span { color:#c9b8ff; }
-header p { margin-top:6px; color:#b7a9e0; font-size:12.5px; }
-header a { color:#c9b8ff; }
-.wrap { max-width:1100px; margin:0 auto; padding:16px; }
+.wrap { max-width:1200px; margin:0 auto; padding:20px 0 60px; }
 .searchbar input {
   width:100%; padding:12px 16px; font-size:15px; border:1px solid var(--line);
   border-radius:10px; background:var(--panel); color:var(--ink); outline:none;
-  box-shadow:0 4px 14px rgba(60,40,100,.10);
+  box-shadow:0 4px 14px rgba(60,50,30,.08);
 }
 .searchbar input:focus { border-color:var(--accent); }
 .stats { color:var(--muted); font-size:13px; margin:12px 2px; }
@@ -60,9 +56,11 @@ header a { color:#c9b8ff; }
 </style>
 </head>
 <body>
-<header>
-  <h1>Stoneshard <span>图标库</span></h1>
-  <p>共 __COUNT__ 个精灵 · 直接从 data.win 提取 · <a href="index.html">返回文本数据库</a></p>
+<header class="ssw-head">
+  <div class="ssw-head-inner">
+    <h1>Stoneshard <span>图标库</span></h1>
+    <div class="ssw-sub">共 __COUNT__ 个精灵 · 直接从 data.win 提取 · 图标按原始资源名检索</div>
+  </div>
 </header>
 <div class="wrap">
   <div class="searchbar"><input id="q" placeholder="搜索精灵名，如 rusty_key / duelist / skill / inv_" autofocus></div>

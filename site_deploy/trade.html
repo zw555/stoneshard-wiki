@@ -50,6 +50,7 @@
 </style>
 </head>
 <body>
+
 <nav class="ssw-nav">
   <div class="ssw-nav-inner">
     <a class="ssw-brand" href="index.html">Stoneshard 中文资料库</a>
@@ -64,54 +65,49 @@
   </div>
 </nav>
 <style>
-  .ssw-nav { background:#2c2a26; position:sticky; top:0; z-index:50; }
-  .ssw-nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:6px; padding:0 16px; height:48px; flex-wrap:wrap; }
+  /* ================= 全站统一外壳 · 请勿在单页重复定义这里的规则 ================= */
+  :root { --ssw-ink:#2c2a26; --ssw-sub:#6f695c; --ssw-line:#e2ddd2; --ssw-acc:#7a4b2a; }
+  body { margin:0; padding:0; }
+  /* 恒定预留滚动条槽：否则「内容短、无滚动条」的页面视口宽出 15px，
+     居中的 1200px 容器会横向偏移 ~7.5px，切换页面时正文左右跳动。 */
+  html { scrollbar-gutter:stable; }
+
+  /* --- 顶部导航（通栏深色条） --- */
+  .ssw-nav { background:#2c2a26; position:sticky; top:0; z-index:60; }
+  .ssw-nav-inner { max-width:1200px; margin:0 auto; padding:0 24px; height:48px;
+                   display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
   .ssw-nav a { color:#cfc9bc; text-decoration:none; font-size:14px; padding:6px 12px; border-radius:6px; }
   .ssw-nav a:hover { background:#3d3a34; color:#fff; }
-  .ssw-nav a.ssw-on { background:#7a4b2a; color:#fff; }
-  .ssw-brand { font-weight:700; color:#fff !important; margin-right:14px; }
-  @media (max-width: 720px) { .ssw-nav-inner { height:auto; padding:6px 12px; } }
+  .ssw-nav a.ssw-on { background:var(--ssw-acc); color:#fff; }
+  .ssw-nav .ssw-brand { font-weight:700; color:#fff; margin-right:14px; }
+
+  /* --- 页头（通栏白条 + 底边线） --- */
+  .ssw-head { max-width:none; margin:0 0 18px; padding:0; background:#fff; border-bottom:1px solid var(--ssw-line); }
+  .ssw-head-inner { max-width:1200px; margin:0 auto; padding:20px 24px 16px; }
+  .ssw-head h1 { font-size:22px; font-weight:700; color:var(--ssw-ink); margin:0 0 7px;
+                 line-height:1.35; letter-spacing:.2px; }
+  .ssw-head h1 span { color:#8a7b5c; font-weight:600; }
+  .ssw-head .ssw-sub { color:var(--ssw-sub); font-size:13px; line-height:1.7; }
+  .ssw-head .ssw-sub a { color:#8a5a33; }
+  .ssw-head .ssw-stats { display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; }
+  .ssw-head .ssw-stat { background:#faf7f1; border:1px solid var(--ssw-line); border-radius:9px; padding:6px 13px; }
+  .ssw-head .ssw-stat b { display:block; font-size:17px; color:var(--ssw-acc); }
+  .ssw-head .ssw-stat span { color:#8a857a; font-size:12px; }
+
+  /* --- 内容容器：让正文与页头左右对齐（body 直接子元素） --- */
+  body > :not(.ssw-nav):not(.ssw-head):not(style):not(script):not(dialog):not(#tip) {
+    max-width:1200px; margin-left:auto; margin-right:auto;
+    padding-left:24px; padding-right:24px;
+  }
+
+  @media (max-width:720px) { .ssw-nav-inner { height:auto; padding:8px 16px; } }
 </style>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<header>
-  <h1>Stoneshard 交易行情</h1>
-  <div class="meta">数据来源：社区 wiki（v0.9.4.24）· 收购价基准条件：完整耐久、非赃物、普通品质、默认声望、无价格波动 · 回收率 = 收购价 ÷ 商店基准价</div>
+<header class="ssw-head">
+  <div class="ssw-head-inner">
+    <h1>Stoneshard 交易行情</h1>
+    <div class="ssw-sub">数据来源：社区 wiki（v0.9.4.24）· 收购价基准条件：完整耐久、非赃物、普通品质、默认声望、无价格波动 · 回收率 = 收购价 ÷ 商店基准价</div>
+  </div>
 </header>
 <div class="tabs">
   <div class="tab on" data-v="items">卖谁最赚 · 按物品</div>

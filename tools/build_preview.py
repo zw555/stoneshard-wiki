@@ -46,16 +46,12 @@ TEMPLATE = r"""<!DOCTYPE html>
 <style>
 :root {
   --bg:#f6f4ef; --panel:#fffdf8; --ink:#2b2620; --muted:#8a8177;
-  --accent:#7c5cbf; --accent-2:#5c46a0; --line:#e5dfd4; --gold:#b98a2e;
+  --accent:#7a4b2a; --accent-2:#5c3a20; --line:#e5dfd4; --gold:#b98a2e;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
 body { background:var(--bg); color:var(--ink); font-family:"Segoe UI","Microsoft YaHei",sans-serif; min-height:100vh; }
-header { background:linear-gradient(135deg,#3d2f5c,#241b3a); color:#efe9ff; padding:28px 24px 22px; }
-header h1 { font-size:26px; letter-spacing:1px; }
-header h1 span { color:#c9b8ff; }
-header p { margin-top:8px; color:#b7a9e0; font-size:13px; }
-.wrap { max-width:1000px; margin:0 auto; padding:20px 16px 60px; }
-.searchbar { display:flex; gap:10px; margin-top:-24px; }
+.wrap { max-width:1200px; margin:0 auto; padding:20px 0 60px; }
+.searchbar { display:flex; gap:10px; margin-top:0; }
 .searchbar input {
   flex:1; padding:14px 18px; font-size:16px; border:1px solid var(--line);
   border-radius:10px; background:var(--panel); color:var(--ink); outline:none;
@@ -73,7 +69,7 @@ select { padding:12px 12px; border-radius:10px; border:1px solid var(--line); ba
 .card .meta { font-size:11px; color:var(--muted); margin-bottom:6px; }
 .card .en { font-size:14.5px; line-height:1.45; }
 .card .zh { font-size:14.5px; line-height:1.45; color:#1d4ed8; margin-top:6px; white-space:pre-wrap; }
-.tag { display:inline-block; font-size:10.5px; padding:1px 7px; border-radius:99px; background:#efe9fb; color:var(--accent-2); margin-right:6px; }
+.tag { display:inline-block; font-size:10.5px; padding:1px 7px; border-radius:99px; background:#f1ece1; color:var(--accent-2); margin-right:6px; }
 .tag.dlg { background:#f7ecd6; color:#8a6415; }
 mark { background:#ffe9a8; padding:0 2px; border-radius:3px; }
 .empty { text-align:center; color:var(--muted); padding:60px 0; font-size:15px; }
@@ -81,9 +77,11 @@ kbd { background:var(--line); border-radius:4px; padding:0 6px; font-size:12px; 
 </style>
 </head>
 <body>
-<header>
-  <h1>Stoneshard <span>紫色晶石</span> · 双语数据库</h1>
-  <p>数据来源：从游戏本体 (StoneShard.exe / data.win) 直接提取 · 共 __COUNT__ 条文本 · Wiki 雏形 v0.1</p>
+<header class="ssw-head">
+  <div class="ssw-head-inner">
+    <h1>Stoneshard <span>紫色晶石</span> · 双语数据库</h1>
+    <div class="ssw-sub">数据来源：从游戏本体 (StoneShard.exe / data.win) 直接提取 · 共 __COUNT__ 条文本 · Wiki 雏形 v0.1</div>
+  </div>
 </header>
 <div class="wrap">
   <div class="searchbar">
