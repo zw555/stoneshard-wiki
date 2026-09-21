@@ -44,6 +44,16 @@ for (let i = 0; i < 50; i++){
 }
 await sleep(1000);
 
+/* 0. 导航注入（构建脚本自注入，勿依赖 build_site 顺序） */
+const nav = await evaluate(`(() => {
+  const n = document.querySelectorAll(".ssw-nav");
+  return { blocks: n.length, links: document.querySelectorAll(".ssw-nav a").length,
+    hasSelf: !!document.querySelector('.ssw-nav a[data-p="planner.html"]'),
+    onSelf: !!document.querySelector('.ssw-nav a.ssw-on[data-p="planner.html"]') };
+})()`);
+check("本页含导航且唯一", nav.blocks === 1, nav.blocks);
+check("导航含本页入口且高亮", nav.hasSelf && nav.onSelf && nav.links === 9, JSON.stringify(nav));
+
 /* 1. 裸角色基准（属性全 10） */
 const bare = await evaluate(`compute().vals`);
 check("bare HP 100", bare.HP === "100/100", bare.HP);

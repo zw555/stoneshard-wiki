@@ -10,7 +10,10 @@ Output: site/planner_data.js -> window.PD = {items, ench, curse, buffs, rows, ke
 The page itself (tools/planner_template.html) implements the stat engine (port of the
 community planner's kr() function, which replicates the game's own formulas).
 """
-import json, os, re, collections
+import json, os, re, collections, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _nav import inject_nav  # noqa: E402  生成页面后自注入导航，避免被 build_site 覆盖/漏注入
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -165,6 +168,7 @@ def main():
     tpl = open(os.path.join(ROOT, "tools", "planner_template.html"), encoding="utf-8").read()
     with open(os.path.join(SITE, "planner.html"), "w", encoding="utf-8") as f:
         f.write(tpl)
+    inject_nav("planner.html", "planner.html")  # 自身带导航，不依赖 build_site 的执行顺序
     print("wrote site/planner.html")
 
 

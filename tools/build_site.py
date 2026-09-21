@@ -3,37 +3,14 @@
 2. inject shared top nav into index.html / items.html / icons.html
 Run after build_preview.py / build_icons_gallery.py / build_linkage.py.
 """
-import json, os, re
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _nav import inject_nav  # noqa: E402  共享导航（planner/caravan 构建脚本也用它）
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 SITE = os.path.join(ROOT, "site")
 TOOLS = os.path.dirname(os.path.abspath(__file__))
-
-NAV = """
-<nav class="ssw-nav">
-  <div class="ssw-nav-inner">
-    <a class="ssw-brand" href="index.html">Stoneshard 中文资料库</a>
-    <a href="index.html" data-p="index.html">全文搜索</a>
-    <a href="items.html" data-p="items.html">物品图鉴</a>
-    <a href="skills.html" data-p="skills.html">技能树</a>
-    <a href="planner.html" data-p="planner.html">配装规划</a>
-    <a href="enemies.html" data-p="enemies.html">敌人图鉴</a>
-    <a href="trade.html" data-p="trade.html">交易行情</a>
-    <a href="caravan.html" data-p="caravan.html">马车营地</a>
-    <a href="icons.html" data-p="icons.html">图标库</a>
-  </div>
-</nav>
-<style>
-  .ssw-nav { background:#2c2a26; position:sticky; top:0; z-index:50; }
-  .ssw-nav-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:6px; padding:0 16px; height:48px; flex-wrap:wrap; }
-  .ssw-nav a { color:#cfc9bc; text-decoration:none; font-size:14px; padding:6px 12px; border-radius:6px; }
-  .ssw-nav a:hover { background:#3d3a34; color:#fff; }
-  .ssw-nav a.ssw-on { background:#7a4b2a; color:#fff; }
-  .ssw-brand { font-weight:700; color:#fff !important; margin-right:14px; }
-  @media (max-width: 720px) { .ssw-nav-inner { height:auto; padding:6px 12px; } }
-</style>
-"""
 
 
 def slim_enemies():
@@ -70,24 +47,6 @@ def slim_enemies():
         })
     out.sort(key=lambda x: (x["fa"], x["rk"], x["en"].lower()))
     return out
-
-
-def inject_nav(page, active):
-    p = os.path.join(SITE, page)
-    if not os.path.exists(p):
-        print("skip missing", page)
-        return
-    h = open(p, encoding="utf-8").read()
-    nav = NAV.replace(f'data-p="{active}"', f'class="ssw-on" data-p="{active}"')
-    if 'class="ssw-nav"' in h:  # already injected -> replace old nav block
-        h = re.sub(r'<nav class="ssw-nav">.*?</style>', "", h, flags=re.S)
-    if "<body>" in h:
-        h = h.replace("<body>", "<body>" + nav, 1)
-    else:
-        h = nav + h
-    with open(p, "w", encoding="utf-8") as f:
-        f.write(h)
-    print("nav ->", page)
 
 
 def main():

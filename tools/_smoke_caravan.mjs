@@ -40,6 +40,16 @@ for (let i = 0; i < 50; i++){
 await new Promise(r => setTimeout(r, 1200));
 
 /* 1. 默认视图 */
+const nav = await evaluate(`(() => {
+  const n = document.querySelectorAll(".ssw-nav");
+  return { blocks: n.length, links: document.querySelectorAll(".ssw-nav a").length,
+    hasCaravan: [...document.querySelectorAll(".ssw-nav a")].some(a => a.getAttribute("href") === "caravan.html"),
+    onSelf: !!document.querySelector('.ssw-nav a.ssw-on[data-p="caravan.html"]') };
+})()`);
+check("本页含导航且唯一", nav.blocks === 1, nav.blocks);
+check("导航含马车入口", nav.hasCaravan && nav.links === 9, JSON.stringify(nav));
+check("本页导航高亮为马车营地", nav.onSelf);
+
 const t0 = await evaluate(`(() => ({
   tabs: document.querySelectorAll(".tab").length,
   stat: document.getElementById("st-mats").textContent,

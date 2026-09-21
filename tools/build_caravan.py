@@ -4,7 +4,10 @@ Sources:
 - data/community_caravan_material_sources.json (官方 wiki Acquired From 抓取)
 - 人工整理的中文获取途径 (zh_routes, 依据官方 wiki 物品页 + Rags to Riches 社区资料)
 """
-import json, io, os, re
+import json, io, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from _nav import inject_nav  # noqa: E402  生成页面后自注入导航，避免被 build_site 覆盖/漏注入
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -188,6 +191,7 @@ tpl = io.open(os.path.join(TOOLS, "caravan_template.html"), encoding="utf-8").re
 html = tpl.replace("__DATA__", json.dumps(payload, ensure_ascii=False))
 out = os.path.join(SITE, "caravan.html")
 io.open(out, "w", encoding="utf-8").write(html)
+inject_nav("caravan.html", "caravan.html")  # 自身带导航，不依赖 build_site 的执行顺序
 kb = os.path.getsize(out) / 1024
 print("caravan.html %.0f KB | nodes %d | materials %d | estimated materials cost %d + Verren %d"
       % (kb, sum(len(b["nodes"]) for b in branches), len(mats_order), crown_total, verren_total))
