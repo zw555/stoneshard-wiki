@@ -10,6 +10,9 @@
   3. 页头统一结构 <header class="ssw-head"><div class="ssw-head-inner"><h1>…</h1><div class="ssw-sub">…；
      页面里原有的 <header>（紫渐变 / 白底 / .meta 三种写法）会被自动重写成上面的结构，
      标题与副标题从原内容里原样搬运，因此不需要改 8 个模板。
+  4. **页头里只允许放 h1 与副标题**。其它内容（统计卡、筛选条…）会被自动移到
+     </header> 之后并沿用 1200px 容器 —— 否则该页页头会比别的页高，切换时高度跳动。
+     页面级额外信息请直接写在 </header> 之后，别写进 <header>。
 
 用法：
     from _nav import inject_nav
@@ -66,10 +69,6 @@ NAV = """
   .ssw-head h1 span { color:#8a7b5c; font-weight:600; }
   .ssw-head .ssw-sub { color:var(--ssw-sub); font-size:13px; line-height:1.7; }
   .ssw-head .ssw-sub a { color:#8a5a33; }
-  .ssw-head .ssw-stats { display:flex; flex-wrap:wrap; gap:10px; margin-top:11px; }
-  .ssw-head .ssw-stat { background:#faf7f1; border:1px solid var(--ssw-line); border-radius:9px; padding:6px 13px; }
-  .ssw-head .ssw-stat b { display:block; font-size:17px; color:var(--ssw-acc); }
-  .ssw-head .ssw-stat span { color:#8a857a; font-size:12px; }
 
   /* --- 内容容器：让正文与页头左右对齐（body 直接子元素） --- */
   body > :not(.ssw-nav):not(.ssw-head):not(style):not(script):not(dialog):not(#tip) {
@@ -89,11 +88,9 @@ HEAD_TMPL = """<header class="ssw-head">
 </header>"""
 
 
-def ssw_head(title, sub="", extra=""):
-    """生成统一的页面头部。"""
+def ssw_head(title, sub=""):
+    """生成统一的页面头部（只含 h1 + 副标题）。"""
     body = ('    <div class="ssw-sub">%s</div>\n' % sub) if sub else ""
-    if extra:
-        body += extra.rstrip("\n") + "\n"
     return HEAD_TMPL.format(title=title, sub=body)
 
 
@@ -109,9 +106,14 @@ SUB_RES = (
 def normalize_head(h):
     """把页面自带的 <header> 重写成统一结构（可重复执行）。
 
-    只搬走 h1 与副标题（.ssw-sub / <p> / .meta），页头里的其它内容（如 caravan 的
-    .stats 统计块，其 id 被页面 JS 引用）原样保留在 .ssw-head-inner 内 —— 早先
-    整块替换曾把 caravan 的 #st-mats 一并删掉，导致该页 JS 抛错、整页失效。
+    页头只留 h1 + 副标题（.ssw-sub / <p> / .meta 三种写法都认）。页头里的其它内容
+    ——如 caravan 的 .stats 统计块（其 id 被页面 JS 引用，不能删）——会被**移到
+    </header> 之后**，成为正文首个块并沿用统一的 1200px 容器。
+
+    两个历史教训：
+      * 整块替换 <header> 曾把 caravan 的 #st-mats 一并删掉 → 该页 JS 抛错、整页失效；
+      * 把这些内容留在页头内曾让 caravan 的页头比其他页高出一大截 → 切换时高度跳动。
+    所以现在的契约是：页头高度只由 h1 + 副标题决定，8 页恒等。
     """
     m = HEAD_RE.search(h)
     if not m:
@@ -144,7 +146,9 @@ def normalize_head(h):
     rest += inner[prev:]
     rest = rest.strip()
 
-    return h[:m.start()] + ssw_head(t.group(1).strip(), sub, rest) + h[m.end():], True
+    head = ssw_head(t.group(1).strip(), sub)
+    tail = ("\n" + rest) if rest else ""
+    return h[:m.start()] + head + tail + h[m.end():], True
 
 
 def _build_nav(active):

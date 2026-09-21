@@ -61,6 +61,9 @@ const PROBE = `(() => {
     navBgLeft: box(nav).l,
     navBgWidth: box(nav).w,
     navTxtLeft: txtLeft(navInner),
+    headH: document.querySelector('.ssw-head').getBoundingClientRect().height,
+    subH: document.querySelector('.ssw-sub').getBoundingClientRect().height,
+    headKids: document.querySelector('.ssw-head-inner').children.length,
     headTxtLeft: txtLeft(inner),
     headH1Left: txtLeft(h1.parentElement) + (h1.getBoundingClientRect().left - h1.parentElement.getBoundingClientRect().left) - parseFloat(cs(h1.parentElement).paddingLeft),
     h1Size: parseFloat(cs(h1).fontSize),
@@ -86,18 +89,22 @@ for (const pg of PAGES) {
   check(`${pg} 页头与正文左边线对齐`, dHead < 1, `head=${m.headTxtLeft} content(${m.contentTag})=${m.contentTxtLeft} Δ=${dHead.toFixed(1)}`);
   check(`${pg} 导航文字与页头对齐`, dNav < 1, `nav=${m.navTxtLeft} head=${m.headTxtLeft}`);
   check(`${pg} 标题字号 22px`, m.h1Size === 22, m.h1Size);
+  check(`${pg} 页头只含标题+副标题`, m.headKids === 2, `children=${m.headKids}`);
   check(`${pg} 浅色主题`, lum > 220, `bg=rgb(${m.bg}) lum=${lum.toFixed(0)}`);
 }
 
-console.log("\n--- 汇总（页头文字左边线 / 正文左边线）---");
-for (const [pg, m] of rows) console.log(`${pg.padEnd(13)} head=${m.headTxtLeft.toFixed(1)}  content=${m.contentTxtLeft.toFixed(1)} (${m.contentTag})  bg=rgb(${m.bg})`);
+console.log("\n--- 汇总（页头高度 / 副标题高 / 左边线）---");
+for (const [pg, m] of rows) console.log(`${pg.padEnd(13)} headH=${String(m.headH).padEnd(7)} subH=${String(m.subH).padEnd(6)} head=${m.headTxtLeft.toFixed(1)}  content=${m.contentTxtLeft.toFixed(1)} (${m.contentTag})`);
 
 // 跨页一致性：切换页面时左边线必须完全不动（滚动条槽 / 容器宽度差异都会在这里暴露）
-const uniq = k => [...new Set(rows.map(([, m]) => Math.round(m[k] * 10) / 10))];
+const uniq = (k, d = 10) => [...new Set(rows.map(([, m]) => Math.round(m[k] * d) / d))];
 const uContent = uniq("contentTxtLeft"), uHead = uniq("headTxtLeft"), uNav = uniq("navTxtLeft");
 check(`全站正文左边线唯一(${uContent.join("/")})`, uContent.length === 1, uContent.join("/"));
 check(`全站页头左边线唯一(${uHead.join("/")})`, uHead.length === 1, uHead.join("/"));
 check(`全站导航文字左边线唯一(${uNav.join("/")})`, uNav.length === 1, uNav.join("/"));
+const uH = uniq("headH", 1), uSub = uniq("subH", 1);
+check(`全站页头高度唯一(${uH.join("/")})`, uH.length === 1, uH.join("/"));
+check(`全站副标题高度唯一(${uSub.join("/")})`, uSub.length === 1, uSub.join("/"));
 
 chrome.kill();
 try { rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 }); } catch {}
