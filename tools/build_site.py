@@ -6,6 +6,7 @@ Run after build_preview.py / build_icons_gallery.py / build_linkage.py.
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from _nav import inject_nav  # noqa: E402  共享导航（planner/caravan 构建脚本也用它）
+from _icons import icon_index, real_name  # noqa: E402  图标名大小写校正
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
@@ -13,7 +14,7 @@ SITE = os.path.join(ROOT, "site")
 TOOLS = os.path.dirname(os.path.abspath(__file__))
 
 
-def slim_enemies():
+def slim_enemies(idx):
     d = json.load(open(os.path.join(DATA, "community_enemies.json"), encoding="utf-8"))
     out = []
     for e in d["enemies"]:
@@ -30,7 +31,7 @@ def slim_enemies():
                 if not nm.get("zh") and not nm.get("en"):
                     continue
                 dp.append({"zh": nm.get("zh", ""), "en": nm.get("en", ""),
-                           "ic": (c.get("icon") or "").replace("_0.png", ".png"),
+                           "ic": real_name((c.get("icon") or "").replace("_0.png", ".png"), idx),
                            "ch": dd.get("chance")})
         out.append({
             "id": e.get("id", ""),
@@ -39,7 +40,7 @@ def slim_enemies():
             "fa": ((e.get("faction_names") or {}).get("zh")
                    or (e.get("faction_names") or {}).get("en") or e.get("faction", "")),
             "rk": e.get("rank") or 0,
-            "ic": (e.get("sprite") or "").replace("_0.png", ".png"),
+            "ic": real_name((e.get("sprite") or "").replace("_0.png", ".png"), idx),
             "st": e.get("stats") or {},
             "sk": sk,
             "dp": dp,
@@ -50,7 +51,7 @@ def slim_enemies():
 
 
 def main():
-    enemies = slim_enemies()
+    enemies = slim_enemies(icon_index(SITE))
     tpl = open(os.path.join(TOOLS, "enemies_template.html"), encoding="utf-8").read()
     html = tpl.replace("__DATA__", json.dumps(enemies, ensure_ascii=False))
     with open(os.path.join(SITE, "enemies.html"), "w", encoding="utf-8") as f:

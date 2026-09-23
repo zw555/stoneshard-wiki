@@ -94,8 +94,61 @@ await evaluate(`[...document.querySelectorAll(".tab")].find(t => t.dataset.v ===
 await sleep(80);
 check("mech tables render", await evaluate(`document.querySelectorAll("#towns table tr").length`) > 5, "");
 
-/* 7. 无残留占位符 */
-check("no __DATA__ leftover", !await evaluate(`document.body.innerHTML.includes("__DATA__") || document.body.innerHTML.includes("__LB__")`), "");
+/* 7. 商货收购视图：谁收、收多少（数据来自游戏文件逆向的商人收购系数） */
+await evaluate(`[...document.querySelectorAll(".tab")].find(t => t.dataset.v === "goods").click()`);
+await sleep(150);
+check("goods tab visible", !(await evaluate(`document.getElementById("v-goods").classList.contains("hide")`)), "");
+check("commodity chips = 7", await evaluate(`document.querySelectorAll("#gquick .chip").length`) === 7,
+      await evaluate(`document.querySelectorAll("#gquick .chip").length`));
+const wheat = await evaluate(`(function(){ const w = G.items.find(x => x.k === "wheat"); const r = gBuyers(w);
+  return { base: w.b, n: r.length, tiers: new Set(r.map(x => x.c)).size, top: r[0].p, topWho: r[0].m.z, low: r[r.length-1].p }; })()`);
+check("小麦: 基准价 280", wheat.base === 280, wheat.base);
+check("小麦: 20 家收购", wheat.n === 20, wheat.n);
+check("小麦: 6 个系数档", wheat.tiers === 6, wheat.tiers);
+check("小麦: 最高 370 金", wheat.top === 370, wheat.top);
+check("小麦: 最低 279 金", wheat.low === 279, wheat.low);
+console.log(`      小麦最高价: ${wheat.top} 金 @ ${wheat.topWho}`);
+check("按单价分组渲染(12 档)", await evaluate(`document.querySelectorAll("#gtbl .grow").length`) === 12,
+      await evaluate(`document.querySelectorAll("#gtbl .grow").length`));
+check("行内每个商人都与该行单价一致", await evaluate(`(function(){
+  return [...document.querySelectorAll("#gtbl .grow")].every(r => {
+    const p = +r.querySelector(".gp b").textContent;
+    return [...r.querySelectorAll(".gm .mi")].every(mi => {
+      const m = G.merchants.find(x => x.i === mi.dataset.m);
+      return !!m && gPrice(m, gsel) === p;
+    });
+  });
+})()`), "行内价与 gPrice() 不一致");
+check("商人标签带 data-m（可区分同名）", await evaluate(`(function(){
+  const ids = [...document.querySelectorAll("#gtbl .mi")].map(x => x.dataset.m);
+  return ids.length > 0 && ids.every(Boolean) && new Set(ids).size === ids.length;
+})()`), "存在空 id 或重复 id");
+const pricesDesc = await evaluate(`[...document.querySelectorAll("#gtbl .grow .gp b")].map(b => +b.textContent)`);
+check("单价降序", pricesDesc.every((v, i) => i === 0 || pricesDesc[i-1] >= v), JSON.stringify(pricesDesc));
+check("表头有列说明", await evaluate(`!!document.querySelector("#gtbl .glegend")`), "");
+check("摘要含最高/最低", /最高/.test(await evaluate(`document.getElementById("gsum").textContent`)), "");
+check("金币上限有展示", await evaluate(`document.querySelectorAll("#gtbl .gz").length`) > 0, "");
+
+/* 切换商货 -> 煤炭 */
+await evaluate(`[...document.querySelectorAll("#gquick .chip")].find(c => c.dataset.i === "comm_coal").click()`);
+await sleep(80);
+const coal = await evaluate(`(function(){ const it = G.items.find(x => x.i === "comm_coal"); const r = gBuyers(it);
+  return { n: r.length, top: r[0].p }; })()`);
+check("煤炭: 11 家收购", coal.n === 11, coal.n);
+check("煤炭: 最高 435 金", coal.top === 435, coal.top);
+check("切换后高亮跟随", await evaluate(`document.querySelector("#gquick .chip.on").dataset.i`) === "comm_coal", "");
+
+/* 搜索任意物品（含装备），验证商货之外的物品也能查 */
+await evaluate(`(function(){ const q = document.getElementById("gq"); q.value = "阿娜的剑"; q.dispatchEvent(new Event("input")); })()`);
+await sleep(80);
+check("搜索出候选物品", await evaluate(`document.querySelectorAll("#glist .gitem").length`) > 0, "");
+await evaluate(`document.querySelector("#glist .gitem").click()`);
+await sleep(80);
+check("点选后渲染收购方", await evaluate(`document.querySelectorAll("#gtbl .grow").length`) > 0, "");
+check("选中非商货物品", await evaluate(`!gsel.k`), "");
+
+/* 8. 无残留占位符 */
+check("no placeholder leftover", !await evaluate(`document.body.innerHTML.includes("__DATA__") || document.body.innerHTML.includes("__MECH__") || document.body.innerHTML.includes("__TRADE__")`), "");
 
 try { chrome.kill(); rmSync(profile, { recursive: true, force: true }); } catch(e){}
 console.log(`\n${pass} passed, ${fail} failed`);

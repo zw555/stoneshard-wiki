@@ -46,16 +46,36 @@
   .mrow .ms { color:var(--sub); font-size:12px; margin:2px 0 6px; }
   .mrow .cat { font-size:12px; color:#55503f; }
   h2.sec { font-size:17px; margin:6px 0 10px; }
+  /* 商货收购 */
+  .ghead { display:flex; gap:12px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; margin-bottom:10px; }
+  .ghead img { width:44px; height:44px; object-fit:contain; image-rendering:pixelated; background:#efeadf; border-radius:6px; flex:none; }
+  .ghead b { font-size:16px; }
+  .grow { display:flex; gap:14px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; margin-bottom:7px; }
+  .grow .gp { min-width:96px; font-size:13px; color:var(--sub); }
+  .grow .gp b { font-size:17px; color:#3d7a3d; }
+  .grow .gc { min-width:78px; font-size:14px; font-weight:600; color:var(--acc); }
+  .grow .gm { flex:1; font-size:12.5px; color:#4c463a; line-height:1.8; }
+  .grow .gm .mi { white-space:nowrap; margin-right:10px; display:inline-block; }
+  .grow .gm .mi .gz { color:#9a6b1a; font-size:11px; font-weight:400; }
+  .glegend { display:flex; gap:14px; font-size:11.5px; color:var(--sub); padding:0 14px 6px; }
+  .glegend span:nth-child(1){ min-width:96px; }
+  .glegend span:nth-child(2){ min-width:78px; }
+  .glegend i { font-style:normal; }
+  #glist { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px; }
+  #glist .gitem { padding:3px 11px; border:1px solid var(--line); border-radius:999px; background:var(--card); cursor:pointer; font-size:12.5px; }
+  #glist .gitem:hover { background:var(--acc); color:#fff; }
+  #gsum { font-size:12.5px; margin-bottom:8px; color:#55503f; }
   .hide { display:none; }
 </style>
 </head>
 <body>
 <header>
   <h1>Stoneshard 交易行情</h1>
-  <div class="meta">数据来源：社区 wiki（v0.9.4.24）· 收购价基准条件：完整耐久、非赃物、普通品质、默认声望、无价格波动 · 回收率 = 收购价 ÷ 商店基准价</div>
+  <div class="meta">数据来源：社区 wiki（v0.9.4.24）实测收购榜 + 游戏文件逆向的商人收购系数 · 基准条件：满耐久、非赃物、普通品质、默认声望、无价格波动</div>
 </header>
 <div class="tabs">
   <div class="tab on" data-v="items">卖谁最赚 · 按物品</div>
+  <div class="tab" data-v="goods">商货收购</div>
   <div class="tab" data-v="merchants">商人收购榜</div>
   <div class="tab" data-v="cats">品类规律</div>
   <div class="tab" data-v="mech">交易机制</div>
@@ -72,6 +92,20 @@
     </div>
     <div id="count"></div>
     <div id="grid"></div>
+  </div>
+  <div id="v-goods" class="hide">
+    <div class="note"><strong>谁收这种东西、收多少钱。</strong>社区 wiki 的收购榜只覆盖装备，商货（小麦 / 盐巴 / 木材…）此前查不到，这里用游戏文件逆向出的商人收购系数补齐。<br>
+      单价 = 基准价 × 收购系数 ×（1 + 材质修正）× 商人 Buying_Prices（取整）。基准条件为<strong>满耐久 / 普通品质 / 非赃物 / 默认声望 / 无供需波动</strong>，实际成交会随城镇声望（−25%~+5%）、聚落事件与供需浮动，见「交易机制」。<br>
+      每个商人有各自的收购配置与 Buying_Prices，所以<strong>同一系数下不同商人给价也可能不同</strong>，下表因此按单价分组。</div>
+    <div class="sortrow">
+      <span style="color:var(--sub);font-size:12.5px">商货</span>
+      <span id="gquick" style="display:flex;gap:6px;flex-wrap:wrap"></span>
+    </div>
+    <input id="gq" placeholder="或搜索任意物品：中文名 / 英文名（如 小麦、wheat、铁矿石、治疗药水）">
+    <div id="glist"></div>
+    <div id="ghead"></div>
+    <div id="gsum"></div>
+    <div id="gtbl"></div>
   </div>
   <div id="v-merchants" class="hide">
     <div class="note">「最优次数」= 该商人是多少件装备的<strong>第 1 名收购商</strong>（给出全场最高价）；平均回收率越高说明这家商人整体给价越肥。可切换排序。</div>
@@ -98,7 +132,7 @@
   </div>
 </div>
 <script>
-const DATA = __DATA__, MECH = __MECH__;
+const DATA = __DATA__, MECH = __MECH__, G = __TRADE__;
 function esc(s){ return (s==null?"":String(s)).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 const $ = id => document.getElementById(id);
 const pct = r => (r * 100).toFixed(0) + "%";
@@ -234,13 +268,99 @@ function renderMech(){
     Object.entries(MECH.formula).map(([k, v]) => `<tr><td><code>${esc(k)}</code></td><td>${esc(v)}</td></tr>`).join("") + `</table>`;
 }
 
-document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
-  document.querySelectorAll(".tab").forEach(x => x.classList.remove("on"));
-  t.classList.add("on");
-  ["items", "merchants", "cats", "mech"].forEach(v => $("v-" + v).classList.toggle("hide", v !== t.dataset.v));
+/* ===== Tab 商货收购：谁收、收多少 =====
+   与 build_trade.py 的 price_of() 保持同一套算法（那边用社区实测价自校验）：
+   单价 = round(基准价 × 系数 × (1+材质修正) × Buying_Prices)
+   商货用商品自身单元（其修正已并入），不再叠材质修正，否则重复计算。 */
+function gCoeff(m, it){ const v = m.c[it.k || it.c]; return v == null ? null : v; }
+function gPrice(m, it){
+  const co = gCoeff(m, it);
+  if (co == null) return null;
+  const mat = it.k ? 0 : (m.d[it.m] || 0);
+  return Math.round(it.b * co * (1 + mat) * m.b);
+}
+const GQUICK = G.items.filter(x => x.k);
+let gsel = GQUICK.find(x => x.k === "wheat") || GQUICK[0];   // 默认小麦（最典型的商货）
+
+function gBuyers(it){
+  const out = [];
+  for (const m of G.merchants){
+    const p = gPrice(m, it);
+    if (p != null) out.push({ m, c: gCoeff(m, it), p });
+  }
+  out.sort((a, b) => b.c - a.c || b.p - a.p || a.m.z.localeCompare(b.m.z, "zh"));
+  return out;
+}
+function gMark(){
+  $("gquick").querySelectorAll(".chip").forEach(c => c.classList.toggle("on", c.dataset.i === gsel.i));
+}
+function gRender(){
+  const it = gsel;
+  $("ghead").innerHTML = `<div class="ghead"><img loading="lazy" src="icons/${esc(it.ic)}" onerror="this.style.visibility='hidden'">
+    <div><b>${esc(it.z)}</b> <span class="en">${esc(it.e)}</span>
+    <div class="base">商店基准价 ${it.b} 金 · ${it.k ? "商货" : esc(G.cats[it.c] || it.c)}</div></div></div>`;
+  const rows = gBuyers(it);
+  if (!rows.length){
+    $("gsum").textContent = "";
+    $("gtbl").innerHTML = `<div class="note">没有商人收购这种物品（它不在任何商人的收购清单里）。</div>`;
+    return;
+  }
+  const best = rows[0], worst = rows[rows.length - 1];
+  const spread = worst.p ? ((best.p / worst.p - 1) * 100).toFixed(0) : "0";
+  $("gsum").innerHTML = `共 <b>${rows.length}</b> 家收购 · 最高 <b>${best.p}</b> 金/个（${esc(G.towns[best.m.t] || best.m.t)} · ${esc(best.m.z)}）`
+    + ` · 最低 <b>${worst.p}</b> 金/个（${esc(G.towns[worst.m.t] || worst.m.t)} · ${esc(worst.m.z)}）`
+    + (spread > 0 ? ` · 挑对商人多赚 <b>${spread}%</b>` : "");
+  /* 按「单价」分组而不是按系数：同一系数下各商人的 Buying_Prices 不同，单价会分叉，
+     按系数分组会把 279 和 294 这类不同价挤成一行。 */
+  const groups = new Map();
+  for (const r of rows){
+    if (!groups.has(r.p)) groups.set(r.p, []);
+    groups.get(r.p).push(r);
+  }
+  const fmtC = c => (+c.toFixed(2)) + "x";
+  let h = "";
+  for (const [p, g] of [...groups.entries()].sort((a, b) => b[0] - a[0])){
+    const cs = [...new Set(g.map(r => +r.c.toFixed(2)))];
+    const cl = cs.length === 1 ? fmtC(cs[0]) : fmtC(cs[0]) + "~" + fmtC(cs[cs.length - 1]);
+    const list = g.map(r => {
+      const extra = cs.length > 1 ? ` <span class="gz">${fmtC(r.c)}</span>` : "";
+      /* data-m 带商人 id：同名商人存在（如布里恩两个「生意人（随机姓名）」），
+         只按显示名无法区分。 */
+      return `<span class="mi" data-m="${esc(r.m.i)}">${esc(G.towns[r.m.t] || r.m.t)} · ${esc(r.m.z)}`
+        + (r.m.g ? ` <span class="gz">≤${r.m.g}</span>` : "") + extra + `</span>`;
+    }).join("");
+    h += `<div class="grow"><div class="gp"><b>${p}</b> 金/个</div>
+      <div class="gc">${cl}</div><div class="gm">${list}</div></div>`;
+  }
+  $("gtbl").innerHTML = `<div class="glegend"><span>单价</span><span>收购系数</span><span>收购方（城镇 · 商人，<i>≤ 为金币上限</i>）</span></div>` + h;
+}
+$("gquick").innerHTML = GQUICK.map(x => `<button class="chip" data-i="${esc(x.i)}">${esc(x.z)}</button>`).join("");
+$("gquick").querySelectorAll(".chip").forEach(c => c.onclick = () => {
+  gsel = G.items.find(x => x.i === c.dataset.i); gRender(); gMark();
 });
+$("gq").oninput = () => {
+  const kw = $("gq").value.trim().toLowerCase();
+  if (!kw){ $("glist").innerHTML = ""; return; }
+  const hit = G.items.filter(x => (x.z + " " + x.e).toLowerCase().includes(kw)).slice(0, 40);
+  $("glist").innerHTML = hit.length
+    ? hit.map(x => `<span class="gitem" data-i="${esc(x.i)}">${esc(x.z)}${x.k ? " ★" : ""}</span>`).join("")
+    : `<span style="color:var(--sub);font-size:12.5px">没有匹配的物品</span>`;
+  $("glist").querySelectorAll(".gitem").forEach(el => el.onclick = () => {
+    gsel = G.items.find(x => x.i === el.dataset.i);
+    $("gq").value = ""; $("glist").innerHTML = ""; gRender(); gMark();
+  });
+};
+
+const VIEWS = ["items", "goods", "merchants", "cats", "mech"];
+function activate(v){
+  if (!VIEWS.includes(v)) v = "items";
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("on", x.dataset.v === v));
+  VIEWS.forEach(k => $("v-" + k).classList.toggle("hide", k !== v));
+}
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => { activate(t.dataset.v); location.hash = t.dataset.v; });
+if (location.hash) activate(location.hash.slice(1));   // 支持 #goods 之类的深链
 $("q").oninput = renderItems;
-renderItems(); renderMerchants(); renderCats(); renderMech();
+renderItems(); renderMerchants(); renderCats(); renderMech(); gRender(); gMark();
 </script>
 </body>
 </html>
